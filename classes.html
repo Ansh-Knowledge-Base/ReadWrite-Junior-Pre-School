@@ -1,1 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Classes | READ & WRITE ACADEMY</title>
+
+    <meta name="description"
+          content="Explore Pre-Primary School and academic classes at READ & WRITE ACADEMY.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: #17213c;
+            background: #f7f9fc;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 3px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-inner {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: #17213c;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .logo-text strong {
+            display: block;
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            color: #174ea6;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #30394d;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #174ea6;
+        }
+
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 25px;
+            color: #17213c;
+            cursor: pointer;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .page-hero {
+            padding: 95px 20px 90px;
+            background:
+                linear-gradient(135deg, #eef4ff, #ffffff);
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 7px 16px;
+            border-radius: 30px;
+            background: #174ea6;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .page-hero h1 {
+            max-width: 850px;
+            margin: 18px auto 12px;
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.12;
+        }
+
+        .page-hero h1 span {
+            color: #174ea6;
+        }
+
+        .page-hero p {
+            max-width: 720px;
+            margin: auto;
+            color: #626b7d;
+            font-size: 17px;
+        }
+
+
+        /* ================= INTRO ================= */
+
+        .intro-section {
+            padding: 80px 20px 40px;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 45px;
+        }
+
+        .section-heading span {
+            color: #174ea6;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            margin: 8px 0 12px;
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+        }
+
+        .section-heading p {
+            color: #667085;
+        }
+
+
+        /* ================= PROGRAM CARDS ================= */
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .program-card {
+            background: #ffffff;
+            border: 1px solid #e7ebf2;
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transition: 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.10);
+        }
+
+        .program-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #eef4ff;
+            color: #174ea6;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .program-card h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 23px;
+            margin-bottom: 7px;
+        }
+
+        .program-card .subtitle {
+            color: #e53935;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .program-card p {
+            color: #626b7d;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .class-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .class-list span {
+            padding: 6px 10px;
+            background: #f3f5f9;
+            border-radius: 8px;
+            color: #354052;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* ================= SCHOOL SECTION ================= */
+
+        .school-section {
+            padding: 80px 20px;
+        }
+
+        .school-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 28px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.07);
+        }
+
+        .school-content h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 35px;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .school-content h2 span {
+            color: #174ea6;
+        }
+
+        .school-content p {
+            color: #626b7d;
+            margin-bottom: 22px;
+        }
+
+        .school-points {
+            display: grid;
+            gap: 12px;
+        }
+
+        .school-point {
+            display: flex;
+            gap: 11px;
+            align-items: center;
+            font-weight: 600;
+            color: #354052;
+        }
+
+        .school-point i {
+            color: #174ea6;
+        }
+
+        .school-visual {
+            min-height: 330px;
+            border-radius: 22px;
+            background:
+                linear-gradient(135deg, #174ea6, #4676c7);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 35px;
+        }
+
+        .school-visual i {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+
+        .school-visual h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 28px;
+        }
+
+
+        /* ================= SUBJECT SECTION ================= */
+
+        .subjects-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .medium-box {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .medium-box span {
+            display: inline-block;
+            padding: 9px 18px;
+            border-radius: 30px;
+            background: #eef4ff;
+            color: #174ea6;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .subject-item {
+            padding: 17px;
+            border: 1px solid #e5e9f0;
+            border-radius: 14px;
+            text-align: center;
+            background: #fafbfc;
+            font-weight: 700;
+            color: #354052;
+            transition: 0.25s;
+        }
+
+        .subject-item:hover {
+            background: #eef4ff;
+            color: #174ea6;
+            transform: translateY(-3px);
+        }
+
+
+        /* ================= HIGHER CLASSES ================= */
+
+        .higher-section {
+            padding: 85px 20px;
+        }
+
+        .stream-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .stream-card {
+            padding: 38px;
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e6eaf1;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+        }
+
+        .stream-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: #eef4ff;
+            color: #174ea6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .stream-card h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .stream-card .stream-label {
+            color: #e53935;
+            font-weight: 800;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .stream-card p {
+            color: #626b7d;
+            margin: 16px 0 20px;
+        }
+
+        .stream-subjects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .stream-subjects span {
+            padding: 8px 12px;
+            background: #f3f5f9;
+            border-radius: 9px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #354052;
+        }
+
+
+        /* ================= ACADEMIC FEATURES ================= */
+
+        .features-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature-item {
+            padding: 22px;
+            border-radius: 16px;
+            background: #f7f9fc;
+            border: 1px solid #e9edf3;
+        }
+
+        .feature-item i {
+            color: #174ea6;
+            margin-right: 8px;
+        }
+
+        .feature-item strong {
+            font-size: 14px;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta-section {
+            padding: 75px 20px;
+        }
+
+        .cta-box {
+            padding: 55px 35px;
+            border-radius: 28px;
+            background: #174ea6;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .cta-box h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(28px, 4vw, 42px);
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            max-width: 650px;
+            margin: auto auto 25px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 22px;
+            background: #ffffff;
+            color: #174ea6;
+            border-radius: 10px;
+            font-weight: 800;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .footer {
+            background: #121a2b;
+            color: #ffffff;
+            padding: 55px 20px 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.4fr;
+            gap: 35px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .footer p,
+        .footer a {
+            color: #b9c1d0;
+            font-size: 14px;
+        }
+
+        .footer a {
+            display: block;
+            margin-bottom: 8px;
+            transition: 0.2s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer-brand strong {
+            display: block;
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+        }
+
+        .footer-brand span {
+            color: #7fa6e6;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 9px;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: #7fa6e6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 35px;
+            padding-top: 18px;
+            text-align: center;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 950px) {
+
+            .program-grid,
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 760px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 78px;
+                background: #ffffff;
+                padding: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .school-box,
+            .stream-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .program-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .school-box {
+                padding: 28px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-hero {
+                padding: 70px 20px;
+            }
+
+            .program-card,
+            .stream-card {
+                padding: 25px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-inner">
+
+        <a href="index.html" class="logo">
+
+            <img src="images/logo.jpg"
+                 alt="READ & WRITE ACADEMY Logo">
+
+            <div class="logo-text">
+
+                <strong>READ &amp; WRITE</strong>
+
+                <span>ACADEMY • CLASSES &amp; PRE SCHOOL</span>
+
+            </div>
+
+        </a>
+
+
+        <button class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Open Menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="index.html">Home</a>
+
+            <a href="about.html">About</a>
+
+            <a href="classes.html" class="active">Classes</a>
+
+            <a href="teachers.html">Teachers</a>
+
+            <a href="facilities.html">Facilities</a>
+
+            <a href="gallery.html">Gallery</a>
+
+            <a href="admissions.html">Admissions</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="page-hero">
+
+    <span class="hero-label">
+        CLASSES &amp; ACADEMIC PROGRAMS
+    </span>
+
+    <h1>
+        Learn. Grow. <span>Achieve.</span>
+    </h1>
+
+    <p>
+        Explore the learning programs offered by
+        READ &amp; WRITE ACADEMY — from Pre-Primary education
+        to school-level and higher secondary academic support.
+    </p>
+
+</section>
+
+
+<!-- ================= PROGRAM OVERVIEW ================= -->
+
+<section class="intro-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>OUR PROGRAMS</span>
+
+            <h2>
+                Learning Programs Designed for Every Stage
+            </h2>
+
+            <p>
+                Our academic programs are designed to provide
+                students with concept clarity, regular practice,
+                personal attention and continuous academic support.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+
+            <!-- PRE PRIMARY -->
+
+            <div class="program-card">
+
+                <div class="program-icon">
+                    <i class="fa-solid fa-child"></i>
+                </div>
+
+                <h3>
+                    Pre-Primary School
+                </h3>
+
+                <div class="subtitle">
+                    READ &amp; WRITE JUNIORS PRE SCHOOL
+                </div>
+
+                <p>
+                    A child-friendly learning environment focused
+                    on early development, foundational learning,
+                    activities and school readiness.
+                </p>
+
+                <div class="class-list">
+
+                    <span>Nursery</span>
+                    <span>Junior KG</span>
+                    <span>Senior KG</span>
+                    <span>Balvatika</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCHOOL CLASSES -->
+
+            <div class="program-card">
+
+                <div class="program-icon">
+                    <i class="fa-solid fa-school"></i>
+                </div>
+
+                <h3>
+                    School Classes
+                </h3>
+
+                <div class="subtitle">
+                    NURSERY TO 10TH
+                </div>
+
+                <p>
+                    Academic support with concept-based teaching,
+                    regular practice, worksheets, tests and
+                    exam-oriented preparation.
+                </p>
+
+                <div class="class-list">
+
+                    <span>Nursery</span>
+                    <span>1st</span>
+                    <span>2nd</span>
+                    <span>3rd</span>
+                    <span>4th</span>
+                    <span>5th</span>
+                    <span>6th</span>
+                    <span>7th</span>
+                    <span>8th</span>
+                    <span>9th</span>
+                    <span>10th</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- HIGHER SECONDARY -->
+
+            <div class="program-card">
+
+                <div class="program-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h3>
+                    Higher Secondary
+                </h3>
+
+                <div class="subtitle">
+                    11TH &amp; 12TH
+                </div>
+
+                <p>
+    Subject support and academic preparation for higher secondary students,
+    with focused guidance, regular practice, doubt solving, revision and
+    exam-oriented preparation.
+                </p>
+
+        <div class="subject-list">
+            <span>Accountancy</span>
+            <span>Statistics</span>
+            <span>Economics</span>
+            <span>Business Administration (BA)</span>
+            <span>Office Administration / OC</span>
+            <span>Secretarial Practice</span>
+            <span>SPCC</span>
+            <span>English</span>
+        </div>
+
+        <a href="contact.html" class="class-btn">Enquire Now</a>
+
+    </div>
+</div>
+
+
+<!-- ================= ACADEMIC SUPPORT ================= -->
+
+<section class="academic-support">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>OUR ACADEMIC APPROACH</span>
+            <h2>Learning That Builds Confidence</h2>
+            <p>
+                READ & WRITE ACADEMY focuses on concept clarity, regular practice,
+                individual attention and continuous academic improvement.
+            </p>
+        </div>
+
+        <div class="academic-grid">
+
+            <div class="academic-card">
+                <i class="fas fa-book-open"></i>
+                <h3>Concept-Based Teaching</h3>
+                <p>
+                    Clear concepts with practical examples and easy-to-understand teaching methods.
+                </p>
+            </div>
+
+            <div class="academic-card">
+                <i class="fas fa-pen-to-square"></i>
+                <h3>Regular Practice</h3>
+                <p>
+                    Worksheets, homework and regular practice help students strengthen their basics.
+                </p>
+            </div>
+
+            <div class="academic-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Progress Monitoring</h3>
+                <p>
+                    Weekly and monthly assessments help track student performance and improvement.
+                </p>
+            </div>
+
+            <div class="academic-card">
+                <i class="fas fa-user-graduate"></i>
+                <h3>Individual Attention</h3>
+                <p>
+                    Special attention and additional support are provided wherever required.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= ACADEMIC FEATURES ================= -->
+
+<section class="features-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>ACADEMIC FEATURES</span>
+            <h2>More Than Just Classroom Learning</h2>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Weekly Tests</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-file-lines"></i>
+                <span>Monthly Tests</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-bullseye"></i>
+                <span>Exam-Oriented Preparation</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-chalkboard-user"></i>
+                <span>Smart TV Assisted Teaching</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-comments"></i>
+                <span>Doubt Clearing Sessions</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-calculator"></i>
+                <span>Special Maths Support</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-language"></i>
+                <span>English & Grammar Support</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-book"></i>
+                <span>Study Material & Worksheets</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <span>Extra Classes</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-rotate"></i>
+                <span>Revision Before Exams</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-chart-simple"></i>
+                <span>Progress Monitoring</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="fas fa-users"></i>
+                <span>Parent Updates</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section class="classes-cta">
+    <div class="container">
+
+        <div class="cta-content">
+            <span>START YOUR LEARNING JOURNEY</span>
+
+            <h2>
+                Build Strong Concepts.<br>
+                Achieve Better Results.
+            </h2>
+
+            <p>
+                Join READ & WRITE ACADEMY – CLASSES & PRE SCHOOL
+                for focused learning, regular practice and academic support.
+            </p>
+
+            <div class="cta-buttons">
+                <a href="admissions.html" class="cta-btn primary">
+                    <i class="fas fa-user-plus"></i>
+                    Admission Enquiry
+                </a>
+
+                <a href="contact.html" class="cta-btn secondary">
+                    <i class="fas fa-phone"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <div class="footer-about">
+
+                <img src="images/logo.jpg"
+                     alt="READ & WRITE ACADEMY Logo"
+                     class="footer-logo">
+
+                <h3>READ & WRITE ACADEMY</h3>
+
+                <p>
+                    CLASSES & PRE SCHOOL
+                </p>
+
+                <p>
+                    Learn, Explore & Grow with quality education,
+                    personal attention and a disciplined learning environment.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="classes.html">Classes</a>
+                <a href="facilities.html">Facilities</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="admissions.html">Admissions</a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>Student</h3>
+
+                <a href="student-login.html">Student Login</a>
+                <a href="teachers.html">Our Teachers</a>
+                <a href="contact.html">Contact Us</a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <h3>Contact</h3>
+
+                <p>
+                    <i class="fas fa-location-dot"></i>
+                    9, Shivaji Park-2,<br>
+                    Navagam-Dindoli Road,<br>
+                    Navagam, Surat - 394210
+                </p>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:9537081242">95370 81242</a>
+                </p>
+
+                <p>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:7984786053">79847 86053</a>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:readwritec@gmail.com">
+                        readwritec@gmail.com
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 READ & WRITE ACADEMY – CLASSES & PRE SCHOOL.
+                All Rights Reserved.
+            </p>
+
+            <p>
+                Website Designed & Developed by
+                <strong>Ansh</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    // Mobile menu
+    function toggleMenu() {
+        const nav = document.getElementById("navLinks");
+
+        if (nav) {
+            nav.classList.toggle("show");
+        }
+    }
+
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            const nav = document.getElementById("navLinks");
+
+            if (nav) {
+                nav.classList.remove("show");
+            }
+
+        });
+
+    });
+
+
+    // Current year
+    const yearElement = document.querySelector(".footer-bottom");
+
+    if (yearElement) {
+
+        yearElement.innerHTML =
+            yearElement.innerHTML.replace(
+                "© 2026",
+                "© " + new Date().getFullYear()
+            );
+
+    }
+
+</script>
+
+
+</body>
+    </html>
