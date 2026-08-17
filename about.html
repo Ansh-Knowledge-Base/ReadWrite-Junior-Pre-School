@@ -1,1 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>About Us | READ & WRITE ACADEMY | CLASSES & PRE SCHOOL</title>
+
+    <meta name="description"
+          content="Learn about READ & WRITE ACADEMY - Classes & Pre School, our educational approach, academic support and learning environment.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: #202020;
+            background: #ffffff;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #ffffff;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar {
+            min-height: 92px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 78px;
+            height: 78px;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 22px;
+            line-height: 1.05;
+            font-weight: 800;
+            color: #ed1c24;
+        }
+
+        .brand-text h1 span:last-child {
+            color: #123d7a;
+        }
+
+        .brand-text p {
+            color: #123d7a;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ed1c24;
+        }
+
+        .menu-btn {
+            display: none;
+            border: none;
+            background: #123d7a;
+            color: #fff;
+            font-size: 22px;
+            padding: 10px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .about-hero {
+            background: linear-gradient(135deg, #f5f8ff, #ffffff);
+            padding: 85px 0;
+        }
+
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .eyebrow {
+            color: #123d7a;
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .about-hero h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 22px;
+            font-weight: 800;
+        }
+
+        .about-hero h2 span {
+            color: #ed1c24;
+        }
+
+        .about-hero p {
+            font-size: 17px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ed1c24;
+            color: white;
+            padding: 13px 25px;
+            border-radius: 9px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c9141b;
+            transform: translateY(-2px);
+        }
+
+        /* ================= COMMON ================= */
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .section-heading .eyebrow {
+            margin-bottom: 5px;
+        }
+
+        .section-heading h2 {
+            font-size: 36px;
+            line-height: 1.25;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* ================= WHO WE ARE ================= */
+
+        .who-section {
+            background: #ffffff;
+        }
+
+        .who-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .who-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .who-content h2 {
+            font-size: 36px;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+
+        .who-content h2 span {
+            color: #ed1c24;
+        }
+
+        .who-content p {
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .check-list li {
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .check-list i {
+            color: #ed1c24;
+            margin-right: 10px;
+        }
+
+        /* ================= MISSION / VISION ================= */
+
+        .mv-section {
+            background: #f5f7fb;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .mv-card {
+            background: #ffffff;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+            border-top: 5px solid #123d7a;
+        }
+
+        .mv-card:nth-child(2) {
+            border-top-color: #ed1c24;
+        }
+
+        .mv-icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #edf3ff;
+            color: #123d7a;
+            border-radius: 14px;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .mv-card:nth-child(2) .mv-icon {
+            background: #fff0f1;
+            color: #ed1c24;
+        }
+
+        .mv-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .mv-card p {
+            color: #666;
+        }
+
+        /* ================= WHY US ================= */
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .why-card {
+            padding: 30px;
+            border: 1px solid #e9e9e9;
+            border-radius: 18px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .why-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.09);
+        }
+
+        .why-icon {
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: #edf3ff;
+            color: #123d7a;
+            font-size: 23px;
+            margin-bottom: 18px;
+        }
+
+        .why-card h3 {
+            font-size: 20px;
+            margin-bottom: 9px;
+        }
+
+        .why-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* ================= ACADEMIC APPROACH ================= */
+
+        .approach-section {
+            background: #f5f7fb;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .approach-card {
+            background: white;
+            padding: 28px 22px;
+            text-align: center;
+            border-radius: 17px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+
+        .approach-card i {
+            font-size: 28px;
+            color: #ed1c24;
+            margin-bottom: 15px;
+        }
+
+        .approach-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .approach-card p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta-section {
+            padding: 70px 0;
+            background: linear-gradient(135deg, #123d7a, #092750);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            color: #e6e6e6;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #ed1c24;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 9px;
+            font-weight: 700;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #081d42;
+            color: white;
+            padding: 55px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #ccd5e5;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            color: #ccd5e5;
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 35px;
+            padding-top: 18px;
+            color: #bfc9da;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .about-hero h2 {
+                font-size: 40px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                min-height: 80px;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+            }
+
+            .brand-text h1 {
+                font-size: 17px;
+            }
+
+            .brand-text p {
+                font-size: 8px;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 5%;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .about-hero-grid,
+            .who-grid,
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero {
+                padding: 55px 0;
+            }
+
+            .about-hero h2 {
+                font-size: 34px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading h2,
+            .who-content h2 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="index.html" class="logo-area">
+
+            <img src="images/logo.jpg"
+                 alt="READ & WRITE ACADEMY Logo"
+                 class="logo">
+
+            <div class="brand-text">
+                <h1>
+                    <span>READ & WRITE</span><br>
+                    <span>ACADEMY</span>
+                </h1>
+
+                <p>CLASSES & PRE SCHOOL</p>
+            </div>
+
+        </a>
+
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="teachers.html">Teachers</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admissions.html">Admissions</a>
+            <a href="student-login.html">Student Login</a>
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- ================= ABOUT HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="container about-hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                ABOUT OUR ACADEMY
+            </div>
+
+            <h2>
+                Building Strong Foundations.
+                <span>Creating Bright Futures.</span>
+            </h2>
+
+            <p>
+                Welcome to <strong>READ & WRITE ACADEMY — Classes & Pre School</strong>,
+                a learning environment focused on strong academic foundations,
+                disciplined study habits, clear concepts and meaningful learning.
+            </p>
+
+            <p>
+                From foundational learning to senior secondary academic support,
+                we aim to help students learn with confidence, consistency and purpose.
+            </p>
+
+            <a href="classes.html" class="btn">
+                Explore Our Classes
+            </a>
+
+        </div>
+
+        <div>
+
+            <img src="images/school.jpg"
+                 alt="READ & WRITE ACADEMY"
+                 class="hero-image">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHO WE ARE ================= -->
+
+<section class="who-section">
+
+    <div class="container who-grid">
+
+        <div>
+
+            <img src="images/school.jpg"
+                 alt="READ & WRITE ACADEMY Building"
+                 class="who-image">
+
+        </div>
+
+        <div class="who-content">
+
+            <div class="eyebrow">
+                WHO WE ARE
+            </div>
+
+            <h2>
+                Learning With <span>Purpose</span>
+            </h2>
+
+            <p>
+                READ & WRITE ACADEMY is committed to providing students with
+                structured academic support and a positive learning environment.
+            </p>
+
+            <p>
+                Our approach combines concept clarity, regular practice,
+                revision, assessments and individual attention to help students
+                progress steadily.
+            </p>
+
+            <ul class="check-list">
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Strong academic foundations
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Concept-based learning
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Regular practice and revision
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Personal attention to students
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Examination-focused preparation
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MISSION & VISION ================= -->
+
+<section class="mv-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                OUR PURPOSE
+            </div>
+
+            <h2>
+                Mission & Vision
+            </h2>
+
+            <p>
+                Helping students develop knowledge, confidence, discipline
+                and the skills needed for a brighter future.
+            </p>
+
+        </div>
+
+        <div class="mv-grid">
+
+            <div class="mv-card">
+
+                <div class="mv-icon">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+
+                <h3>Our Mission</h3>
+
+                <p>
+                    To provide quality academic guidance through clear teaching,
+                    regular practice, meaningful assessments and a supportive
+                    learning environment where every student gets an opportunity
+                    to improve.
+                </p>
+
+            </div>
+
+
+            <div class="mv-card">
+
+                <div class="mv-icon">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+
+                <h3>Our Vision</h3>
+
+                <p>
+                    To build confident, disciplined and capable learners who
+                    develop strong fundamentals and are prepared to face their
+                    academic journey with knowledge and confidence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="eyebrow">
+                WHY CHOOSE US
+            </div>
+
+            <h2>
+                A Learning Environment Designed For Students
+            </h2>
+
+            <p>
+                We focus on the habits and academic support that help students
+                learn consistently and improve step by step.
+            </p>
+
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h3>Concept Clarity</h3>
+
+                <p>
+                    Focused learning that helps students understand concepts
+                    instead of relying only on memorisation.
+                </p>
+
+            </div>
+
+
+            <div class="why-card">
+
+                <div class="why-icon">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+
+                <h3>Personal Attention</h3>
+
+                <p>
+                    Supportive guidance and attention to help students identify
+                    their learning needs and improve.
+                </p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <h3>Strong Academic Support</h3>
+
+            <p>
+                Regular practice, revision, doubt-solving and individual
+                attention to help students improve their academic performance.
+            </p>
+        </div>
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h3>Focus on Student Growth</h3>
+
+            <p>
+                We focus on concept clarity, confidence building, disciplined
+                learning and continuous academic improvement.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- OUR APPROACH -->
+<section class="about-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>OUR APPROACH</span>
+
+            <h2>Learning With Purpose & Progress</h2>
+
+            <p>
+                At READ & WRITE ACADEMY, we believe that every student can
+                achieve better results with the right guidance, regular
+                practice and a supportive learning environment.
+            </p>
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-box">
+                <i class="fa-solid fa-lightbulb"></i>
+                <h3>Concept Clarity</h3>
+                <p>
+                    We focus on understanding concepts instead of relying
+                    only on memorisation.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <i class="fa-solid fa-pen-ruler"></i>
+                <h3>Regular Practice</h3>
+                <p>
+                    Regular worksheets, tests and revision help students
+                    stay confident and exam-ready.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h3>Student Development</h3>
+                <p>
+                    Our goal is to develop disciplined, confident and
+                    responsible learners.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- OUR MISSION -->
+<section class="about-section">
+    <div class="container">
+
+        <div class="about-content">
+
+            <span>OUR MISSION</span>
+
+            <h2>Building Strong Foundations For A Bright Future</h2>
+
+            <p>
+                Our mission is to provide quality education with personal
+                attention and a disciplined academic environment where
+                students can learn, explore and grow.
+            </p>
+
+            <p>
+                We aim to support students from their early learning years
+                through their school journey with consistent guidance,
+                practice and encouragement.
+            </p>
+
+            <a href="classes.html" class="btn">
+                Explore Our Classes
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta-section">
+    <div class="container">
+
+        <h2>Ready To Start Your Learning Journey?</h2>
+
+        <p>
+            Join READ & WRITE ACADEMY and give your child a stronger
+            foundation for a brighter future.
+        </p>
+
+        <a href="admissions.html" class="btn">
+            Apply For Admission
+        </a>
+
+        <a href="contact.html" class="btn secondary">
+            Contact Us
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+
+        <h3>READ & WRITE ACADEMY</h3>
+
+        <p>
+            Classes & Pre School — Learn • Explore • Grow
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="teachers.html">Teachers</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admissions.html">Admissions</a>
+            <a href="student-login.html">Student Login</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <p>
+            © 2026 READ & WRITE ACADEMY. All Rights Reserved.
+        </p>
+
+    </div>
+</footer>
+
+</body>
+</html>
+    
