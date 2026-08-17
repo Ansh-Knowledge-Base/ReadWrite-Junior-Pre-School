@@ -1,1 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Facilities | READ & WRITE ACADEMY</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            color: #202020;
+            background: #f7f9fc;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            background: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: auto;
+            min-height: 105px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 35px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+        }
+
+        .brand-text h1 {
+            font-size: 23px;
+            line-height: 1.05;
+            color: #ed1c24;
+            font-weight: 800;
+        }
+
+        .brand-text h1 span {
+            color: #15437d;
+        }
+
+        .brand-text p {
+            color: #15437d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-weight: 600;
+        }
+
+        nav a {
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #ed1c24;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #ffffff, #eef4fb);
+            padding: 85px 25px;
+            text-align: center;
+        }
+
+        .hero-small {
+            color: #1d4f8c;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h2 {
+            font-size: clamp(38px, 5vw, 65px);
+            margin: 10px 0;
+            font-weight: 800;
+            color: #18233d;
+        }
+
+        .hero h2 span {
+            color: #ed1c24;
+        }
+
+        .hero p {
+            max-width: 850px;
+            margin: 18px auto 0;
+            font-size: 18px;
+            color: #626b78;
+        }
+
+        .hero-line {
+            width: 75px;
+            height: 5px;
+            background: #ed1c24;
+            border-radius: 20px;
+            margin: 25px auto;
+        }
+
+        /* ================= FACILITY CARDS ================= */
+
+        .section {
+            max-width: 1300px;
+            margin: auto;
+            padding: 75px 25px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading small {
+            color: #ed1c24;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .section-heading h2 {
+            color: #18233d;
+            font-size: 38px;
+            margin-top: 5px;
+            font-weight: 800;
+        }
+
+        .section-heading p {
+            color: #697281;
+            max-width: 750px;
+            margin: 10px auto;
+        }
+
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .facility-card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 32px;
+            box-shadow: 0 12px 35px rgba(30,55,90,0.08);
+            border: 1px solid #e8edf5;
+            transition: 0.3s;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(30,55,90,0.14);
+        }
+
+        .icon {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: #edf4ff;
+            color: #18529a;
+            font-size: 27px;
+            margin-bottom: 20px;
+        }
+
+        .facility-card:nth-child(even) .icon {
+            background: #fff0f1;
+            color: #ed1c24;
+        }
+
+        .facility-card h3 {
+            color: #18233d;
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .facility-card p {
+            color: #687180;
+            font-size: 15px;
+        }
+
+        /* ================= SPECIAL ACADEMIC SECTION ================= */
+
+        .academic {
+            background: #ffffff;
+            padding: 80px 25px;
+        }
+
+        .academic-inner {
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .academic-box {
+            background: linear-gradient(135deg, #102c57, #1c4f91);
+            border-radius: 30px;
+            padding: 55px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(16,44,87,0.18);
+        }
+
+        .academic-box small {
+            color: #ffcece;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .academic-box h2 {
+            font-size: 40px;
+            margin: 8px 0 15px;
+        }
+
+        .academic-box p {
+            max-width: 800px;
+            margin: auto;
+            color: #e5edf8;
+        }
+
+        .academic-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 35px;
+        }
+
+        .academic-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+
+        /* ================= FACULTY HIGHLIGHT ================= */
+
+        .faculty-section {
+            padding: 85px 25px;
+            background: #f5f8fc;
+        }
+
+        .faculty-inner {
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .teacher-card {
+            background: white;
+            border-radius: 25px;
+            padding: 25px;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            box-shadow: 0 15px 40px rgba(30,55,90,0.09);
+            border: 1px solid #e6ebf2;
+        }
+
+        .teacher-card img {
+            width: 180px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 18px;
+            border: 5px solid #f0f4fa;
+        }
+
+        .teacher-info small {
+            color: #1d4f8c;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .teacher-info h3 {
+            font-size: 30px;
+            color: #18233d;
+            margin: 3px 0;
+        }
+
+        .teacher-info .role {
+            color: #ed1c24;
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .teacher-info p {
+            color: #697281;
+            font-size: 14px;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 7px 13px;
+            border-radius: 20px;
+            background: #edf4ff;
+            color: #18529a;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            background: white;
+            padding: 75px 25px;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .cta h2 {
+            font-size: 38px;
+            color: #18233d;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #697281;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #ed1c24;
+            color: white;
+            border-radius: 10px;
+            font-weight: 700;
+            margin: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #c9141b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: white;
+            color: #15437d;
+            border: 2px solid #15437d;
+        }
+
+        .btn-outline:hover {
+            background: #15437d;
+            color: white;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #0d2347;
+            color: white;
+            padding: 45px 25px 25px;
+        }
+
+        .footer-inner {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 12px;
+        }
+
+        footer p {
+            color: #c8d3e4;
+            font-size: 14px;
+        }
+
+        footer a {
+            display: block;
+            color: #dce5f2;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        footer a:hover {
+            color: #ff5b61;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 35px;
+            padding-top: 20px;
+            color: #b9c6d8;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 950px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .facility-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .academic-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faculty-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 12px 15px;
+            }
+
+            .brand-text h1 {
+                font-size: 19px;
+            }
+
+            nav {
+                font-size: 13px;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 55px 20px;
+            }
+
+            .hero h2 {
+                font-size: 38px;
+            }
+
+            .section-heading h2 {
+                font-size: 30px;
+            }
+
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .academic-list {
+                grid-template-columns: 1fr;
+            }
+
+            .academic-box {
+                padding: 35px 22px;
+            }
+
+            .academic-box h2 {
+                font-size: 30px;
+            }
+
+            .teacher-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .teacher-card img {
+                width: 180px;
+                height: 210px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+    <div class="navbar">
+
+        <a href="index.html" class="brand">
+            <img src="images/logo.png" alt="Read & Write Academy Logo">
+
+            <div class="brand-text">
+                <h1>READ & WRITE <span>ACADEMY</span></h1>
+                <p>CLASSES & PRE SCHOOL</p>
+            </div>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="teachers.html">Teachers</a>
+            <a href="facilities.html" class="active">Facilities</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="admissions.html">Admissions</a>
+            <a href="student-login.html">Student Login</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-small">OUR LEARNING ENVIRONMENT</div>
+
+    <h2>Facilities That Support <span>Better Learning</span></h2>
+
+    <div class="hero-line"></div>
+
+    <p>
+        At READ & WRITE ACADEMY, we focus on creating a disciplined,
+        supportive and student-friendly environment where every learner
+        gets the right academic guidance, practice and personal attention.
+    </p>
+
+</section>
+
+
+<!-- ================= FACILITIES ================= -->
+
+<section class="section">
+
+    <div class="section-heading">
+        <small>WHY CHOOSE US</small>
+        <h2>Our Academic Facilities</h2>
+        <p>
+            Everything we provide is designed to make learning clear,
+            consistent, comfortable and result-oriented.
+        </p>
+    </div>
+
+
+    <div class="facility-grid">
+
+        <div class="facility-card">
+            <div class="icon">📚</div>
+            <h3>Concept-Based Learning</h3>
+            <p>
+                Students are guided to understand concepts clearly instead
+                of depending only on memorisation.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">📝</div>
+            <h3>Regular Worksheets</h3>
+            <p>
+                Structured worksheets and classroom practice help students
+                strengthen their understanding step by step.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">✓</div>
+            <h3>Regular Weekly Tests</h3>
+            <p>
+                Weekly tests help students identify their strengths,
+                weaknesses and areas requiring improvement.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">📊</div>
+            <h3>Monthly Assessments</h3>
+            <p>
+                Monthly assessments provide a clear picture of academic
+                progress and help maintain consistent preparation.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">🎯</div>
+            <h3>Exam & Board Preparation</h3>
+            <p>
+                Focused preparation, revision and practice support students
+                in their school and board examinations.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">💡</div>
+            <h3>Doubt Clearing Sessions</h3>
+            <p>
+                Students can clarify difficult concepts and strengthen their
+                understanding through focused doubt-solving.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">🤝</div>
+            <h3>Personal Attention</h3>
+            <p>
+                Individual guidance helps students identify learning needs
+                and improve with confidence.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">🌟</div>
+            <h3>Support for Weak Students</h3>
+            <p>
+                Additional academic support is provided to help students
+                improve fundamentals and classroom performance.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">📖</div>
+            <h3>Reading & Writing Improvement</h3>
+            <p>
+                Regular reading, writing and practice activities help
+                students develop stronger academic communication skills.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">✏️</div>
+            <h3>Homework & Revision</h3>
+            <p>
+                Regular homework and revision routines help students remain
+                consistent with their studies.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">🔬</div>
+            <h3>Mathematics & Science Support</h3>
+            <p>
+                Special academic attention is given to building strong
+                fundamentals in Mathematics and Science.
+            </p>
+        </div>
+
+
+        <div class="facility-card">
+            <div class="icon">🏆</div>
+            <h3>Result-Oriented Preparation</h3>
+            <p>
+                Continuous practice, assessment and guidance help students
+                work towards stronger academic performance.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ACADEMIC SUPPORT ================= -->
+
+<section class="academic">
+
+    <div class="academic-inner">
+
+        <div class="academic-box">
+
+            <small>ACADEMIC EXCELLENCE</small>
+
+            <h2>Learning With Discipline & Direction</h2>
+
+            <p>
+                Our approach combines clear teaching, regular practice,
+                assessment and individual guidance to create a strong
+                academic foundation.
+            </p>
+
+
+            <div class="academic-list">
+
+                <div class="academic-item">
+                    ✓ Concept Clarity
+                </div>
+
+                <div class="academic-item">
+                    ✓ Regular Practice
+                </div>
+
+                <div class="academic-item">
+                    ✓ Test Preparation
+                </div>
+
+                <div class="academic-item">
+                    ✓ Individual Guidance
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FACULTY HIGHLIGHT ================= -->
+
+<section class="faculty-section">
+
+    <div class="faculty-inner">
+
+        <div class="section-heading">
+            <small>ACADEMIC LEADERSHIP</small>
+            <h2>Guided By Experience & Commitment</h2>
+
+            <p>
+                Our academic environment is strengthened by dedicated
+                faculty members who focus on student understanding,
+                discipline and continuous improvement.
+            </p>
+        </div>
+
+
+        <div class="faculty-grid">
+
+
+            <!-- ANSH SIR -->
+
+            <div class="teacher-card">
+
+                <img src="images/ansh.jpg" alt="Ansh Sir">
+
+                <div class="teacher-info">
+
+                    <small>OUR FACULTY</small>
+
+                    <h3>Ansh Sir</h3>
+
+                    <div class="role">
+                        Mathematics & Science Faculty
+                    </div>
+
+                    <p>
+                        Dedicated to helping students build strong
+                        fundamentals through clear concepts, regular
+                        practice, problem-solving and focused learning.
+                    </p>
+
+                    <span class="teacher-badge">
+                        Classes 7th to 10th
+                    </span>
+
+                    <span class="teacher-badge">
+                        Mathematics & Science
+                    </span>
+
+                    <span class="teacher-badge">
+                        Educator & Web Developer
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MANISH SIR -->
+
+            <!-- MANISH SIR --><div class="teacher-card">
+
+    <div class="teacher-photo">
+        <img src="images/manish.jpg" alt="Manish Sir">
+    </div>
+
+    <div class="teacher-info">
+
+        <div class="teacher-label">
+            OUR FACULTY
+        </div>
+
+        <h2>Manish Sir</h2>
+
+        <h3>Commerce Faculty</h3>
+
+        <div class="teacher-line"></div>
+
+        <div class="teacher-details">
+
+            <div class="teacher-detail">
+                <div class="detail-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <div>
+                    <small>SUBJECTS</small>
+                    <strong>Commerce Subjects</strong>
+                </div>
+            </div>
+
+            <div class="teacher-detail">
+                <div class="detail-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <div>
+                    <small>CLASSES</small>
+                    <strong>11th &amp; 12th</strong>
+                </div>
+            </div>
+
+        </div>
+
+        <p>
+            Dedicated to providing clear concepts, regular practice,
+            exam-oriented preparation and personal guidance to help
+            students achieve strong academic results.
+        </p>
+
+        <div class="teacher-highlights">
+
+            <span class="teacher-badge">
+                Commerce Faculty
+            </span>
+
+            <span class="teacher-badge">
+                11th &amp; 12th
+            </span>
+
+            <span class="teacher-badge">
+                Exam Preparation
+            </span>
+
+            <span class="teacher-badge">
+                Academic Guidance
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ACADEMIC SUPPORT -->
+<section class="section">
+
+    <div class="section-heading">
+        <span class="eyebrow">ACADEMIC SUPPORT</span>
+
+        <h2>
+            Learning Support That Makes a Difference
+        </h2>
+
+        <p>
+            At Read &amp; Write Academy, we focus on strong fundamentals,
+            regular practice and individual attention so that every
+            student can learn with confidence.
+        </p>
+    </div>
+
+
+    <div class="feature-grid">
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+
+            <h3>Experienced Faculty</h3>
+
+            <p>
+                Dedicated teachers who guide students with clear
+                explanations, structured learning and regular support.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+
+            <h3>Personal Attention</h3>
+
+            <p>
+                Individual guidance to understand students' learning
+                needs and help them improve step by step.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+
+            <h3>Regular Practice</h3>
+
+            <p>
+                Worksheets, homework, practice questions and revision
+                activities to build confidence and accuracy.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-file-circle-check"></i>
+            </div>
+
+            <h3>Regular Tests</h3>
+
+            <p>
+                Regular assessments help students track their progress
+                and prepare effectively for examinations.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <h3>Doubt Clearing</h3>
+
+            <p>
+                Students receive dedicated support to clarify difficult
+                concepts and strengthen their understanding.
+            </p>
+        </div>
+
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h3>Progress Focused Learning</h3>
+
+            <p>
+                Continuous practice, revision and feedback help students
+                improve their academic performance.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STUDENT EXPERIENCE -->
+<section class="section">
+
+    <div class="section-heading">
+        <span class="eyebrow">STUDENT EXPERIENCE</span>
+
+        <h2>
+            A Supportive Environment for Every Learner
+        </h2>
+
+        <p>
+            We believe that students perform better when they receive
+            proper guidance, encouragement and a disciplined learning
+            environment.
+        </p>
+    </div>
+
+
+    <div class="why-grid">
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <h3>Friendly Learning Environment</h3>
+
+            <p>
+                A positive and supportive atmosphere where students can
+                learn comfortably and ask questions freely.
+            </p>
+        </div>
+
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-bullseye"></i>
+            </div>
+
+            <h3>Result-Oriented Approach</h3>
+
+            <p>
+                Focused teaching, regular practice and examination
+                preparation designed to help students achieve their goals.
+            </p>
+        </div>
+
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-people-group"></i>
+            </div>
+
+            <h3>Parent Communication</h3>
+
+            <p>
+                Regular communication helps parents stay informed about
+                their child's academic progress and learning needs.
+            </p>
+        </div>
+
+
+        <div class="why-card">
+            <div class="why-icon">
+                <i class="fa-solid fa-book"></i>
+            </div>
+
+            <h3>Study Material</h3>
+
+            <p>
+                Practice material, worksheets and revision support to
+                strengthen concepts beyond classroom teaching.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CALL TO ACTION -->
+<section class="cta-section">
+
+    <div class="cta-content">
+
+        <span class="eyebrow">
+            JOIN READ &amp; WRITE ACADEMY
+        </span>
+
+        <h2>
+            Give Your Child a Stronger Learning Foundation
+        </h2>
+
+        <p>
+            Choose a disciplined, supportive and result-oriented
+            learning environment for your child's academic journey.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="admissions.html" class="btn btn-primary">
+                Apply for Admission
+            </a>
+
+            <a href="contact.html" class="btn btn-secondary">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main><!-- FOOTER --><footer class="footer"><div class="footer-container">
+
+    <div class="footer-about">
+
+        <h3>READ &amp; WRITE ACADEMY</h3>
+
+        <p>
+            Classes &amp; Pre School focused on strong foundations,
+            meaningful learning and academic growth.
+        </p>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <h4>Quick Links</h4>
+
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="classes.html">Classes</a>
+        <a href="teachers.html">Teachers</a>
+        <a href="facilities.html">Facilities</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="admissions.html">Admissions</a>
+        <a href="student-login.html">Student Login</a>
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+
+    <div class="footer-contact">
+
+        <h4>Contact Us</h4>
+
+        <p>
+            <i class="fa-solid fa-phone"></i>
+            Contact Read &amp; Write Academy
+        </p>
+
+        <p>
+            <i class="fa-solid fa-graduation-cap"></i>
+            Classes &amp; Pre School
+        </p>
+
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+    <p>
+        © 2026 READ &amp; WRITE ACADEMY. All Rights Reserved.
+    </p>
+
+    <p>
+        Designed &amp; Developed by Ansh Sir
+    </p>
+
+</div>
+
+</footer></body>
+</html>
+
+       
