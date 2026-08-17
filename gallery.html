@@ -1,1 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Gallery | READ & WRITE ACADEMY</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f7f9fc;
+            color: #202124;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: auto;
+            min-height: 82px;
+            padding: 10px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #222;
+            min-width: 230px;
+        }
+
+        .brand img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
+        }
+
+        .brand-text {
+            line-height: 1.05;
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #e51f2a;
+        }
+
+        .brand-title span {
+            color: #174b8f;
+        }
+
+        .brand-subtitle {
+            margin-top: 7px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #174b8f;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            position: relative;
+            text-decoration: none;
+            color: #222;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 10px 2px;
+            transition: 0.3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #e51f2a;
+        }
+
+        nav a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 2px;
+            width: 100%;
+            height: 3px;
+            border-radius: 10px;
+            background: #e51f2a;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(23, 75, 143, 0.96),
+                    rgba(229, 31, 42, 0.92)
+                );
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 8px 18px;
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 6vw, 70px);
+            line-height: 1.05;
+            font-weight: 800;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #ffd7d9;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* =========================
+           GALLERY SECTION
+        ========================= */
+
+        .gallery-section {
+            max-width: 1350px;
+            margin: auto;
+            padding: 75px 25px 100px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading small {
+            display: block;
+            color: #e51f2a;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(30px, 5vw, 45px);
+            color: #172033;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            max-width: 700px;
+            margin: auto;
+            color: #687386;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FILTER BUTTONS
+        ========================= */
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 45px;
+        }
+
+        .filter-btn {
+            border: 1px solid #dce2eb;
+            background: white;
+            color: #39445a;
+            padding: 11px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #e51f2a;
+            color: white;
+            border-color: #e51f2a;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           GALLERY GRID
+        ========================= */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(21, 35, 58, 0.10);
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            transition: 0.35s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 40px rgba(21, 35, 58, 0.18);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 22px;
+            background: linear-gradient(
+                transparent 35%,
+                rgba(0,0,0,0.78)
+            );
+            opacity: 0;
+            transition: 0.35s;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            color: white;
+        }
+
+        .overlay-content h3 {
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .overlay-content span {
+            font-size: 12px;
+            opacity: 0.85;
+        }
+
+        .zoom-icon {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.92);
+            color: #174b8f;
+            font-size: 18px;
+        }
+
+        /* =========================
+           FEATURED CARDS
+        ========================= */
+
+        .featured {
+            grid-column: span 2;
+            aspect-ratio: 8 / 5;
+        }
+
+        /* =========================
+           LIGHTBOX
+        ========================= */
+
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(7, 12, 22, 0.94);
+        }
+
+        .lightbox.show {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 84vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-title {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 25px;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border: none;
+            border-radius: 50%;
+            background: white;
+            color: #222;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            padding: 55px 25px 25px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 45px;
+        }
+
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand h3 span {
+            color: #e51f2a;
+        }
+
+        .footer-brand p {
+            color: #aeb8c8;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .footer-column a {
+            display: block;
+            color: #aeb8c8;
+            text-decoration: none;
+            margin-bottom: 9px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .copyright {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: #8792a5;
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            nav {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .brand {
+                justify-content: center;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .featured {
+                grid-column: span 2;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero {
+                min-height: 300px;
+                padding: 60px 20px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .gallery-section {
+                padding: 55px 15px 70px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .featured {
+                grid-column: span 1;
+                aspect-ratio: 4 / 3;
+            }
+
+            .overlay {
+                opacity: 1;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+    <div class="navbar">
+
+        <a href="index.html" class="brand">
+            <img src="images/logo.jpg" alt="READ & WRITE ACADEMY Logo">
+
+            <div class="brand-text">
+                <div class="brand-title">
+                    READ & WRITE <span>ACADEMY</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    CLASSES & PRE SCHOOL
+                </div>
+            </div>
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="classes.html">Classes</a>
+            <a href="teachers.html">Teachers</a>
+            <a href="facilities.html">Facilities</a>
+            <a href="gallery.html" class="active">Gallery</a>
+            <a href="admissions.html">Admissions</a>
+            <a href="student-login.html">Student Login</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-label">
+            OUR MEMORIES
+        </div>
+
+        <h1>
+            School <span>Gallery</span>
+        </h1>
+
+        <p>
+            Explore the memorable moments, activities, achievements,
+            celebrations and learning experiences of
+            READ & WRITE ACADEMY.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery-section">
+
+    <div class="section-heading">
+
+        <small>Memories & Moments</small>
+
+        <h2>
+            Our Gallery
+        </h2>
+
+        <p>
+            A collection of moments that reflect learning,
+            creativity, activities, celebrations and achievements
+            at READ & WRITE ACADEMY.
+        </p>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button class="filter-btn active" data-filter="all">
+            All Photos
+        </button>
+
+        <button class="filter-btn" data-filter="school">
+            School
+        </button>
+
+        <button class="filter-btn" data-filter="students">
+            Students
+        </button>
+
+        <button class="filter-btn" data-filter="activities">
+            Activities
+        </button>
+
+        <button class="filter-btn" data-filter="events">
+            Events
+        </button>
+
+        <button class="filter-btn" data-filter="achievements">
+            Achievements
+        </button>
+
+        <button class="filter-btn" data-filter="team">
+            Our Team
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         PHOTO GRID
+    ========================= -->
+
+    <div class="gallery-grid">
+
+
+        <!-- SCHOOL -->
+
+        <div class="gallery-item featured"
+             data-category="school"
+             data-title="READ & WRITE ACADEMY Campus">
+
+            <img src="images/school-building.jpg"
+                 alt="READ & WRITE ACADEMY School Building">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Our Academy</h3>
+                    <span>School & Campus</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- ANSH SIR -->
+
+        <div class="gallery-item"
+             data-category="team"
+             data-title="Ansh Sir">
+
+            <img src="images/ansh.jpg"
+                 alt="Ansh Sir">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Ansh Sir</h3>
+                    <span>Our Academic Team</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- MANISH SIR -->
+
+        <div class="gallery-item"
+             data-category="team"
+             data-title="Manish Sir">
+
+            <img src="images/manish.jpg"
+                 alt="Manish Sir">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Manish Sir</h3>
+                    <span>Our Academic Team</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- JUNIOR STUDENTS -->
+
+        <div class="gallery-item"
+             data-category="students"
+             data-title="Junior Students">
+
+            <img src="images/students-junior.jpg"
+                 alt="Junior Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Junior Students</h3>
+                    <span>Young Learners</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- SENIOR STUDENTS -->
+
+        <div class="gallery-item"
+             data-category="students"
+             data-title="Senior Students">
+
+            <img src="images/students-senior.jpg"
+                 alt="Senior Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Senior Students</h3>
+                    <span>Learning Together</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- TOPPERS -->
+
+        <div class="gallery-item"
+             data-category="achievements"
+             data-title="Topper Students">
+
+            <img src="images/topper-students.jpg"
+                 alt="Topper Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Topper Students</h3>
+                    <span>Achievements & Excellence</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- ART & CRAFT -->
+
+        <div class="gallery-item"
+             data-category="activities"
+             data-title="Art & Craft Activity">
+
+            <img src="images/activity-art-craft.jpg"
+                 alt="Art and Craft Activity">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Art & Craft</h3>
+                    <span>Creative Learning</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- SPORTS -->
+
+        <div class="gallery-item"
+             data-category="activities"
+             data-title="Sports Activity">
+
+            <img src="images/activity-sports.jpg"
+                 alt="Sports Activity">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Sports Activity</h3>
+                    <span>Fun & Fitness</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+
+        </div>
+
+
+        <!-- ANNUAL EVENT -->
+
+        <div class="gallery-item"
+             data-category="events"
+             data-title="Annual Event">
+
+            <img src="images/annual-event.jpg"
+                 alt="Annual Event">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Annual Event</h3>
+                    <span>School Celebration</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+                  <!-- ================= ANNUAL FUNCTION ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="Annual Function">
+
+            <img src="images/annual-function.jpg"
+                 alt="Annual Function">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Annual Function</h3>
+                    <span>School Celebration</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 1 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 1">
+
+            <img src="images/event-1.jpg"
+                 alt="School Event 1">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 2 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 2">
+
+            <img src="images/event-2.jpg"
+                 alt="School Event 2">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 3 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 3">
+
+            <img src="images/event-3.jpg"
+                 alt="School Event 3">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 4 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 4">
+
+            <img src="images/event-4.jpg"
+                 alt="School Event 4">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 5 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 5">
+
+            <img src="images/event-5.jpg"
+                 alt="School Event 5">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 6 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 6">
+
+            <img src="images/event-6.jpg"
+                 alt="School Event 6">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= EVENT 7 ================= -->
+        <div class="gallery-item"
+             data-category="events"
+             data-title="School Event 7">
+
+            <img src="images/event-7.jpg"
+                 alt="School Event 7">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>School Event</h3>
+                    <span>Memorable Moments</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= ANSH ================= -->
+        <div class="gallery-item"
+             data-category="people"
+             data-title="Ansh">
+
+            <img src="images/ansh.jpg"
+                 alt="Ansh">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Ansh</h3>
+                    <span>Read & Write Academy</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= MANISH SIR ================= -->
+        <div class="gallery-item"
+             data-category="people"
+             data-title="Manish Sir">
+
+            <img src="images/manish.jpg"
+                 alt="Manish Sir">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Manish Sir</h3>
+                    <span>Read & Write Academy</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= SCHOOL BUILDING ================= -->
+        <div class="gallery-item"
+             data-category="campus"
+             data-title="School Building">
+
+            <img src="images/school-building.jpg"
+                 alt="Read & Write Academy School Building">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Our School</h3>
+                    <span>Read & Write Academy</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= JUNIOR STUDENTS ================= -->
+        <div class="gallery-item"
+             data-category="students"
+             data-title="Junior Students">
+
+            <img src="images/students-junior.jpg"
+                 alt="Junior Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Junior Students</h3>
+                    <span>Learning & Growing Together</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= SENIOR STUDENTS ================= -->
+        <div class="gallery-item"
+             data-category="students"
+             data-title="Senior Students">
+
+            <img src="images/students-senior.jpg"
+                 alt="Senior Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Senior Students</h3>
+                    <span>Learning & Growing Together</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+
+
+        <!-- ================= TOPPER STUDENTS ================= -->
+        <div class="gallery-item"
+             data-category="students"
+             data-title="Topper Students">
+
+            <img src="images/topper-students.jpg"
+                 alt="Topper Students">
+
+            <div class="overlay">
+                <div class="overlay-content">
+                    <h3>Topper Students</h3>
+                    <span>Excellence & Achievement</span>
+                </div>
+            </div>
+
+            <div class="zoom-icon">+</div>
+        </div>
+        </div>
+        <!-- END GALLERY GRID -->
+
+    </section>
+    <!-- END GALLERY SECTION -->
+
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <h3>READ & WRITE ACADEMY</h3>
+        <p>Classes & Pre School</p>
+        <p>Building Strong Foundations. Creating Bright Futures.</p>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 READ & WRITE ACADEMY. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+        </html>
