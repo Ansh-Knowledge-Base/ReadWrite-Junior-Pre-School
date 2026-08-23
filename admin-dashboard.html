@@ -1,1 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | Read & Write</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --primary:#4f46e5;
+    --primary-dark:#3730a3;
+    --dark:#172033;
+    --text:#667286;
+    --light:#f6f8fc;
+    --white:#ffffff;
+    --border:#e4e8ef;
+    --green:#16a34a;
+    --red:#dc2626;
+    --orange:#ea580c;
+    --blue:#2563eb;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Nunito',sans-serif;
+    background:var(--light);
+    color:var(--text);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#fff;
+    border-right:1px solid var(--border);
+    z-index:1000;
+    transition:.3s;
+    overflow-y:auto;
+}
+
+.logo-box{
+    height:82px;
+    display:flex;
+    align-items:center;
+    padding:0 22px;
+    border-bottom:1px solid var(--border);
+}
+
+.logo-box img{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #eef2ff;
+    margin-right:11px;
+}
+
+.logo-text h2{
+    font-family:'Poppins',sans-serif;
+    color:var(--primary);
+    font-size:17px;
+}
+
+.logo-text span{
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.5px;
+    color:#8b95a5;
+}
+
+.admin-info{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+}
+
+.admin-info small{
+    display:block;
+    font-size:10px;
+    color:#9aa3b1;
+    margin-bottom:3px;
+}
+
+.admin-info strong{
+    display:block;
+    color:var(--dark);
+    font-size:12px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.menu-title{
+    padding:20px 20px 8px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#a0a8b5;
+}
+
+.nav-menu{
+    list-style:none;
+    padding:0 12px;
+}
+
+.nav-menu li{
+    margin-bottom:4px;
+}
+
+.nav-menu button{
+    width:100%;
+    border:0;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:9px;
+    color:#687386;
+    font-family:'Nunito',sans-serif;
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    text-align:left;
+    transition:.2s;
+}
+
+.nav-menu button i{
+    width:18px;
+    text-align:center;
+    font-size:13px;
+}
+
+.nav-menu button:hover{
+    background:#f5f6ff;
+    color:var(--primary);
+}
+
+.nav-menu button.active{
+    background:#eef2ff;
+    color:var(--primary);
+}
+
+.logout-area{
+    padding:15px 12px;
+    margin-top:15px;
+    border-top:1px solid var(--border);
+}
+
+.logout-btn{
+    width:100%;
+    border:0;
+    background:#fef2f2;
+    color:var(--red);
+    padding:11px;
+    border-radius:9px;
+    font-family:'Nunito';
+    font-size:12px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.logout-btn:hover{
+    background:#fee2e2;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:82px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:500;
+}
+
+.page-heading h1{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    font-size:21px;
+}
+
+.page-heading p{
+    font-size:11px;
+    margin-top:2px;
+    color:#8993a3;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.icon-btn{
+    width:38px;
+    height:38px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:#fff;
+    color:#687386;
+    cursor:pointer;
+}
+
+.icon-btn:hover{
+    color:var(--primary);
+    border-color:#cfd4ff;
+}
+
+.mobile-menu{
+    display:none;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    padding:30px;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.welcome{
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+    border-radius:18px;
+    padding:25px;
+    color:#fff;
+    margin-bottom:25px;
+    box-shadow:0 12px 30px rgba(79,70,229,.18);
+}
+
+.welcome h2{
+    font-family:'Poppins',sans-serif;
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+.welcome p{
+    font-size:12px;
+    opacity:.88;
+}
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
+}
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.stat-icon{
+    width:46px;
+    height:46px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.stat-icon.purple{
+    background:#eef2ff;
+    color:var(--primary);
+}
+
+.stat-icon.green{
+    background:#ecfdf5;
+    color:var(--green);
+}
+
+.stat-icon.orange{
+    background:#fff7ed;
+    color:var(--orange);
+}
+
+.stat-icon.blue{
+    background:#eff6ff;
+    color:var(--blue);
+}
+
+.stat-info small{
+    display:block;
+    font-size:10px;
+    color:#929baa;
+    margin-bottom:3px;
+}
+
+.stat-info strong{
+    color:var(--dark);
+    font-family:'Poppins',sans-serif;
+    font-size:20px;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.panel{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.panel-header{
+    min-height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+    border-bottom:1px solid var(--border);
+}
+
+.panel-header h3{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    font-size:14px;
+}
+
+.panel-body{
+    padding:20px;
+}
+
+.empty{
+    text-align:center;
+    padding:25px 10px;
+    color:#a0a8b5;
+    font-size:11px;
+}
+
+.empty i{
+    display:block;
+    font-size:25px;
+    margin-bottom:8px;
+    color:#cbd1dc;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
+}
+
+th{
+    background:#f8fafc;
+    color:#667286;
+    font-weight:800;
+    text-align:left;
+    padding:13px 15px;
+    border-bottom:1px solid var(--border);
+}
+
+td{
+    padding:13px 15px;
+    border-bottom:1px solid #edf0f4;
+    color:#687386;
+}
+
+td strong{
+    color:var(--dark);
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:9px;
+    font-weight:800;
+}
+
+.badge.pending{
+    background:#fff7ed;
+    color:#c2410c;
+}
+
+.badge.approved{
+    background:#ecfdf5;
+    color:#15803d;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.primary-btn{
+    border:0;
+    background:var(--primary);
+    color:#fff;
+    padding:9px 14px;
+    border-radius:8px;
+    font-family:'Nunito';
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.primary-btn:hover{
+    background:var(--primary-dark);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:17px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+.form-group label{
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    color:#3f4a5c;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:1px solid #dce2eb;
+    border-radius:8px;
+    padding:10px 12px;
+    outline:none;
+    font-family:'Nunito';
+    font-size:12px;
+    color:var(--dark);
+    background:#fbfcfe;
+}
+
+.form-group textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:var(--primary);
+    box-shadow:0 0 0 3px rgba(79,70,229,.07);
+}
+
+/* =========================
+   SETTINGS
+========================= */
+
+.setting-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid #edf0f4;
+}
+
+.setting-row:last-child{
+    border-bottom:0;
+}
+
+.setting-row h4{
+    color:var(--dark);
+    font-size:12px;
+    margin-bottom:3px;
+}
+
+.setting-row p{
+    font-size:10px;
+    color:#929baa;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#172033;
+    color:#fff;
+    padding:12px 17px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:700;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+    z-index:5000;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .grid-2{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .sidebar{
+        transform:translateX(-100%);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 18px;
+    }
+
+    .content{
+        padding:20px 15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .stat-card{
+        padding:15px;
+    }
+
+    .stat-info strong{
+        font-size:17px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .welcome{
+        padding:20px;
+    }
+
+    .welcome h2{
+        font-size:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     SIDEBAR
+========================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="logo-box">
+
+        <img
+        src="images/logo.jpg"
+        alt="Read & Write Logo"
+        >
+
+        <div class="logo-text">
+
+            <h2>Read & Write</h2>
+
+            <span>JUNIOR PRE-SCHOOL</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="admin-info">
+
+        <small>Logged in as</small>
+
+        <strong id="adminEmail">
+            Administrator
+        </strong>
+
+    </div>
+
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+
+    <ul class="nav-menu">
+
+        <li>
+            <button
+            class="nav-btn active"
+            data-section="dashboard">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Dashboard
+
+            </button>
+        </li>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="admissions">
+
+                <i class="fa-solid fa-file-signature"></i>
+
+                Admissions
+
+            </button>
+        </li>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="students">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                Students
+
+            </button>
+        </li>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="teachers">
+
+                <i class="fa-solid fa-chalkboard-user"></i>
+
+                Teachers
+
+            </button>
+        </li>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="fees">
+
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                Fees
+
+            </button>
+        </li>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="notices">
+
+                <i class="fa-solid fa-bullhorn"></i>
+
+                Notices
+
+            </button>
+        </li>
+
+
+        <div class="menu-title">
+            SYSTEM
+        </div>
+
+
+        <li>
+            <button
+            class="nav-btn"
+            data-section="settings">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </button>
+        </li>
+
+    </ul>
+
+
+    <div class="logout-area">
+
+        <button
+        class="logout-btn"
+        id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            &nbsp; Logout
+
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div class="page-heading">
+
+            <button
+            class="icon-btn mobile-menu"
+            id="mobileMenu">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <div
+            style="display:inline-block;margin-left:8px;">
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+                <p>
+                    Read & Write Administration Panel
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="top-actions">
+
+            <button
+            class="icon-btn"
+            id="notificationBtn">
+
+                <i class="fa-regular fa-bell"></i>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="content">
+
+
+        <!-- =========================
+             DASHBOARD
+        ========================= -->
+
+        <section
+        class="section active"
+        id="dashboard">
+
+
+            <div class="welcome">
+
+                <h2>
+                    Welcome to Admin Dashboard 👋
+                </h2>
+
+                <p>
+                    Manage your Read & Write school administration from one place.
+                </p>
+
+            </div>
+
+
+            <div class="stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+
+                        <i class="fa-solid fa-user-graduate"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <small>
+                            Total Students
+                        </small>
+
+                        <strong id="studentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fa-solid fa-user-plus"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <small>
+                            New Admissions
+                        </small>
+
+                        <strong id="admissionCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fa-solid fa-chalkboard-user"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <small>
+                            Teachers
+                        </small>
+
+                        <strong id="teacherCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    </div>
+
+                    <div class="stat-info">
+
+                        <small>
+                            Fees Collected
+                        </small>
+
+                        <strong>
+                            ₹0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="grid-2">
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Recent Admissions
+                        </h3>
+
+                        <button
+                        class="primary-btn"
+                        onclick="openSection('admissions')">
+
+                            View All
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+                        <div class="empty">
+
+                            <i class="fa-solid fa-file-circle-plus"></i>
+
+                            No admissions available yet.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Quick Actions
+                        </h3>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+                        <button
+                        class="primary-btn"
+                        onclick="openSection('admissions')"
+                        style="margin:4px;">
+
+                            <i class="fa-solid fa-plus"></i>
+                            Admission
+
+                        </button>
+
+
+                        <button
+                        class="primary-btn"
+                        onclick="openSection('students')"
+                        style="margin:4px;">
+
+                            <i class="fa-solid fa-user-plus"></i>
+                            Student
+
+                        </button>
+
+
+                        <button
+                        class="primary-btn"
+                        onclick="openSection('teachers')"
+                        style="margin:4px;">
+
+                            <i class="fa-solid fa-user-plus"></i>
+                            Teacher
+
+                        </button>
+
+
+                        <button
+                        class="primary-btn"
+                        onclick="openSection('notices')"
+                        style="margin:4px;">
+
+                            <i class="fa-solid fa-bullhorn"></i>
+                            Notice
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             ADMISSIONS
+        ========================= -->
+
+        <section
+        class="section"
+        id="admissions">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Admission Management
+                    </h3>
+
+                    <button
+                    class="primary-btn"
+                    onclick="showToast('Admission form will be connected next.')">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        New Admission
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student</th>
+                                <th>Class</th>
+                                <th>Parent</th>
+                                <th>Date</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td colspan="5"
+                                style="text-align:center;padding:35px;">
+
+                                    No admission records found.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             STUDENTS
+        ========================= -->
+
+        <section
+        class="section"
+        id="students">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Student Management
+                    </h3>
+
+                    <button
+                    class="primary-btn"
+                    onclick="showToast('Student form will be connected next.')">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Student
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Class</th>
+                                <th>Parent</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td colspan="5"
+                                style="text-align:center;padding:35px;">
+
+                                    No students found.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             TEACHERS
+        ========================= -->
+
+        <section
+        class="section"
+        id="teachers">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Teacher Management
+                    </h3>
+
+                    <button
+                    class="primary-btn"
+                    onclick="showToast('Teacher form will be connected next.')">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add Teacher
+
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Name</th>
+                                <th>Subject</th>
+                                <th>Experience</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td colspan="5"
+                                style="text-align:center;padding:35px;">
+
+                                    No teacher records found.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FEES
+        ========================= -->
+
+        <section
+        class="section"
+        id="fees">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Fee Management
+                    </h3>
+
+                    <button
+                    class="primary-btn"
+                    onclick="showToast('Fee collection will be connected next.')">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Record Payment
+
+                    </button>
+
+                </div>
+
+
+                <div class="panel-body">
+
+                    <div class="stats"
+                    style="margin:0;">
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon green">
+
+                                <i class="fa-solid fa-check"></i>
+
+                            </div>
+
+                            <div class="stat-info">
+
+                                <small>
+                                    Collected
+                                </small>
+
+                                <strong>
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <div class="stat-icon orange">
+
+                                <i class="fa-solid fa-clock"></i>
+
+                            </div>
+
+                            <div class="stat-info">
+
+                                <small>
+                                    Pending
+                                </small>
+
+                                <strong>
+                                    ₹0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             NOTICES
+        ========================= -->
+
+        <section
+        class="section"
+        id="notices">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Notice Management
+                    </h3>
+
+                    <button
+                    class="primary-btn"
+                    onclick="showToast('Notice creation will be connected next.')">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        New Notice
+
+                    </button>
+
+                </div>
+
+
+                <div class="panel-body">
+
+                    <div class="empty">
+
+                        <i class="fa-solid fa-bullhorn"></i>
+
+                        No notices published yet.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             SETTINGS
+        ========================= -->
+
+        <section
+        class="section"
+        id="settings">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+                        Admin Settings
+                    </h3>
+
+                </div>
+
+
+                <div class="panel-body">
+
+
+                    <div class="setting-row">
+
+                        <div>
+
+                            <h4>
+                                Admin Account
+                            </h4>
+
+                            <p id="settingsEmail">
+                                Loading...
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div>
+
+                            <h4>
+                                Authentication
+                            </h4>
+
+                            <p>
+                                Firebase Email & Password Authentication
+                            </p>
+
+                        </div>
+
+                        <span class="badge approved">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="setting-row">
+
+                        <div>
+
+                            <h4>
+                                Admin Session
+                            </h4>
+
+                            <p>
+                                Your current login session is active.
+                            </p>
+
+                        </div>
+
+                        <span class="badge approved">
+                            Secure
+                        </span>
+
+                    </div>
+
+
+                    <div style="margin-top:20px;">
+
+                        <button
+                        class="logout-btn"
+                        id="settingsLogout">
+
+                            <i class="fa-solid fa-right-from-bracket"></i>
+
+                            Logout from Admin Panel
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- TOAST -->
+
+<div
+class="toast"
+id="toast">
+</div>
+
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
+<script type="module">
+
+import {
+    initializeApp
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyCI4Y64lva6qL4e8FRMEeNf96regnHPNPw",
+
+    authDomain:
+    "read-and-write-admin.firebaseapp.com",
+
+    projectId:
+    "read-and-write-admin",
+
+    storageBucket:
+    "read-and-write-admin.firebasestorage.app",
+
+    messagingSenderId:
+    "168556066275",
+
+    appId:
+    "1:168556066275:web:ccb2317c2031f5c42ddcd6",
+
+    measurementId:
+    "G-88XX3MGERS"
+
+};
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const adminEmail =
+document.getElementById("adminEmail");
+
+const settingsEmail =
+document.getElementById("settingsEmail");
+
+const sidebar =
+document.getElementById("sidebar");
+
+const mobileMenu =
+document.getElementById("mobileMenu");
+
+const pageTitle =
+document.getElementById("pageTitle");
+
+const toast =
+document.getElementById("toast");
+
+
+/* =========================
+   AUTH CHECK
+========================= */
+
+onAuthStateChanged(
+auth,
+(user) => {
+
+    if(!user){
+
+        window.location.href =
+        "admin-login.html";
+
+        return;
+
+    }
+
+
+    adminEmail.textContent =
+    user.email || "Administrator";
+
+
+    settingsEmail.textContent =
+    user.email || "Administrator";
+
+});
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+const navButtons =
+document.querySelectorAll(".nav-btn");
+
+const sections =
+document.querySelectorAll(".section");
+
+
+navButtons.forEach(
+button => {
+
+    button.addEventListener(
+    "click",
+    () => {
+
+        const section =
+        button.dataset.section;
+
+        openSection(section);
+
+        sidebar.classList.remove("open");
+
+    });
+
+});
+
+
+window.openSection =
+function(sectionName){
+
+    sections.forEach(
+    section => {
+
+        section.classList.remove("active");
+
+    });
+
+
+    navButtons.forEach(
+    button => {
+
+        button.classList.remove("active");
+
+    });
+
+
+    const selectedSection =
+    document.getElementById(sectionName);
+
+    const selectedButton =
+    document.querySelector(
+        `.nav-btn[data-section="${sectionName}"]`
+    );
+
+
+    if(selectedSection){
+
+        selectedSection.classList.add("active");
+
+    }
+
+
+    if(selectedButton){
+
+        selectedButton.classList.add("active");
+
+    }
+
+
+    const titles = {
+
+        dashboard:"Dashboard",
+
+        admissions:"Admissions",
+
+        students:"Students",
+
+        teachers:"Teachers",
+
+        fees:"Fees",
+
+        notices:"Notices",
+
+        settings:"Settings"
+
+    };
+
+
+    pageTitle.textContent =
+    titles[sectionName] || "Dashboard";
+
+};
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+mobileMenu.addEventListener(
+"click",
+() => {
+
+    sidebar.classList.toggle("open");
+
+});
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function logout(){
+
+    try{
+
+        await signOut(auth);
+
+        window.location.href =
+        "admin-login.html";
+
+    }catch(error){
+
+        console.error(error);
+
+        showToast(
+            "Unable to logout. Please try again."
+        );
+
+    }
+
+}
+
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+"click",
+logout
+);
+
+
+document
+.getElementById("settingsLogout")
+.addEventListener(
+"click",
+logout
+);
+
+
+/* =========================
+   NOTIFICATION
+========================= */
+
+document
+.getElementById("notificationBtn")
+.addEventListener(
+"click",
+() => {
+
+    showToast(
+        "No new notifications."
+    );
+
+});
+
+
+/* =========================
+   TOAST
+========================= */
+
+window.showToast =
+function(message){
+
+    toast.textContent =
+    message;
+
+    toast.classList.add("show");
+
+
+    setTimeout(
+    () => {
+
+        toast.classList.remove("show");
+
+    },
+    2500
+    );
+
+};
+
+</script>
+
+</body>
+</html>
