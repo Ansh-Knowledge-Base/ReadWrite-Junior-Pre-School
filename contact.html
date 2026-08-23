@@ -1,1 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Contact Us | Read & Write Junior Pre-School</title>
+
+    <meta name="description"
+          content="Contact Read & Write Junior Pre-School, Surat for admissions, classes, enquiries and other information.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #06b6d4;
+            --accent: #f59e0b;
+            --green: #16a34a;
+            --dark: #172033;
+            --text: #526071;
+            --light: #f7f9fc;
+            --white: #ffffff;
+            --border: #e7ebf2;
+            --shadow: 0 15px 45px rgba(23, 32, 51, 0.09);
+            --radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(231,235,242,0.8);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        }
+
+        .navbar {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 220px;
+        }
+
+        .brand img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #eef1f7;
+        }
+
+        .brand-text strong {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            font-size: 17px;
+            line-height: 1.25;
+        }
+
+        .brand-text span {
+            font-size: 11px;
+            font-weight: 700;
+            color: #7b8494;
+            letter-spacing: .4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4b5567;
+            position: relative;
+            padding: 8px 0;
+            transition: .25s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 5px;
+            background: var(--primary);
+        }
+
+        .nav-admission {
+            background: var(--primary);
+            color: white !important;
+            padding: 10px 17px !important;
+            border-radius: 9px;
+        }
+
+        .nav-admission:hover {
+            background: var(--primary-dark);
+        }
+
+        .menu-btn {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 25px;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            position: relative;
+            min-height: 410px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg,
+                rgba(12,19,40,.90),
+                rgba(20,35,72,.70),
+                rgba(20,35,72,.28)),
+                url('images/school-building.jpg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 760px;
+            color: white;
+            padding: 70px 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,.13);
+            border: 1px solid rgba(255,255,255,.2);
+            padding: 7px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(36px, 5vw, 60px);
+            line-height: 1.12;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #7dd3fc;
+        }
+
+        .hero p {
+            max-width: 680px;
+            font-size: 17px;
+            color: rgba(255,255,255,.88);
+        }
+
+        .breadcrumb {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 13px;
+            color: rgba(255,255,255,.7);
+        }
+
+        /* =========================
+           SECTION COMMON
+        ========================== */
+
+        section {
+            padding: 85px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 45px;
+        }
+
+        .section-heading .tag {
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(28px, 4vw, 40px);
+            margin: 8px 0 12px;
+        }
+
+        .section-heading p {
+            color: #748094;
+            font-size: 15px;
+        }
+
+        /* =========================
+           CONTACT CARDS
+        ========================== */
+
+        .contact-section {
+            background: var(--light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 30px 23px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(23,32,51,.045);
+            transition: .3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+        }
+
+        .contact-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 18px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .contact-card:nth-child(2) .contact-icon {
+            background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+        }
+
+        .contact-card:nth-child(3) .contact-icon {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+        }
+
+        .contact-card:nth-child(4) .contact-icon {
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+        }
+
+        .contact-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* =========================
+           MAIN CONTACT AREA
+        ========================== */
+
+        .main-contact {
+            background: white;
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .info-side h2 {
+            font-size: 35px;
+            line-height: 1.25;
+            margin-bottom: 15px;
+        }
+
+        .info-side > p {
+            margin-bottom: 25px;
+            color: #6c778a;
+        }
+
+        .image-box {
+            overflow: hidden;
+            border-radius: 22px;
+            height: 290px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .6s ease;
+        }
+
+        .image-box:hover img {
+            transform: scale(1.05);
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .quick-link {
+            border: 1px solid var(--border);
+            padding: 13px 15px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .quick-link:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .quick-link i {
+            font-size: 17px;
+            color: var(--primary);
+        }
+
+        /* =========================
+           FORM
+        ========================== */
+
+        .form-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-card h3 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .form-card > p {
+            font-size: 13px;
+            margin-bottom: 25px;
+            color: #7a8495;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 17px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 12px;
+            font-weight: 800;
+            color: #394456;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #dfe4ec;
+            background: #fbfcfe;
+            border-radius: 10px;
+            padding: 12px 14px;
+            outline: none;
+            font-family: 'Nunito', sans-serif;
+            font-size: 13px;
+            color: var(--dark);
+            transition: .25s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(79,70,229,.08);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            margin-top: 18px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 14px 20px;
+            border-radius: 11px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79,70,229,.25);
+        }
+
+        /* =========================
+           MAP
+        ========================== */
+
+        .map-section {
+            padding-top: 0;
+            background: white;
+        }
+
+        .map-box {
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .map-box iframe {
+            display: block;
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        /* =========================
+           WHY US
+        ========================== */
+
+        .why-section {
+            background: var(--light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .why-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 27px 22px;
+            text-align: center;
+        }
+
+        .why-card i {
+            font-size: 27px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .why-card h3 {
+            font-size: 16px;
+            margin-bottom: 7px;
+        }
+
+        .why-card p {
+            font-size: 13px;
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            padding: 70px 0;
+            background:
+                linear-gradient(110deg, #312e81, #4f46e5 55%, #0891b2);
+        }
+
+        .cta-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,.82);
+            max-width: 650px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: white;
+            color: var(--primary-dark);
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: .25s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0,0,0,.15);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+            color: #aab3c2;
+            padding-top: 65px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+            gap: 45px;
+            padding-bottom: 45px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .footer-brand strong {
+            display: block;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-brand span {
+            font-size: 10px;
+        }
+
+        .footer-about {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        footer h3 {
+            color: white;
+            font-size: 15px;
+            margin-bottom: 17px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 9px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 4px;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 13px;
+            font-size: 13px;
+        }
+
+        .footer-contact i {
+            color: #7dd3fc;
+            margin-top: 4px;
+            min-width: 15px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 9px;
+            margin-top: 18px;
+        }
+
+        .socials a {
+            width: 35px;
+            height: 35px;
+            display: grid;
+            place-items: center;
+            border: 1px solid #30394a;
+            border-radius: 9px;
+            transition: .25s;
+        }
+
+        .socials a:hover {
+            color: white;
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .copyright {
+            border-top: 1px solid #252e3e;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* =========================
+           BACK TO TOP
+        ========================== */
+
+        #backTop {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 12px;
+            background: var(--primary);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: .3s;
+            z-index: 999;
+            box-shadow: 0 8px 22px rgba(79,70,229,.3);
+        }
+
+        #backTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 1050px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            .contact-grid,
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 850px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 78px;
+                left: 0;
+                right: 0;
+                background: white;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px 5%;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 15px 25px rgba(0,0,0,.07);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 11px 0;
+            }
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 65px 0;
+            }
+
+            .brand img {
+                width: 45px;
+                height: 45px;
+            }
+
+            .brand-text strong {
+                font-size: 14px;
+            }
+
+            .brand-text span {
+                font-size: 9px;
+            }
+
+            .hero {
+                min-height: 390px;
+            }
+
+            .hero-content {
+                padding: 55px 0;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .contact-grid,
+            .why-grid,
+            .footer-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-card {
+                padding: 25px 20px;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .map-box iframe {
+                height: 330px;
+            }
+
+            .cta h2 {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================== -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="index.html" class="brand">
+            <img src="images/logo.jpg" alt="Read & Write Logo">
+
+            <div class="brand-text">
+                <strong>Read & Write</strong>
+                <span>JUNIOR PRE-SCHOOL</span>
+            </div>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="classes.html">Classes</a></li>
+            <li><a href="teachers.html">Teachers</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+            <li>
+                <a href="admissions.html" class="nav-admission">
+                    Apply Now
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero">
+
+    <div class="container">
+        <div class="hero-content">
+
+            <div class="eyebrow">
+                <i class="fa-solid fa-school"></i>
+                Read & Write Junior Pre-School
+            </div>
+
+            <h1>
+                Let's Start a <span>Conversation</span>
+            </h1>
+
+            <p>
+                Whether you have a question about admissions, classes,
+                academics or our school, our team is always happy to help.
+            </p>
+
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fa-solid fa-angle-right"></i>
+                <span>Contact Us</span>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT CARDS
+========================== -->
+
+<section class="contact-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="tag">Contact Information</span>
+
+            <h2>We're Here to Help</h2>
+
+            <p>
+                Reach out to Read & Write Junior Pre-School
+                through any of the options below.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <h3>Call Us</h3>
+
+                <p>
+                    Speak directly with our team.
+                    <br>
+                    <a href="tel:+919537081242">
+                        95370 81242
+                    </a>
+                </p>
+            </div>
+
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+
+                <h3>Email Us</h3>
+
+                <p>
+                    Send us your enquiry.
+                    <br>
+                    <a href="mailto:readwritec@gmail.com">
+                        readwritec@gmail.com
+                    </a>
+                </p>
+            </div>
+
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <h3>Visit Us</h3>
+
+                <p>
+                    Navagam, Surat,
+                    Gujarat - 394210
+                </p>
+            </div>
+
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h3>Since 2014</h3>
+
+                <p>
+                    Proudly serving students
+                    and families since 2014.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT + FORM
+========================== -->
+
+<section class="main-contact">
+
+    <div class="container">
+
+        <div class="contact-layout">
+
+            <!-- LEFT -->
+            <div class="info-side">
+
+                <div class="image-box">
+                    <img
+                        src="images/school-building.jpg"
+                        alt="Read & Write Junior Pre-School Building"
+                    >
+                </div>
+
+                <h2>
+                    Connect With<br>
+                    <span style="color:var(--primary);">
+                        Read & Write
+                    </span>
+                </h2>
+
+                <p>
+                    We believe that every child's educational journey
+                    begins with the right environment, guidance and care.
+                    Get in touch with us to learn more about our programs
+                    and admission opportunities.
+                </p>
+
+                <div class="quick-links">
+
+                    <a
+                        href="tel:+919537081242"
+                        class="quick-link"
+                    >
+                        <i class="fa-solid fa-phone"></i>
+                        Call Now
+                    </a>
+
+                    <a
+                        href="https://wa.me/919537081242"
+                        target="_blank"
+                        rel="noopener"
+                        class="quick-link"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                        WhatsApp Us
+                    </a>
+
+                    <a
+                        href="mailto:readwritec@gmail.com"
+                        class="quick-link"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                        Send Email
+                    </a>
+
+                    <a
+                        href="#map"
+                        class="quick-link"
+                    >
+                        <i class="fa-solid fa-location-arrow"></i>
+                        Get Directions
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT FORM -->
+            <div class="form-card">
+
+                <h3>Send Us an Enquiry</h3>
+
+                <p>
+                    Fill in the details below and our team
+                    will get in touch with you.
+                </p>
+
+                <form id="contactForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="parentName">
+                                Parent / Guardian Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="parentName"
+                                name="parentName"
+                                placeholder="Enter your name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="studentName">
+                                Student Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="studentName"
+                                name="studentName"
+                                placeholder="Enter student's name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="phone">
+                                Mobile Number *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter mobile number"
+                                pattern="[0-9]{10}"
+                                maxlength="10"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter email address"
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="class">
+                                Class
+                            </label>
+
+                            <select id="class" name="class">
+                                <option value="">
+                                    Select Class
+                                </option>
+
+                                <option>Nursery</option>
+                                <option>Junior KG</option>
+                                <option>Senior KG</option>
+                                <option>Class 1</option>
+                                <option>Class 2</option>
+                                <option>Class 3</option>
+                                <option>Class 4</option>
+                                <option>Class 5</option>
+                                <option>Class 6</option>
+                                <option>Class 7</option>
+                                <option>Class 8</option>
+                                <option>Class 9</option>
+                                <option>Class 10</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="enquiry">
+                                Enquiry Type
+                            </label>
+
+                            <select id="enquiry" name="enquiry">
+                                <option value="">
+                                    Select Enquiry
+                                </option>
+
+                                <option>Admission</option>
+                                <option>Classes</option>
+                                <option>Fees</option>
+                                <option>Academic Information</option>
+                                <option>General Enquiry</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group full">
+                            <label for="message">
+                                Message *
+                            </label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                placeholder="Write your enquiry here..."
+                                required
+                            ></textarea>
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                    >
+                        <i class="fa-solid fa-paper-plane"></i>
+                        &nbsp; Submit Enquiry
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MAP
+========================== -->
+
+<section class="map-section" id="map">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="tag">Our Location</span>
+
+            <h2>Find Us on the Map</h2>
+
+            <p>
+                Visit Read & Write Junior Pre-School at
+                Navagam, Surat.
+            </p>
+        </div>
+
+        <div class="map-box">
+
+            <iframe
+                src="https://www.google.com/maps?q=9%20Shivaji%20Park-2%20Navagam-Dindoli%20Road%20Navagam%20Surat%20394210&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Read & Write Junior Pre-School Location">
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     WHY CHOOSE US
+========================== -->
+
+<section class="why-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="tag">Why Read & Write</span>
+
+            <h2>A Place to Learn & Grow</h2>
+
+            <p>
+                We focus on creating a supportive and engaging
+                learning environment for every student.
+            </p>
+        </div>
+
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <i class="fa-solid fa-user-graduate"></i>
+
+                <h3>Experienced Faculty</h3>
+
+                <p>
+                    Dedicated teachers committed
+                    to student learning.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <i class="fa-solid fa-heart"></i>
+
+                <h3>Student Focused</h3>
+
+                <p>
+                    Individual attention and
+                    supportive learning.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <i class="fa-solid fa-shield-heart"></i>
+
+                <h3>Safe Environment</h3>
+
+                <p>
+                    A caring and positive place
+                    for children to learn.
+                </p>
+            </div>
+
+
+            <div class="why-card">
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <h3>Holistic Development</h3>
+
+                <p>
+                    Learning beyond textbooks
+                    through activities and experiences.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section class="cta">
+
+    <div class="container cta-inner">
+
+        <div>
+            <h2>Have Questions About Admission?</h2>
+
+            <p>
+                Our team is ready to assist you with
+                admission-related information and enquiries.
+            </p>
+        </div>
+
+        <a href="tel:+919537081242" class="cta-btn">
+            <i class="fa-solid fa-phone"></i>
+            Call 95370 81242
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+            <!-- BRAND -->
+            <div>
+
+                <div class="footer-brand">
+
+                    <img
+                        src="images/logo.jpg"
+                        alt="Read & Write Logo"
+                    >
+
+                    <div>
+                        <strong>Read & Write</strong>
+                        <span>JUNIOR PRE-SCHOOL</span>
+                    </div>
+
+                </div>
+
+                <p class="footer-about">
+                    Read & Write Junior Pre-School is committed
+                    to providing a caring, engaging and supportive
+                    educational environment for young learners.
+                </p>
+
+                <div class="socials">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a
+                        href="https://wa.me/919537081242"
+                        target="_blank"
+                        rel="noopener"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- QUICK LINKS -->
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <ul class="footer-links">
+
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="classes.html">Classes</a></li>
+                    <li><a href="teachers.html">Teachers</a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- IMPORTANT -->
+            <div>
+
+                <h3>Information</h3>
+
+                <ul class="footer-links">
+
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="student-login.html">Student Login</a></li>
+                    <li><a href="teacher-application.html">Join Our Team</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div>
+
+                <h3>Contact Information</h3>
+
+                <div class="footer-contact">
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <span>
+                        9, Shivaji Park-2,<br>
+                        Navagam-Dindoli Road,<br>
+                        Navagam, Surat - 394210
+                    </span>
+                </div>
+
+                <div class="footer-contact">
+                    <i class="fa-solid fa-phone"></i>
+
+                    <a href="tel:+919537081242">
+                        95370 81242
+                    </a>
+                </div>
+
+                <div class="footer-contact">
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <a href="mailto:readwritec@gmail.com">
+                        readwritec@gmail.com
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2014–2026
+            <strong style="color:white;">
+                Read & Write Junior Pre-School
+            </strong>.
+            All Rights Reserved.
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<button id="backTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================== -->
+
+<script>
+
+    /* Mobile Menu */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+
+        navLinks.classList.toggle("show");
+
+        const icon = menuBtn.querySelector("i");
+
+        if (navLinks.classList.contains("show")) {
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
+        } else {
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+        }
+
+    });
+
+
+    /* Close menu after clicking link */
+
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+
+            navLinks.classList.remove("show");
+
+            const icon = menuBtn.querySelector("i");
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        });
+
+    });
+
+
+    /* Back To Top */
+
+    const backTop = document.getElementById("backTop");
+
+    window.addEventListener("scroll", function() {
+
+        if (window.scrollY > 400) {
+            backTop.classList.add("show");
+        } else {
+            backTop.classList.remove("show");
+        }
+
+    });
+
+
+    backTop.addEventListener("click", function() {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+    /* Form Validation */
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+
+        e.preventDefault();
+
+        const phone = document.getElementById("phone").value.trim();
+
+        if (!/^[0-9]{10}$/.test(phone)) {
+
+            alert("Please enter a valid 10-digit mobile number.");
+
+            return;
+
+        }
+
+        alert(
+            "Thank you for contacting Read & Write Junior Pre-School. " +
+            "Your enquiry has been received."
+        );
+
+        this.reset();
+
+    });
+
+</script>
+
+</body>
+</html>
