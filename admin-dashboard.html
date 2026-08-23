@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Admin Dashboard | Read & Write</title>
 
@@ -14,892 +14,638 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <style>
-
 :root{
-    --primary:#4f46e5;
-    --primary-dark:#3730a3;
-    --dark:#172033;
-    --text:#667286;
-    --light:#f6f8fc;
-    --white:#fff;
-    --border:#e4e8ef;
-    --green:#16a34a;
-    --red:#dc2626;
-    --orange:#ea580c;
-    --blue:#2563eb;
+--primary:#4f46e5;
+--primary-dark:#3730a3;
+--dark:#172033;
+--text:#667286;
+--light:#f6f8fc;
+--white:#fff;
+--border:#e4e8ef;
+--green:#16a34a;
+--red:#dc2626;
+--orange:#ea580c;
+--blue:#2563eb;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-    font-family:'Nunito',sans-serif;
-    background:var(--light);
-    color:var(--text);
+font-family:'Nunito',sans-serif;
+background:var(--light);
+color:var(--text);
 }
 
-button,
-input,
-select,
-textarea{
-    font-family:'Nunito',sans-serif;
-}
-
-button{
-    cursor:pointer;
-}
-
-/* ================= SIDEBAR ================= */
+button,input,select,textarea{font-family:inherit}
 
 .sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    width:250px;
-    height:100vh;
-    background:#fff;
-    border-right:1px solid var(--border);
-    z-index:1000;
-    transition:.3s;
-    overflow-y:auto;
+position:fixed;
+left:0;
+top:0;
+width:250px;
+height:100vh;
+background:#fff;
+border-right:1px solid var(--border);
+z-index:1000;
+overflow-y:auto;
+transition:.3s;
 }
 
 .logo-box{
-    height:82px;
-    display:flex;
-    align-items:center;
-    padding:0 22px;
-    border-bottom:1px solid var(--border);
+height:82px;
+display:flex;
+align-items:center;
+padding:0 22px;
+border-bottom:1px solid var(--border);
 }
 
 .logo-box img{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    object-fit:cover;
-    border:3px solid #eef2ff;
-    margin-right:11px;
+width:48px;
+height:48px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid #eef2ff;
+margin-right:11px;
 }
 
 .logo-text h2{
-    font-family:'Poppins';
-    color:var(--primary);
-    font-size:17px;
+font-family:Poppins;
+color:var(--primary);
+font-size:17px;
 }
 
 .logo-text span{
-    font-size:8px;
-    font-weight:800;
-    letter-spacing:.5px;
-    color:#8b95a5;
+font-size:8px;
+font-weight:800;
+letter-spacing:.5px;
+color:#8b95a5;
 }
 
 .admin-info{
-    padding:18px 20px;
-    border-bottom:1px solid var(--border);
+padding:18px 20px;
+border-bottom:1px solid var(--border);
 }
 
 .admin-info small{
-    display:block;
-    font-size:10px;
-    color:#9aa3b1;
-    margin-bottom:3px;
+display:block;
+font-size:10px;
+color:#9aa3b1;
 }
 
 .admin-info strong{
-    display:block;
-    color:var(--dark);
-    font-size:12px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+display:block;
+color:var(--dark);
+font-size:12px;
+margin-top:3px;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
 }
 
 .menu-title{
-    padding:20px 20px 8px;
-    font-size:9px;
-    font-weight:800;
-    letter-spacing:1px;
-    color:#a0a8b5;
+padding:20px 20px 8px;
+font-size:9px;
+font-weight:800;
+letter-spacing:1px;
+color:#a0a8b5;
 }
 
 .nav-menu{
-    list-style:none;
-    padding:0 12px;
+list-style:none;
+padding:0 12px;
 }
 
-.nav-menu li{
-    margin-bottom:4px;
+.nav-menu li{margin-bottom:4px}
+
+.nav-menu button{
+width:100%;
+border:0;
+background:transparent;
+display:flex;
+align-items:center;
+gap:12px;
+padding:11px 12px;
+border-radius:9px;
+color:#687386;
+font-size:12px;
+font-weight:700;
+cursor:pointer;
+text-align:left;
 }
 
-.nav-btn{
-    width:100%;
-    border:0;
-    background:transparent;
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:11px 12px;
-    border-radius:9px;
-    color:#687386;
-    font-size:12px;
-    font-weight:700;
-    text-align:left;
-    transition:.2s;
+.nav-menu button:hover,
+.nav-menu button.active{
+background:#eef2ff;
+color:var(--primary);
 }
 
-.nav-btn i{
-    width:18px;
-    text-align:center;
-}
-
-.nav-btn:hover,
-.nav-btn.active{
-    background:#eef2ff;
-    color:var(--primary);
+.nav-menu i{
+width:18px;
+text-align:center;
 }
 
 .logout-area{
-    padding:15px 12px;
-    margin-top:15px;
-    border-top:1px solid var(--border);
+padding:15px 12px;
+margin-top:15px;
+border-top:1px solid var(--border);
 }
 
 .logout-btn{
-    width:100%;
-    border:0;
-    background:#fef2f2;
-    color:var(--red);
-    padding:11px;
-    border-radius:9px;
-    font-size:12px;
-    font-weight:800;
+width:100%;
+border:0;
+background:#fef2f2;
+color:var(--red);
+padding:11px;
+border-radius:9px;
+font-size:12px;
+font-weight:800;
+cursor:pointer;
 }
 
-/* ================= MAIN ================= */
-
 .main{
-    margin-left:250px;
-    min-height:100vh;
+margin-left:250px;
+min-height:100vh;
 }
 
 .topbar{
-    height:82px;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    position:sticky;
-    top:0;
-    z-index:500;
-}
-
-.page-heading{
-    display:flex;
-    align-items:center;
+height:82px;
+background:#fff;
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 30px;
+position:sticky;
+top:0;
+z-index:500;
 }
 
 .page-heading h1{
-    font-family:'Poppins';
-    color:var(--dark);
-    font-size:21px;
+font-family:Poppins;
+color:var(--dark);
+font-size:21px;
 }
 
 .page-heading p{
-    font-size:11px;
-    color:#8993a3;
+font-size:11px;
+color:#8993a3;
 }
 
 .top-actions{
-    display:flex;
-    gap:10px;
+display:flex;
+gap:10px;
 }
 
 .icon-btn{
-    width:38px;
-    height:38px;
-    border:1px solid var(--border);
-    border-radius:9px;
-    background:#fff;
-    color:#687386;
+width:38px;
+height:38px;
+border:1px solid var(--border);
+border-radius:9px;
+background:#fff;
+cursor:pointer;
+color:#687386;
 }
 
-.mobile-menu{
-    display:none;
-}
+.mobile-menu{display:none}
 
-/* ================= CONTENT ================= */
+.content{padding:30px}
 
-.content{
-    padding:30px;
-}
-
-.section{
-    display:none;
-}
-
-.section.active{
-    display:block;
-}
-
-/* ================= WELCOME ================= */
+.section{display:none}
+.section.active{display:block}
 
 .welcome{
-    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-    border-radius:18px;
-    padding:25px;
-    color:#fff;
-    margin-bottom:25px;
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+border-radius:18px;
+padding:25px;
+color:#fff;
+margin-bottom:25px;
 }
 
 .welcome h2{
-    font-family:'Poppins';
-    font-size:21px;
-    margin-bottom:5px;
+font-family:Poppins;
+font-size:21px;
+margin-bottom:5px;
 }
 
 .welcome p{
-    font-size:12px;
-    opacity:.9;
+font-size:12px;
+opacity:.88;
 }
 
-/* ================= STATS ================= */
-
 .stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
-    margin-bottom:25px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+margin-bottom:25px;
 }
 
 .stat-card{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:20px;
-    display:flex;
-    align-items:center;
-    gap:15px;
+background:#fff;
+border:1px solid var(--border);
+border-radius:15px;
+padding:20px;
+display:flex;
+align-items:center;
+gap:15px;
 }
 
 .stat-icon{
-    width:46px;
-    height:46px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
+width:46px;
+height:46px;
+border-radius:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:18px;
 }
 
-.purple{
-    background:#eef2ff;
-    color:var(--primary);
-}
-
-.green{
-    background:#ecfdf5;
-    color:var(--green);
-}
-
-.orange{
-    background:#fff7ed;
-    color:var(--orange);
-}
-
-.blue{
-    background:#eff6ff;
-    color:var(--blue);
-}
+.purple{background:#eef2ff;color:var(--primary)}
+.green{background:#ecfdf5;color:var(--green)}
+.orange{background:#fff7ed;color:var(--orange)}
+.blue{background:#eff6ff;color:var(--blue)}
 
 .stat-info small{
-    display:block;
-    font-size:10px;
-    color:#929baa;
+display:block;
+font-size:10px;
+color:#929baa;
 }
 
 .stat-info strong{
-    color:var(--dark);
-    font-family:'Poppins';
-    font-size:20px;
-}
-
-/* ================= PANELS ================= */
-
-.grid-2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+color:var(--dark);
+font-family:Poppins;
+font-size:20px;
 }
 
 .panel{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:15px;
-    overflow:hidden;
+background:#fff;
+border:1px solid var(--border);
+border-radius:15px;
+overflow:hidden;
+margin-bottom:20px;
 }
 
 .panel-header{
-    min-height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px 20px;
-    border-bottom:1px solid var(--border);
-    gap:10px;
+min-height:60px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:15px 20px;
+border-bottom:1px solid var(--border);
+gap:10px;
 }
 
 .panel-header h3{
-    font-family:'Poppins';
-    color:var(--dark);
-    font-size:14px;
+font-family:Poppins;
+color:var(--dark);
+font-size:14px;
 }
 
-.panel-body{
-    padding:20px;
-}
-
-/* ================= BUTTONS ================= */
+.panel-body{padding:20px}
 
 .primary-btn{
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    padding:9px 14px;
-    border-radius:8px;
-    font-size:11px;
-    font-weight:800;
+border:0;
+background:var(--primary);
+color:#fff;
+padding:9px 14px;
+border-radius:8px;
+font-size:11px;
+font-weight:800;
+cursor:pointer;
 }
 
-.primary-btn:hover{
-    background:var(--primary-dark);
-}
-
-.secondary-btn{
-    border:1px solid var(--border);
-    background:#fff;
-    color:#4b5563;
-    padding:9px 14px;
-    border-radius:8px;
-    font-size:11px;
-    font-weight:800;
-}
+.primary-btn:hover{background:var(--primary-dark)}
 
 .danger-btn{
-    border:0;
-    background:#fee2e2;
-    color:var(--red);
-    padding:8px 10px;
-    border-radius:7px;
-    font-size:10px;
-    font-weight:800;
+border:0;
+background:#fef2f2;
+color:var(--red);
+padding:7px 10px;
+border-radius:7px;
+cursor:pointer;
+font-weight:700;
 }
 
 .edit-btn{
-    border:0;
-    background:#eef2ff;
-    color:var(--primary);
-    padding:8px 10px;
-    border-radius:7px;
-    font-size:10px;
-    font-weight:800;
+border:0;
+background:#eef2ff;
+color:var(--primary);
+padding:7px 10px;
+border-radius:7px;
+cursor:pointer;
+font-weight:700;
 }
 
-/* ================= TABLE ================= */
-
-.table-wrapper{
-    overflow-x:auto;
-}
+.table-wrapper{overflow-x:auto}
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    font-size:11px;
+width:100%;
+border-collapse:collapse;
+font-size:11px;
 }
 
 th{
-    background:#f8fafc;
-    color:#667286;
-    font-weight:800;
-    text-align:left;
-    padding:13px 15px;
-    border-bottom:1px solid var(--border);
-    white-space:nowrap;
+background:#f8fafc;
+color:#667286;
+font-weight:800;
+text-align:left;
+padding:13px 15px;
+border-bottom:1px solid var(--border);
+white-space:nowrap;
 }
 
 td{
-    padding:13px 15px;
-    border-bottom:1px solid #edf0f4;
-    color:#687386;
-    white-space:nowrap;
+padding:11px 15px;
+border-bottom:1px solid #edf0f4;
+color:#687386;
+white-space:nowrap;
 }
 
-td strong{
-    color:var(--dark);
+td strong{color:var(--dark)}
+
+.actions{
+display:flex;
+gap:5px;
 }
 
 .badge{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    font-size:9px;
-    font-weight:800;
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:9px;
+font-weight:800;
 }
 
 .badge.approved{
-    background:#ecfdf5;
-    color:#15803d;
+background:#ecfdf5;
+color:#15803d;
 }
 
 .badge.pending{
-    background:#fff7ed;
-    color:#c2410c;
+background:#fff7ed;
+color:#c2410c;
 }
 
-/* ================= EMPTY ================= */
-
-.empty{
-    text-align:center;
-    padding:35px 10px;
-    color:#a0a8b5;
-    font-size:11px;
+.search-box{
+display:flex;
+gap:8px;
+margin-bottom:15px;
 }
 
-.empty i{
-    display:block;
-    font-size:28px;
-    margin-bottom:10px;
-    color:#cbd1dc;
+.search-box input{
+flex:1;
+border:1px solid #dce2eb;
+border-radius:8px;
+padding:10px 12px;
+outline:none;
 }
-
-/* ================= FORM ================= */
 
 .form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:17px;
-}
-
-.form-group{
-    margin-bottom:5px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
 .form-group.full{
-    grid-column:1/-1;
+grid-column:1/-1;
 }
 
 .form-group label{
-    display:block;
-    font-size:11px;
-    font-weight:800;
-    color:#3f4a5c;
-    margin-bottom:7px;
-}
-
-.form-group label span{
-    color:var(--red);
+display:block;
+font-size:11px;
+font-weight:800;
+color:#3f4a5c;
+margin-bottom:6px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
-    width:100%;
-    border:1px solid #dce2eb;
-    border-radius:8px;
-    padding:10px 12px;
-    outline:none;
-    font-size:12px;
-    color:var(--dark);
-    background:#fbfcfe;
+width:100%;
+border:1px solid #dce2eb;
+border-radius:8px;
+padding:10px 12px;
+outline:none;
+font-size:12px;
+color:var(--dark);
+background:#fbfcfe;
 }
 
 .form-group textarea{
-    min-height:90px;
-    resize:vertical;
+min-height:90px;
+resize:vertical;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
-    border-color:var(--primary);
-    box-shadow:0 0 0 3px rgba(79,70,229,.07);
+border-color:var(--primary);
 }
 
-/* ================= FORM SECTION ================= */
-
-.form-section-title{
-    grid-column:1/-1;
-    font-family:'Poppins';
-    font-size:13px;
-    color:var(--primary);
-    padding:5px 0 3px;
-    border-bottom:1px solid var(--border);
-    margin-top:5px;
+.form-actions{
+display:flex;
+justify-content:flex-end;
+gap:10px;
+margin-top:15px;
 }
 
-/* ================= PHOTO ================= */
-
-.photo-box{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:18px;
+.cancel-btn{
+border:1px solid var(--border);
+background:#fff;
+padding:9px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:700;
 }
 
 .photo-preview{
-    width:85px;
-    height:100px;
-    border:2px dashed #d6dbe5;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-    background:#f8fafc;
-    color:#a0a8b5;
+width:90px;
+height:90px;
+border-radius:10px;
+border:1px dashed #cbd5e1;
+object-fit:cover;
+display:none;
+margin-top:8px;
 }
 
-.photo-preview img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.empty{
+text-align:center;
+padding:35px;
+color:#a0a8b5;
+font-size:11px;
 }
-
-/* ================= ACTIONS ================= */
-
-.form-actions{
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
-    margin-top:25px;
-    padding-top:20px;
-    border-top:1px solid var(--border);
-}
-
-/* ================= SEARCH ================= */
-
-.search-box{
-    position:relative;
-    width:240px;
-}
-
-.search-box i{
-    position:absolute;
-    left:11px;
-    top:11px;
-    color:#9aa3b1;
-    font-size:11px;
-}
-
-.search-box input{
-    width:100%;
-    padding:9px 12px 9px 31px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    outline:none;
-    font-size:11px;
-}
-
-/* ================= MODAL ================= */
 
 .modal{
-    position:fixed;
-    inset:0;
-    background:rgba(15,23,42,.55);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    z-index:4000;
+position:fixed;
+inset:0;
+background:rgba(15,23,42,.55);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:3000;
+padding:15px;
 }
 
-.modal.show{
-    display:flex;
-}
+.modal.show{display:flex}
 
 .modal-box{
-    width:100%;
-    max-width:850px;
-    max-height:92vh;
-    overflow-y:auto;
-    background:#fff;
-    border-radius:16px;
-    box-shadow:0 20px 60px rgba(0,0,0,.2);
+width:min(850px,100%);
+max-height:90vh;
+overflow-y:auto;
+background:#fff;
+border-radius:16px;
 }
 
 .modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 22px;
-    border-bottom:1px solid var(--border);
+padding:17px 20px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
 .modal-header h3{
-    font-family:'Poppins';
-    color:var(--dark);
-    font-size:15px;
+font-family:Poppins;
+color:var(--dark);
+font-size:15px;
 }
 
 .close-btn{
-    width:32px;
-    height:32px;
-    border:0;
-    border-radius:7px;
-    background:#f3f4f6;
-    color:#6b7280;
+border:0;
+background:#f1f5f9;
+width:32px;
+height:32px;
+border-radius:8px;
+cursor:pointer;
 }
-
-.modal-body{
-    padding:22px;
-}
-
-/* ================= SETTINGS ================= */
-
-.setting-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:16px 0;
-    border-bottom:1px solid #edf0f4;
-}
-
-.setting-row h4{
-    color:var(--dark);
-    font-size:12px;
-}
-
-.setting-row p{
-    font-size:10px;
-    color:#929baa;
-    margin-top:3px;
-}
-
-/* ================= TOAST ================= */
 
 .toast{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    background:#172033;
-    color:#fff;
-    padding:12px 17px;
-    border-radius:9px;
-    font-size:11px;
-    font-weight:700;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-    transform:translateY(100px);
-    opacity:0;
-    transition:.3s;
-    z-index:5000;
+position:fixed;
+right:25px;
+bottom:25px;
+background:#172033;
+color:#fff;
+padding:12px 17px;
+border-radius:9px;
+font-size:11px;
+font-weight:700;
+transform:translateY(100px);
+opacity:0;
+transition:.3s;
+z-index:5000;
 }
 
 .toast.show{
-    transform:translateY(0);
-    opacity:1;
+transform:translateY(0);
+opacity:1;
 }
 
-/* ================= RESPONSIVE ================= */
-
 @media(max-width:1000px){
-
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .grid-2{
-        grid-template-columns:1fr;
-    }
+.stats{grid-template-columns:repeat(2,1fr)}
 }
 
 @media(max-width:700px){
-
-    .sidebar{
-        transform:translateX(-100%);
-    }
-
-    .sidebar.open{
-        transform:translateX(0);
-    }
-
-    .main{
-        margin-left:0;
-    }
-
-    .mobile-menu{
-        display:block;
-        margin-right:8px;
-    }
-
-    .topbar{
-        padding:0 15px;
-    }
-
-    .content{
-        padding:20px 15px;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-        gap:12px;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .form-group.full,
-    .form-section-title{
-        grid-column:auto;
-    }
-
-    .search-box{
-        width:150px;
-    }
+.sidebar{transform:translateX(-100%)}
+.sidebar.open{transform:translateX(0)}
+.main{margin-left:0}
+.mobile-menu{display:block}
+.topbar{padding:0 15px}
+.content{padding:18px 12px}
+.form-grid{grid-template-columns:1fr}
+.form-group.full{grid-column:auto}
+.stats{grid-template-columns:1fr 1fr}
 }
 
 @media(max-width:450px){
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .panel-header{
-        align-items:flex-start;
-        flex-direction:column;
-    }
-
-    .search-box{
-        width:100%;
-    }
+.stats{grid-template-columns:1fr}
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ================= SIDEBAR ================= -->
-
 <aside class="sidebar" id="sidebar">
 
-    <div class="logo-box">
+<div class="logo-box">
+<img src="images/logo.jpg" alt="Logo">
+<div class="logo-text">
+<h2>Read & Write</h2>
+<span>JUNIOR PRE-SCHOOL</span>
+</div>
+</div>
 
-        <img src="images/logo.jpg" alt="Read & Write Logo">
+<div class="admin-info">
+<small>Logged in as</small>
+<strong id="adminEmail">Administrator</strong>
+</div>
 
-        <div class="logo-text">
-            <h2>Read & Write</h2>
-            <span>JUNIOR PRE-SCHOOL</span>
-        </div>
+<div class="menu-title">MAIN MENU</div>
 
-    </div>
+<ul class="nav-menu">
 
-    <div class="admin-info">
-        <small>Logged in as</small>
-        <strong id="adminEmail">Administrator</strong>
-    </div>
+<li><button class="nav-btn active" data-section="dashboard">
+<i class="fa-solid fa-chart-pie"></i> Dashboard
+</button></li>
 
-    <div class="menu-title">MAIN MENU</div>
+<li><button class="nav-btn" data-section="admissions">
+<i class="fa-solid fa-file-signature"></i> Admissions
+</button></li>
 
-    <ul class="nav-menu">
+<li><button class="nav-btn" data-section="students">
+<i class="fa-solid fa-user-graduate"></i> Students
+</button></li>
 
-        <li>
-            <button class="nav-btn active" data-section="dashboard">
-                <i class="fa-solid fa-chart-pie"></i>
-                Dashboard
-            </button>
-        </li>
+<li><button class="nav-btn" data-section="teachers">
+<i class="fa-solid fa-chalkboard-user"></i> Teachers
+</button></li>
 
-        <li>
-            <button class="nav-btn" data-section="admissions">
-                <i class="fa-solid fa-file-signature"></i>
-                Admissions
-            </button>
-        </li>
+<li><button class="nav-btn" data-section="fees">
+<i class="fa-solid fa-indian-rupee-sign"></i> Fees
+</button></li>
 
-        <li>
-            <button class="nav-btn" data-section="students">
-                <i class="fa-solid fa-user-graduate"></i>
-                Students
-            </button>
-        </li>
+<li><button class="nav-btn" data-section="notices">
+<i class="fa-solid fa-bullhorn"></i> Notices
+</button></li>
 
-        <li>
-            <button class="nav-btn" data-section="teachers">
-                <i class="fa-solid fa-chalkboard-user"></i>
-                Teachers
-            </button>
-        </li>
+<li><button class="nav-btn" data-section="settings">
+<i class="fa-solid fa-gear"></i> Settings
+</button></li>
 
-        <li>
-            <button class="nav-btn" data-section="fees">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-                Fees
-            </button>
-        </li>
+</ul>
 
-        <li>
-            <button class="nav-btn" data-section="notices">
-                <i class="fa-solid fa-bullhorn"></i>
-                Notices
-            </button>
-        </li>
-
-        <div class="menu-title">SYSTEM</div>
-
-        <li>
-            <button class="nav-btn" data-section="settings">
-                <i class="fa-solid fa-gear"></i>
-                Settings
-            </button>
-        </li>
-
-    </ul>
-
-    <div class="logout-area">
-
-        <button class="logout-btn" id="logoutBtn">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            &nbsp; Logout
-        </button>
-
-    </div>
+<div class="logout-area">
+<button class="logout-btn" id="logoutBtn">
+<i class="fa-solid fa-right-from-bracket"></i> Logout
+</button>
+</div>
 
 </aside>
 
-
-<!-- ================= MAIN ================= -->
 
 <main class="main">
 
 <header class="topbar">
 
-    <div class="page-heading">
+<div class="page-heading">
 
-        <button class="icon-btn mobile-menu" id="mobileMenu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+<button class="icon-btn mobile-menu" id="mobileMenu">
+<i class="fa-solid fa-bars"></i>
+</button>
 
-        <div>
-            <h1 id="pageTitle">Dashboard</h1>
-            <p>Read & Write Administration Panel</p>
-        </div>
+<div style="display:inline-block;margin-left:8px">
+<h1 id="pageTitle">Dashboard</h1>
+<p>Read & Write Administration Panel</p>
+</div>
 
-    </div>
+</div>
 
-    <div class="top-actions">
-
-        <button class="icon-btn" id="notificationBtn">
-            <i class="fa-regular fa-bell"></i>
-        </button>
-
-    </div>
+<div class="top-actions">
+<button class="icon-btn" id="notificationBtn">
+<i class="fa-regular fa-bell"></i>
+</button>
+</div>
 
 </header>
 
@@ -907,2183 +653,2178 @@ td strong{
 <div class="content">
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- DASHBOARD -->
 
 <section class="section active" id="dashboard">
 
-    <div class="welcome">
+<div class="welcome">
+<h2>Welcome to Admin Dashboard 👋</h2>
+<p>Manage your Read & Write school administration from one place.</p>
+</div>
 
-        <h2>Welcome to Admin Dashboard 👋</h2>
+<div class="stats">
 
-        <p>
-            Manage your Read & Write school administration from one place.
-        </p>
+<div class="stat-card">
+<div class="stat-icon purple">
+<i class="fa-solid fa-user-graduate"></i>
+</div>
+<div class="stat-info">
+<small>Total Students</small>
+<strong id="studentCount">0</strong>
+</div>
+</div>
 
-    </div>
+<div class="stat-card">
+<div class="stat-icon green">
+<i class="fa-solid fa-user-plus"></i>
+</div>
+<div class="stat-info">
+<small>Admissions</small>
+<strong id="admissionCount">0</strong>
+</div>
+</div>
 
+<div class="stat-card">
+<div class="stat-icon orange">
+<i class="fa-solid fa-chalkboard-user"></i>
+</div>
+<div class="stat-info">
+<small>Teachers</small>
+<strong id="teacherCount">0</strong>
+</div>
+</div>
 
-    <div class="stats">
+<div class="stat-card">
+<div class="stat-icon blue">
+<i class="fa-solid fa-indian-rupee-sign"></i>
+</div>
+<div class="stat-info">
+<small>Fees Collected</small>
+<strong id="feeCount">₹0</strong>
+</div>
+</div>
 
-        <div class="stat-card">
+</div>
 
-            <div class="stat-icon purple">
-                <i class="fa-solid fa-user-graduate"></i>
-            </div>
+<div class="panel">
 
-            <div class="stat-info">
-                <small>Total Students</small>
-                <strong id="studentCount">0</strong>
-            </div>
+<div class="panel-header">
+<h3>Recent Admissions</h3>
+<button class="primary-btn" onclick="openSection('admissions')">
+View All
+</button>
+</div>
 
-        </div>
+<div class="table-wrapper">
 
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Class</th>
+<th>Parent</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
 
-        <div class="stat-card">
+<tbody id="recentAdmissions">
+<tr>
+<td colspan="5" class="empty">Loading...</td>
+</tr>
+</tbody>
+</table>
 
-            <div class="stat-icon green">
-                <i class="fa-solid fa-user-plus"></i>
-            </div>
-
-            <div class="stat-info">
-                <small>New Admissions</small>
-                <strong id="admissionCount">0</strong>
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon orange">
-                <i class="fa-solid fa-chalkboard-user"></i>
-            </div>
-
-            <div class="stat-info">
-                <small>Teachers</small>
-                <strong id="teacherCount">0</strong>
-            </div>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <div class="stat-icon blue">
-                <i class="fa-solid fa-indian-rupee-sign"></i>
-            </div>
-
-            <div class="stat-info">
-                <small>Fees Collected</small>
-                <strong id="feeCount">₹0</strong>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="grid-2">
-
-        <div class="panel">
-
-            <div class="panel-header">
-
-                <h3>Recent Admissions</h3>
-
-                <button class="primary-btn"
-                onclick="openSection('admissions')">
-                    View All
-                </button>
-
-            </div>
-
-            <div class="panel-body">
-
-                <div class="empty">
-
-                    <i class="fa-solid fa-file-circle-plus"></i>
-
-                    <span id="recentAdmissionText">
-                        No admissions available yet.
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="panel">
-
-            <div class="panel-header">
-                <h3>Quick Actions</h3>
-            </div>
-
-            <div class="panel-body">
-
-                <button class="primary-btn"
-                onclick="openAdmissionForm()"
-                style="margin:4px">
-                    <i class="fa-solid fa-plus"></i>
-                    Admission
-                </button>
-
-                <button class="primary-btn"
-                onclick="openStudentForm()"
-                style="margin:4px">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Student
-                </button>
-
-                <button class="primary-btn"
-                onclick="openTeacherForm()"
-                style="margin:4px">
-                    <i class="fa-solid fa-user-plus"></i>
-                    Teacher
-                </button>
-
-                <button class="primary-btn"
-                onclick="openNoticeForm()"
-                style="margin:4px">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    Notice
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
+</div>
 
 </section>
 
 
-<!-- ================= ADMISSIONS ================= -->
+<!-- ADMISSIONS -->
 
 <section class="section" id="admissions">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
+<div class="panel-header">
+<h3>Admission Management</h3>
 
-            <h3>Admission Management</h3>
+<button class="primary-btn" onclick="openAdmissionForm()">
+<i class="fa-solid fa-plus"></i> New Admission
+</button>
+</div>
 
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
+<div class="panel-body">
 
-                <div class="search-box">
+<div class="search-box">
+<input id="admissionSearch"
+placeholder="Search student, parent or class..."
+oninput="renderAdmissions()">
+</div>
 
-                    <i class="fa-solid fa-search"></i>
+</div>
 
-                    <input
-                    type="text"
-                    id="admissionSearch"
-                    placeholder="Search admission..."
-                    oninput="searchTable('admissionTable',this.value)">
+<div class="table-wrapper">
 
-                </div>
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Class</th>
+<th>Parent</th>
+<th>Contact</th>
+<th>Date</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
 
-                <button class="primary-btn"
-                onclick="openAdmissionForm()">
+<tbody id="admissionTable"></tbody>
 
-                    <i class="fa-solid fa-plus"></i>
-                    New Admission
+</table>
 
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="table-wrapper">
-
-            <table id="admissionTable">
-
-                <thead>
-
-                    <tr>
-                        <th>Student</th>
-                        <th>Class</th>
-                        <th>Parent</th>
-                        <th>Contact</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr class="empty-row">
-
-                        <td colspan="7"
-                        style="text-align:center;padding:35px">
-
-                            No admission records found.
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
+</div>
+</div>
 
 </section>
 
 
-<!-- ================= STUDENTS ================= -->
+<!-- STUDENTS -->
 
 <section class="section" id="students">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
+<div class="panel-header">
+<h3>Student Management</h3>
 
-            <h3>Student Management</h3>
+<button class="primary-btn" onclick="openStudentForm()">
+<i class="fa-solid fa-plus"></i> Add Student
+</button>
+</div>
 
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
+<div class="panel-body">
 
-                <div class="search-box">
+<div class="search-box">
+<input id="studentSearch"
+placeholder="Search student, class or parent..."
+oninput="renderStudents()">
+</div>
 
-                    <i class="fa-solid fa-search"></i>
+</div>
 
-                    <input
-                    type="text"
-                    placeholder="Search student..."
-                    oninput="searchTable('studentTable',this.value)">
+<div class="table-wrapper">
 
-                </div>
+<table>
+<thead>
+<tr>
+<th>Photo</th>
+<th>Name</th>
+<th>Class</th>
+<th>Parent</th>
+<th>Contact</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
 
-                <button class="primary-btn"
-                onclick="openStudentForm()">
+<tbody id="studentTable"></tbody>
 
-                    <i class="fa-solid fa-plus"></i>
-                    Add Student
+</table>
 
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div class="table-wrapper">
-
-            <table id="studentTable">
-
-                <thead>
-
-                    <tr>
-                        <th>Photo</th>
-                        <th>Name</th>
-                        <th>Class</th>
-                        <th>Parent</th>
-                        <th>Contact</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr class="empty-row">
-
-                        <td colspan="7"
-                        style="text-align:center;padding:35px">
-
-                            No students found.
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
+</div>
+</div>
 
 </section>
 
 
-<!-- ================= TEACHERS ================= -->
+<!-- TEACHERS -->
 
 <section class="section" id="teachers">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
+<div class="panel-header">
+<h3>Teacher Management</h3>
 
-            <h3>Teacher Management</h3>
+<button class="primary-btn" onclick="openTeacherForm()">
+<i class="fa-solid fa-plus"></i> Add Teacher
+</button>
+</div>
 
-            <button class="primary-btn"
-            onclick="openTeacherForm()">
+<div class="panel-body">
 
-                <i class="fa-solid fa-plus"></i>
-                Add Teacher
+<div class="search-box">
+<input id="teacherSearch"
+placeholder="Search teacher or subject..."
+oninput="renderTeachers()">
+</div>
 
-            </button>
+</div>
 
-        </div>
+<div class="table-wrapper">
 
+<table>
 
-        <div class="table-wrapper">
+<thead>
+<tr>
+<th>Name</th>
+<th>Subject</th>
+<th>Experience</th>
+<th>Contact</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
 
-            <table id="teacherTable">
+<tbody id="teacherTable"></tbody>
 
-                <thead>
+</table>
 
-                    <tr>
-                        <th>Name</th>
-                        <th>Subject</th>
-                        <th>Experience</th>
-                        <th>Contact</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
+</div>
 
-                </thead>
-
-                <tbody>
-
-                    <tr class="empty-row">
-
-                        <td colspan="6"
-                        style="text-align:center;padding:35px">
-
-                            No teacher records found.
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= FEES ================= -->
+<!-- FEES -->
 
 <section class="section" id="fees">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
+<div class="panel-header">
+<h3>Fee Management</h3>
 
-            <h3>Fee Management</h3>
+<button class="primary-btn" onclick="openFeeForm()">
+<i class="fa-solid fa-plus"></i> Record Payment
+</button>
+</div>
 
-            <button class="primary-btn"
-            onclick="openFeeForm()">
+<div class="table-wrapper">
 
-                <i class="fa-solid fa-plus"></i>
-                Record Payment
+<table>
 
-            </button>
+<thead>
+<tr>
+<th>Student</th>
+<th>Class</th>
+<th>Amount</th>
+<th>Month</th>
+<th>Date</th>
+<th>Actions</th>
+</tr>
+</thead>
 
-        </div>
+<tbody id="feeTable"></tbody>
 
+</table>
 
-        <div class="panel-body">
+</div>
 
-            <div class="stats" style="margin:0">
-
-                <div class="stat-card">
-
-                    <div class="stat-icon green">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-
-                    <div class="stat-info">
-                        <small>Collected</small>
-                        <strong id="collectedAmount">₹0</strong>
-                    </div>
-
-                </div>
-
-
-                <div class="stat-card">
-
-                    <div class="stat-icon orange">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-
-                    <div class="stat-info">
-                        <small>Pending</small>
-                        <strong id="pendingAmount">₹0</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="table-wrapper">
-
-            <table id="feeTable">
-
-                <thead>
-
-                    <tr>
-                        <th>Student</th>
-                        <th>Class</th>
-                        <th>Amount</th>
-                        <th>Month</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr class="empty-row">
-
-                        <td colspan="7"
-                        style="text-align:center;padding:35px">
-
-                            No payment records found.
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= NOTICES ================= -->
+<!-- NOTICES -->
 
 <section class="section" id="notices">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
+<div class="panel-header">
+<h3>Notice Management</h3>
 
-            <h3>Notice Management</h3>
+<button class="primary-btn" onclick="openNoticeForm()">
+<i class="fa-solid fa-plus"></i> New Notice
+</button>
+</div>
 
-            <button class="primary-btn"
-            onclick="openNoticeForm()">
+<div class="panel-body" id="noticeList">
+Loading...
+</div>
 
-                <i class="fa-solid fa-plus"></i>
-                New Notice
-
-            </button>
-
-        </div>
-
-
-        <div class="table-wrapper">
-
-            <table id="noticeTable">
-
-                <thead>
-
-                    <tr>
-                        <th>Title</th>
-                        <th>Message</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr class="empty-row">
-
-                        <td colspan="5"
-                        style="text-align:center;padding:35px">
-
-                            No notices published yet.
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
-<!-- ================= SETTINGS ================= -->
+<!-- SETTINGS -->
 
 <section class="section" id="settings">
 
-    <div class="panel">
+<div class="panel">
 
-        <div class="panel-header">
-            <h3>Admin Settings</h3>
-        </div>
+<div class="panel-header">
+<h3>Admin Settings</h3>
+</div>
 
-        <div class="panel-body">
+<div class="panel-body">
 
-            <div class="setting-row">
+<div class="setting-row">
+<strong>Admin Account</strong>
+<span id="settingsEmail">Loading...</span>
+</div>
 
-                <div>
+<div class="setting-row">
+<strong>Authentication</strong>
+<span class="badge approved">Active</span>
+</div>
 
-                    <h4>Admin Account</h4>
+<div style="margin-top:20px">
 
-                    <p id="settingsEmail">
-                        Loading...
-                    </p>
+<button class="logout-btn" id="settingsLogout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout from Admin Panel
+</button>
 
-                </div>
+</div>
 
-                <i class="fa-solid fa-user-shield"></i>
-
-            </div>
-
-
-            <div class="setting-row">
-
-                <div>
-
-                    <h4>Authentication</h4>
-
-                    <p>Firebase Email & Password Authentication</p>
-
-                </div>
-
-                <span class="badge approved">
-                    Active
-                </span>
-
-            </div>
-
-
-            <div class="setting-row">
-
-                <div>
-
-                    <h4>Database</h4>
-
-                    <p>Firebase Cloud Firestore</p>
-
-                </div>
-
-                <span class="badge approved">
-                    Connected
-                </span>
-
-            </div>
-
-
-            <div class="setting-row">
-
-                <div>
-
-                    <h4>Storage</h4>
-
-                    <p>Firebase Cloud Storage</p>
-
-                </div>
-
-                <span class="badge approved">
-                    Ready
-                </span>
-
-            </div>
-
-
-            <div style="margin-top:20px">
-
-                <button class="logout-btn"
-                id="settingsLogout">
-
-                    <i class="fa-solid fa-right-from-bracket"></i>
-
-                    Logout from Admin Panel
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
+</div>
 
 </section>
-
 
 </div>
 </main>
 
 
-<!-- =====================================================
-     ADMISSION MODAL
-===================================================== -->
+<!-- MODAL -->
 
-<div class="modal" id="admissionModal">
+<div class="modal" id="modal">
 
 <div class="modal-box">
 
-    <div class="modal-header">
+<div class="modal-header">
 
-        <h3 id="admissionModalTitle">
-            New Admission
-        </h3>
+<h3 id="modalTitle">Form</h3>
 
-        <button class="close-btn"
-        onclick="closeModal('admissionModal')">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-        <form id="admissionForm">
-
-            <input type="hidden" id="admissionId">
-
-            <div class="form-grid">
-
-                <div class="form-section-title">
-                    Student Details
-                </div>
-
-                <div class="form-group">
-
-                    <label>
-                        Student First Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="adFirstName"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Student Last Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="adLastName"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Date of Birth <span>*</span>
-                    </label>
-
-                    <input
-                    type="date"
-                    id="adDob"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Gender <span>*</span>
-                    </label>
-
-                    <select id="adGender" required>
-
-                        <option value="">Select Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Class <span>*</span>
-                    </label>
-
-                    <select id="adClass" required>
-
-                        <option value="">Select Class</option>
-                        <option>Play Group</option>
-                        <option>Nursery</option>
-                        <option>Junior KG</option>
-                        <option>Senior KG</option>
-                        <option>Class 1</option>
-                        <option>Class 2</option>
-                        <option>Class 3</option>
-                        <option>Class 4</option>
-                        <option>Class 5</option>
-                        <option>Class 6</option>
-                        <option>Class 7</option>
-                        <option>Class 8</option>
-                        <option>Class 9</option>
-                        <option>Class 10</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Admission Date <span>*</span>
-                    </label>
-
-                    <input
-                    type="date"
-                    id="adDate"
-                    required>
-
-                </div>
-
-
-                <div class="form-section-title">
-                    Parent / Guardian Details
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Father's Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="adFather"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Mother's Name
-                    </label>
-
-                    <input id="adMother">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Parent Mobile <span>*</span>
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="adMobile"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Alternate Mobile
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="adAltMobile">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                    type="email"
-                    id="adEmail">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Occupation
-                    </label>
-
-                    <input id="adOccupation">
-
-                </div>
-
-
-                <div class="form-section-title">
-                    Address Details
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Full Address <span>*</span>
-                    </label>
-
-                    <textarea
-                    id="adAddress"
-                    required></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        City
-                    </label>
-
-                    <input id="adCity">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        State
-                    </label>
-
-                    <input id="adState">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        PIN Code
-                    </label>
-
-                    <input id="adPincode">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Previous School
-                    </label>
-
-                    <input id="adPreviousSchool">
-
-                </div>
-
-
-                <div class="form-section-title">
-                    Additional Information
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Medical / Other Information
-                    </label>
-
-                    <textarea
-                    id="adMedical"></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Admission Status
-                    </label>
-
-                    <select id="adStatus">
-
-                        <option value="Pending">
-                            Pending
-                        </option>
-
-                        <option value="Approved">
-                            Approved
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                type="button"
-                class="secondary-btn"
-                onclick="closeModal('admissionModal')">
-
-                    Cancel
-
-                </button>
-
-                <button
-                type="submit"
-                class="primary-btn">
-
-                    <i class="fa-solid fa-save"></i>
-                    Save Admission
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
+<button class="close-btn" onclick="closeModal()">
+<i class="fa-solid fa-xmark"></i>
+</button>
 
 </div>
+
+<div class="panel-body" id="modalBody"></div>
+
 </div>
 
-
-<!-- =====================================================
-     STUDENT MODAL
-===================================================== -->
-
-<div class="modal" id="studentModal">
-
-<div class="modal-box">
-
-    <div class="modal-header">
-
-        <h3 id="studentModalTitle">
-            Add Student
-        </h3>
-
-        <button class="close-btn"
-        onclick="closeModal('studentModal')">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-        <form id="studentForm">
-
-            <input type="hidden" id="studentId">
-
-
-            <div class="photo-box">
-
-                <div class="photo-preview"
-                id="studentPhotoPreview">
-
-                    <i class="fa-solid fa-user"></i>
-
-                </div>
-
-                <div>
-
-                    <label class="primary-btn">
-
-                        <i class="fa-solid fa-camera"></i>
-                        Select Student Photo
-
-                        <input
-                        type="file"
-                        id="studentPhoto"
-                        accept="image/*"
-                        hidden>
-
-                    </label>
-
-                    <p style="font-size:10px;margin-top:7px">
-                        JPG/PNG image recommended.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-grid">
-
-                <div class="form-section-title">
-                    Student Information
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        First Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="stFirstName"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Last Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="stLastName"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Date of Birth <span>*</span>
-                    </label>
-
-                    <input
-                    type="date"
-                    id="stDob"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Gender <span>*</span>
-                    </label>
-
-                    <select id="stGender" required>
-
-                        <option value="">
-                            Select Gender
-                        </option>
-
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Class <span>*</span>
-                    </label>
-
-                    <select id="stClass" required>
-
-                        <option value="">
-                            Select Class
-                        </option>
-
-                        <option>Play Group</option>
-                        <option>Nursery</option>
-                        <option>Junior KG</option>
-                        <option>Senior KG</option>
-                        <option>Class 1</option>
-                        <option>Class 2</option>
-                        <option>Class 3</option>
-                        <option>Class 4</option>
-                        <option>Class 5</option>
-                        <option>Class 6</option>
-                        <option>Class 7</option>
-                        <option>Class 8</option>
-                        <option>Class 9</option>
-                        <option>Class 10</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Roll Number
-                    </label>
-
-                    <input id="stRoll">
-
-                </div>
-
-
-                <div class="form-section-title">
-                    Parent Details
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Father's Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="stFather"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Mother's Name
-                    </label>
-
-                    <input id="stMother">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Parent Mobile <span>*</span>
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="stMobile"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                    type="email"
-                    id="stEmail">
-
-                </div>
-
-
-                <div class="form-section-title">
-                    Address
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Address
-                    </label>
-
-                    <textarea id="stAddress"></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>City</label>
-
-                    <input id="stCity">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>State</label>
-
-                    <input id="stState">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>PIN Code</label>
-
-                    <input id="stPincode">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>Status</label>
-
-                    <select id="stStatus">
-
-                        <option>Active</option>
-                        <option>Inactive</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                type="button"
-                class="secondary-btn"
-                onclick="closeModal('studentModal')">
-
-                    Cancel
-
-                </button>
-
-                <button
-                type="submit"
-                class="primary-btn">
-
-                    <i class="fa-solid fa-save"></i>
-                    Save Student
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
 </div>
 
-
-<!-- =====================================================
-     TEACHER MODAL
-===================================================== -->
-
-<div class="modal" id="teacherModal">
-
-<div class="modal-box">
-
-    <div class="modal-header">
-
-        <h3 id="teacherModalTitle">
-            Add Teacher
-        </h3>
-
-        <button class="close-btn"
-        onclick="closeModal('teacherModal')">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-        <form id="teacherForm">
-
-            <input type="hidden" id="teacherId">
-
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Teacher Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="teacherName"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Subject <span>*</span>
-                    </label>
-
-                    <input
-                    id="teacherSubject"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Qualification
-                    </label>
-
-                    <input id="teacherQualification">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Experience
-                    </label>
-
-                    <input id="teacherExperience">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Mobile <span>*</span>
-                    </label>
-
-                    <input
-                    type="tel"
-                    id="teacherMobile"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Email
-                    </label>
-
-                    <input
-                    type="email"
-                    id="teacherEmail">
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Address
-                    </label>
-
-                    <textarea id="teacherAddress"></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Status
-                    </label>
-
-                    <select id="teacherStatus">
-
-                        <option>Active</option>
-                        <option>Inactive</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                type="button"
-                class="secondary-btn"
-                onclick="closeModal('teacherModal')">
-
-                    Cancel
-
-                </button>
-
-                <button
-                type="submit"
-                class="primary-btn">
-
-                    <i class="fa-solid fa-save"></i>
-                    Save Teacher
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-</div>
-
-
-<!-- =====================================================
-     FEE MODAL
-===================================================== -->
-
-<div class="modal" id="feeModal">
-
-<div class="modal-box">
-
-    <div class="modal-header">
-
-        <h3>
-            Record Fee Payment
-        </h3>
-
-        <button class="close-btn"
-        onclick="closeModal('feeModal')">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-        <form id="feeForm">
-
-            <input type="hidden" id="feeId">
-
-
-            <div class="form-grid">
-
-                <div class="form-group">
-
-                    <label>
-                        Student Name <span>*</span>
-                    </label>
-
-                    <input
-                    id="feeStudent"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Class
-                    </label>
-
-                    <input id="feeClass">
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Amount <span>*</span>
-                    </label>
-
-                    <input
-                    type="number"
-                    id="feeAmount"
-                    min="0"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Month <span>*</span>
-                    </label>
-
-                    <select id="feeMonth" required>
-
-                        <option value="">Select Month</option>
-
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>September</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Payment Date <span>*</span>
-                    </label>
-
-                    <input
-                    type="date"
-                    id="feeDate"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Status
-                    </label>
-
-                    <select id="feeStatus">
-
-                        <option>Paid</option>
-                        <option>Pending</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                type="button"
-                class="secondary-btn"
-                onclick="closeModal('feeModal')">
-
-                    Cancel
-
-                </button>
-
-                <button
-                type="submit"
-                class="primary-btn">
-
-                    <i class="fa-solid fa-save"></i>
-                    Save Payment
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-</div>
-
-
-<!-- =====================================================
-     NOTICE MODAL
-===================================================== -->
-
-<div class="modal" id="noticeModal">
-
-<div class="modal-box">
-
-    <div class="modal-header">
-
-        <h3 id="noticeModalTitle">
-            New Notice
-        </h3>
-
-        <button class="close-btn"
-        onclick="closeModal('noticeModal')">
-
-            <i class="fa-solid fa-xmark"></i>
-
-        </button>
-
-    </div>
-
-
-    <div class="modal-body">
-
-        <form id="noticeForm">
-
-            <input type="hidden" id="noticeId">
-
-
-            <div class="form-grid">
-
-                <div class="form-group full">
-
-                    <label>
-                        Notice Title <span>*</span>
-                    </label>
-
-                    <input
-                    id="noticeTitle"
-                    required>
-
-                </div>
-
-
-                <div class="form-group full">
-
-                    <label>
-                        Notice Message <span>*</span>
-                    </label>
-
-                    <textarea
-                    id="noticeMessage"
-                    required></textarea>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Publish Date <span>*</span>
-                    </label>
-
-                    <input
-                    type="date"
-                    id="noticeDate"
-                    required>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label>
-                        Status
-                    </label>
-
-                    <select id="noticeStatus">
-
-                        <option>Published</option>
-                        <option>Draft</option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-actions">
-
-                <button
-                type="button"
-                class="secondary-btn"
-                onclick="closeModal('noticeModal')">
-
-                    Cancel
-
-                </button>
-
-                <button
-                type="submit"
-                class="primary-btn">
-
-                    <i class="fa-solid fa-save"></i>
-                    Save Notice
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-</div>
-
-
-<!-- TOAST -->
 
 <div class="toast" id="toast"></div>
 
 
-<!-- =====================================================
-     TEMPORARY JAVASCRIPT
-     FIREBASE CONNECTION WILL BE ADDED IN PART 2
-===================================================== -->
+<script type="module">
 
-<script>
+import {initializeApp}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-const sidebar =
-document.getElementById("sidebar");
+import {
+getAuth,
+onAuthStateChanged,
+signOut
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-const mobileMenu =
-document.getElementById("mobileMenu");
+import {
+getFirestore,
+collection,
+addDoc,
+getDocs,
+doc,
+updateDoc,
+deleteDoc,
+serverTimestamp,
+query,
+orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-const pageTitle =
-document.getElementById("pageTitle");
-
-const toast =
-document.getElementById("toast");
-
-
-/* ================= NAVIGATION ================= */
-
-const navButtons =
-document.querySelectorAll(".nav-btn");
-
-const sections =
-document.querySelectorAll(".section");
+import {
+getStorage,
+ref,
+uploadBytes,
+getDownloadURL
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
 
 
-navButtons.forEach(button => {
+/* =========================
+FIREBASE CONFIG
+========================= */
 
-    button.addEventListener("click",()=>{
+const firebaseConfig={
 
-        openSection(button.dataset.section);
+apiKey:"AIzaSyCI4Y64lva6qL4e8FRMEeNf96regnHPNPw",
 
-        sidebar.classList.remove("open");
+authDomain:"read-and-write-admin.firebaseapp.com",
 
-    });
+projectId:"read-and-write-admin",
+
+storageBucket:"read-and-write-admin.firebasestorage.app",
+
+messagingSenderId:"168556066275",
+
+appId:"1:168556066275:web:ccb2317c2031f5c42ddcd6",
+
+measurementId:"G-88XX3MGERS"
+
+};
+
+
+const app=initializeApp(firebaseConfig);
+
+const auth=getAuth(app);
+
+const db=getFirestore(app);
+
+const storage=getStorage(app);
+
+
+/* =========================
+GLOBAL DATA
+========================= */
+
+let currentUser=null;
+
+let admissions=[];
+let students=[];
+let teachers=[];
+let fees=[];
+let notices=[];
+
+let editingId=null;
+
+
+/* =========================
+ELEMENTS
+========================= */
+
+const sidebar=document.getElementById("sidebar");
+const modal=document.getElementById("modal");
+const modalTitle=document.getElementById("modalTitle");
+const modalBody=document.getElementById("modalBody");
+const toast=document.getElementById("toast");
+
+
+/* =========================
+AUTH
+========================= */
+
+onAuthStateChanged(auth,async(user)=>{
+
+if(!user){
+
+window.location.href="admin-login.html";
+return;
+
+}
+
+currentUser=user;
+
+document.getElementById("adminEmail").textContent=
+user.email||"Administrator";
+
+document.getElementById("settingsEmail").textContent=
+user.email||"Administrator";
+
+await loadAll();
 
 });
 
 
-window.openSection =
-function(sectionName){
+/* =========================
+LOAD ALL DATA
+========================= */
 
-    sections.forEach(section=>{
-        section.classList.remove("active");
-    });
+async function loadAll(){
 
-    navButtons.forEach(button=>{
-        button.classList.remove("active");
-    });
+try{
 
+admissions=await getCollection("admissions");
 
-    const section =
-    document.getElementById(sectionName);
+students=await getCollection("students");
 
-    const button =
-    document.querySelector(
-        `.nav-btn[data-section="${sectionName}"]`
-    );
+teachers=await getCollection("teachers");
 
+fees=await getCollection("fees");
 
-    if(section)
-        section.classList.add("active");
+notices=await getCollection("notices");
 
-    if(button)
-        button.classList.add("active");
+updateDashboard();
 
+renderAdmissions();
 
-    const titles = {
+renderStudents();
 
-        dashboard:"Dashboard",
-        admissions:"Admissions",
-        students:"Students",
-        teachers:"Teachers",
-        fees:"Fees",
-        notices:"Notices",
-        settings:"Settings"
+renderTeachers();
 
-    };
+renderFees();
 
+renderNotices();
 
-    pageTitle.textContent =
-    titles[sectionName] || "Dashboard";
+}catch(error){
 
-};
+console.error(error);
+
+showToast("Database load error: "+error.message);
+
+}
+
+}
 
 
-/* ================= MOBILE ================= */
+async function getCollection(name){
 
-mobileMenu.addEventListener("click",()=>{
+const snap=await getDocs(collection(db,name));
 
-    sidebar.classList.toggle("open");
+return snap.docs.map(d=>({
+
+id:d.id,
+...d.data()
+
+}));
+
+}
+
+
+/* =========================
+DASHBOARD
+========================= */
+
+function updateDashboard(){
+
+document.getElementById("studentCount").textContent=
+students.length;
+
+document.getElementById("admissionCount").textContent=
+admissions.length;
+
+document.getElementById("teacherCount").textContent=
+teachers.length;
+
+const total=fees.reduce(
+(sum,item)=>sum+Number(item.amount||0),0
+);
+
+document.getElementById("feeCount").textContent=
+"₹"+total.toLocaleString("en-IN");
+
+
+const recent=admissions.slice(-5).reverse();
+
+const box=document.getElementById("recentAdmissions");
+
+if(!recent.length){
+
+box.innerHTML=
+`<tr><td colspan="5" class="empty">No admissions yet.</td></tr>`;
+
+return;
+
+}
+
+box.innerHTML=recent.map(a=>`
+
+<tr>
+
+<td><strong>${safe(a.studentName)}</strong></td>
+
+<td>${safe(a.className)}</td>
+
+<td>${safe(a.parentName)}</td>
+
+<td>${safe(a.admissionDate)}</td>
+
+<td>
+<span class="badge approved">
+${safe(a.status||"Approved")}
+</span>
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+/* =========================
+NAVIGATION
+========================= */
+
+const navButtons=document.querySelectorAll(".nav-btn");
+
+navButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+openSection(btn.dataset.section);
+
+sidebar.classList.remove("open");
+
+});
 
 });
 
 
-/* ================= MODALS ================= */
+window.openSection=function(name){
 
-window.closeModal =
-function(id){
+document.querySelectorAll(".section")
+.forEach(s=>s.classList.remove("active"));
 
-    document
-    .getElementById(id)
-    .classList.remove("show");
+navButtons.forEach(b=>b.classList.remove("active"));
+
+document.getElementById(name)?.classList.add("active");
+
+document.querySelector(
+`.nav-btn[data-section="${name}"]`
+)?.classList.add("active");
+
+const titles={
+dashboard:"Dashboard",
+admissions:"Admissions",
+students:"Students",
+teachers:"Teachers",
+fees:"Fees",
+notices:"Notices",
+settings:"Settings"
+};
+
+document.getElementById("pageTitle").textContent=
+titles[name]||"Dashboard";
 
 };
 
 
-window.openAdmissionForm =
-function(){
-
-    document
-    .getElementById("admissionForm")
-    .reset();
-
-    document
-    .getElementById("admissionId")
-    .value="";
-
-    document
-    .getElementById("adDate")
-    .value =
-    new Date().toISOString().split("T")[0];
-
-    document
-    .getElementById("admissionModalTitle")
-    .textContent="New Admission";
-
-    document
-    .getElementById("admissionModal")
-    .classList.add("show");
-
-};
-
-
-window.openStudentForm =
-function(){
-
-    document
-    .getElementById("studentForm")
-    .reset();
-
-    document
-    .getElementById("studentId")
-    .value="";
-
-    document
-    .getElementById("studentPhotoPreview")
-    .innerHTML =
-    '<i class="fa-solid fa-user"></i>';
-
-    document
-    .getElementById("studentModalTitle")
-    .textContent="Add Student";
-
-    document
-    .getElementById("studentModal")
-    .classList.add("show");
-
-};
-
-
-window.openTeacherForm =
-function(){
-
-    document
-    .getElementById("teacherForm")
-    .reset();
-
-    document
-    .getElementById("teacherId")
-    .value="";
-
-    document
-    .getElementById("teacherModalTitle")
-    .textContent="Add Teacher";
-
-    document
-    .getElementById("teacherModal")
-    .classList.add("show");
-
-};
-
-
-window.openFeeForm =
-function(){
-
-    document
-    .getElementById("feeForm")
-    .reset();
-
-    document
-    .getElementById("feeId")
-    .value="";
-
-    document
-    .getElementById("feeDate")
-    .value =
-    new Date().toISOString().split("T")[0];
-
-    document
-    .getElementById("feeModal")
-    .classList.add("show");
-
-};
-
-
-window.openNoticeForm =
-function(){
-
-    document
-    .getElementById("noticeForm")
-    .reset();
-
-    document
-    .getElementById("noticeId")
-    .value="";
-
-    document
-    .getElementById("noticeDate")
-    .value =
-    new Date().toISOString().split("T")[0];
-
-    document
-    .getElementById("noticeModalTitle")
-    .textContent="New Notice";
-
-    document
-    .getElementById("noticeModal")
-    .classList.add("show");
-
-};
-
-
-/* ================= PHOTO PREVIEW ================= */
-
-document
-.getElementById("studentPhoto")
-.addEventListener("change",function(){
-
-    const file=this.files[0];
-
-    if(!file)
-        return;
-
-    const reader =
-    new FileReader();
-
-    reader.onload =
-    function(e){
-
-        document
-        .getElementById("studentPhotoPreview")
-        .innerHTML =
-        `<img src="${e.target.result}">`;
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
-
-
-/* ================= SEARCH ================= */
-
-window.searchTable =
-function(tableId,value){
-
-    const table =
-    document.getElementById(tableId);
-
-    const rows =
-    table.querySelectorAll("tbody tr:not(.empty-row)");
-
-    value =
-    value.toLowerCase().trim();
-
-
-    rows.forEach(row=>{
-
-        row.style.display =
-        row.innerText
-        .toLowerCase()
-        .includes(value)
-        ? ""
-        : "none";
-
-    });
-
-};
-
-
-/* ================= DEMO FORM HANDLERS ================= */
-
-document
-.getElementById("admissionForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    showToast(
-        "Admission form ready for Firebase connection."
-    );
-
-    closeModal("admissionModal");
-
-});
-
-
-document
-.getElementById("studentForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    showToast(
-        "Student form ready for Firebase connection."
-    );
-
-    closeModal("studentModal");
-
-});
-
-
-document
-.getElementById("teacherForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    showToast(
-        "Teacher form ready for Firebase connection."
-    );
-
-    closeModal("teacherModal");
-
-});
-
-
-document
-.getElementById("feeForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    showToast(
-        "Fee form ready for Firebase connection."
-    );
-
-    closeModal("feeModal");
-
-});
-
-
-document
-.getElementById("noticeForm")
-.addEventListener("submit",function(e){
-
-    e.preventDefault();
-
-    showToast(
-        "Notice form ready for Firebase connection."
-    );
-
-    closeModal("noticeModal");
-
-});
-
-
-/* ================= TOAST ================= */
-
-window.showToast =
-function(message){
-
-    toast.textContent=message;
-
-    toast.classList.add("show");
-
-    setTimeout(()=>{
-
-        toast.classList.remove("show");
-
-    },3000);
-
-};
-
-
-/* ================= LOGOUT PLACEHOLDER ================= */
-
-document
-.getElementById("logoutBtn")
+document.getElementById("mobileMenu")
 .addEventListener("click",()=>{
+sidebar.classList.toggle("open");
+});
 
-    showToast(
-        "Firebase logout will be connected in Part 2."
-    );
+
+/* =========================
+ADMISSION FORM
+========================= */
+
+window.openAdmissionForm=function(id=null){
+
+editingId=id;
+
+const a=id?
+admissions.find(x=>x.id===id):{};
+
+modalTitle.textContent=
+id?"Edit Admission":"New Admission";
+
+modalBody.innerHTML=`
+
+<form id="admissionForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Full Name *</label>
+<input id="aStudent" required value="${safeAttr(a.studentName)}">
+</div>
+
+<div class="form-group">
+<label>Admission Date *</label>
+<input type="date" id="aDate" required
+value="${safeAttr(a.admissionDate||today())}">
+</div>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" id="aDob"
+value="${safeAttr(a.dob)}">
+</div>
+
+<div class="form-group">
+<label>Gender</label>
+<select id="aGender">
+<option value="">Select</option>
+<option ${a.gender==="Male"?"selected":""}>Male</option>
+<option ${a.gender==="Female"?"selected":""}>Female</option>
+<option ${a.gender==="Other"?"selected":""}>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Class *</label>
+<select id="aClass" required>
+${classOptions(a.className)}
+</select>
+</div>
+
+<div class="form-group">
+<label>Parent / Guardian Name *</label>
+<input id="aParent" required value="${safeAttr(a.parentName)}">
+</div>
+
+<div class="form-group">
+<label>Father Name</label>
+<input id="aFather" value="${safeAttr(a.fatherName)}">
+</div>
+
+<div class="form-group">
+<label>Mother Name</label>
+<input id="aMother" value="${safeAttr(a.motherName)}">
+</div>
+
+<div class="form-group">
+<label>Mobile Number *</label>
+<input id="aPhone" required value="${safeAttr(a.phone)}">
+</div>
+
+<div class="form-group">
+<label>Alternate Mobile</label>
+<input id="aAltPhone" value="${safeAttr(a.altPhone)}">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" id="aEmail" value="${safeAttr(a.email)}">
+</div>
+
+<div class="form-group">
+<label>Aadhaar / ID Number</label>
+<input id="aId" value="${safeAttr(a.idNumber)}">
+</div>
+
+<div class="form-group full">
+<label>Address *</label>
+<textarea id="aAddress" required>${safe(a.address)}</textarea>
+</div>
+
+<div class="form-group">
+<label>Previous School</label>
+<input id="aPreviousSchool" value="${safeAttr(a.previousSchool)}">
+</div>
+
+<div class="form-group">
+<label>Blood Group</label>
+<input id="aBlood" value="${safeAttr(a.bloodGroup)}">
+</div>
+
+<div class="form-group">
+<label>Student Photo</label>
+<input type="file" id="aPhoto" accept="image/*"
+onchange="previewPhoto(this,'aPreview')">
+
+<img id="aPreview" class="photo-preview"
+src="${safeAttr(a.photoUrl||"")} "
+style="${a.photoUrl?"display:block":""}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select id="aStatus">
+<option ${a.status==="Approved"||!a.status?"selected":""}>Approved</option>
+<option ${a.status==="Pending"?"selected":""}>Pending</option>
+</select>
+</div>
+
+</div>
+
+<div class="form-actions">
+
+<button type="button"
+class="cancel-btn"
+onclick="closeModal()">Cancel</button>
+
+<button class="primary-btn">
+<i class="fa-solid fa-floppy-disk"></i>
+Save Admission
+</button>
+
+</div>
+
+</form>
+`;
+
+document.getElementById("admissionForm")
+.addEventListener("submit",saveAdmission);
+
+modal.classList.add("show");
+
+};
+
+
+async function saveAdmission(e){
+
+e.preventDefault();
+
+const btn=e.target.querySelector("button.primary-btn");
+
+btn.disabled=true;
+btn.textContent="Saving...";
+
+try{
+
+let photoUrl=editingId?
+(admissions.find(x=>x.id===editingId)?.photoUrl||""):"";
+
+const file=document.getElementById("aPhoto").files[0];
+
+if(file){
+
+photoUrl=await uploadPhoto(file,"admissions");
+
+}
+
+const data={
+
+studentName:val("aStudent"),
+
+admissionDate:val("aDate"),
+
+dob:val("aDob"),
+
+gender:val("aGender"),
+
+className:val("aClass"),
+
+parentName:val("aParent"),
+
+fatherName:val("aFather"),
+
+motherName:val("aMother"),
+
+phone:val("aPhone"),
+
+altPhone:val("aAltPhone"),
+
+email:val("aEmail"),
+
+idNumber:val("aId"),
+
+address:val("aAddress"),
+
+previousSchool:val("aPreviousSchool"),
+
+bloodGroup:val("aBlood"),
+
+photoUrl,
+
+status:val("aStatus"),
+
+updatedAt:serverTimestamp(),
+
+updatedBy:currentUser.uid
+
+};
+
+let savedId=editingId;
+
+if(editingId){
+
+await updateDoc(
+doc(db,"admissions",editingId),
+data
+);
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+const refDoc=await addDoc(
+collection(db,"admissions"),
+data
+);
+
+savedId=refDoc.id;
+
+}
+
+closeModal();
+
+await loadAll();
+
+showToast("Admission saved successfully.");
+
+setTimeout(()=>{
+generateAdmissionPDF(
+admissions.find(x=>x.id===savedId)||data
+);
+},400);
+
+}catch(error){
+
+console.error(error);
+
+showToast("Save failed: "+error.message);
+
+btn.disabled=false;
+btn.textContent="Save Admission";
+
+}
+
+}
+
+
+/* =========================
+STUDENT FORM
+========================= */
+
+window.openStudentForm=function(id=null){
+
+editingId=id;
+
+const s=id?
+students.find(x=>x.id===id):{};
+
+modalTitle.textContent=
+id?"Edit Student":"New Student";
+
+modalBody.innerHTML=`
+
+<form id="studentForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name *</label>
+<input id="sName" required value="${safeAttr(s.name)}">
+</div>
+
+<div class="form-group">
+<label>Class *</label>
+<select id="sClass" required>
+${classOptions(s.className)}
+</select>
+</div>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" id="sDob"
+value="${safeAttr(s.dob)}">
+</div>
+
+<div class="form-group">
+<label>Gender</label>
+<select id="sGender">
+<option value="">Select</option>
+<option ${s.gender==="Male"?"selected":""}>Male</option>
+<option ${s.gender==="Female"?"selected":""}>Female</option>
+<option ${s.gender==="Other"?"selected":""}>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Parent / Guardian *</label>
+<input id="sParent" required value="${safeAttr(s.parent)}">
+</div>
+
+<div class="form-group">
+<label>Mobile *</label>
+<input id="sPhone" required value="${safeAttr(s.phone)}">
+</div>
+
+<div class="form-group">
+<label>Roll Number</label>
+<input id="sRoll" value="${safeAttr(s.roll)}">
+</div>
+
+<div class="form-group">
+<label>Student Photo</label>
+<input type="file" id="sPhoto" accept="image/*"
+onchange="previewPhoto(this,'sPreview')">
+
+<img id="sPreview" class="photo-preview"
+src="${safeAttr(s.photoUrl||"")}"
+style="${s.photoUrl?"display:block":""}">
+</div>
+
+<div class="form-group full">
+<label>Address</label>
+<textarea id="sAddress">${safe(s.address)}</textarea>
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select id="sStatus">
+<option ${s.status==="Active"||!s.status?"selected":""}>Active</option>
+<option ${s.status==="Inactive"?"selected":""}>Inactive</option>
+</select>
+</div>
+
+</div>
+
+<div class="form-actions">
+<button type="button" class="cancel-btn"
+onclick="closeModal()">Cancel</button>
+
+<button class="primary-btn">
+Save Student
+</button>
+</div>
+
+</form>
+`;
+
+document.getElementById("studentForm")
+.addEventListener("submit",saveStudent);
+
+modal.classList.add("show");
+
+};
+
+
+async function saveStudent(e){
+
+e.preventDefault();
+
+try{
+
+let old=editingId?
+students.find(x=>x.id===editingId):{};
+
+let photoUrl=old.photoUrl||"";
+
+const file=document.getElementById("sPhoto").files[0];
+
+if(file){
+
+photoUrl=await uploadPhoto(file,"students");
+
+}
+
+const data={
+
+name:val("sName"),
+className:val("sClass"),
+dob:val("sDob"),
+gender:val("sGender"),
+parent:val("sParent"),
+phone:val("sPhone"),
+roll:val("sRoll"),
+photoUrl,
+address:val("sAddress"),
+status:val("sStatus"),
+updatedAt:serverTimestamp(),
+updatedBy:currentUser.uid
+
+};
+
+if(editingId){
+
+await updateDoc(
+doc(db,"students",editingId),
+data
+);
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,"students"),
+data
+);
+
+}
+
+closeModal();
+
+await loadAll();
+
+showToast("Student saved successfully.");
+
+}catch(error){
+
+console.error(error);
+showToast("Save failed: "+error.message);
+
+}
+
+}
+
+
+/* =========================
+TEACHER FORM
+========================= */
+
+window.openTeacherForm=function(id=null){
+
+editingId=id;
+
+const t=id?
+teachers.find(x=>x.id===id):{};
+
+modalTitle.textContent=
+id?"Edit Teacher":"Add Teacher";
+
+modalBody.innerHTML=`
+
+<form id="teacherForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Teacher Name *</label>
+<input id="tName" required value="${safeAttr(t.name)}">
+</div>
+
+<div class="form-group">
+<label>Subject *</label>
+<input id="tSubject" required value="${safeAttr(t.subject)}">
+</div>
+
+<div class="form-group">
+<label>Experience</label>
+<input id="tExperience" value="${safeAttr(t.experience)}">
+</div>
+
+<div class="form-group">
+<label>Contact</label>
+<input id="tPhone" value="${safeAttr(t.phone)}">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input id="tEmail" type="email" value="${safeAttr(t.email)}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select id="tStatus">
+<option ${t.status==="Active"||!t.status?"selected":""}>Active</option>
+<option ${t.status==="Inactive"?"selected":""}>Inactive</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>Qualification</label>
+<input id="tQualification"
+value="${safeAttr(t.qualification)}">
+</div>
+
+</div>
+
+<div class="form-actions">
+
+<button type="button"
+class="cancel-btn"
+onclick="closeModal()">Cancel</button>
+
+<button class="primary-btn">
+Save Teacher
+</button>
+
+</div>
+
+</form>
+`;
+
+document.getElementById("teacherForm")
+.addEventListener("submit",saveTeacher);
+
+modal.classList.add("show");
+
+};
+
+
+async function saveTeacher(e){
+
+e.preventDefault();
+
+try{
+
+const data={
+
+name:val("tName"),
+subject:val("tSubject"),
+experience:val("tExperience"),
+phone:val("tPhone"),
+email:val("tEmail"),
+status:val("tStatus"),
+qualification:val("tQualification"),
+updatedAt:serverTimestamp()
+
+};
+
+if(editingId){
+
+await updateDoc(
+doc(db,"teachers",editingId),
+data
+);
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,"teachers"),
+data
+);
+
+}
+
+closeModal();
+
+await loadAll();
+
+showToast("Teacher saved successfully.");
+
+}catch(error){
+
+console.error(error);
+showToast("Save failed: "+error.message);
+
+}
+
+}
+
+
+/* =========================
+FEE FORM
+========================= */
+
+window.openFeeForm=function(id=null){
+
+editingId=id;
+
+const f=id?
+fees.find(x=>x.id===id):{};
+
+modalTitle.textContent=
+id?"Edit Payment":"Record Payment";
+
+modalBody.innerHTML=`
+
+<form id="feeForm">
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name *</label>
+<input id="fStudent" required value="${safeAttr(f.studentName)}">
+</div>
+
+<div class="form-group">
+<label>Class</label>
+<select id="fClass">
+${classOptions(f.className)}
+</select>
+</div>
+
+<div class="form-group">
+<label>Amount (₹) *</label>
+<input type="number" id="fAmount" required
+value="${safeAttr(f.amount)}">
+</div>
+
+<div class="form-group">
+<label>Month</label>
+<input id="fMonth" type="month"
+value="${safeAttr(f.month||monthNow())}">
+</div>
+
+<div class="form-group">
+<label>Payment Date</label>
+<input id="fDate" type="date"
+value="${safeAttr(f.date||today())}">
+</div>
+
+<div class="form-group">
+<label>Payment Mode</label>
+<select id="fMode">
+<option ${f.mode==="Cash"||!f.mode?"selected":""}>Cash</option>
+<option ${f.mode==="UPI"?"selected":""}>UPI</option>
+<option ${f.mode==="Bank"?"selected":""}>Bank</option>
+<option ${f.mode==="Other"?"selected":""}>Other</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>Note</label>
+<textarea id="fNote">${safe(f.note)}</textarea>
+</div>
+
+</div>
+
+<div class="form-actions">
+<button type="button" class="cancel-btn"
+onclick="closeModal()">Cancel</button>
+
+<button class="primary-btn">
+Save Payment
+</button>
+</div>
+
+</form>
+`;
+
+document.getElementById("feeForm")
+.addEventListener("submit",saveFee);
+
+modal.classList.add("show");
+
+};
+
+
+async function saveFee(e){
+
+e.preventDefault();
+
+try{
+
+const data={
+
+studentName:val("fStudent"),
+className:val("fClass"),
+amount:Number(val("fAmount")),
+month:val("fMonth"),
+date:val("fDate"),
+mode:val("fMode"),
+note:val("fNote"),
+updatedAt:serverTimestamp()
+
+};
+
+if(editingId){
+
+await updateDoc(
+doc(db,"fees",editingId),
+data
+);
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,"fees"),
+data
+);
+
+}
+
+closeModal();
+
+await loadAll();
+
+showToast("Payment saved successfully.");
+
+}catch(error){
+
+console.error(error);
+showToast("Payment failed: "+error.message);
+
+}
+
+}
+
+
+/* =========================
+NOTICE FORM
+========================= */
+
+window.openNoticeForm=function(id=null){
+
+editingId=id;
+
+const n=id?
+notices.find(x=>x.id===id):{};
+
+modalTitle.textContent=
+id?"Edit Notice":"New Notice";
+
+modalBody.innerHTML=`
+
+<form id="noticeForm">
+
+<div class="form-grid">
+
+<div class="form-group full">
+<label>Notice Title *</label>
+<input id="nTitle" required value="${safeAttr(n.title)}">
+</div>
+
+<div class="form-group full">
+<label>Notice Message *</label>
+<textarea id="nMessage" required>${safe(n.message)}</textarea>
+</div>
+
+<div class="form-group">
+<label>Date</label>
+<input id="nDate" type="date"
+value="${safeAttr(n.date||today())}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select id="nStatus">
+<option ${n.status==="Published"||!n.status?"selected":""}>Published</option>
+<option ${n.status==="Draft"?"selected":""}>Draft</option>
+</select>
+</div>
+
+</div>
+
+<div class="form-actions">
+
+<button type="button"
+class="cancel-btn"
+onclick="closeModal()">Cancel</button>
+
+<button class="primary-btn">
+Save Notice
+</button>
+
+</div>
+
+</form>
+`;
+
+document.getElementById("noticeForm")
+.addEventListener("submit",saveNotice);
+
+modal.classList.add("show");
+
+};
+
+
+async function saveNotice(e){
+
+e.preventDefault();
+
+try{
+
+const data={
+
+title:val("nTitle"),
+message:val("nMessage"),
+date:val("nDate"),
+status:val("nStatus"),
+updatedAt:serverTimestamp()
+
+};
+
+if(editingId){
+
+await updateDoc(
+doc(db,"notices",editingId),
+data
+);
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,"notices"),
+data
+);
+
+}
+
+closeModal();
+
+await loadAll();
+
+showToast("Notice saved successfully.");
+
+}catch(error){
+
+console.error(error);
+showToast("Notice save failed: "+error.message);
+
+}
+
+}
+
+
+/* =========================
+RENDER ADMISSIONS
+========================= */
+
+window.renderAdmissions=function(){
+
+const q=(document.getElementById("admissionSearch")?.value||"")
+.toLowerCase();
+
+const list=admissions.filter(a=>
+
+`${a.studentName} ${a.parentName} ${a.className} ${a.phone}`
+.toLowerCase().includes(q)
+
+);
+
+const table=document.getElementById("admissionTable");
+
+if(!list.length){
+
+table.innerHTML=
+`<tr><td colspan="7" class="empty">No admission records found.</td></tr>`;
+
+return;
+
+}
+
+table.innerHTML=list.map(a=>`
+
+<tr>
+
+<td><strong>${safe(a.studentName)}</strong></td>
+
+<td>${safe(a.className)}</td>
+
+<td>${safe(a.parentName)}</td>
+
+<td>${safe(a.phone)}</td>
+
+<td>${safe(a.admissionDate)}</td>
+
+<td>
+<span class="badge ${a.status==="Pending"?"pending":"approved"}">
+${safe(a.status||"Approved")}
+</span>
+</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick="openAdmissionForm('${a.id}')">
+Edit
+</button>
+
+<button class="edit-btn"
+onclick="generateAdmissionPDFById('${a.id}')">
+PDF
+</button>
+
+<button class="danger-btn"
+onclick="deleteRecord('admissions','${a.id}')">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`).join("");
+
+};
+
+
+/* =========================
+RENDER STUDENTS
+========================= */
+
+window.renderStudents=function(){
+
+const q=(document.getElementById("studentSearch")?.value||"")
+.toLowerCase();
+
+const list=students.filter(s=>
+
+`${s.name} ${s.parent} ${s.className} ${s.phone}`
+.toLowerCase().includes(q)
+
+);
+
+const table=document.getElementById("studentTable");
+
+if(!list.length){
+
+table.innerHTML=
+`<tr><td colspan="7" class="empty">No students found.</td></tr>`;
+
+return;
+
+}
+
+table.innerHTML=list.map(s=>`
+
+<tr>
+
+<td>
+
+${s.photoUrl?
+`<img src="${safeAttr(s.photoUrl)}"
+style="width:38px;height:38px;border-radius:50%;object-fit:cover">`
+:"—"}
+
+</td>
+
+<td><strong>${safe(s.name)}</strong></td>
+
+<td>${safe(s.className)}</td>
+
+<td>${safe(s.parent)}</td>
+
+<td>${safe(s.phone)}</td>
+
+<td>
+<span class="badge approved">
+${safe(s.status||"Active")}
+</span>
+</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick="openStudentForm('${s.id}')">
+Edit
+</button>
+
+<button class="danger-btn"
+onclick="deleteRecord('students','${s.id}')">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`).join("");
+
+};
+
+
+/* =========================
+RENDER TEACHERS
+========================= */
+
+window.renderTeachers=function(){
+
+const q=(document.getElementById("teacherSearch")?.value||"")
+.toLowerCase();
+
+const list=teachers.filter(t=>
+
+`${t.name} ${t.subject} ${t.phone}`
+.toLowerCase().includes(q)
+
+);
+
+const table=document.getElementById("teacherTable");
+
+if(!list.length){
+
+table.innerHTML=
+`<tr><td colspan="6" class="empty">No teachers found.</td></tr>`;
+
+return;
+
+}
+
+table.innerHTML=list.map(t=>`
+
+<tr>
+
+<td><strong>${safe(t.name)}</strong></td>
+
+<td>${safe(t.subject)}</td>
+
+<td>${safe(t.experience)}</td>
+
+<td>${safe(t.phone)}</td>
+
+<td>
+<span class="badge approved">
+${safe(t.status||"Active")}
+</span>
+</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick="openTeacherForm('${t.id}')">
+Edit
+</button>
+
+<button class="danger-btn"
+onclick="deleteRecord('teachers','${t.id}')">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`).join("");
+
+};
+
+
+/* =========================
+RENDER FEES
+========================= */
+
+window.renderFees=function(){
+
+const table=document.getElementById("feeTable");
+
+if(!fees.length){
+
+table.innerHTML=
+`<tr><td colspan="6" class="empty">No payments found.</td></tr>`;
+
+return;
+
+}
+
+table.innerHTML=fees.map(f=>`
+
+<tr>
+
+<td><strong>${safe(f.studentName)}</strong></td>
+
+<td>${safe(f.className)}</td>
+
+<td>₹${Number(f.amount||0).toLocaleString("en-IN")}</td>
+
+<td>${safe(f.month)}</td>
+
+<td>${safe(f.date)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick="openFeeForm('${f.id}')">
+Edit
+</button>
+
+<button class="danger-btn"
+onclick="deleteRecord('fees','${f.id}')">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`).join("");
+
+};
+
+
+/* =========================
+RENDER NOTICES
+========================= */
+
+window.renderNotices=function(){
+
+const box=document.getElementById("noticeList");
+
+if(!notices.length){
+
+box.innerHTML=
+`<div class="empty">No notices published yet.</div>`;
+
+return;
+
+}
+
+box.innerHTML=notices.slice().reverse().map(n=>`
+
+<div style="
+padding:15px;
+border:1px solid var(--border);
+border-radius:10px;
+margin-bottom:10px;
+">
+
+<div style="
+display:flex;
+justify-content:space-between;
+gap:10px;
+">
+
+<div>
+
+<strong style="color:var(--dark)">
+${safe(n.title)}
+</strong>
+
+<div style="font-size:11px;margin-top:5px">
+${safe(n.message)}
+</div>
+
+<div style="font-size:9px;margin-top:8px;color:#9aa3b1">
+${safe(n.date)}
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick="openNoticeForm('${n.id}')">
+Edit
+</button>
+
+<button class="danger-btn"
+onclick="deleteRecord('notices','${n.id}')">
+Delete
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`).join("");
+
+};
+
+
+/* =========================
+DELETE
+========================= */
+
+window.deleteRecord=async function(type,id){
+
+if(!confirm("Are you sure you want to delete this record?")){
+return;
+}
+
+try{
+
+await deleteDoc(doc(db,type,id));
+
+await loadAll();
+
+showToast("Record deleted.");
+
+}catch(error){
+
+console.error(error);
+
+showToast("Delete failed: "+error.message);
+
+}
+
+};
+
+
+/* =========================
+PHOTO UPLOAD
+========================= */
+
+async function uploadPhoto(file,folder){
+
+if(file.size>5*1024*1024){
+
+throw new Error("Photo must be smaller than 5 MB.");
+
+}
+
+if(!file.type.startsWith("image/")){
+
+throw new Error("Please select an image.");
+
+}
+
+const fileName=
+`${folder}/${Date.now()}_${Math.random()
+.toString(36).substring(2,10)}_${file.name}`;
+
+const storageRef=ref(storage,fileName);
+
+await uploadBytes(storageRef,file);
+
+return await getDownloadURL(storageRef);
+
+}
+
+
+window.previewPhoto=function(input,id){
+
+const file=input.files[0];
+
+if(!file)return;
+
+const img=document.getElementById(id);
+
+img.src=URL.createObjectURL(file);
+
+img.style.display="block";
+
+};
+
+
+/* =========================
+PDF
+========================= */
+
+window.generateAdmissionPDFById=function(id){
+
+const a=admissions.find(x=>x.id===id);
+
+if(a)generateAdmissionPDF(a);
+
+};
+
+
+window.generateAdmissionPDF=function(a){
+
+const {jsPDF}=window.jspdf;
+
+const pdf=new jsPDF();
+
+pdf.setFont("helvetica","bold");
+pdf.setFontSize(18);
+
+pdf.text("READ & WRITE JUNIOR PRE-SCHOOL",105,20,{align:"center"});
+
+pdf.setFontSize(13);
+pdf.text("ADMISSION FORM",105,30,{align:"center"});
+
+pdf.setFont("helvetica","normal");
+pdf.setFontSize(10);
+
+let y=48;
+
+const rows=[
+
+["Student Name",a.studentName],
+["Admission Date",a.admissionDate],
+["Date of Birth",a.dob],
+["Gender",a.gender],
+["Class",a.className],
+["Parent / Guardian",a.parentName],
+["Father Name",a.fatherName],
+["Mother Name",a.motherName],
+["Mobile",a.phone],
+["Alternate Mobile",a.altPhone],
+["Email",a.email],
+["ID Number",a.idNumber],
+["Previous School",a.previousSchool],
+["Blood Group",a.bloodGroup],
+["Address",a.address],
+["Status",a.status]
+
+];
+
+rows.forEach(row=>{
+
+pdf.setFont("helvetica","bold");
+pdf.text(row[0]+":",20,y);
+
+pdf.setFont("helvetica","normal");
+
+const text=String(row[1]||"");
+
+const lines=pdf.splitTextToSize(text,120);
+
+pdf.text(lines,65,y);
+
+y+=Math.max(8,lines.length*5);
+
+});
+
+if(a.photoUrl){
+
+try{
+
+const img=await loadImage(a.photoUrl);
+
+pdf.addImage(img,"JPEG",150,45,35,42);
+
+}catch(e){
+
+console.log("Photo could not be added.");
+
+}
+
+}
+
+pdf.setFontSize(9);
+
+pdf.text(
+"Please keep this admission document safely for school records.",
+20,
+280
+);
+
+const filename=
+`${(a.studentName||"Student").replace(/[^a-z0-9]/gi,"_")}_Admission.pdf`;
+
+pdf.save(filename);
+
+};
+
+
+function loadImage(url){
+
+return new Promise((resolve,reject)=>{
+
+const img=new Image();
+
+img.crossOrigin="anonymous";
+
+img.onload=()=>resolve(img);
+
+img.onerror=reject;
+
+img.src=url;
+
+});
+
+}
+
+
+/* =========================
+MODAL
+========================= */
+
+window.closeModal=function(){
+
+modal.classList.remove("show");
+
+modalBody.innerHTML="";
+
+editingId=null;
+
+};
+
+modal.addEventListener("click",(e)=>{
+
+if(e.target===modal){
+closeModal();
+}
 
 });
 
 
-document
-.getElementById("settingsLogout")
+/* =========================
+HELPERS
+========================= */
+
+function val(id){
+
+return document.getElementById(id)?.value.trim()||"";
+
+}
+
+function today(){
+
+return new Date().toISOString().split("T")[0];
+
+}
+
+function monthNow(){
+
+return new Date().toISOString().slice(0,7);
+
+}
+
+function classOptions(selected=""){
+
+const classes=[
+"Nursery",
+"Junior KG",
+"Senior KG",
+"Class 1",
+"Class 2",
+"Class 3",
+"Class 4",
+"Class 5",
+"Class 6",
+"Class 7",
+"Class 8",
+"Class 9",
+"Class 10"
+];
+
+return `<option value="">Select Class</option>`+
+classes.map(c=>
+`<option ${selected===c?"selected":""}>${c}</option>`
+).join("");
+
+}
+
+function safe(value){
+
+return String(value??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function safeAttr(value){
+
+return safe(value);
+
+}
+
+
+/* =========================
+LOGOUT
+========================= */
+
+async function logout(){
+
+try{
+
+await signOut(auth);
+
+window.location.href="admin-login.html";
+
+}catch(error){
+
+showToast("Logout failed.");
+
+}
+
+}
+
+document.getElementById("logoutBtn")
+.addEventListener("click",logout);
+
+document.getElementById("settingsLogout")
+.addEventListener("click",logout);
+
+document.getElementById("notificationBtn")
 .addEventListener("click",()=>{
-
-    showToast(
-        "Firebase logout will be connected in Part 2."
-    );
-
+showToast("No new notifications.");
 });
 
 
-/* ================= NOTIFICATION ================= */
+/* =========================
+TOAST
+========================= */
 
-document
-.getElementById("notificationBtn")
-.addEventListener("click",()=>{
+window.showToast=function(message){
 
-    showToast(
-        "No new notifications."
-    );
+toast.textContent=message;
 
-});
+toast.classList.add("show");
+
+setTimeout(()=>{
+toast.classList.remove("show");
+},3000);
+
+};
 
 </script>
 
