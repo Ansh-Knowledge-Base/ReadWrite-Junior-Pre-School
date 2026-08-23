@@ -1,1 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login | Read & Write</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --primary:#4f46e5;
+    --primary-dark:#3730a3;
+    --dark:#172033;
+    --text:#5b6678;
+    --light:#f6f8fc;
+    --white:#fff;
+    --border:#e2e7ef;
+    --danger:#dc2626;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Nunito',sans-serif;
+    background:
+    linear-gradient(135deg,#eef2ff,#f8fafc);
+    color:var(--text);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.login-wrapper{
+    width:min(430px,100%);
+}
+
+.login-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    padding:35px 30px;
+    box-shadow:0 20px 60px rgba(23,32,51,.12);
+}
+
+.logo-area{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo{
+    width:76px;
+    height:76px;
+    object-fit:cover;
+    border-radius:50%;
+    margin:0 auto 12px;
+    border:4px solid #eef2ff;
+}
+
+.logo-area h1{
+    font-family:'Poppins',sans-serif;
+    color:var(--primary);
+    font-size:22px;
+    margin-bottom:2px;
+}
+
+.logo-area span{
+    font-size:10px;
+    font-weight:800;
+    color:#7b8494;
+    letter-spacing:.7px;
+}
+
+.admin-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    background:#eef2ff;
+    color:var(--primary);
+    padding:7px 13px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.login-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.login-title h2{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+    font-size:23px;
+    margin-bottom:5px;
+}
+
+.login-title p{
+    font-size:12px;
+    color:#7a8494;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+label{
+    display:block;
+    color:#394456;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:7px;
+}
+
+.input-wrapper{
+    position:relative;
+}
+
+.input-wrapper i.input-icon{
+    position:absolute;
+    left:13px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#8b95a5;
+    font-size:14px;
+}
+
+input{
+    width:100%;
+    height:46px;
+    border:1px solid #dce2eb;
+    background:#fbfcfe;
+    border-radius:10px;
+    padding:0 42px 0 39px;
+    font-family:'Nunito',sans-serif;
+    font-size:13px;
+    color:var(--dark);
+    outline:none;
+    transition:.2s;
+}
+
+input:focus{
+    border-color:var(--primary);
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(79,70,229,.08);
+}
+
+.password-toggle{
+    position:absolute;
+    right:12px;
+    top:50%;
+    transform:translateY(-50%);
+    border:0;
+    background:none;
+    color:#7b8494;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:4px 0 20px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    font-size:11px;
+    color:#667286;
+    cursor:pointer;
+}
+
+.remember input{
+    width:14px;
+    height:14px;
+    padding:0;
+    accent-color:var(--primary);
+}
+
+.forgot{
+    border:0;
+    background:none;
+    color:var(--primary);
+    font-family:'Nunito';
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.login-btn{
+    width:100%;
+    height:47px;
+    border:0;
+    border-radius:10px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+    color:#fff;
+    font-family:'Poppins',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 9px 22px rgba(79,70,229,.22);
+    transition:.25s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+}
+
+.login-btn:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+    transform:none;
+}
+
+.error-box{
+    display:none;
+    margin-bottom:17px;
+    padding:11px 13px;
+    border-radius:9px;
+    background:#fef2f2;
+    border:1px solid #fecaca;
+    color:var(--danger);
+    font-size:11px;
+    line-height:1.5;
+}
+
+.error-box.show{
+    display:block;
+}
+
+.success-box{
+    display:none;
+    margin-bottom:17px;
+    padding:11px 13px;
+    border-radius:9px;
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+    color:#166534;
+    font-size:11px;
+}
+
+.success-box.show{
+    display:block;
+}
+
+.bottom-links{
+    text-align:center;
+    margin-top:22px;
+}
+
+.back-link{
+    color:#667286;
+    font-size:11px;
+    font-weight:700;
+}
+
+.back-link:hover{
+    color:var(--primary);
+}
+
+.security-note{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+    margin-top:18px;
+    color:#9aa3b1;
+    font-size:10px;
+}
+
+.security-note i{
+    color:#16a34a;
+}
+
+@media(max-width:450px){
+
+    .login-card{
+        padding:30px 20px;
+    }
+
+    .options{
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+    <div class="login-card">
+
+        <div class="logo-area">
+
+            <img
+            src="images/logo.jpg"
+            alt="Read & Write Logo"
+            class="logo"
+            >
+
+            <h1>Read & Write</h1>
+
+            <span>JUNIOR PRE-SCHOOL</span>
+
+        </div>
+
+
+        <div style="text-align:center;">
+
+            <div class="admin-badge">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                ADMIN PORTAL
+
+            </div>
+
+        </div>
+
+
+        <div class="login-title">
+
+            <h2>Welcome Back</h2>
+
+            <p>
+                Sign in to access the administration panel.
+            </p>
+
+        </div>
+
+
+        <div
+        class="error-box"
+        id="errorBox">
+        </div>
+
+
+        <div
+        class="success-box"
+        id="successBox">
+        </div>
+
+
+        <form id="loginForm">
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-envelope input-icon"></i>
+
+                    <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter admin email"
+                    autocomplete="email"
+                    required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <i class="fa-solid fa-lock input-icon"></i>
+
+                    <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required
+                    >
+
+                    <button
+                    type="button"
+                    class="password-toggle"
+                    id="togglePassword"
+                    aria-label="Show password">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="options">
+
+                <label class="remember">
+
+                    <input
+                    type="checkbox"
+                    id="rememberMe"
+                    >
+
+                    Remember me
+
+                </label>
+
+
+                <button
+                type="button"
+                class="forgot"
+                id="forgotPassword">
+
+                    Forgot Password?
+
+                </button>
+
+            </div>
+
+
+            <button
+            type="submit"
+            class="login-btn"
+            id="loginBtn">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+
+                &nbsp; Sign In
+
+            </button>
+
+        </form>
+
+
+        <div class="bottom-links">
+
+            <a
+            href="index.html"
+            class="back-link">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Website
+
+            </a>
+
+        </div>
+
+
+        <div class="security-note">
+
+            <i class="fa-solid fa-lock"></i>
+
+            Secure Admin Authentication
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FIREBASE
+========================= -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
+}
+from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyCI4Y64lva6qL4e8FRMEeNf96regnHPNPw",
+
+    authDomain:
+    "read-and-write-admin.firebaseapp.com",
+
+    projectId:
+    "read-and-write-admin",
+
+    storageBucket:
+    "read-and-write-admin.firebasestorage.app",
+
+    messagingSenderId:
+    "168556066275",
+
+    appId:
+    "1:168556066275:web:ccb2317c2031f5c42ddcd6",
+
+    measurementId:
+    "G-88XX3MGERS"
+
+};
+
+
+/* =========================
+   INITIALIZE FIREBASE
+========================= */
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const loginForm =
+document.getElementById("loginForm");
+
+const emailInput =
+document.getElementById("email");
+
+const passwordInput =
+document.getElementById("password");
+
+const loginBtn =
+document.getElementById("loginBtn");
+
+const togglePassword =
+document.getElementById("togglePassword");
+
+const forgotPassword =
+document.getElementById("forgotPassword");
+
+const rememberMe =
+document.getElementById("rememberMe");
+
+const errorBox =
+document.getElementById("errorBox");
+
+const successBox =
+document.getElementById("successBox");
+
+
+/* =========================
+   MESSAGE FUNCTIONS
+========================= */
+
+function showError(message){
+
+    successBox.classList.remove("show");
+
+    errorBox.textContent = message;
+
+    errorBox.classList.add("show");
+
+}
+
+
+function showSuccess(message){
+
+    errorBox.classList.remove("show");
+
+    successBox.textContent = message;
+
+    successBox.classList.add("show");
+
+}
+
+
+/* =========================
+   PASSWORD SHOW / HIDE
+========================= */
+
+togglePassword.addEventListener(
+"click",
+() => {
+
+    const icon =
+    togglePassword.querySelector("i");
+
+    if(passwordInput.type === "password"){
+
+        passwordInput.type = "text";
+
+        icon.classList.remove("fa-eye");
+
+        icon.classList.add("fa-eye-slash");
+
+    }else{
+
+        passwordInput.type = "password";
+
+        icon.classList.remove("fa-eye-slash");
+
+        icon.classList.add("fa-eye");
+
+    }
+
+});
+
+
+/* =========================
+   LOGIN
+========================= */
+
+loginForm.addEventListener(
+"submit",
+async (event) => {
+
+    event.preventDefault();
+
+    errorBox.classList.remove("show");
+
+    successBox.classList.remove("show");
+
+
+    const email =
+    emailInput.value.trim();
+
+    const password =
+    passwordInput.value;
+
+
+    if(!email || !password){
+
+        showError(
+            "Please enter your email address and password."
+        );
+
+        return;
+
+    }
+
+
+    loginBtn.disabled = true;
+
+    loginBtn.innerHTML =
+    '<i class="fa-solid fa-spinner fa-spin"></i> &nbsp; Signing In...';
+
+
+    try{
+
+        await setPersistence(
+            auth,
+            rememberMe.checked
+            ? browserLocalPersistence
+            : browserSessionPersistence
+        );
+
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+
+        showSuccess(
+            "Login successful. Opening Admin Dashboard..."
+        );
+
+
+        setTimeout(() => {
+
+            window.location.href =
+            "admin-dashboard.html";
+
+        },800);
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        let message =
+        "Unable to sign in. Please check your email and password.";
+
+
+        if(
+            error.code ===
+            "auth/invalid-credential"
+        ){
+
+            message =
+            "Invalid email or password. Please check your credentials and try again.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/too-many-requests"
+        ){
+
+            message =
+            "Too many unsuccessful attempts. Please try again later.";
+
+        }
+
+        else if(
+            error.code ===
+            "auth/network-request-failed"
+        ){
+
+            message =
+            "Network error. Please check your internet connection.";
+
+        }
+
+
+        showError(message);
+
+
+        loginBtn.disabled = false;
+
+        loginBtn.innerHTML =
+        '<i class="fa-solid fa-right-to-bracket"></i> &nbsp; Sign In';
+
+    }
+
+});
+
+
+/* =========================
+   FORGOT PASSWORD
+========================= */
+
+forgotPassword.addEventListener(
+"click",
+async () => {
+
+    const email =
+    emailInput.value.trim();
+
+
+    if(!email){
+
+        showError(
+            "Please enter your admin email address first."
+        );
+
+        emailInput.focus();
+
+        return;
+
+    }
+
+
+    try{
+
+        await sendPasswordResetEmail(
+            auth,
+            email
+        );
+
+
+        showSuccess(
+            "Password reset instructions have been sent to your email."
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+        showError(
+            "Unable to send the password reset email. Please check the email address."
+        );
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
