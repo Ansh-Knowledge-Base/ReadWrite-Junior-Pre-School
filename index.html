@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>READ & WRITE ACADEMY | CLASSES & PRE SCHOOL</title>
 
-<meta name="description" content="READ & WRITE ACADEMY - Classes & Pre School. Quality education from Pre-Nursery to Class 12 with experienced teachers, smart teaching and individual attention.">
+<meta name="description"
+content="READ & WRITE ACADEMY - Classes & Pre School. Quality education from Pre-Nursery to Class 12 with experienced teachers, smart teaching and individual attention.">
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<!-- Font Awesome - Real Social Media Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap"
+rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
     --red:#ed1c24;
     --blue:#123b8f;
@@ -25,10 +35,17 @@
     --yellow:#f8c928;
     --white:#ffffff;
     --text:#202020;
-    --muted:#666;
+    --muted:#666666;
+    --border:#e6ebf3;
+
     --shadow:0 10px 35px rgba(0,0,0,.10);
     --radius:18px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -37,11 +54,16 @@
     scroll-behavior:smooth;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Poppins',sans-serif;
     color:var(--text);
-    background:#fff;
+    background:#ffffff;
     line-height:1.7;
+    overflow-x:hidden;
 }
 
 a{
@@ -54,54 +76,137 @@ img{
     display:block;
 }
 
+button{
+    font-family:inherit;
+}
+
 .container{
     width:min(1180px,92%);
     margin:auto;
 }
 
-.section{
+.section-padding{
     padding:85px 0;
 }
 
-.section-title{
+
+/* =========================================================
+   COMMON SECTION HEADING
+========================================================= */
+
+.section-heading{
     text-align:center;
-    margin-bottom:48px;
+    max-width:850px;
+    margin:0 auto 48px;
 }
 
-.section-title .small-title{
+.section-heading > span{
+    display:inline-block;
     color:var(--red);
-    font-weight:700;
-    text-transform:uppercase;
+    font-weight:800;
+    font-size:13px;
     letter-spacing:2px;
-    font-size:14px;
+    text-transform:uppercase;
+    margin-bottom:8px;
 }
 
-.section-title h2{
+.section-heading h2{
     color:var(--blue);
     font-size:38px;
     line-height:1.2;
-    margin:8px 0 14px;
+    margin-bottom:14px;
 }
 
-.section-title p{
+.section-heading p{
+    color:var(--muted);
     max-width:720px;
     margin:auto;
-    color:var(--muted);
 }
 
-.red-line{
-    width:55px;
-    height:4px;
+.small-title{
+    display:inline-block;
+    color:var(--red);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:10px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:13px 23px;
+    border-radius:9px;
+    font-weight:700;
+    border:2px solid transparent;
+    transition:.3s ease;
+    cursor:pointer;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
     background:var(--red);
-    margin:15px auto 0;
-    border-radius:20px;
+    color:#ffffff;
 }
 
-/* ================= TOP BAR ================= */
+.btn-primary:hover{
+    background:#c91017;
+}
+
+.btn-outline{
+    border-color:var(--blue);
+    color:var(--blue);
+    background:#ffffff;
+}
+
+.btn-outline:hover{
+    background:var(--blue);
+    color:#ffffff;
+}
+
+.btn-light{
+    background:#ffffff;
+    color:var(--red);
+}
+
+.btn-light:hover{
+    background:#f5f5f5;
+}
+
+.btn-outline-light{
+    border-color:#ffffff;
+    color:#ffffff;
+    background:transparent;
+}
+
+.btn-outline-light:hover{
+    background:#ffffff;
+    color:var(--red);
+}
+
+.center-button{
+    text-align:center;
+    margin-top:35px;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .top-bar{
     background:var(--blue);
-    color:#fff;
+    color:#ffffff;
     font-size:13px;
     padding:8px 0;
 }
@@ -119,23 +224,28 @@ img{
     gap:20px;
 }
 
-.top-contact span{
+.top-contact span,
+.top-inner > span{
     display:flex;
     align-items:center;
     gap:7px;
 }
 
-.top-contact i{
+.top-contact i,
+.top-inner i{
     color:var(--yellow);
 }
 
-/* ================= HEADER ================= */
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 header{
     position:sticky;
     top:0;
     z-index:999;
-    background:#fff;
+    background:#ffffff;
     box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
@@ -184,32 +294,19 @@ header{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:23px;
+    gap:21px;
 }
 
 .nav-links a{
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
-    color:#222;
+    color:#222222;
     transition:.3s;
 }
 
 .nav-links a:hover,
 .nav-links a.active{
     color:var(--red);
-}
-
-.nav-btn{
-    background:var(--red);
-    color:#fff !important;
-    padding:12px 20px;
-    border-radius:8px;
-    font-weight:700 !important;
-}
-
-.nav-btn:hover{
-    background:#c91017;
-    transform:translateY(-2px);
 }
 
 .menu-btn{
@@ -221,24 +318,43 @@ header{
     cursor:pointer;
 }
 
-/* ================= HERO ================= */
 
-.hero{
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-section{
     position:relative;
     min-height:650px;
     overflow:hidden;
-    background:linear-gradient(100deg,#fff 0%,#f7fbff 45%,#dbeeff 100%);
+    background:
+    linear-gradient(100deg,#ffffff 0%,#f7fbff 45%,#dbeeff 100%);
 }
 
-.hero::after{
+.hero-section::after{
     content:"";
     position:absolute;
     left:0;
     right:0;
     bottom:-1px;
-    height:100px;
+    height:90px;
     background:var(--blue);
-    clip-path:polygon(0 50%,18% 72%,38% 58%,58% 75%,78% 52%,100% 67%,100% 100%,0 100%);
+    clip-path:polygon(
+        0 55%,
+        18% 72%,
+        38% 58%,
+        58% 75%,
+        78% 52%,
+        100% 67%,
+        100% 100%,
+        0 100%
+    );
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
 }
 
 .hero-content{
@@ -251,29 +367,34 @@ header{
 }
 
 .hero-text{
-    padding:55px 0 100px;
+    padding:60px 20px 100px 0;
 }
 
-.welcome{
+.hero-badge{
+    display:inline-block;
     color:var(--blue);
     font-weight:800;
     letter-spacing:1.5px;
-    font-size:17px;
-    text-transform:uppercase;
+    font-size:15px;
+    margin-bottom:18px;
 }
 
-.welcome-line{
+.hero-badge::after{
+    content:"";
+    display:block;
     width:48px;
     height:4px;
     background:var(--red);
-    margin:8px 0 20px;
+    margin-top:8px;
+    border-radius:20px;
 }
 
 .hero h2{
-    font-size:58px;
-    line-height:1.03;
-    margin-bottom:10px;
+    font-size:51px;
+    line-height:1.08;
+    margin-bottom:18px;
     font-weight:800;
+    color:var(--blue);
 }
 
 .hero h2 .red{
@@ -284,23 +405,14 @@ header{
     color:var(--blue);
 }
 
-.hero-tagline{
-    font-size:24px;
-    color:var(--blue);
-    font-weight:800;
-    letter-spacing:1px;
-}
-
-.hero-subtitle{
+.hero-text h2 span{
+    display:block;
     color:var(--red);
-    font-size:22px;
-    font-weight:700;
-    margin:8px 0 15px;
 }
 
-.hero-description{
+.hero-text > p{
     max-width:560px;
-    color:#555;
+    color:#555555;
     font-size:16px;
     margin-bottom:28px;
 }
@@ -311,54 +423,12 @@ header{
     gap:13px;
 }
 
-.btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    padding:13px 24px;
-    border-radius:8px;
-    font-weight:700;
-    border:2px solid transparent;
-    transition:.3s;
-}
-
-.btn-primary{
-    background:var(--red);
-    color:#fff;
-}
-
-.btn-primary:hover{
-    background:#c81017;
-    transform:translateY(-2px);
-}
-
-.btn-blue{
-    background:var(--blue);
-    color:#fff;
-}
-
-.btn-blue:hover{
-    background:#092c70;
-    transform:translateY(-2px);
-}
-
-.btn-outline{
-    border-color:var(--blue);
-    color:var(--blue);
-    background:#fff;
-}
-
-.btn-outline:hover{
-    background:var(--blue);
-    color:#fff;
-}
-
 .hero-image{
     height:650px;
     display:flex;
     align-items:center;
     justify-content:flex-end;
+    padding-bottom:45px;
 }
 
 .hero-image img{
@@ -369,125 +439,139 @@ header{
     box-shadow:0 20px 45px rgba(0,0,0,.18);
 }
 
-/* ================= FEATURE STRIP ================= */
 
-.feature-wrapper{
+/* =========================================================
+   HIGHLIGHTS
+========================================================= */
+
+.highlights-section{
     position:relative;
     z-index:10;
-    margin-top:-30px;
+    margin-top:-35px;
+    padding-bottom:25px;
 }
 
-.feature-box{
-    background:#fff;
-    border-radius:18px;
+.highlight-grid{
+    background:#ffffff;
+    border-radius:20px;
     box-shadow:var(--shadow);
     padding:25px;
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:18px;
 }
 
-.feature{
+.highlight-card{
     display:flex;
-    align-items:center;
-    gap:13px;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:15px;
+    border-radius:14px;
 }
 
-.feature-icon{
+.highlight-icon{
     width:52px;
     height:52px;
-    min-width:52px;
     border-radius:50%;
     display:grid;
     place-items:center;
     background:#f1f6ff;
     color:var(--red);
     font-size:22px;
+    margin-bottom:12px;
 }
 
-.feature:nth-child(even) .feature-icon{
+.highlight-card:nth-child(even) .highlight-icon{
     color:var(--blue);
 }
 
-.feature h4{
+.highlight-card h3{
     color:var(--blue);
-    font-size:14px;
-    margin-bottom:2px;
+    font-size:16px;
+    margin-bottom:4px;
 }
 
-.feature p{
-    color:#666;
-    font-size:11px;
-    line-height:1.4;
+.highlight-card p{
+    color:#666666;
+    font-size:12px;
+    line-height:1.5;
 }
 
-/* ================= INTRO ================= */
 
-.intro{
-    padding-top:100px;
+/* =========================================================
+   ABOUT HOME
+========================================================= */
+
+.about-home{
+    background:#ffffff;
 }
 
-.intro-grid{
+.about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:60px;
     align-items:center;
 }
 
-.intro-text h2{
+.about-image img{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.about-content h2{
     color:var(--blue);
     font-size:37px;
     line-height:1.2;
     margin-bottom:18px;
 }
 
-.intro-text h2 span{
-    color:var(--red);
-}
-
-.intro-text p{
-    color:#555;
+.about-content p{
+    color:#555555;
     margin-bottom:15px;
 }
 
-.check-list{
-    list-style:none;
+.about-points{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
     margin:22px 0;
 }
 
-.check-list li{
-    margin:10px 0;
+.about-points div{
+    color:#333333;
+    font-size:14px;
     display:flex;
-    gap:10px;
     align-items:flex-start;
+    gap:9px;
 }
 
-.check-list i{
+.about-points i{
     color:var(--red);
     margin-top:5px;
 }
 
-.intro-images{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
+.text-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--blue);
+    font-weight:700;
+    transition:.3s;
 }
 
-.intro-images img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:15px;
+.text-button:hover{
+    color:var(--red);
 }
 
-.intro-images img:first-child{
-    grid-column:span 2;
-    height:260px;
-}
 
-/* ================= TWO PROGRAMS ================= */
+/* =========================================================
+   PROGRAMS
+========================================================= */
 
-.programs{
+.programs-section{
     background:#f5f9ff;
 }
 
@@ -498,9 +582,9 @@ header{
 }
 
 .program-card{
-    background:#fff;
-    padding:35px;
+    background:#ffffff;
     border-radius:20px;
+    overflow:hidden;
     box-shadow:var(--shadow);
     border-top:5px solid var(--red);
     transition:.3s;
@@ -514,47 +598,48 @@ header{
     transform:translateY(-6px);
 }
 
-.program-icon{
-    width:65px;
-    height:65px;
-    display:grid;
-    place-items:center;
-    border-radius:15px;
-    background:#fff1f1;
-    color:var(--red);
-    font-size:27px;
-    margin-bottom:20px;
+.program-image img{
+    width:100%;
+    height:245px;
+    object-fit:cover;
 }
 
-.program-card:nth-child(2) .program-icon{
-    background:#eef4ff;
+.program-content{
+    padding:30px;
+}
+
+.program-tag{
+    display:inline-block;
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:8px;
+}
+
+.program-card:nth-child(2) .program-tag{
     color:var(--blue);
 }
 
 .program-card h3{
     color:var(--blue);
-    font-size:25px;
-    margin-bottom:8px;
-}
-
-.program-card .classes{
-    color:var(--red);
-    font-weight:700;
-    margin-bottom:12px;
+    font-size:24px;
+    line-height:1.25;
+    margin-bottom:10px;
 }
 
 .program-card p{
-    color:#666;
+    color:#666666;
 }
 
-.program-tags{
+.program-classes{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-top:20px;
+    margin:20px 0;
 }
 
-.program-tags span{
+.program-classes span{
     background:#f2f6fc;
     color:var(--blue);
     padding:7px 12px;
@@ -563,409 +648,896 @@ header{
     font-weight:600;
 }
 
-/* ================= ACADEMIC FEATURES ================= */
+.card-button{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:var(--blue);
+    font-weight:700;
+    font-size:14px;
+}
 
-.academic-grid{
+.card-button:hover{
+    color:var(--red);
+}
+
+
+/* =========================================================
+   WHY CHOOSE US
+========================================================= */
+
+.why-section{
+    background:linear-gradient(135deg,#08265f,#123b8f);
+    color:#ffffff;
+}
+
+.light-heading > span,
+.light-heading h2,
+.light-heading p{
+    color:#ffffff;
+}
+
+.features-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
 }
 
-.academic-card{
-    padding:25px;
-    border:1px solid #e8edf5;
-    border-radius:15px;
-    background:#fff;
+.feature-card{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:17px;
+    padding:27px;
     transition:.3s;
 }
 
-.academic-card:hover{
+.feature-card:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.14);
+}
+
+.feature-card i{
+    font-size:26px;
+    color:var(--yellow);
+    margin-bottom:13px;
+}
+
+.feature-card h3{
+    font-size:18px;
+    margin-bottom:7px;
+    color:#ffffff;
+}
+
+.feature-card p{
+    color:#dbe5f7;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   ACADEMIC SECTION
+========================================================= */
+
+.academic-section{
+    background:#ffffff;
+}
+
+.two-column-section{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.academic-content h2{
+    color:var(--blue);
+    font-size:37px;
+    line-height:1.2;
+    margin-bottom:17px;
+}
+
+.academic-content > p{
+    color:#555555;
+    margin-bottom:20px;
+}
+
+.academic-list{
+    list-style:none;
+    margin-bottom:25px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px 18px;
+}
+
+.academic-list li{
+    display:flex;
+    gap:9px;
+    color:#444444;
+    font-size:13px;
+    align-items:flex-start;
+}
+
+.academic-list i{
+    color:var(--red);
+    margin-top:5px;
+}
+
+.academic-image{
+    position:relative;
+}
+
+.academic-image > img{
+    width:100%;
+    height:430px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:var(--shadow);
+}
+
+.experience-box{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    background:#ffffff;
+    border-radius:15px;
+    padding:17px 20px;
+    box-shadow:var(--shadow);
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.experience-box strong{
+    font-size:27px;
+    color:var(--red);
+}
+
+.experience-box span{
+    font-size:12px;
+    color:#555555;
+    max-width:130px;
+}
+
+
+/* =========================================================
+   FACILITIES
+========================================================= */
+
+.facilities-home{
+    background:#f5f9ff;
+}
+
+.facility-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.facility-item{
+    padding:25px;
+    background:#ffffff;
+    border:1px solid #e7edf6;
+    border-radius:16px;
+    text-align:center;
+    transition:.3s;
+}
+
+.facility-item:hover{
     box-shadow:var(--shadow);
     transform:translateY(-4px);
 }
 
-.academic-card i{
+.facility-item i{
     color:var(--red);
-    font-size:25px;
+    font-size:27px;
     margin-bottom:12px;
 }
 
-.academic-card h3{
+.facility-item h3{
     color:var(--blue);
-    font-size:17px;
-    margin-bottom:5px;
+    font-size:15px;
 }
 
-.academic-card p{
-    color:#666;
-    font-size:13px;
+
+/* =========================================================
+   STREAMS
+========================================================= */
+
+.streams-section{
+    background:#ffffff;
 }
 
-/* ================= PRINCIPAL / FOUNDER ================= */
-
-.leaders{
-    background:linear-gradient(135deg,#08265f,#123b8f);
-    color:#fff;
-}
-
-.leaders .section-title h2,
-.leaders .section-title p,
-.leaders .section-title .small-title{
-    color:#fff;
-}
-
-.leaders .red-line{
-    background:var(--yellow);
-}
-
-.leader-grid{
+.stream-grid{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:30px;
-}
-
-.leader-card{
-    background:#fff;
-    color:#222;
-    border-radius:20px;
-    padding:30px;
-    display:grid;
-    grid-template-columns:160px 1fr;
     gap:25px;
-    align-items:center;
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
-.leader-card img{
-    width:160px;
-    height:190px;
-    object-fit:cover;
-    border-radius:15px;
-    border:5px solid #eef4ff;
-}
-
-.leader-card h3{
-    color:var(--blue);
-    font-size:24px;
-}
-
-.leader-role{
-    color:var(--red);
-    font-weight:700;
-    margin:4px 0 12px;
-}
-
-.leader-card p{
-    color:#666;
-    font-size:13px;
-}
-
-.qualification{
-    margin-top:12px;
-    font-size:13px;
-    font-weight:700;
-    color:var(--blue);
-}
-
-/* ================= TEACHER PREVIEW ================= */
-
-.teacher-preview{
-    background:#f7faff;
-}
-
-.teacher-card{
-    max-width:420px;
-    margin:auto;
-    background:#fff;
+.stream-card{
+    padding:30px;
     border-radius:20px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    text-align:center;
+    background:#ffffff;
+    border:1px solid var(--border);
+    box-shadow:0 8px 30px rgba(0,0,0,.06);
 }
 
-.teacher-card img{
-    width:100%;
-    height:250px;
-    object-fit:cover;
+.commerce-card{
+    border-top:5px solid var(--red);
 }
 
-.teacher-card-body{
-    padding:25px;
+.science-card{
+    border-top:5px solid var(--blue);
 }
 
-.teacher-card h3{
-    color:var(--blue);
-}
-
-.teacher-card p{
-    color:#666;
-    font-size:14px;
-}
-
-/* ================= TOPPERS ================= */
-
-.toppers{
-    background:#fff;
-}
-
-.topper-image{
-    max-width:1050px;
-    margin:auto;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-}
-
-.topper-image img{
-    width:100%;
-    height:auto;
-}
-
-/* ================= ACTIVITIES ================= */
-
-.activities{
-    background:#f5f9ff;
-}
-
-.activity-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.activity-grid img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    border-radius:15px;
-    transition:.3s;
-}
-
-.activity-grid img:hover{
-    transform:scale(1.02);
-}
-
-/* ================= FACILITIES ================= */
-
-.facility-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.facility-card{
-    padding:25px;
-    background:#fff;
-    border-radius:16px;
-    border:1px solid #e7edf6;
-}
-
-.facility-card i{
-    color:var(--red);
-    font-size:26px;
-    margin-bottom:10px;
-}
-
-.facility-card h3{
-    color:var(--blue);
-    font-size:17px;
-    margin-bottom:7px;
-}
-
-.facility-card p{
-    color:#666;
-    font-size:13px;
-}
-
-/* ================= ADMISSION CTA ================= */
-
-.admission{
-    padding:75px 0;
-    background:linear-gradient(100deg,var(--red),#d60912);
-    color:#fff;
-}
-
-.admission-inner{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:30px;
-}
-
-.admission h2{
-    font-size:38px;
-    line-height:1.2;
-}
-
-.admission p{
-    margin-top:8px;
-    opacity:.9;
-}
-
-.admission .btn{
-    background:#fff;
-    color:var(--red);
-    white-space:nowrap;
-}
-
-/* ================= CONTACT ================= */
-
-.contact{
-    background:#f5f9ff;
-}
-
-.contact-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.contact-card{
-    background:#fff;
-    padding:28px;
-    border-radius:17px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.06);
-}
-
-.contact-card i{
-    width:55px;
-    height:55px;
+.stream-icon{
+    width:60px;
+    height:60px;
     display:grid;
     place-items:center;
-    margin:0 auto 12px;
-    background:#eef4ff;
-    color:var(--blue);
-    border-radius:50%;
-    font-size:21px;
-}
-
-.contact-card h3{
-    color:var(--blue);
-    font-size:17px;
-}
-
-.contact-card p,
-.contact-card a{
-    color:#666;
-    font-size:13px;
-}
-
-.contact-card a:hover{
+    border-radius:15px;
+    background:#fff1f1;
     color:var(--red);
-}
-
-/* ================= SOCIAL ================= */
-
-.social{
-    text-align:center;
-    padding:45px 0;
-}
-
-.social h3{
-    color:var(--blue);
-    margin-bottom:20px;
-}
-
-.social-icons{
-    display:flex;
-    justify-content:center;
-    gap:12px;
-}
-
-.social-icons a{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    background:#f1f5fb;
-    color:var(--blue);
-    font-size:20px;
-    transition:.3s;
-}
-
-.social-icons a:hover{
-    background:var(--red);
-    color:#fff;
-    transform:translateY(-3px);
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    background:#071e4c;
-    color:#fff;
-}
-
-.footer-main{
-    padding:60px 0 35px;
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr 1.3fr;
-    gap:40px;
-}
-
-.footer-brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
+    font-size:25px;
     margin-bottom:18px;
 }
 
-.footer-brand img{
+.science-card .stream-icon{
+    background:#eef4ff;
+    color:var(--blue);
+}
+
+.stream-card h3{
+    color:var(--blue);
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.stream-card p{
+    color:#666666;
+    font-size:14px;
+}
+
+.subject-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:20px;
+}
+
+.subject-tags span{
+    background:#f2f6fc;
+    color:var(--blue);
+    padding:7px 12px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:600;
+}
+
+
+/* =========================================================
+   LEADERSHIP
+========================================================= */
+
+.leadership-section{
+    background:#f5f9ff;
+}
+
+.leader-card{
+    max-width:950px;
+    margin:auto;
+    background:#ffffff;
+    border-radius:22px;
+    padding:35px;
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:35px;
+    align-items:center;
+    box-shadow:var(--shadow);
+}
+
+.leader-image img{
+    width:210px;
+    height:250px;
+    object-fit:cover;
+    border-radius:18px;
+    border:5px solid #eef4ff;
+    margin:auto;
+}
+
+.leader-label{
+    display:inline-block;
+    color:var(--red);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    margin-bottom:6px;
+}
+
+.leader-content h2{
+    color:var(--blue);
+    font-size:31px;
+    line-height:1.2;
+}
+
+.leader-content h4{
+    color:#555555;
+    margin:7px 0 13px;
+}
+
+.leader-subject{
+    color:#555555;
+    margin-bottom:12px;
+}
+
+.leader-content > p:last-of-type{
+    color:#666666;
+    font-size:14px;
+}
+
+.leader-experience{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    padding:10px 15px;
+    background:#eef4ff;
+    border-radius:10px;
+}
+
+.leader-experience strong{
+    color:var(--red);
+    font-size:20px;
+}
+
+.leader-experience span{
+    color:var(--blue);
+    font-size:12px;
+    font-weight:700;
+}
+
+
+/* =========================================================
+   ANSH PROFILE
+========================================================= */
+
+.ansh-profile-section{
+    padding:70px 20px;
+    background:#ffffff;
+}
+
+.ansh-profile-card{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:45px;
+    background:#ffffff;
+    padding:40px;
+    border-radius:26px;
+    box-shadow:0 18px 50px rgba(0,0,0,.09);
+    border:1px solid #e8edf5;
+}
+
+.ansh-profile-image{
+    width:270px;
+    min-width:270px;
+    text-align:center;
+}
+
+.ansh-image-frame{
+    width:220px;
+    height:270px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:20px;
+    background:#eef2f8;
+    box-shadow:0 12px 30px rgba(0,0,0,.14);
+}
+
+.ansh-image-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.ansh-photo-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-top:-16px;
+    position:relative;
+    padding:9px 16px;
+    border-radius:30px;
+    background:#174ea6;
+    color:#ffffff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+
+.ansh-profile-content{
+    flex:1;
+}
+
+.ansh-small-label{
+    display:inline-block;
+    color:#174ea6;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+    margin-bottom:7px;
+}
+
+.ansh-profile-content h2{
+    margin:0;
+    font-size:38px;
+    line-height:1.1;
+    color:#17213c;
+}
+
+.ansh-profile-content h3{
+    margin:9px 0 0;
+    font-size:19px;
+    font-weight:600;
+    color:#e53935;
+}
+
+.ansh-divider{
+    width:60px;
+    height:4px;
+    margin:18px 0;
+    border-radius:10px;
+    background:#174ea6;
+}
+
+.ansh-details{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    margin-bottom:18px;
+}
+
+.ansh-detail-item{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.ansh-detail-item i{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
+    background:#eef4ff;
+    color:#174ea6;
+}
+
+.ansh-detail-item span{
+    display:block;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#7b8495;
+}
+
+.ansh-detail-item strong{
+    display:block;
+    margin-top:3px;
+    color:#252d3d;
+    font-size:14px;
+}
+
+.ansh-description{
+    color:#5c6575;
+    line-height:1.7;
+    margin-bottom:20px;
+    max-width:700px;
+}
+
+.ansh-professional-role{
+    display:flex;
+    gap:14px;
+    padding:16px;
+    border-radius:15px;
+    background:#f4f7fc;
+    border-left:4px solid #174ea6;
+    margin-bottom:22px;
+}
+
+.role-icon{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:11px;
+    background:#174ea6;
+    color:#ffffff;
+}
+
+.ansh-professional-role span{
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#174ea6;
+}
+
+.ansh-professional-role p{
+    margin:5px 0 0;
+    color:#5c6575;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.ansh-buttons{
+    display:flex;
+    gap:11px;
+    flex-wrap:wrap;
+}
+
+.ansh-primary-btn,
+.ansh-secondary-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 18px;
+    border-radius:9px;
+    font-weight:700;
+    font-size:14px;
+    transition:.3s ease;
+}
+
+.ansh-primary-btn{
+    background:#174ea6;
+    color:#ffffff;
+}
+
+.ansh-secondary-btn{
+    background:#eef2f8;
+    color:#17213c;
+}
+
+.ansh-primary-btn:hover,
+.ansh-secondary-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   ACHIEVEMENTS
+========================================================= */
+
+.achievement-section{
+    background:#f5f9ff;
+}
+
+.achievement-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:55px;
+    align-items:center;
+}
+
+.achievement-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.achievement-content h2{
+    color:var(--blue);
+    font-size:37px;
+    line-height:1.2;
+    margin-bottom:16px;
+}
+
+.achievement-content p{
+    color:#666666;
+    margin-bottom:25px;
+}
+
+
+/* =========================================================
+   EVENTS
+========================================================= */
+
+.events-section{
+    background:#ffffff;
+}
+
+.event-preview-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.event-preview-card{
+    background:#ffffff;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:0 6px 25px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.event-preview-card:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
+}
+
+.event-preview-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.event-preview-card > div{
+    padding:20px;
+}
+
+.event-preview-card h3{
+    color:var(--blue);
+    font-size:18px;
+    margin-bottom:5px;
+}
+
+.event-preview-card p{
+    color:#666666;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   STUDENT LOGIN BANNER
+========================================================= */
+
+.login-home{
+    background:#ffffff;
+}
+
+.login-banner{
+    background:linear-gradient(100deg,#08265f,#174ea6);
+    color:#ffffff;
+    border-radius:24px;
+    padding:45px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    box-shadow:var(--shadow);
+}
+
+.login-banner-content{
+    max-width:750px;
+}
+
+.login-banner-content > span{
+    color:var(--yellow);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.login-banner h2{
+    font-size:34px;
+    line-height:1.2;
+    margin:8px 0 12px;
+}
+
+.login-banner p{
+    color:#dbe5f7;
+    margin-bottom:22px;
+}
+
+.login-icon{
+    width:110px;
+    height:110px;
+    min-width:110px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:rgba(255,255,255,.12);
+    font-size:48px;
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   ADMISSION CTA
+========================================================= */
+
+.admission-cta{
+    padding:75px 0;
+    background:linear-gradient(100deg,var(--red),#d60912);
+    color:#ffffff;
+}
+
+.cta-content{
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+}
+
+.cta-content > span{
+    color:#ffe5e5;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.cta-content h2{
+    font-size:40px;
+    line-height:1.2;
+    margin:8px 0 12px;
+}
+
+.cta-content p{
+    opacity:.9;
+    margin-bottom:24px;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+    background:#071e4c;
+    color:#ffffff;
+}
+
+.footer-grid{
+    padding:60px 0 35px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.4fr;
+    gap:40px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.footer-logo img{
     width:60px;
     height:60px;
     object-fit:contain;
 }
 
-.footer-brand h3{
+.footer-logo div{
+    display:flex;
+    flex-direction:column;
+    line-height:1.1;
+}
+
+.footer-logo strong{
+    color:#ffffff;
     font-size:19px;
 }
 
-.footer-brand p{
-    font-size:10px;
-    color:#bcd0f4;
-    letter-spacing:1.5px;
-}
-
-.footer-col h4{
-    color:#fff;
-    margin-bottom:15px;
+.footer-logo span{
+    color:#ffffff;
     font-size:17px;
+    font-weight:700;
 }
 
-.footer-col ul{
-    list-style:none;
+.footer-about > p{
+    color:#bcd0f4;
+    font-size:12px;
+    margin-top:7px;
 }
 
-.footer-col li{
-    margin:7px 0;
+.footer-links h3,
+.footer-contact h3{
+    color:#ffffff;
+    font-size:17px;
+    margin-bottom:15px;
 }
 
-.footer-col a{
+.footer-links{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-links a{
     color:#c8d5ee;
     font-size:13px;
+    margin:5px 0;
+    transition:.3s;
 }
 
-.footer-col a:hover{
-    color:#fff;
+.footer-links a:hover{
+    color:#ffffff;
+    padding-left:3px;
 }
 
-.footer-about{
+.footer-contact p{
     color:#c8d5ee;
     font-size:13px;
-    max-width:390px;
+    margin:9px 0;
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+}
+
+.footer-contact i{
+    color:var(--yellow);
+    margin-top:5px;
 }
 
 .footer-bottom{
     border-top:1px solid rgba(255,255,255,.12);
     padding:18px 0;
-    text-align:center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
     color:#b8c7e3;
     font-size:12px;
 }
 
-/* ================= FLOATING WHATSAPP ================= */
+.footer-bottom-links{
+    display:flex;
+    gap:18px;
+}
+
+.footer-bottom-links a:hover{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-to-top{
+    position:fixed;
+    right:20px;
+    bottom:90px;
+    width:48px;
+    height:48px;
+    border:0;
+    border-radius:50%;
+    background:var(--blue);
+    color:#ffffff;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+    cursor:pointer;
+    z-index:9998;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(15px);
+    transition:.3s;
+}
+
+.back-to-top.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.back-to-top:hover{
+    background:var(--red);
+}
+
+
+/* =========================================================
+   FLOATING WHATSAPP
+========================================================= */
 
 .whatsapp-float{
     position:fixed;
@@ -975,33 +1547,56 @@ footer{
     height:58px;
     border-radius:50%;
     background:#25D366;
-    color:#fff;
+    color:#ffffff;
     display:grid;
     place-items:center;
     font-size:29px;
     z-index:9999;
     box-shadow:0 8px 25px rgba(0,0,0,.2);
+    transition:.3s;
 }
 
-/* ================= RESPONSIVE ================= */
+.whatsapp-float:hover{
+    transform:scale(1.07);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
 
 @media(max-width:1050px){
+
     .nav-links{
         gap:12px;
     }
 
+    .nav-links a{
+        font-size:12px;
+    }
+
     .hero h2{
-        font-size:48px;
+        font-size:45px;
     }
 
-    .feature-box{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .footer-main{
+    .highlight-grid{
         grid-template-columns:repeat(2,1fr);
     }
+
+    .facility-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
 }
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 
 @media(max-width:850px){
 
@@ -1019,11 +1614,12 @@ footer{
         left:0;
         right:0;
         top:82px;
-        background:#fff;
+        background:#ffffff;
         flex-direction:column;
         align-items:stretch;
-        padding:20px;
+        padding:18px 20px;
         box-shadow:0 10px 20px rgba(0,0,0,.1);
+        gap:0;
     }
 
     .nav-links.show{
@@ -1031,14 +1627,21 @@ footer{
     }
 
     .nav-links a{
-        padding:10px;
+        padding:11px 10px;
+        border-bottom:1px solid #eeeeee;
+        font-size:14px;
+    }
+
+    .nav-links a:last-child{
+        border-bottom:0;
+    }
+
+    .hero-section{
+        min-height:auto;
     }
 
     .hero-content{
         grid-template-columns:1fr;
-    }
-
-    .hero{
         min-height:auto;
     }
 
@@ -1047,11 +1650,16 @@ footer{
         text-align:center;
     }
 
-    .welcome-line{
-        margin:8px auto 20px;
+    .hero-badge::after{
+        margin-left:auto;
+        margin-right:auto;
     }
 
-    .hero-description{
+    .hero h2{
+        font-size:42px;
+    }
+
+    .hero-text > p{
         margin-left:auto;
         margin-right:auto;
     }
@@ -1066,51 +1674,77 @@ footer{
     }
 
     .hero-image img{
-        height:350px;
+        height:360px;
         border-radius:20px;
     }
 
-    .intro-grid,
-    .leader-grid,
-    .program-grid{
+    .about-grid,
+    .program-grid,
+    .two-column-section,
+    .achievement-grid{
         grid-template-columns:1fr;
     }
 
-    .academic-grid,
-    .facility-grid{
+    .features-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .activity-grid{
-        grid-template-columns:repeat(2,1fr);
+    .academic-list{
+        grid-template-columns:1fr 1fr;
     }
 
-    .admission-inner{
+    .stream-grid{
+        grid-template-columns:1fr;
+    }
+
+    .leader-card{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .leader-content{
+        text-align:center;
+    }
+
+    .login-banner{
         flex-direction:column;
         text-align:center;
     }
 
-    .contact-grid{
-        grid-template-columns:1fr;
+    .login-banner-content{
+        max-width:100%;
     }
+
+    .login-icon{
+        width:90px;
+        height:90px;
+        min-width:90px;
+        font-size:38px;
+    }
+
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:600px){
 
-    .section{
+    .container{
+        width:min(92%,500px);
+    }
+
+    .section-padding{
         padding:60px 0;
     }
 
-    .section-title h2{
+    .section-heading{
+        margin-bottom:35px;
+    }
+
+    .section-heading h2{
         font-size:29px;
-    }
-
-    .brand-text h1{
-        font-size:16px;
-    }
-
-    .brand-text p{
-        font-size:8px;
     }
 
     .logo{
@@ -1122,825 +1756,392 @@ footer{
         min-width:auto;
     }
 
+    .brand-text h1{
+        font-size:16px;
+    }
+
+    .brand-text p{
+        font-size:8px;
+    }
+
     .hero h2{
-        font-size:40px;
+        font-size:36px;
     }
 
-    .hero-tagline{
-        font-size:19px;
+    .hero-text > p{
+        font-size:14px;
     }
 
-    .hero-subtitle{
-        font-size:18px;
+    .hero-image img{
+        height:300px;
     }
 
-    .feature-box{
+    .highlight-grid{
         grid-template-columns:1fr 1fr;
-        padding:18px;
+        padding:16px;
     }
 
-    .feature{
-        align-items:flex-start;
+    .highlight-card{
+        padding:10px;
     }
 
-    .feature-icon{
-        width:42px;
-        min-width:42px;
-        height:42px;
+    .highlight-icon{
+        width:43px;
+        height:43px;
         font-size:17px;
     }
 
-    .intro-images{
-        grid-template-columns:1fr;
+    .about-image img{
+        height:300px;
     }
 
-    .intro-images img:first-child{
-        grid-column:auto;
-    }
-
-    .academic-grid,
-    .facility-grid,
-    .activity-grid{
-        grid-template-columns:1fr;
-    }
-
-    .leader-card{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .leader-card img{
-        margin:auto;
-    }
-
-    .admission h2{
+    .about-content h2,
+    .academic-content h2,
+    .achievement-content h2{
         font-size:29px;
     }
 
-    .footer-main{
+    .about-points{
+        grid-template-columns:1fr;
+    }
+
+    .program-content{
+        padding:24px;
+    }
+
+    .program-card h3{
+        font-size:21px;
+    }
+
+    .features-grid{
+        grid-template-columns:1fr;
+    }
+
+    .academic-list{
+        grid-template-columns:1fr;
+    }
+
+    .academic-image > img{
+        height:300px;
+    }
+
+    .experience-box{
+        left:15px;
+        bottom:15px;
+    }
+
+    .facility-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stream-card{
+        padding:24px;
+    }
+
+    .leader-card{
+        padding:25px 18px;
+    }
+
+    .leader-image img{
+        width:180px;
+        height:220px;
+    }
+
+    .ansh-profile-card{
+        flex-direction:column;
+        text-align:center;
+        padding:30px 20px;
+    }
+
+    .ansh-profile-image{
+        width:100%;
+        min-width:0;
+    }
+
+    .ansh-profile-content{
+        width:100%;
+    }
+
+    .ansh-divider{
+        margin:18px auto;
+    }
+
+    .ansh-details{
+        justify-content:center;
+    }
+
+    .ansh-professional-role{
+        text-align:left;
+    }
+
+    .ansh-buttons{
+        justify-content:center;
+    }
+
+    .ansh-image-frame{
+        width:190px;
+        height:235px;
+    }
+
+    .ansh-profile-content h2{
+        font-size:32px;
+    }
+
+    .event-preview-grid{
+        grid-template-columns:1fr;
+    }
+
+    .login-banner{
+        padding:30px 22px;
+    }
+
+    .login-banner h2{
+        font-size:27px;
+    }
+
+    .cta-content h2{
+        font-size:29px;
+    }
+
+    .footer-grid{
         grid-template-columns:1fr;
         gap:28px;
     }
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .back-to-top{
+        right:15px;
+        bottom:85px;
+    }
+
+    .whatsapp-float{
+        right:15px;
+        bottom:18px;
+    }
+
 }
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+========================================================= */
+
+@media(max-width:400px){
+
+    .hero h2{
+        font-size:32px;
+    }
+
+    .hero-buttons,
+    .cta-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn,
+    .cta-buttons .btn{
+        width:100%;
+    }
+
+    .highlight-grid{
+        grid-template-columns:1fr;
+    }
+
+    .ansh-primary-btn,
+    .ansh-secondary-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= TOP CONTACT BAR ================= -->
+
+<!-- =========================================================
+     TOP CONTACT BAR
+========================================================= -->
 
 <div class="top-bar">
+
     <div class="container top-inner">
+
         <div class="top-contact">
+
             <span>
                 <i class="fa-solid fa-phone"></i>
-                <a href="tel:+919537081242">95370 81242</a>
+                <a href="tel:+919537081242">
+                    95370 81242
+                </a>
             </span>
 
             <span>
                 <i class="fa-solid fa-phone"></i>
-                <a href="tel:+917984786053">79847 86053</a>
+                <a href="tel:+917984786053">
+                    79847 86053
+                </a>
             </span>
 
             <span>
                 <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:readwritec@gmail.com">readwritec@gmail.com</a>
+                <a href="mailto:readwritec@gmail.com">
+                    readwritec@gmail.com
+                </a>
             </span>
+
         </div>
 
         <span>
             <i class="fa-solid fa-calendar"></i>
             Established 2014
         </span>
+
     </div>
+
 </div>
 
 
-<!-- ================= HEADER ================= -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header>
+
     <div class="container navbar">
 
         <a href="index.html" class="logo-area">
-            <img src="images/logo.jpg" alt="READ & WRITE ACADEMY Logo" class="logo">
+
+            <img src="images/logo.jpg"
+                 alt="READ & WRITE ACADEMY Logo"
+                 class="logo">
 
             <div class="brand-text">
+
                 <h1>
                     <span>READ & WRITE</span><br>
                     <span>ACADEMY</span>
                 </h1>
-                <p>CLASSES & PRE SCHOOL</p>
+
+                <p>
+                    CLASSES & PRE SCHOOL
+                </p>
+
             </div>
+
         </a>
 
-        <button class="menu-btn" onclick="toggleMenu()">
+
+        <button class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Open Menu">
+
             <i class="fa-solid fa-bars"></i>
+
         </button>
 
+
         <nav class="nav-links" id="navLinks">
-            <a href="index.html" class="active">Home</a>
-            <a href="about.html">About Us</a>
-                    <a href="classes.html">Classes</a>
-                <a href="teachers.html">Teachers</a>
-                <a href="facilities.html">Facilities</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="admissions.html">Admissions</a>
-                <a href="student-login.html">Student Login</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- ==================== HERO SECTION ==================== -->
-    <main>
+            <a href="index.html" class="active">
+                Home
+            </a>
 
-        <section class="hero-section">
-            <div class="hero-overlay"></div>
+            <a href="about.html">
+                About Us
+            </a>
 
-            <div class="container hero-content">
+            <a href="classes.html">
+                Classes
+            </a>
 
-                <div class="hero-text">
-                    <span class="hero-badge">
-                        LEARN • EXPLORE • GROW
-                    </span>
+            <a href="teachers.html">
+                Teachers
+            </a>
 
-                    <h2>
-                        Building Strong Foundations.
-                        <span>Creating Bright Futures.</span>
-                    </h2>
+            <a href="facilities.html">
+                Facilities
+            </a>
 
-                    <p>
-                        Welcome to <strong>READ & WRITE ACADEMY</strong> —
-                        Classes & Pre School, where learning is made
-                        meaningful, disciplined and result-oriented.
-                    </p>
+            <a href="gallery.html">
+                Gallery
+            </a>
 
-                    <div class="hero-buttons">
-                        <a href="admissions.html" class="btn btn-primary">
-                            Apply for Admission
-                        </a>
+            <a href="admissions.html">
+                Admissions
+            </a>
 
-                        <a href="about.html" class="btn btn-outline">
-                            Explore Our Academy
-                        </a>
-                    </div>
-                </div>
+            <a href="student-login.html">
+                Student Login
+            </a>
 
-                <div class="hero-image">
-                    <img src="images/school-building.jpg"
-                         alt="READ & WRITE ACADEMY">
-                </div>
+            <a href="contact.html">
+                Contact
+            </a>
 
-            </div>
-        </section>
+        </nav>
 
+    </div>
 
-        <!-- ==================== QUICK HIGHLIGHTS ==================== -->
+</header>
 
-        <section class="highlights-section">
-            <div class="container">
 
-                <div class="highlight-grid">
+<!-- =========================================================
+     MAIN
+========================================================= -->
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <h3>Pre-Primary School</h3>
-                        <p>
-                            Nursery, Junior KG, Senior KG & Balvatika
-                        </p>
-                    </div>
+<main>
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fa-solid fa-book-open"></i>
-                        </div>
-                        <h3>Classes</h3>
-                        <p>
-                            Nursery to 10th • 11th & 12th
-                        </p>
-                    </div>
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fa-solid fa-language"></i>
-                        </div>
-                        <h3>Medium</h3>
-                        <p>
-                            English & Hindi Medium
-                        </p>
-                    </div>
+<!-- =========================================================
+     HERO SECTION
+========================================================= -->
 
-                    <div class="highlight-card">
-                        <div class="highlight-icon">
-                            <i class="fa-solid fa-calendar-check"></i>
-                        </div>
-                        <h3>Established</h3>
-                        <p>
-                            Since 2014
-                        </p>
-                    </div>
+<section class="hero-section">
 
-                </div>
+    <div class="hero-overlay"></div>
 
-            </div>
-        </section>
+    <div class="container hero-content">
 
+        <div class="hero-text">
 
-        <!-- ==================== ABOUT ACADEMY ==================== -->
+            <span class="hero-badge">
+                LEARN • EXPLORE • GROW
+            </span>
 
-        <section class="about-home section-padding">
+            <h2>
+                Building Strong Foundations.
+                <span>
+                    Creating Bright Futures.
+                </span>
+            </h2>
 
-            <div class="container">
+            <p>
+                Welcome to
+                <strong>READ & WRITE ACADEMY</strong> —
+                Classes & Pre School, where learning is made
+                meaningful, disciplined and result-oriented.
+            </p>
 
-                <div class="section-heading">
-                    <span>ABOUT US</span>
-                    <h2>Welcome to READ & WRITE ACADEMY</h2>
-                    <p>
-                        Classes & Pre School
-                    </p>
-                </div>
+            <div class="hero-buttons">
 
-                <div class="about-grid">
-
-                    <div class="about-image">
-                        <img src="images/students-junior.jpg"
-                             alt="READ & WRITE ACADEMY Students">
-                    </div>
-
-                    <div class="about-content">
-
-                        <span class="small-title">
-                            LEARN • EXPLORE • GROW
-                        </span>
-
-                        <h2>
-                            A Place Where Every Student Can Grow
-                        </h2>
-
-                        <p>
-                            READ & WRITE ACADEMY – CLASSES & PRE SCHOOL
-                            is committed to providing a disciplined,
-                            supportive and child-friendly learning
-                            environment for students.
-                        </p>
-
-                        <p>
-                            Our academic approach focuses on concept
-                            clarity, regular practice, individual
-                            attention and continuous progress.
-                        </p>
-
-                        <div class="about-points">
-
-                            <div>
-                                <i class="fa-solid fa-circle-check"></i>
-                                Concept-Based Learning
-                            </div>
-
-                            <div>
-                                <i class="fa-solid fa-circle-check"></i>
-                                Individual Attention
-                            </div>
-
-                            <div>
-                                <i class="fa-solid fa-circle-check"></i>
-                                Regular Tests & Practice
-                            </div>
-
-                            <div>
-                                <i class="fa-solid fa-circle-check"></i>
-                                Experienced Teachers
-                            </div>
-
-                        </div>
-
-                        <a href="about.html" class="text-button">
-                            Read More About Us
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================== TWO WINGS ==================== -->
-
-        <section class="programs-section section-padding">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span>OUR PROGRAMS</span>
-                    <h2>School & Classes Under One Academy</h2>
-                    <p>
-                        Complete learning support from early education
-                        to higher classes.
-                    </p>
-                </div>
-
-                <div class="program-grid">
-
-                    <!-- PRE PRIMARY -->
-                    <div class="program-card">
-
-                        <div class="program-image">
-                            <img src="images/students-junior.jpg"
-                                 alt="Pre-Primary School">
-                        </div>
-
-                        <div class="program-content">
-
-                            <span class="program-tag">
-                                PRE-PRIMARY SCHOOL
-                            </span>
-
-                            <h3>
-                                READ & WRITE JUNIORS PRE SCHOOL
-                            </h3>
-
-                            <p>
-                                A safe, caring and child-friendly
-                                learning environment designed to build
-                                strong early foundations.
-                            </p>
-
-                            <div class="program-classes">
-                                <span>Nursery</span>
-                                <span>Junior KG</span>
-                                <span>Senior KG</span>
-                                <span>Balvatika</span>
-                            </div>
-
-                            <a href="classes.html"
-                               class="card-button">
-                                Explore School
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- TUITION CLASSES -->
-                    <div class="program-card">
-
-                        <div class="program-image">
-                            <img src="images/students-senior.jpg"
-                                 alt="READ & WRITE Classes">
-                        </div>
-
-                        <div class="program-content">
-
-                            <span class="program-tag">
-                                ACADEMIC CLASSES
-                            </span>
-
-                            <h3>
-                                READ & WRITE CLASSES
-                            </h3>
-
-                            <p>
-                                Structured academic support with
-                                regular practice, tests, revision and
-                                individual attention.
-                            </p>
-
-                            <div class="program-classes">
-                                <span>Nursery – 10th</span>
-                                <span>11th Commerce</span>
-                                <span>11th Science</span>
-                                <span>12th Commerce</span>
-                                <span>12th Science</span>
-                            </div>
-
-                            <a href="classes.html"
-                               class="card-button">
-                                View Classes
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================== WHY CHOOSE US ==================== -->
-
-        <section class="why-section section-padding">
-
-            <div class="container">
-
-                <div class="section-heading light-heading">
-                    <span>WHY CHOOSE US</span>
-                    <h2>Learning With Focus. Progress With Purpose.</h2>
-                    <p>
-                        We believe that consistent practice,
-                        concept clarity and personal attention create
-                        better academic results.
-                    </p>
-                </div>
-
-                <div class="features-grid">
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-user-graduate"></i>
-                        <h3>Individual Attention</h3>
-                        <p>
-                            Focused attention to understand every
-                            student's learning needs.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-chalkboard-user"></i>
-                        <h3>Smart Teaching</h3>
-                        <p>
-                            Smart TV assisted teaching with
-                            concept-based learning.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-pen-to-square"></i>
-                        <h3>Regular Tests</h3>
-                        <p>
-                            Weekly and monthly tests for continuous
-                            academic evaluation.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h3>Progress Monitoring</h3>
-                        <p>
-                            Regular monitoring and parent updates
-                            for better improvement.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-person-chalkboard"></i>
-                        <h3>Experienced Teachers</h3>
-                        <p>
-                            Dedicated teachers focused on student
-                            understanding and progress.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <h3>Concept Clarity</h3>
-                        <p>
-                            Strong fundamentals through explanation,
-                            practice and revision.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================== ACADEMIC FEATURES ==================== -->
-
-        <section class="academic-section section-padding">
-
-            <div class="container">
-
-                <div class="two-column-section">
-
-                    <div class="academic-content">
-
-                        <span class="small-title">
-                            ACADEMIC EXCELLENCE
-                        </span>
-
-                        <h2>
-                            Designed for Better Learning & Better Results
-                        </h2>
-
-                        <p>
-                            Our academic system combines regular
-                            classroom learning with practice, testing,
-                            revision and personal support.
-                        </p>
-
-                        <ul class="academic-list">
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Regular Weekly Tests
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Monthly Tests
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Exam & Board Preparation
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Doubt Clearing Sessions
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Extra Support for Weak Students
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Maths & English Special Support
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Reading & Writing Improvement
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Handwriting Improvement
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Regular Worksheets & Homework
-                            </li>
-
-                            <li>
-                                <i class="fa-solid fa-check"></i>
-                                Revision Before Examinations
-                            </li>
-
-                        </ul>
-
-                        <a href="facilities.html"
-                           class="btn btn-primary">
-                            View Academic Features
-                        </a>
-
-                    </div>
-
-                    <div class="academic-image">
-
-                        <img src="images/school-building.jpg"
-                             alt="Academic Environment">
-
-                        <div class="experience-box">
-                            <strong>2014</strong>
-                            <span>
-                                Building a Journey of Learning
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================== FACILITIES PREVIEW ==================== -->
-
-        <section class="facilities-home section-padding">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span>OUR FACILITIES</span>
-                    <h2>A Comfortable & Disciplined Learning Environment</h2>
-                    <p>
-                        Facilities designed to support effective
-                        teaching and student development.
-                    </p>
-                </div>
-
-                <div class="facility-grid">
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-snowflake"></i>
-                        <h3>Fully AC Classrooms</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-tv"></i>
-                        <h3>Smart TV Teaching</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-video"></i>
-                        <h3>CCTV Surveillance</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-glass-water"></i>
-                        <h3>RO Drinking Water</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-child"></i>
-                        <h3>Child-Friendly Environment</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-people-group"></i>
-                        <h3>Personal Attention</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-file-pen"></i>
-                        <h3>Regular Worksheets</h3>
-                    </div>
-
-                    <div class="facility-item">
-                        <i class="fa-solid fa-comments"></i>
-                        <h3>Parent Communication</h3>
-                    </div>
-
-                </div>
-
-                <div class="center-button">
-                    <a href="facilities.html"
-                       class="btn btn-primary">
-                        View All Facilities
-                    </a>
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ==================== COMMERCE & SCIENCE ==================== -->
-
-        <section class="streams-section section-padding">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span>11th & 12th</span>
-                    <h2>Commerce & Science Stream Support</h2>
-                    <p>
-                        Focused academic support for senior secondary
-                        students.
-                    </p>
-                </div>
-
-                <div class="stream-grid">
-
-                    <div class="stream-card commerce-card">
-
-                        <div class="stream-icon">
-                            <i class="fa-solid fa-calculator"></i>
-                        </div>
-
-                        <h3>Commerce</h3>
-
-                        <p>
-                            Academic support for applicable Commerce
-                            subjects with regular practice and exam
-                            preparation.
-                                         <div class="subject-tags">
-                        <span>Accountancy</span>
-                        <span>Statistics</span>
-                        <span>Economics</span>
-                        <span>BA</span>
-                        <span>OC</span>
-                        <span>SP</span>
-                        <span>SPCC</span>
-                        <span>English</span>
-                    </div>
-
-                </div>
-
-
-                <!-- SCIENCE STREAM -->
-
-                <div class="stream-card science-card">
-
-                    <div class="stream-icon">
-                        <i class="fa-solid fa-flask"></i>
-                    </div>
-
-                    <h3>Science</h3>
-
-                    <p>
-                        Academic support for applicable Science
-                        subjects according to the student's school
-                        and board curriculum.
-                    </p>
-
-                    <div class="subject-tags">
-                        <span>Subject Support</span>
-                        <span>Concept Clarity</span>
-                        <span>Regular Practice</span>
-                        <span>Test Preparation</span>
-                        <span>Revision</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="center-button">
-                <a href="classes.html" class="btn btn-primary">
-                    View Complete Classes
-                </a>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ==================== ACADEMIC LEADERSHIP ==================== -->
-
-    <section class="leadership-section section-padding">
-
-        <div class="container">
-
-            <div class="section-heading">
-                <span>ACADEMIC LEADERSHIP</span>
-
-                <h2>
-                    Guided By Experience & Commitment
-                </h2>
-            </div>
-
-
-            <div class="leader-card">
-
-                <div class="leader-image">
-                    <img src="images/manish.jpg"
-                         alt="Manish Sir">
-                </div>
-
-                <div class="leader-content">
-
-                    <span class="leader-label">
-                        FOUNDER & PRINCIPAL
-                    </span>
-
-                    <h2>
-                        Manish Sir
-                    </h2>
-
-                    <h4>
-                        M.Com • B.Ed.
-                    </h4>
-
-                    <p class="leader-subject">
-                        Subject:
-                        <strong>
-                            ECO / OC / SPCC
-                        </strong>
-                    </p>
-
-                    <p>
-                        Dedicated to creating a disciplined,
-                        supportive and result-oriented academic
-                        environment for students.
-                    </p>
-
-                    <div class="leader-experience">
-                        <strong>11+</strong>
-                        <span>Years Experience</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="center-button">
-
-                <a href="teachers.html"
+                <a href="admissions.html"
                    class="btn btn-primary">
 
-                    Meet Our Teachers
+                    Apply for Admission
+
+                </a>
+
+                <a href="about.html"
+                   class="btn btn-outline">
+
+                    Explore Our Academy
 
                 </a>
 
@@ -1948,9 +2149,953 @@ footer{
 
         </div>
 
-    </section>
 
-<!-- ==================== ANSH SIR | FACULTY & WEB DEVELOPER ==================== -->
+        <div class="hero-image">
+
+            <img src="images/school-building.jpg"
+                 alt="READ & WRITE ACADEMY">
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUICK HIGHLIGHTS
+========================================================= -->
+
+<section class="highlights-section">
+
+    <div class="container">
+
+        <div class="highlight-grid">
+
+
+            <div class="highlight-card">
+
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+
+                <h3>
+                    Pre-Primary School
+                </h3>
+
+                <p>
+                    Nursery, Junior KG, Senior KG & Balvatika
+                </p>
+
+            </div>
+
+
+            <div class="highlight-card">
+
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h3>
+                    Classes
+                </h3>
+
+                <p>
+                    Nursery to 10th • 11th & 12th
+                </p>
+
+            </div>
+
+
+            <div class="highlight-card">
+
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+
+                <h3>
+                    Medium
+                </h3>
+
+                <p>
+                    English & Hindi Medium
+                </p>
+
+            </div>
+
+
+            <div class="highlight-card">
+
+                <div class="highlight-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <h3>
+                    Established
+                </h3>
+
+                <p>
+                    Since 2014
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ABOUT ACADEMY
+========================================================= -->
+
+<section class="about-home section-padding">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                ABOUT US
+            </span>
+
+            <h2>
+                Welcome to READ & WRITE ACADEMY
+            </h2>
+
+            <p>
+                Classes & Pre School
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="about-image">
+
+                <img src="images/students-junior.jpg"
+                     alt="READ & WRITE ACADEMY Students">
+
+            </div>
+
+
+            <div class="about-content">
+
+                <span class="small-title">
+                    LEARN • EXPLORE • GROW
+                </span>
+
+                <h2>
+                    A Place Where Every Student Can Grow
+                </h2>
+
+                <p>
+                    READ & WRITE ACADEMY – CLASSES & PRE SCHOOL
+                    is committed to providing a disciplined,
+                    supportive and child-friendly learning
+                    environment for students.
+                </p>
+
+                <p>
+                    Our academic approach focuses on concept
+                    clarity, regular practice, individual
+                    attention and continuous progress.
+                </p>
+
+
+                <div class="about-points">
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Concept-Based Learning
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Individual Attention
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Regular Tests & Practice
+                    </div>
+
+                    <div>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Experienced Teachers
+                    </div>
+
+                </div>
+
+
+                <a href="about.html"
+                   class="text-button">
+
+                    Read More About Us
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     TWO WINGS / PROGRAMS
+========================================================= -->
+
+<section class="programs-section section-padding">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                OUR PROGRAMS
+            </span>
+
+            <h2>
+                School & Classes Under One Academy
+            </h2>
+
+            <p>
+                Complete learning support from early education
+                to higher classes.
+            </p>
+
+        </div>
+
+
+        <div class="program-grid">
+
+
+            <!-- PRE PRIMARY -->
+
+            <div class="program-card">
+
+                <div class="program-image">
+
+                    <img src="images/students-junior.jpg"
+                         alt="Pre-Primary School">
+
+                </div>
+
+                <div class="program-content">
+
+                    <span class="program-tag">
+                        PRE-PRIMARY SCHOOL
+                    </span>
+
+                    <h3>
+                        READ & WRITE JUNIORS PRE SCHOOL
+                    </h3>
+
+                    <p>
+                        A safe, caring and child-friendly
+                        learning environment designed to build
+                        strong early foundations.
+                    </p>
+
+
+                    <div class="program-classes">
+
+                        <span>Nursery</span>
+                        <span>Junior KG</span>
+                        <span>Senior KG</span>
+                        <span>Balvatika</span>
+
+                    </div>
+
+
+                    <a href="classes.html"
+                       class="card-button">
+
+                        Explore School
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- TUITION CLASSES -->
+
+            <div class="program-card">
+
+                <div class="program-image">
+
+                    <img src="images/students-senior.jpg"
+                         alt="READ & WRITE Classes">
+
+                </div>
+
+                <div class="program-content">
+
+                    <span class="program-tag">
+                        ACADEMIC CLASSES
+                    </span>
+
+                    <h3>
+                        READ & WRITE CLASSES
+                    </h3>
+
+                    <p>
+                        Structured academic support with
+                        regular practice, tests, revision and
+                        individual attention.
+                    </p>
+
+
+                    <div class="program-classes">
+
+                        <span>Nursery – 10th</span>
+                        <span>11th Commerce</span>
+                        <span>11th Science</span>
+                        <span>12th Commerce</span>
+                        <span>12th Science</span>
+
+                    </div>
+
+
+                    <a href="classes.html"
+                       class="card-button">
+
+                        View Classes
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     WHY CHOOSE US
+========================================================= -->
+
+<section class="why-section section-padding">
+
+    <div class="container">
+
+        <div class="section-heading light-heading">
+
+            <span>
+                WHY CHOOSE US
+            </span>
+
+            <h2>
+                Learning With Focus. Progress With Purpose.
+            </h2>
+
+            <p>
+                We believe that consistent practice,
+                concept clarity and personal attention create
+                better academic results.
+            </p>
+
+        </div>
+
+
+        <div class="features-grid">
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-user-graduate"></i>
+
+                <h3>
+                    Individual Attention
+                </h3>
+
+                <p>
+                    Focused attention to understand every
+                    student's learning needs.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chalkboard-user"></i>
+
+                <h3>
+                    Smart Teaching
+                </h3>
+
+                <p>
+                    Smart TV assisted teaching with
+                    concept-based learning.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                <h3>
+                    Regular Tests
+                </h3>
+
+                <p>
+                    Weekly and monthly tests for continuous
+                    academic evaluation.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <h3>
+                    Progress Monitoring
+                </h3>
+
+                <p>
+                    Regular monitoring and parent updates
+                    for better improvement.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-person-chalkboard"></i>
+
+                <h3>
+                    Experienced Teachers
+                </h3>
+
+                <p>
+                    Dedicated teachers focused on student
+                    understanding and progress.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <h3>
+                    Concept Clarity
+                </h3>
+
+                <p>
+                    Strong fundamentals through explanation,
+                    practice and revision.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ACADEMIC FEATURES
+========================================================= -->
+
+<section class="academic-section section-padding">
+
+    <div class="container">
+
+        <div class="two-column-section">
+
+
+            <div class="academic-content">
+
+                <span class="small-title">
+                    ACADEMIC EXCELLENCE
+                </span>
+
+                <h2>
+                    Designed for Better Learning & Better Results
+                </h2>
+
+                <p>
+                    Our academic system combines regular
+                    classroom learning with practice, testing,
+                    revision and personal support.
+                </p>
+
+
+                <ul class="academic-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Regular Weekly Tests
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Monthly Tests
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Exam & Board Preparation
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Doubt Clearing Sessions
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Extra Support for Weak Students
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Maths & English Special Support
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Reading & Writing Improvement
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Handwriting Improvement
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Regular Worksheets & Homework
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Revision Before Examinations
+                    </li>
+
+                </ul>
+
+
+                <a href="facilities.html"
+                   class="btn btn-primary">
+
+                    View Academic Features
+
+                </a>
+
+            </div>
+
+
+            <div class="academic-image">
+
+                <img src="images/school-building.jpg"
+                     alt="Academic Environment">
+
+                <div class="experience-box">
+
+                    <strong>
+                        2014
+                    </strong>
+
+                    <span>
+                        Building a Journey of Learning
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FACILITIES PREVIEW
+========================================================= -->
+
+<section class="facilities-home section-padding">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                OUR FACILITIES
+            </span>
+
+            <h2>
+                A Comfortable & Disciplined Learning Environment
+            </h2>
+
+            <p>
+                Facilities designed to support effective
+                teaching and student development.
+            </p>
+
+        </div>
+
+
+        <div class="facility-grid">
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-snowflake"></i>
+
+                <h3>
+                    Fully AC Classrooms
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-tv"></i>
+
+                <h3>
+                    Smart TV Teaching
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-video"></i>
+
+                <h3>
+                    CCTV Surveillance
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-glass-water"></i>
+
+                <h3>
+                    RO Drinking Water
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-child"></i>
+
+                <h3>
+                    Child-Friendly Environment
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-people-group"></i>
+
+                <h3>
+                    Personal Attention
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-file-pen"></i>
+
+                <h3>
+                    Regular Worksheets
+                </h3>
+
+            </div>
+
+
+            <div class="facility-item">
+
+                <i class="fa-solid fa-comments"></i>
+
+                <h3>
+                    Parent Communication
+                </h3>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="center-button">
+
+            <a href="facilities.html"
+               class="btn btn-primary">
+
+                View All Facilities
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMMERCE & SCIENCE
+========================================================= -->
+
+<section class="streams-section section-padding">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                11th & 12th
+            </span>
+
+            <h2>
+                Commerce & Science Stream Support
+            </h2>
+
+            <p>
+                Focused academic support for senior secondary
+                students.
+            </p>
+
+        </div>
+
+
+        <div class="stream-grid">
+
+
+            <!-- COMMERCE STREAM -->
+
+            <div class="stream-card commerce-card">
+
+                <div class="stream-icon">
+
+                    <i class="fa-solid fa-calculator"></i>
+
+                </div>
+
+                <h3>
+                    Commerce
+                </h3>
+
+                <p>
+                    Academic support for applicable Commerce
+                    subjects with regular practice and exam
+                    preparation.
+                </p>
+
+
+                <div class="subject-tags">
+
+                    <span>Accountancy</span>
+                    <span>Statistics</span>
+                    <span>Economics</span>
+                    <span>BA</span>
+                    <span>OC</span>
+                    <span>SP</span>
+                    <span>SPCC</span>
+                    <span>English</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCIENCE STREAM -->
+
+            <div class="stream-card science-card">
+
+                <div class="stream-icon">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                </div>
+
+                <h3>
+                    Science
+                </h3>
+
+                <p>
+                    Academic support for applicable Science
+                    subjects according to the student's school
+                    and board curriculum.
+                </p>
+
+
+                <div class="subject-tags">
+
+                    <span>Subject Support</span>
+                    <span>Concept Clarity</span>
+                    <span>Regular Practice</span>
+                    <span>Test Preparation</span>
+                    <span>Revision</span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="center-button">
+
+            <a href="classes.html"
+               class="btn btn-primary">
+
+                View Complete Classes
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ACADEMIC LEADERSHIP
+========================================================= -->
+
+<section class="leadership-section section-padding">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span>
+                ACADEMIC LEADERSHIP
+            </span>
+
+            <h2>
+                Guided By Experience & Commitment
+            </h2>
+
+        </div>
+
+
+        <div class="leader-card">
+
+
+            <div class="leader-image">
+
+                <img src="images/manish.jpg"
+                     alt="Manish Sir">
+
+            </div>
+
+
+            <div class="leader-content">
+
+                <span class="leader-label">
+                    FOUNDER & PRINCIPAL
+                </span>
+
+                <h2>
+                    Manish Sir
+                </h2>
+
+                <h4>
+                    M.Com • B.Ed.
+                </h4>
+
+                <p class="leader-subject">
+                    Subject:
+                    <strong>
+                        ECO / OC / SPCC
+                    </strong>
+                </p>
+
+                <p>
+                    Dedicated to creating a disciplined,
+                    supportive and result-oriented academic
+                    environment for students.
+                </p>
+
+
+                <div class="leader-experience">
+
+                    <strong>
+                        11+
+                    </strong>
+
+                    <span>
+                        Years Experience
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="center-button">
+
+            <a href="teachers.html"
+               class="btn btn-primary">
+
+                Meet Our Teachers
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ANSH SIR | FACULTY & WEB DEVELOPER
+========================================================= -->
 
 <section class="ansh-profile-section">
 
@@ -1958,7 +3103,9 @@ footer{
 
         <div class="ansh-profile-card">
 
+
             <!-- ANSH PHOTO -->
+
             <div class="ansh-profile-image">
 
                 <div class="ansh-image-frame">
@@ -1968,15 +3115,22 @@ footer{
 
                 </div>
 
+
                 <div class="ansh-photo-badge">
+
                     <i class="fa-solid fa-chalkboard-user"></i>
-                    <span>FACULTY MEMBER</span>
+
+                    <span>
+                        FACULTY MEMBER
+                    </span>
+
                 </div>
 
             </div>
 
 
             <!-- ANSH INFORMATION -->
+
             <div class="ansh-profile-content">
 
                 <span class="ansh-small-label">
@@ -1991,6 +3145,7 @@ footer{
                     Mathematics &amp; Science Faculty
                 </h3>
 
+
                 <div class="ansh-divider"></div>
 
 
@@ -1998,13 +3153,16 @@ footer{
 
                 <div class="ansh-details">
 
+
                     <div class="ansh-detail-item">
 
                         <i class="fa-solid fa-book-open"></i>
 
                         <div>
 
-                            <span>SUBJECTS</span>
+                            <span>
+                                SUBJECTS
+                            </span>
 
                             <strong>
                                 Mathematics &amp; Science
@@ -2021,7 +3179,9 @@ footer{
 
                         <div>
 
-                            <span>CLASSES</span>
+                            <span>
+                                CLASSES
+                            </span>
 
                             <strong>
                                 7th to 10th
@@ -2030,6 +3190,7 @@ footer{
                         </div>
 
                     </div>
+
 
                 </div>
 
@@ -2053,6 +3214,7 @@ footer{
 
                     </div>
 
+
                     <div>
 
                         <span>
@@ -2064,7 +3226,9 @@ footer{
                             Along with teaching Mathematics and Science,
                             Ansh Sir has designed and developed the
                             official website of
-                            <strong>READ &amp; WRITE ACADEMY</strong>.
+                            <strong>
+                                READ &amp; WRITE ACADEMY
+                            </strong>.
 
                         </p>
 
@@ -2107,585 +3271,47 @@ footer{
 </section>
 
 
-<style>
+<!-- =========================================================
+     STUDENT ACHIEVEMENTS
+========================================================= -->
 
-/* ==================== ANSH PROFILE ==================== */
+<section class="achievement-section section-padding">
 
-.ansh-profile-section {
-    padding: 70px 20px;
-    background: #f6f8fc;
-}
+    <div class="container">
 
-.ansh-profile-card {
-    max-width: 1100px;
-    margin: auto;
+        <div class="achievement-grid">
 
-    display: flex;
-    align-items: center;
 
-    gap: 45px;
+            <div class="achievement-image">
 
-    background: #ffffff;
-
-    padding: 40px;
-
-    border-radius: 26px;
-
-    box-shadow: 0 18px 50px rgba(0,0,0,0.09);
-
-    border: 1px solid #e8edf5;
-}
-
-
-/* ==================== PHOTO ==================== */
-
-.ansh-profile-image {
-
-    width: 270px;
-
-    min-width: 270px;
-
-    text-align: center;
-}
-
-.ansh-image-frame {
-
-    width: 220px;
-    height: 270px;
-
-    margin: auto;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-
-    background: #eef2f8;
-
-    box-shadow: 0 12px 30px rgba(0,0,0,0.14);
-}
-
-.ansh-image-frame img {
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    display: block;
-}
-
-
-/* PHOTO LABEL */
-
-.ansh-photo-badge {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    margin-top: -16px;
-
-    position: relative;
-
-    padding: 9px 16px;
-
-    border-radius: 30px;
-
-    background: #174ea6;
-
-    color: #ffffff;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 1px;
-}
-
-
-/* ==================== CONTENT ==================== */
-
-.ansh-profile-content {
-
-    flex: 1;
-}
-
-.ansh-small-label {
-
-    display: inline-block;
-
-    color: #174ea6;
-
-    font-size: 12px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 7px;
-}
-
-.ansh-profile-content h2 {
-
-    margin: 0;
-
-    font-size: 38px;
-
-    line-height: 1.1;
-
-    color: #17213c;
-}
-
-.ansh-profile-content h3 {
-
-    margin: 9px 0 0;
-
-    font-size: 19px;
-
-    font-weight: 600;
-
-    color: #e53935;
-}
-
-
-/* DIVIDER */
-
-.ansh-divider {
-
-    width: 60px;
-
-    height: 4px;
-
-    margin: 18px 0;
-
-    border-radius: 10px;
-
-    background: #174ea6;
-}
-
-
-/* ==================== DETAILS ==================== */
-
-.ansh-details {
-
-    display: flex;
-
-    gap: 25px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 18px;
-}
-
-.ansh-detail-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-}
-
-.ansh-detail-item i {
-
-    width: 40px;
-
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 11px;
-
-    background: #eef4ff;
-
-    color: #174ea6;
-}
-
-.ansh-detail-item span {
-
-    display: block;
-
-    font-size: 9px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    color: #7b8495;
-}
-
-.ansh-detail-item strong {
-
-    display: block;
-
-    margin-top: 3px;
-
-    color: #252d3d;
-
-    font-size: 14px;
-}
-
-
-/* ==================== DESCRIPTION ==================== */
-
-.ansh-description {
-
-    color: #5c6575;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
-
-    max-width: 700px;
-}
-
-
-/* ==================== PROFESSIONAL ROLE ==================== */
-
-.ansh-professional-role {
-
-    display: flex;
-
-    gap: 14px;
-
-    padding: 16px;
-
-    border-radius: 15px;
-
-    background: #f4f7fc;
-
-    border-left: 4px solid #174ea6;
-
-    margin-bottom: 22px;
-}
-
-.role-icon {
-
-    width: 42px;
-
-    height: 42px;
-
-    min-width: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 11px;
-
-    background: #174ea6;
-
-    color: #ffffff;
-}
-
-.ansh-professional-role span {
-
-    font-size: 11px;
-
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    color: #174ea6;
-}
-
-.ansh-professional-role p {
-
-    margin: 5px 0 0;
-
-    color: #5c6575;
-
-    line-height: 1.6;
-
-    font-size: 14px;
-}
-
-
-/* ==================== BUTTONS ==================== */
-
-.ansh-buttons {
-
-    display: flex;
-
-    gap: 11px;
-
-    flex-wrap: wrap;
-}
-
-.ansh-primary-btn,
-.ansh-secondary-btn {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 12px 18px;
-
-    border-radius: 9px;
-
-    text-decoration: none;
-
-    font-weight: 700;
-
-    font-size: 14px;
-
-    transition: 0.3s ease;
-}
-
-.ansh-primary-btn {
-
-    background: #174ea6;
-
-    color: #ffffff;
-}
-
-.ansh-secondary-btn {
-
-    background: #eef2f8;
-
-    color: #17213c;
-}
-
-.ansh-primary-btn:hover,
-.ansh-secondary-btn:hover {
-
-    transform: translateY(-2px);
-}
-
-
-/* ==================== MOBILE ==================== */
-
-@media (max-width: 800px) {
-
-    .ansh-profile-card {
-
-        flex-direction: column;
-
-        text-align: center;
-
-        padding: 30px 20px;
-
-    }
-
-    .ansh-profile-image {
-
-        width: 100%;
-
-        min-width: 0;
-
-    }
-
-    .ansh-profile-content {
-
-        width: 100%;
-
-    }
-
-    .ansh-divider {
-
-        margin: 18px auto;
-
-    }
-
-    .ansh-details {
-
-        justify-content: center;
-
-    }
-
-    .ansh-professional-role {
-
-        text-align: left;
-
-    }
-
-    .ansh-buttons {
-
-        justify-content: center;
-
-    }
-
-}
-
-
-/* SMALL MOBILE */
-
-@media (max-width: 500px) {
-
-    .ansh-image-frame {
-
-        width: 190px;
-
-        height: 235px;
-
-    }
-
-    .ansh-profile-content h2 {
-
-        font-size: 32px;
-
-    }
-
-}
-
-    </style>
-        
-    <!-- ==================== STUDENT ACHIEVEMENTS ==================== -->
-
-    <section class="achievement-section section-padding">
-
-        <div class="container">
-
-            <div class="achievement-grid">
-
-                <div class="achievement-image">
-
-                    <img src="images/topper-students.jpg"
-                         alt="Topper Students">
-
-                </div>
-
-
-                <div class="achievement-content">
-
-                    <span class="small-title">
-                        STUDENT ACHIEVEMENTS
-                    </span>
-
-                    <h2>
-                        Celebrating Hard Work & Success
-                    </h2>
-
-                    <p>
-                        We are proud of our students and their
-                        academic achievements. Their dedication,
-                        consistent practice and hard work inspire
-                        us to keep improving every day.
-                    </p>
-
-                    <a href="gallery.html"
-                       class="btn btn-primary">
-
-                        View Student Achievements
-
-                    </a>
-
-                </div>
+                <img src="images/topper-students.jpg"
+                     alt="Topper Students">
 
             </div>
 
-        </div>
 
-    </section>
+            <div class="achievement-content">
 
-
-    <!-- ==================== EVENTS & ACTIVITIES ==================== -->
-
-    <section class="events-section section-padding">
-
-        <div class="container">
-
-            <div class="section-heading">
-
-                <span>
-                    MEMORIES & ACTIVITIES
+                <span class="small-title">
+                    STUDENT ACHIEVEMENTS
                 </span>
 
                 <h2>
-                    Our Events & Activities
+                    Celebrating Hard Work & Success
                 </h2>
 
                 <p>
-                    A glimpse of learning, celebrations,
-                    activities and memorable moments.
+                    We are proud of our students and their
+                    academic achievements. Their dedication,
+                    consistent practice and hard work inspire
+                    us to keep improving every day.
                 </p>
 
-            </div>
-
-
-            <div class="event-preview-grid">
-
-                <div class="event-preview-card">
-
-                    <img src="images/annual-event.jpg"
-                         alt="Annual Event">
-
-                    <div>
-
-                        <h3>
-                            Annual Events
-                        </h3>
-
-                        <p>
-                            Celebrations and memorable moments
-                            from our academy.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="event-preview-card">
-
-                    <img src="images/activity-art-craft.jpg"
-                         alt="Art and Craft Activity">
-
-                    <div>
-
-                        <h3>
-                            Art & Craft
-                        </h3>
-
-                        <p>
-                            Creative activities encouraging
-                            imagination and expression.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="event-preview-card">
-
-                    <img src="images/activity-sports.jpg"
-                         alt="Sports Activity">
-
-                    <div>
-
-                        <h3>
-                            Sports & Activities
-                        </h3>
-
-                        <p>
-                            Activities that encourage confidence,
-                            teamwork and participation.
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="center-button">
 
                 <a href="gallery.html"
                    class="btn btn-primary">
 
-                    Open Full Gallery
+                    View Student Achievements
 
                 </a>
 
@@ -2693,109 +3319,232 @@ footer{
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ==================== STUDENT LOGIN ==================== -->
+<!-- =========================================================
+     EVENTS & ACTIVITIES
+========================================================= -->
 
-    <section class="login-home section-padding">
+<section class="events-section section-padding">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="login-banner">
+        <div class="section-heading">
 
-                <div class="login-banner-content">
+            <span>
+                MEMORIES & ACTIVITIES
+            </span>
 
-                    <span>
-                        STUDENT PORTAL
-                    </span>
+            <h2>
+                Our Events & Activities
+            </h2>
 
-                    <h2>
-                        Everything Your Academic Journey Needs
-                    </h2>
+            <p>
+                A glimpse of learning, celebrations,
+                activities and memorable moments.
+            </p>
+
+        </div>
+
+
+        <div class="event-preview-grid">
+
+
+            <div class="event-preview-card">
+
+                <img src="images/annual-event.jpg"
+                     alt="Annual Event">
+
+                <div>
+
+                    <h3>
+                        Annual Events
+                    </h3>
 
                     <p>
-                        Access your profile, attendance,
-                        timetable, homework, study material,
-                        test results and progress information.
+                        Celebrations and memorable moments
+                        from our academy.
                     </p>
-
-                    <a href="student-login.html"
-                       class="btn btn-light">
-
-                        Student Login
-
-                        <i class="fa-solid fa-arrow-right"></i>
-
-                    </a>
-
-                </div>
-
-
-                <div class="login-icon">
-
-                    <i class="fa-solid fa-user-graduate"></i>
 
                 </div>
 
             </div>
 
+
+            <div class="event-preview-card">
+
+                <img src="images/activity-art-craft.jpg"
+                     alt="Art and Craft Activity">
+
+                <div>
+
+                    <h3>
+                        Art & Craft
+                    </h3>
+
+                    <p>
+                        Creative activities encouraging
+                        imagination and expression.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="event-preview-card">
+
+                <img src="images/activity-sports.jpg"
+                     alt="Sports Activity">
+
+                <div>
+
+                    <h3>
+                        Sports & Activities
+                    </h3>
+
+                    <p>
+                        Activities that encourage confidence,
+                        teamwork and participation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
         </div>
 
-    </section>
+
+        <div class="center-button">
+
+            <a href="gallery.html"
+               class="btn btn-primary">
+
+                Open Full Gallery
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- ==================== ADMISSION CTA ==================== -->
+<!-- =========================================================
+     STUDENT LOGIN
+========================================================= -->
 
-    <section class="admission-cta">
+<section class="login-home section-padding">
 
-        <div class="container">
+    <div class="container">
 
-            <div class="cta-content">
+        <div class="login-banner">
+
+
+            <div class="login-banner-content">
 
                 <span>
-                    ADMISSIONS OPEN
+                    STUDENT PORTAL
                 </span>
 
                 <h2>
-                    Give Your Child a Stronger
-                    Learning Foundation
+                    Everything Your Academic Journey Needs
                 </h2>
 
                 <p>
-                    Enquire today for admission and course details.
+                    Access your profile, attendance,
+                    timetable, homework, study material,
+                    test results and progress information.
                 </p>
 
 
-                <div class="cta-buttons">
+                <a href="student-login.html"
+                   class="btn btn-light">
 
-                    <a href="admissions.html"
-                       class="btn btn-light">
+                    Student Login
 
-                        Admission Details
+                    <i class="fa-solid fa-arrow-right"></i>
 
-                    </a>
+                </a>
+
+            </div>
 
 
-                    <a href="contact.html"
-                       class="btn btn-outline-light">
+            <div class="login-icon">
 
-                        Contact Us
+                <i class="fa-solid fa-user-graduate"></i>
 
-                    </a>
+            </div>
 
-                </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     ADMISSION CTA
+========================================================= -->
+
+<section class="admission-cta">
+
+    <div class="container">
+
+        <div class="cta-content">
+
+            <span>
+                ADMISSIONS OPEN
+            </span>
+
+            <h2>
+                Give Your Child a Stronger
+                Learning Foundation
+            </h2>
+
+            <p>
+                Enquire today for admission and course details.
+            </p>
+
+
+            <div class="cta-buttons">
+
+                <a href="admissions.html"
+                   class="btn btn-light">
+
+                    Admission Details
+
+                </a>
+
+
+                <a href="contact.html"
+                   class="btn btn-outline-light">
+
+                    Contact Us
+
+                </a>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
 
 </main>
 
 
-<!-- ==================== FOOTER ==================== -->
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer class="footer">
 
@@ -2910,29 +3659,48 @@ footer{
                     Contact Us
                 </h3>
 
+
                 <p>
                     <i class="fa-solid fa-envelope"></i>
-                    readwritec@gmail.com
+
+                    <span>
+                        readwritec@gmail.com
+                    </span>
                 </p>
+
 
                 <p>
                     <i class="fa-solid fa-phone"></i>
-                    95370 81242
+
+                    <span>
+                        95370 81242
+                    </span>
                 </p>
+
 
                 <p>
                     <i class="fa-solid fa-phone"></i>
-                    79847 86053
+
+                    <span>
+                        79847 86053
+                    </span>
                 </p>
 
+
                 <p>
+
                     <i class="fa-solid fa-location-dot"></i>
-                    9, Shivaji Park-2,
-                    Navagam-Dindoli Road,
-                    Navagam, Surat - 394210
+
+                    <span>
+                        9, Shivaji Park-2,
+                        Navagam-Dindoli Road,
+                        Navagam, Surat - 394210
+                    </span>
+
                 </p>
 
             </div>
+
 
         </div>
 
@@ -2943,6 +3711,7 @@ footer{
                 © 2026 READ & WRITE ACADEMY.
                 All Rights Reserved.
             </p>
+
 
             <div class="footer-bottom-links">
 
@@ -2963,7 +3732,9 @@ footer{
 </footer>
 
 
-<!-- ==================== BACK TO TOP ==================== -->
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
 
 <button id="backToTop"
         class="back-to-top"
@@ -2974,65 +3745,78 @@ footer{
 </button>
 
 
-<!-- ==================== JAVASCRIPT ==================== -->
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script>
 
-    function toggleMenu() {
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-        const navLinks =
-            document.getElementById("navLinks");
+function toggleMenu(){
 
-        navLinks.classList.toggle("show");
+    const navLinks =
+        document.getElementById("navLinks");
+
+    navLinks.classList.toggle("show");
+
+}
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICK
+========================================================= */
+
+document
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link){
+
+        link.addEventListener("click",function(){
+
+            document
+                .getElementById("navLinks")
+                .classList.remove("show");
+
+        });
+
+    });
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backToTop =
+    document.getElementById("backToTop");
+
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY > 400){
+
+        backToTop.classList.add("show");
+
+    }else{
+
+        backToTop.classList.remove("show");
 
     }
 
-
-    document
-        .querySelectorAll(".nav-links a")
-        .forEach(function(link) {
-
-            link.addEventListener("click", function() {
-
-                document
-                    .getElementById("navLinks")
-                    .classList.remove("show");
-
-            });
-
-        });
+});
 
 
-    const backToTop =
-        document.getElementById("backToTop");
+backToTop.addEventListener("click",function(){
 
+    window.scrollTo({
 
-    window.addEventListener("scroll", function() {
-
-        if (window.scrollY > 400) {
-
-            backToTop.classList.add("show");
-
-        } else {
-
-            backToTop.classList.remove("show");
-
-        }
+        top:0,
+        behavior:"smooth"
 
     });
 
-
-    backToTop.addEventListener("click", function() {
-
-        window.scrollTo({
-
-            top: 0,
-            behavior: "smooth"
-
-        });
-
-    });
-
+});
 
 </script>
 
