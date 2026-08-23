@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,9 +35,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     --yellow:#f8c928;
     --white:#ffffff;
     --text:#202020;
-    --muted:#666666;
-    --border:#e6ebf3;
-
+    --muted:#666;
     --shadow:0 10px 35px rgba(0,0,0,.10);
     --radius:18px;
 }
@@ -54,16 +52,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     scroll-behavior:smooth;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Poppins',sans-serif;
     color:var(--text);
-    background:#ffffff;
+    background:#fff;
     line-height:1.7;
-    overflow-x:hidden;
 }
 
 a{
@@ -74,10 +67,6 @@ a{
 img{
     max-width:100%;
     display:block;
-}
-
-button{
-    font-family:inherit;
 }
 
 .container{
@@ -91,22 +80,20 @@ button{
 
 
 /* =========================================================
-   COMMON SECTION HEADING
+   SECTION HEADING
 ========================================================= */
 
 .section-heading{
     text-align:center;
-    max-width:850px;
-    margin:0 auto 48px;
+    margin-bottom:45px;
 }
 
-.section-heading > span{
+.section-heading span{
     display:inline-block;
     color:var(--red);
-    font-weight:800;
     font-size:13px;
+    font-weight:800;
     letter-spacing:2px;
-    text-transform:uppercase;
     margin-bottom:8px;
 }
 
@@ -118,18 +105,15 @@ button{
 }
 
 .section-heading p{
-    color:var(--muted);
     max-width:720px;
     margin:auto;
+    color:var(--muted);
 }
 
-.small-title{
-    display:inline-block;
-    color:var(--red);
-    font-size:13px;
-    font-weight:800;
-    letter-spacing:2px;
-    margin-bottom:10px;
+.light-heading h2,
+.light-heading p,
+.light-heading span{
+    color:#fff;
 }
 
 
@@ -141,62 +125,54 @@ button{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    gap:9px;
-    padding:13px 23px;
-    border-radius:9px;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:8px;
     font-weight:700;
     border:2px solid transparent;
-    transition:.3s ease;
-    cursor:pointer;
-}
-
-.btn:hover{
-    transform:translateY(-2px);
+    transition:.3s;
 }
 
 .btn-primary{
     background:var(--red);
-    color:#ffffff;
+    color:#fff;
 }
 
 .btn-primary:hover{
-    background:#c91017;
+    background:#c81017;
+    transform:translateY(-2px);
 }
 
 .btn-outline{
     border-color:var(--blue);
     color:var(--blue);
-    background:#ffffff;
+    background:#fff;
 }
 
 .btn-outline:hover{
     background:var(--blue);
-    color:#ffffff;
+    color:#fff;
 }
 
 .btn-light{
-    background:#ffffff;
+    background:#fff;
     color:var(--red);
 }
 
-.btn-light:hover{
-    background:#f5f5f5;
-}
-
 .btn-outline-light{
-    border-color:#ffffff;
-    color:#ffffff;
+    border-color:#fff;
+    color:#fff;
     background:transparent;
 }
 
 .btn-outline-light:hover{
-    background:#ffffff;
+    background:#fff;
     color:var(--red);
 }
 
 .center-button{
     text-align:center;
-    margin-top:35px;
+    margin-top:30px;
 }
 
 
@@ -206,7 +182,7 @@ button{
 
 .top-bar{
     background:var(--blue);
-    color:#ffffff;
+    color:#fff;
     font-size:13px;
     padding:8px 0;
 }
@@ -224,15 +200,14 @@ button{
     gap:20px;
 }
 
-.top-contact span,
-.top-inner > span{
+.top-contact span{
     display:flex;
     align-items:center;
     gap:7px;
 }
 
 .top-contact i,
-.top-inner i{
+.top-inner > span i{
     color:var(--yellow);
 }
 
@@ -245,7 +220,7 @@ header{
     position:sticky;
     top:0;
     z-index:999;
-    background:#ffffff;
+    background:#fff;
     box-shadow:0 3px 18px rgba(0,0,0,.08);
 }
 
@@ -294,19 +269,32 @@ header{
 .nav-links{
     display:flex;
     align-items:center;
-    gap:21px;
+    gap:18px;
 }
 
 .nav-links a{
-    font-size:13px;
+    font-size:14px;
     font-weight:600;
-    color:#222222;
+    color:#222;
     transition:.3s;
 }
 
 .nav-links a:hover,
 .nav-links a.active{
     color:var(--red);
+}
+
+.nav-admin{
+    background:var(--blue);
+    color:#fff !important;
+    padding:10px 16px;
+    border-radius:8px;
+}
+
+.nav-admin:hover{
+    background:var(--dark-blue);
+    color:#fff !important;
+    transform:translateY(-2px);
 }
 
 .menu-btn{
@@ -328,33 +316,7 @@ header{
     min-height:650px;
     overflow:hidden;
     background:
-    linear-gradient(100deg,#ffffff 0%,#f7fbff 45%,#dbeeff 100%);
-}
-
-.hero-section::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:-1px;
-    height:90px;
-    background:var(--blue);
-    clip-path:polygon(
-        0 55%,
-        18% 72%,
-        38% 58%,
-        58% 75%,
-        78% 52%,
-        100% 67%,
-        100% 100%,
-        0 100%
-    );
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
+    linear-gradient(100deg,#fff 0%,#f7fbff 45%,#dbeeff 100%);
 }
 
 .hero-content{
@@ -367,7 +329,7 @@ header{
 }
 
 .hero-text{
-    padding:60px 20px 100px 0;
+    padding:55px 0;
 }
 
 .hero-badge{
@@ -376,44 +338,26 @@ header{
     font-weight:800;
     letter-spacing:1.5px;
     font-size:15px;
-    margin-bottom:18px;
-}
-
-.hero-badge::after{
-    content:"";
-    display:block;
-    width:48px;
-    height:4px;
-    background:var(--red);
-    margin-top:8px;
-    border-radius:20px;
+    margin-bottom:15px;
 }
 
 .hero h2{
-    font-size:51px;
+    font-size:55px;
     line-height:1.08;
-    margin-bottom:18px;
+    margin-bottom:20px;
     font-weight:800;
     color:var(--blue);
 }
 
-.hero h2 .red{
+.hero h2 span{
     color:var(--red);
-}
-
-.hero h2 .blue{
-    color:var(--blue);
-}
-
-.hero-text h2 span{
     display:block;
-    color:var(--red);
 }
 
 .hero-text > p{
-    max-width:560px;
-    color:#555555;
+    color:#555;
     font-size:16px;
+    max-width:560px;
     margin-bottom:28px;
 }
 
@@ -428,7 +372,6 @@ header{
     display:flex;
     align-items:center;
     justify-content:flex-end;
-    padding-bottom:45px;
 }
 
 .hero-image img{
@@ -448,11 +391,11 @@ header{
     position:relative;
     z-index:10;
     margin-top:-35px;
-    padding-bottom:25px;
+    padding-bottom:40px;
 }
 
 .highlight-grid{
-    background:#ffffff;
+    background:#fff;
     border-radius:20px;
     box-shadow:var(--shadow);
     padding:25px;
@@ -462,23 +405,20 @@ header{
 }
 
 .highlight-card{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
+    text-align:center;
     padding:15px;
-    border-radius:14px;
 }
 
 .highlight-icon{
-    width:52px;
-    height:52px;
-    border-radius:50%;
+    width:55px;
+    height:55px;
+    margin:0 auto 12px;
     display:grid;
     place-items:center;
-    background:#f1f6ff;
+    border-radius:50%;
+    background:#eef4ff;
     color:var(--red);
     font-size:22px;
-    margin-bottom:12px;
 }
 
 .highlight-card:nth-child(even) .highlight-icon{
@@ -487,29 +427,28 @@ header{
 
 .highlight-card h3{
     color:var(--blue);
-    font-size:16px;
+    font-size:15px;
     margin-bottom:4px;
 }
 
 .highlight-card p{
-    color:#666666;
+    color:#666;
     font-size:12px;
-    line-height:1.5;
 }
 
 
 /* =========================================================
-   ABOUT HOME
+   ABOUT
 ========================================================= */
 
 .about-home{
-    background:#ffffff;
+    background:#fff;
 }
 
 .about-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:55px;
     align-items:center;
 }
 
@@ -517,53 +456,50 @@ header{
     width:100%;
     height:430px;
     object-fit:cover;
-    border-radius:22px;
+    border-radius:20px;
     box-shadow:var(--shadow);
+}
+
+.about-content .small-title{
+    color:var(--red);
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:2px;
 }
 
 .about-content h2{
     color:var(--blue);
-    font-size:37px;
+    font-size:36px;
     line-height:1.2;
-    margin-bottom:18px;
+    margin:10px 0 18px;
 }
 
 .about-content p{
-    color:#555555;
+    color:#555;
     margin-bottom:15px;
 }
 
 .about-points{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:12px;
+    gap:10px;
     margin:22px 0;
 }
 
 .about-points div{
-    color:#333333;
+    color:#444;
     font-size:14px;
-    display:flex;
-    align-items:flex-start;
-    gap:9px;
+    font-weight:600;
 }
 
 .about-points i{
     color:var(--red);
-    margin-top:5px;
+    margin-right:6px;
 }
 
 .text-button{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
     color:var(--blue);
     font-weight:700;
-    transition:.3s;
-}
-
-.text-button:hover{
-    color:var(--red);
 }
 
 
@@ -582,16 +518,11 @@ header{
 }
 
 .program-card{
-    background:#ffffff;
+    background:#fff;
     border-radius:20px;
     overflow:hidden;
     box-shadow:var(--shadow);
-    border-top:5px solid var(--red);
     transition:.3s;
-}
-
-.program-card:nth-child(2){
-    border-top-color:var(--blue);
 }
 
 .program-card:hover{
@@ -600,47 +531,41 @@ header{
 
 .program-image img{
     width:100%;
-    height:245px;
+    height:270px;
     object-fit:cover;
 }
 
 .program-content{
-    padding:30px;
+    padding:28px;
 }
 
 .program-tag{
-    display:inline-block;
     color:var(--red);
-    font-size:11px;
+    font-size:12px;
     font-weight:800;
-    letter-spacing:1.5px;
-    margin-bottom:8px;
+    letter-spacing:1px;
 }
 
-.program-card:nth-child(2) .program-tag{
-    color:var(--blue);
-}
-
-.program-card h3{
+.program-content h3{
     color:var(--blue);
     font-size:24px;
-    line-height:1.25;
-    margin-bottom:10px;
+    margin:8px 0 10px;
 }
 
-.program-card p{
-    color:#666666;
+.program-content p{
+    color:#666;
+    font-size:14px;
 }
 
 .program-classes{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin:20px 0;
+    margin:18px 0;
 }
 
 .program-classes span{
-    background:#f2f6fc;
+    background:#eef4ff;
     color:var(--blue);
     padding:7px 12px;
     border-radius:30px;
@@ -652,13 +577,8 @@ header{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    color:var(--blue);
-    font-weight:700;
-    font-size:14px;
-}
-
-.card-button:hover{
     color:var(--red);
+    font-weight:700;
 }
 
 
@@ -668,13 +588,6 @@ header{
 
 .why-section{
     background:linear-gradient(135deg,#08265f,#123b8f);
-    color:#ffffff;
-}
-
-.light-heading > span,
-.light-heading h2,
-.light-heading p{
-    color:#ffffff;
 }
 
 .features-grid{
@@ -684,82 +597,84 @@ header{
 }
 
 .feature-card{
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.15);
+    background:#fff;
+    padding:28px;
     border-radius:17px;
-    padding:27px;
     transition:.3s;
 }
 
 .feature-card:hover{
     transform:translateY(-5px);
-    background:rgba(255,255,255,.14);
 }
 
 .feature-card i{
-    font-size:26px;
-    color:var(--yellow);
+    color:var(--red);
+    font-size:27px;
     margin-bottom:13px;
 }
 
 .feature-card h3{
+    color:var(--blue);
     font-size:18px;
-    margin-bottom:7px;
-    color:#ffffff;
+    margin-bottom:6px;
 }
 
 .feature-card p{
-    color:#dbe5f7;
+    color:#666;
     font-size:13px;
 }
 
 
 /* =========================================================
-   ACADEMIC SECTION
+   ACADEMIC
 ========================================================= */
 
 .academic-section{
-    background:#ffffff;
+    background:#fff;
 }
 
 .two-column-section{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:55px;
     align-items:center;
+}
+
+.academic-content .small-title{
+    color:var(--red);
+    font-weight:800;
+    letter-spacing:2px;
+    font-size:13px;
 }
 
 .academic-content h2{
     color:var(--blue);
-    font-size:37px;
+    font-size:35px;
     line-height:1.2;
-    margin-bottom:17px;
+    margin:10px 0 15px;
 }
 
 .academic-content > p{
-    color:#555555;
-    margin-bottom:20px;
+    color:#666;
+    margin-bottom:18px;
 }
 
 .academic-list{
     list-style:none;
-    margin-bottom:25px;
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:9px 18px;
+    gap:9px;
+    margin-bottom:25px;
 }
 
 .academic-list li{
-    display:flex;
-    gap:9px;
-    color:#444444;
     font-size:13px;
-    align-items:flex-start;
+    color:#444;
 }
 
 .academic-list i{
     color:var(--red);
-    margin-top:5px;
+    margin-right:6px;
 }
 
 .academic-image{
@@ -770,7 +685,7 @@ header{
     width:100%;
     height:430px;
     object-fit:cover;
-    border-radius:22px;
+    border-radius:20px;
     box-shadow:var(--shadow);
 }
 
@@ -778,24 +693,23 @@ header{
     position:absolute;
     left:25px;
     bottom:25px;
-    background:#ffffff;
-    border-radius:15px;
-    padding:17px 20px;
+    background:#fff;
+    padding:18px 22px;
+    border-radius:14px;
     box-shadow:var(--shadow);
     display:flex;
-    align-items:center;
-    gap:12px;
+    flex-direction:column;
 }
 
 .experience-box strong{
-    font-size:27px;
     color:var(--red);
+    font-size:28px;
 }
 
 .experience-box span{
+    color:var(--blue);
     font-size:12px;
-    color:#555555;
-    max-width:130px;
+    font-weight:700;
 }
 
 
@@ -814,23 +728,17 @@ header{
 }
 
 .facility-item{
-    padding:25px;
-    background:#ffffff;
-    border:1px solid #e7edf6;
+    background:#fff;
     border-radius:16px;
+    padding:25px;
     text-align:center;
-    transition:.3s;
-}
-
-.facility-item:hover{
-    box-shadow:var(--shadow);
-    transform:translateY(-4px);
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
 }
 
 .facility-item i{
     color:var(--red);
-    font-size:27px;
-    margin-bottom:12px;
+    font-size:26px;
+    margin-bottom:10px;
 }
 
 .facility-item h3{
@@ -844,7 +752,7 @@ header{
 ========================================================= */
 
 .streams-section{
-    background:#ffffff;
+    background:#fff;
 }
 
 .stream-grid{
@@ -854,46 +762,42 @@ header{
 }
 
 .stream-card{
-    padding:30px;
+    padding:32px;
     border-radius:20px;
-    background:#ffffff;
-    border:1px solid var(--border);
-    box-shadow:0 8px 30px rgba(0,0,0,.06);
+    box-shadow:var(--shadow);
+    background:#fff;
+    border-top:5px solid var(--blue);
 }
 
 .commerce-card{
-    border-top:5px solid var(--red);
-}
-
-.science-card{
-    border-top:5px solid var(--blue);
+    border-top-color:var(--red);
 }
 
 .stream-icon{
     width:60px;
     height:60px;
+    border-radius:15px;
     display:grid;
     place-items:center;
-    border-radius:15px;
-    background:#fff1f1;
-    color:var(--red);
-    font-size:25px;
-    margin-bottom:18px;
-}
-
-.science-card .stream-icon{
     background:#eef4ff;
     color:var(--blue);
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.commerce-card .stream-icon{
+    background:#fff1f1;
+    color:var(--red);
 }
 
 .stream-card h3{
     color:var(--blue);
-    font-size:25px;
+    font-size:24px;
     margin-bottom:8px;
 }
 
 .stream-card p{
-    color:#666666;
+    color:#666;
     font-size:14px;
 }
 
@@ -901,14 +805,14 @@ header{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-top:20px;
+    margin-top:18px;
 }
 
 .subject-tags span{
-    background:#f2f6fc;
+    background:#f1f5fb;
     color:var(--blue);
-    padding:7px 12px;
-    border-radius:30px;
+    padding:7px 11px;
+    border-radius:25px;
     font-size:12px;
     font-weight:600;
 }
@@ -923,70 +827,62 @@ header{
 }
 
 .leader-card{
-    max-width:950px;
+    max-width:900px;
     margin:auto;
-    background:#ffffff;
+    background:#fff;
     border-radius:22px;
     padding:35px;
     display:grid;
-    grid-template-columns:230px 1fr;
+    grid-template-columns:220px 1fr;
     gap:35px;
     align-items:center;
     box-shadow:var(--shadow);
 }
 
 .leader-image img{
-    width:210px;
-    height:250px;
+    width:220px;
+    height:260px;
     object-fit:cover;
     border-radius:18px;
-    border:5px solid #eef4ff;
-    margin:auto;
 }
 
 .leader-label{
-    display:inline-block;
     color:var(--red);
     font-size:12px;
     font-weight:800;
-    letter-spacing:1.5px;
-    margin-bottom:6px;
+    letter-spacing:2px;
 }
 
 .leader-content h2{
     color:var(--blue);
-    font-size:31px;
-    line-height:1.2;
+    font-size:34px;
+    margin:5px 0;
 }
 
 .leader-content h4{
-    color:#555555;
-    margin:7px 0 13px;
-}
-
-.leader-subject{
-    color:#555555;
+    color:#555;
     margin-bottom:12px;
 }
 
-.leader-content > p:last-of-type{
-    color:#666666;
+.leader-subject{
+    color:#555;
+    margin-bottom:10px;
+}
+
+.leader-content > p{
+    color:#666;
     font-size:14px;
 }
 
 .leader-experience{
     display:inline-flex;
-    align-items:center;
-    gap:10px;
+    flex-direction:column;
     margin-top:18px;
-    padding:10px 15px;
-    background:#eef4ff;
-    border-radius:10px;
 }
 
 .leader-experience strong{
     color:var(--red);
-    font-size:20px;
+    font-size:28px;
 }
 
 .leader-experience span{
@@ -1002,7 +898,7 @@ header{
 
 .ansh-profile-section{
     padding:70px 20px;
-    background:#ffffff;
+    background:#f6f8fc;
 }
 
 .ansh-profile-card{
@@ -1011,7 +907,7 @@ header{
     display:flex;
     align-items:center;
     gap:45px;
-    background:#ffffff;
+    background:#fff;
     padding:40px;
     border-radius:26px;
     box-shadow:0 18px 50px rgba(0,0,0,.09);
@@ -1049,7 +945,7 @@ header{
     padding:9px 16px;
     border-radius:30px;
     background:#174ea6;
-    color:#ffffff;
+    color:#fff;
     font-size:11px;
     font-weight:700;
     letter-spacing:1px;
@@ -1065,7 +961,6 @@ header{
     font-size:12px;
     font-weight:800;
     letter-spacing:2px;
-    margin-bottom:7px;
 }
 
 .ansh-profile-content h2{
@@ -1155,7 +1050,7 @@ header{
     justify-content:center;
     border-radius:11px;
     background:#174ea6;
-    color:#ffffff;
+    color:#fff;
 }
 
 .ansh-professional-role span{
@@ -1192,7 +1087,7 @@ header{
 
 .ansh-primary-btn{
     background:#174ea6;
-    color:#ffffff;
+    color:#fff;
 }
 
 .ansh-secondary-btn{
@@ -1211,13 +1106,13 @@ header{
 ========================================================= */
 
 .achievement-section{
-    background:#f5f9ff;
+    background:#fff;
 }
 
 .achievement-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:55px;
+    gap:50px;
     align-items:center;
 }
 
@@ -1227,15 +1122,22 @@ header{
     box-shadow:var(--shadow);
 }
 
+.achievement-content .small-title{
+    color:var(--red);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
 .achievement-content h2{
     color:var(--blue);
-    font-size:37px;
+    font-size:35px;
     line-height:1.2;
-    margin-bottom:16px;
+    margin:10px 0 15px;
 }
 
 .achievement-content p{
-    color:#666666;
+    color:#666;
     margin-bottom:25px;
 }
 
@@ -1245,7 +1147,7 @@ header{
 ========================================================= */
 
 .events-section{
-    background:#ffffff;
+    background:#f5f9ff;
 }
 
 .event-preview-grid{
@@ -1255,16 +1157,9 @@ header{
 }
 
 .event-preview-card{
-    background:#ffffff;
+    background:#fff;
     border-radius:18px;
     overflow:hidden;
-    border:1px solid var(--border);
-    box-shadow:0 6px 25px rgba(0,0,0,.06);
-    transition:.3s;
-}
-
-.event-preview-card:hover{
-    transform:translateY(-5px);
     box-shadow:var(--shadow);
 }
 
@@ -1280,38 +1175,33 @@ header{
 
 .event-preview-card h3{
     color:var(--blue);
-    font-size:18px;
     margin-bottom:5px;
 }
 
 .event-preview-card p{
-    color:#666666;
+    color:#666;
     font-size:13px;
 }
 
 
 /* =========================================================
-   STUDENT LOGIN BANNER
+   ADMIN PORTAL BANNER
 ========================================================= */
 
 .login-home{
-    background:#ffffff;
+    background:#fff;
 }
 
 .login-banner{
-    background:linear-gradient(100deg,#08265f,#174ea6);
-    color:#ffffff;
-    border-radius:24px;
+    background:linear-gradient(100deg,#08265f,#123b8f);
+    border-radius:22px;
     padding:45px;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:30px;
+    color:#fff;
     box-shadow:var(--shadow);
-}
-
-.login-banner-content{
-    max-width:750px;
 }
 
 .login-banner-content > span{
@@ -1324,24 +1214,24 @@ header{
 .login-banner h2{
     font-size:34px;
     line-height:1.2;
-    margin:8px 0 12px;
+    margin:8px 0;
 }
 
 .login-banner p{
-    color:#dbe5f7;
+    max-width:650px;
+    color:#dce7fa;
     margin-bottom:22px;
 }
 
 .login-icon{
-    width:110px;
-    height:110px;
-    min-width:110px;
+    width:100px;
+    height:100px;
+    min-width:100px;
     display:grid;
     place-items:center;
     border-radius:50%;
     background:rgba(255,255,255,.12);
-    font-size:48px;
-    color:#ffffff;
+    font-size:42px;
 }
 
 
@@ -1352,31 +1242,28 @@ header{
 .admission-cta{
     padding:75px 0;
     background:linear-gradient(100deg,var(--red),#d60912);
-    color:#ffffff;
+    color:#fff;
 }
 
 .cta-content{
     text-align:center;
-    max-width:850px;
-    margin:auto;
 }
 
 .cta-content > span{
-    color:#ffe5e5;
     font-size:13px;
     font-weight:800;
     letter-spacing:2px;
 }
 
 .cta-content h2{
-    font-size:40px;
+    max-width:750px;
+    margin:8px auto 10px;
+    font-size:38px;
     line-height:1.2;
-    margin:8px 0 12px;
 }
 
 .cta-content p{
-    opacity:.9;
-    margin-bottom:24px;
+    margin-bottom:22px;
 }
 
 .cta-buttons{
@@ -1393,13 +1280,13 @@ header{
 
 .footer{
     background:#071e4c;
-    color:#ffffff;
+    color:#fff;
 }
 
 .footer-grid{
     padding:60px 0 35px;
     display:grid;
-    grid-template-columns:2fr 1fr 1fr 1.4fr;
+    grid-template-columns:2fr 1fr 1fr 1.3fr;
     gap:40px;
 }
 
@@ -1415,65 +1302,53 @@ header{
     object-fit:contain;
 }
 
-.footer-logo div{
-    display:flex;
-    flex-direction:column;
-    line-height:1.1;
-}
-
-.footer-logo strong{
-    color:#ffffff;
+.footer-logo strong,
+.footer-logo span{
+    display:block;
     font-size:19px;
 }
 
+.footer-logo strong{
+    color:#fff;
+}
+
 .footer-logo span{
-    color:#ffffff;
-    font-size:17px;
-    font-weight:700;
+    color:#bcd0f4;
 }
 
 .footer-about > p{
-    color:#bcd0f4;
-    font-size:12px;
-    margin-top:7px;
+    color:#c8d5ee;
+    font-size:13px;
+    margin-top:8px;
 }
 
 .footer-links h3,
 .footer-contact h3{
-    color:#ffffff;
-    font-size:17px;
     margin-bottom:15px;
-}
-
-.footer-links{
-    display:flex;
-    flex-direction:column;
+    font-size:17px;
 }
 
 .footer-links a{
+    display:block;
     color:#c8d5ee;
     font-size:13px;
-    margin:5px 0;
-    transition:.3s;
+    margin:8px 0;
 }
 
 .footer-links a:hover{
-    color:#ffffff;
-    padding-left:3px;
+    color:#fff;
 }
 
 .footer-contact p{
     color:#c8d5ee;
     font-size:13px;
     margin:9px 0;
-    display:flex;
-    align-items:flex-start;
-    gap:9px;
 }
 
 .footer-contact i{
-    color:var(--yellow);
-    margin-top:5px;
+    width:20px;
+    color:#fff;
+    margin-right:5px;
 }
 
 .footer-bottom{
@@ -1481,19 +1356,19 @@ header{
     padding:18px 0;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     gap:15px;
+    align-items:center;
     color:#b8c7e3;
     font-size:12px;
 }
 
 .footer-bottom-links{
     display:flex;
-    gap:18px;
+    gap:20px;
 }
 
 .footer-bottom-links a:hover{
-    color:#ffffff;
+    color:#fff;
 }
 
 
@@ -1504,13 +1379,13 @@ header{
 .back-to-top{
     position:fixed;
     right:20px;
-    bottom:90px;
+    bottom:20px;
     width:48px;
     height:48px;
     border:0;
     border-radius:50%;
-    background:var(--blue);
-    color:#ffffff;
+    background:var(--red);
+    color:#fff;
     display:grid;
     place-items:center;
     font-size:18px;
@@ -1520,7 +1395,7 @@ header{
 
     opacity:0;
     visibility:hidden;
-    transform:translateY(15px);
+    transform:translateY(10px);
     transition:.3s;
 }
 
@@ -1530,73 +1405,34 @@ header{
     transform:translateY(0);
 }
 
-.back-to-top:hover{
-    background:var(--red);
-}
-
 
 /* =========================================================
-   FLOATING WHATSAPP
-========================================================= */
-
-.whatsapp-float{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    background:#25D366;
-    color:#ffffff;
-    display:grid;
-    place-items:center;
-    font-size:29px;
-    z-index:9999;
-    box-shadow:0 8px 25px rgba(0,0,0,.2);
-    transition:.3s;
-}
-
-.whatsapp-float:hover{
-    transform:scale(1.07);
-}
-
-
-/* =========================================================
-   TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media(max-width:1050px){
 
     .nav-links{
-        gap:12px;
+        gap:10px;
     }
 
     .nav-links a{
-        font-size:12px;
+        font-size:13px;
     }
 
     .hero h2{
-        font-size:45px;
-    }
-
-    .highlight-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .facility-grid{
-        grid-template-columns:repeat(2,1fr);
+        font-size:46px;
     }
 
     .footer-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
+    .facility-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
 
 @media(max-width:850px){
 
@@ -1614,12 +1450,11 @@ header{
         left:0;
         right:0;
         top:82px;
-        background:#ffffff;
+        background:#fff;
         flex-direction:column;
         align-items:stretch;
-        padding:18px 20px;
+        padding:20px;
         box-shadow:0 10px 20px rgba(0,0,0,.1);
-        gap:0;
     }
 
     .nav-links.show{
@@ -1627,36 +1462,20 @@ header{
     }
 
     .nav-links a{
-        padding:11px 10px;
-        border-bottom:1px solid #eeeeee;
-        font-size:14px;
+        padding:10px;
     }
 
-    .nav-links a:last-child{
-        border-bottom:0;
+    .hero-content{
+        grid-template-columns:1fr;
     }
 
     .hero-section{
         min-height:auto;
     }
 
-    .hero-content{
-        grid-template-columns:1fr;
-        min-height:auto;
-    }
-
     .hero-text{
         padding:70px 0 30px;
         text-align:center;
-    }
-
-    .hero-badge::after{
-        margin-left:auto;
-        margin-right:auto;
-    }
-
-    .hero h2{
-        font-size:42px;
     }
 
     .hero-text > p{
@@ -1670,18 +1489,26 @@ header{
 
     .hero-image{
         height:auto;
-        padding-bottom:90px;
+        padding-bottom:70px;
     }
 
     .hero-image img{
-        height:360px;
+        height:350px;
         border-radius:20px;
     }
 
+    .highlight-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
     .about-grid,
-    .program-grid,
     .two-column-section,
     .achievement-grid{
+        grid-template-columns:1fr;
+    }
+
+    .program-grid,
+    .stream-grid{
         grid-template-columns:1fr;
     }
 
@@ -1689,21 +1516,21 @@ header{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .academic-list{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .stream-grid{
-        grid-template-columns:1fr;
-    }
-
     .leader-card{
         grid-template-columns:1fr;
         text-align:center;
     }
 
-    .leader-content{
-        text-align:center;
+    .leader-image img{
+        margin:auto;
+    }
+
+    .leader-experience{
+        align-items:center;
+    }
+
+    .event-preview-grid{
+        grid-template-columns:1fr;
     }
 
     .login-banner{
@@ -1711,140 +1538,9 @@ header{
         text-align:center;
     }
 
-    .login-banner-content{
-        max-width:100%;
-    }
-
-    .login-icon{
-        width:90px;
-        height:90px;
-        min-width:90px;
-        font-size:38px;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media(max-width:600px){
-
-    .container{
-        width:min(92%,500px);
-    }
-
-    .section-padding{
-        padding:60px 0;
-    }
-
-    .section-heading{
-        margin-bottom:35px;
-    }
-
-    .section-heading h2{
-        font-size:29px;
-    }
-
-    .logo{
-        width:50px;
-        height:50px;
-    }
-
-    .logo-area{
-        min-width:auto;
-    }
-
-    .brand-text h1{
-        font-size:16px;
-    }
-
-    .brand-text p{
-        font-size:8px;
-    }
-
-    .hero h2{
-        font-size:36px;
-    }
-
-    .hero-text > p{
-        font-size:14px;
-    }
-
-    .hero-image img{
-        height:300px;
-    }
-
-    .highlight-grid{
-        grid-template-columns:1fr 1fr;
-        padding:16px;
-    }
-
-    .highlight-card{
-        padding:10px;
-    }
-
-    .highlight-icon{
-        width:43px;
-        height:43px;
-        font-size:17px;
-    }
-
-    .about-image img{
-        height:300px;
-    }
-
-    .about-content h2,
-    .academic-content h2,
-    .achievement-content h2{
-        font-size:29px;
-    }
-
-    .about-points{
-        grid-template-columns:1fr;
-    }
-
-    .program-content{
-        padding:24px;
-    }
-
-    .program-card h3{
-        font-size:21px;
-    }
-
-    .features-grid{
-        grid-template-columns:1fr;
-    }
-
-    .academic-list{
-        grid-template-columns:1fr;
-    }
-
-    .academic-image > img{
-        height:300px;
-    }
-
-    .experience-box{
-        left:15px;
-        bottom:15px;
-    }
-
-    .facility-grid{
-        grid-template-columns:1fr;
-    }
-
-    .stream-card{
-        padding:24px;
-    }
-
-    .leader-card{
-        padding:25px 18px;
-    }
-
-    .leader-image img{
-        width:180px;
-        height:220px;
+    .login-banner p{
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .ansh-profile-card{
@@ -1878,21 +1574,70 @@ header{
         justify-content:center;
     }
 
-    .ansh-image-frame{
-        width:190px;
-        height:235px;
+}
+
+
+@media(max-width:600px){
+
+    .section-padding{
+        padding:60px 0;
     }
 
-    .ansh-profile-content h2{
-        font-size:32px;
+    .section-heading h2{
+        font-size:29px;
     }
 
-    .event-preview-grid{
+    .brand-text h1{
+        font-size:16px;
+    }
+
+    .brand-text p{
+        font-size:8px;
+    }
+
+    .logo{
+        width:50px;
+        height:50px;
+    }
+
+    .logo-area{
+        min-width:auto;
+    }
+
+    .hero h2{
+        font-size:38px;
+    }
+
+    .hero-text > p{
+        font-size:14px;
+    }
+
+    .highlight-grid{
+        grid-template-columns:1fr 1fr;
+        padding:15px;
+    }
+
+    .about-points,
+    .academic-list{
         grid-template-columns:1fr;
     }
 
+    .about-image img,
+    .academic-image > img{
+        height:300px;
+    }
+
+    .features-grid,
+    .facility-grid{
+        grid-template-columns:1fr;
+    }
+
+    .leader-card{
+        padding:25px 18px;
+    }
+
     .login-banner{
-        padding:30px 22px;
+        padding:32px 22px;
     }
 
     .login-banner h2{
@@ -1913,52 +1658,19 @@ header{
         text-align:center;
     }
 
-    .back-to-top{
-        right:15px;
-        bottom:85px;
+    .ansh-image-frame{
+        width:190px;
+        height:235px;
     }
 
-    .whatsapp-float{
-        right:15px;
-        bottom:18px;
-    }
-
-}
-
-
-/* =========================================================
-   EXTRA SMALL MOBILE
-========================================================= */
-
-@media(max-width:400px){
-
-    .hero h2{
+    .ansh-profile-content h2{
         font-size:32px;
-    }
-
-    .hero-buttons,
-    .cta-buttons{
-        flex-direction:column;
-    }
-
-    .hero-buttons .btn,
-    .cta-buttons .btn{
-        width:100%;
-    }
-
-    .highlight-grid{
-        grid-template-columns:1fr;
-    }
-
-    .ansh-primary-btn,
-    .ansh-secondary-btn{
-        width:100%;
-        justify-content:center;
     }
 
 }
 
 </style>
+
 </head>
 
 
@@ -1977,16 +1689,12 @@ header{
 
             <span>
                 <i class="fa-solid fa-phone"></i>
-                <a href="tel:+919537081242">
-                    95370 81242
-                </a>
+                <a href="tel:+919537081242">95370 81242</a>
             </span>
 
             <span>
                 <i class="fa-solid fa-phone"></i>
-                <a href="tel:+917984786053">
-                    79847 86053
-                </a>
+                <a href="tel:+917984786053">79847 86053</a>
             </span>
 
             <span>
@@ -2077,8 +1785,10 @@ header{
                 Admissions
             </a>
 
-            <a href="student-login.html">
-                Student Login
+            <!-- ADMIN LOGIN -->
+            <a href="admin-login.html" class="nav-admin">
+                <i class="fa-solid fa-user-shield"></i>
+                Admin Login
             </a>
 
             <a href="contact.html">
@@ -2105,8 +1815,6 @@ header{
 
 <section class="hero-section">
 
-    <div class="hero-overlay"></div>
-
     <div class="container hero-content">
 
         <div class="hero-text">
@@ -2117,14 +1825,11 @@ header{
 
             <h2>
                 Building Strong Foundations.
-                <span>
-                    Creating Bright Futures.
-                </span>
+                <span>Creating Bright Futures.</span>
             </h2>
 
             <p>
-                Welcome to
-                <strong>READ & WRITE ACADEMY</strong> —
+                Welcome to <strong>READ & WRITE ACADEMY</strong> —
                 Classes & Pre School, where learning is made
                 meaningful, disciplined and result-oriented.
             </p>
@@ -2171,7 +1876,6 @@ header{
     <div class="container">
 
         <div class="highlight-grid">
-
 
             <div class="highlight-card">
 
@@ -2240,7 +1944,6 @@ header{
 
             </div>
 
-
         </div>
 
     </div>
@@ -2274,7 +1977,6 @@ header{
 
 
         <div class="about-grid">
-
 
             <div class="about-image">
 
@@ -2337,7 +2039,6 @@ header{
                    class="text-button">
 
                     Read More About Us
-
                     <i class="fa-solid fa-arrow-right"></i>
 
                 </a>
@@ -2352,7 +2053,7 @@ header{
 
 
 <!-- =========================================================
-     TWO WINGS / PROGRAMS
+     TWO PROGRAMS
 ========================================================= -->
 
 <section class="programs-section section-padding">
@@ -2407,7 +2108,6 @@ header{
                         strong early foundations.
                     </p>
 
-
                     <div class="program-classes">
 
                         <span>Nursery</span>
@@ -2417,12 +2117,10 @@ header{
 
                     </div>
 
-
                     <a href="classes.html"
                        class="card-button">
 
                         Explore School
-
                         <i class="fa-solid fa-arrow-right"></i>
 
                     </a>
@@ -2459,7 +2157,6 @@ header{
                         individual attention.
                     </p>
 
-
                     <div class="program-classes">
 
                         <span>Nursery – 10th</span>
@@ -2470,12 +2167,10 @@ header{
 
                     </div>
 
-
                     <a href="classes.html"
                        class="card-button">
 
                         View Classes
-
                         <i class="fa-solid fa-arrow-right"></i>
 
                     </a>
@@ -2483,7 +2178,6 @@ header{
                 </div>
 
             </div>
-
 
         </div>
 
@@ -2520,7 +2214,6 @@ header{
 
 
         <div class="features-grid">
-
 
             <div class="feature-card">
 
@@ -2616,7 +2309,6 @@ header{
                 </p>
 
             </div>
-
 
         </div>
 
@@ -2737,7 +2429,6 @@ header{
 
             </div>
 
-
         </div>
 
     </div>
@@ -2746,7 +2437,7 @@ header{
 
 
 <!-- =========================================================
-     FACILITIES PREVIEW
+     FACILITIES
 ========================================================= -->
 
 <section class="facilities-home section-padding">
@@ -2773,94 +2464,45 @@ header{
 
         <div class="facility-grid">
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-snowflake"></i>
-
-                <h3>
-                    Fully AC Classrooms
-                </h3>
-
+                <h3>Fully AC Classrooms</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-tv"></i>
-
-                <h3>
-                    Smart TV Teaching
-                </h3>
-
+                <h3>Smart TV Teaching</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-video"></i>
-
-                <h3>
-                    CCTV Surveillance
-                </h3>
-
+                <h3>CCTV Surveillance</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-glass-water"></i>
-
-                <h3>
-                    RO Drinking Water
-                </h3>
-
+                <h3>RO Drinking Water</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-child"></i>
-
-                <h3>
-                    Child-Friendly Environment
-                </h3>
-
+                <h3>Child-Friendly Environment</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-people-group"></i>
-
-                <h3>
-                    Personal Attention
-                </h3>
-
+                <h3>Personal Attention</h3>
             </div>
 
-
             <div class="facility-item">
-
                 <i class="fa-solid fa-file-pen"></i>
-
-                <h3>
-                    Regular Worksheets
-                </h3>
-
+                <h3>Regular Worksheets</h3>
             </div>
-
 
             <div class="facility-item">
-
                 <i class="fa-solid fa-comments"></i>
-
-                <h3>
-                    Parent Communication
-                </h3>
-
+                <h3>Parent Communication</h3>
             </div>
-
 
         </div>
 
@@ -2910,14 +2552,12 @@ header{
         <div class="stream-grid">
 
 
-            <!-- COMMERCE STREAM -->
+            <!-- COMMERCE -->
 
             <div class="stream-card commerce-card">
 
                 <div class="stream-icon">
-
                     <i class="fa-solid fa-calculator"></i>
-
                 </div>
 
                 <h3>
@@ -2929,7 +2569,6 @@ header{
                     subjects with regular practice and exam
                     preparation.
                 </p>
-
 
                 <div class="subject-tags">
 
@@ -2947,14 +2586,12 @@ header{
             </div>
 
 
-            <!-- SCIENCE STREAM -->
+            <!-- SCIENCE -->
 
             <div class="stream-card science-card">
 
                 <div class="stream-icon">
-
                     <i class="fa-solid fa-flask"></i>
-
                 </div>
 
                 <h3>
@@ -2967,7 +2604,6 @@ header{
                     and board curriculum.
                 </p>
 
-
                 <div class="subject-tags">
 
                     <span>Subject Support</span>
@@ -2979,7 +2615,6 @@ header{
                 </div>
 
             </div>
-
 
         </div>
 
@@ -3023,7 +2658,6 @@ header{
 
         <div class="leader-card">
 
-
             <div class="leader-image">
 
                 <img src="images/manish.jpg"
@@ -3047,10 +2681,12 @@ header{
                 </h4>
 
                 <p class="leader-subject">
+
                     Subject:
                     <strong>
                         ECO / OC / SPCC
                     </strong>
+
                 </p>
 
                 <p>
@@ -3058,7 +2694,6 @@ header{
                     supportive and result-oriented academic
                     environment for students.
                 </p>
-
 
                 <div class="leader-experience">
 
@@ -3094,7 +2729,7 @@ header{
 
 
 <!-- =========================================================
-     ANSH SIR | FACULTY & WEB DEVELOPER
+     ANSH SIR
 ========================================================= -->
 
 <section class="ansh-profile-section">
@@ -3104,8 +2739,6 @@ header{
         <div class="ansh-profile-card">
 
 
-            <!-- ANSH PHOTO -->
-
             <div class="ansh-profile-image">
 
                 <div class="ansh-image-frame">
@@ -3114,7 +2747,6 @@ header{
                          alt="Ansh Sir - Mathematics and Science Faculty">
 
                 </div>
-
 
                 <div class="ansh-photo-badge">
 
@@ -3128,8 +2760,6 @@ header{
 
             </div>
 
-
-            <!-- ANSH INFORMATION -->
 
             <div class="ansh-profile-content">
 
@@ -3145,14 +2775,10 @@ header{
                     Mathematics &amp; Science Faculty
                 </h3>
 
-
                 <div class="ansh-divider"></div>
 
 
-                <!-- SUBJECT & CLASS DETAILS -->
-
                 <div class="ansh-details">
-
 
                     <div class="ansh-detail-item">
 
@@ -3191,7 +2817,6 @@ header{
 
                     </div>
 
-
                 </div>
 
 
@@ -3204,8 +2829,6 @@ header{
                 </p>
 
 
-                <!-- EDUCATOR & WEB DEVELOPER -->
-
                 <div class="ansh-professional-role">
 
                     <div class="role-icon">
@@ -3213,7 +2836,6 @@ header{
                         <i class="fa-solid fa-code"></i>
 
                     </div>
-
 
                     <div>
 
@@ -3226,9 +2848,7 @@ header{
                             Along with teaching Mathematics and Science,
                             Ansh Sir has designed and developed the
                             official website of
-                            <strong>
-                                READ &amp; WRITE ACADEMY
-                            </strong>.
+                            <strong>READ &amp; WRITE ACADEMY</strong>.
 
                         </p>
 
@@ -3236,8 +2856,6 @@ header{
 
                 </div>
 
-
-                <!-- BUTTONS -->
 
                 <div class="ansh-buttons">
 
@@ -3281,7 +2899,6 @@ header{
 
         <div class="achievement-grid">
 
-
             <div class="achievement-image">
 
                 <img src="images/topper-students.jpg"
@@ -3306,7 +2923,6 @@ header{
                     consistent practice and hard work inspire
                     us to keep improving every day.
                 </p>
-
 
                 <a href="gallery.html"
                    class="btn btn-primary">
@@ -3415,7 +3031,6 @@ header{
 
             </div>
 
-
         </div>
 
 
@@ -3436,7 +3051,7 @@ header{
 
 
 <!-- =========================================================
-     STUDENT LOGIN
+     ADMIN PORTAL
 ========================================================= -->
 
 <section class="login-home section-padding">
@@ -3445,28 +3060,28 @@ header{
 
         <div class="login-banner">
 
-
             <div class="login-banner-content">
 
                 <span>
-                    STUDENT PORTAL
+                    ADMIN PORTAL
                 </span>
 
                 <h2>
-                    Everything Your Academic Journey Needs
+                    Manage Your Academy From One Place
                 </h2>
 
                 <p>
-                    Access your profile, attendance,
-                    timetable, homework, study material,
-                    test results and progress information.
+                    Access the administration dashboard to manage
+                    students, teachers, admissions, academic
+                    information and other academy activities.
                 </p>
 
-
-                <a href="student-login.html"
+                <a href="admin-login.html"
                    class="btn btn-light">
 
-                    Student Login
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    Admin Login
 
                     <i class="fa-solid fa-arrow-right"></i>
 
@@ -3477,10 +3092,9 @@ header{
 
             <div class="login-icon">
 
-                <i class="fa-solid fa-user-graduate"></i>
+                <i class="fa-solid fa-user-shield"></i>
 
             </div>
-
 
         </div>
 
@@ -3537,7 +3151,6 @@ header{
     </div>
 
 </section>
-
 
 </main>
 
@@ -3624,20 +3237,20 @@ header{
             </div>
 
 
-            <!-- STUDENT & ADMISSION -->
+            <!-- ADMIN & ADMISSION -->
 
             <div class="footer-links">
 
                 <h3>
-                    Student & Admission
+                    Admin & Admission
                 </h3>
 
                 <a href="admissions.html">
                     Admissions
                 </a>
 
-                <a href="student-login.html">
-                    Student Login
+                <a href="admin-login.html">
+                    Admin Login
                 </a>
 
                 <a href="teacher-application.html">
@@ -3659,48 +3272,29 @@ header{
                     Contact Us
                 </h3>
 
-
                 <p>
                     <i class="fa-solid fa-envelope"></i>
-
-                    <span>
-                        readwritec@gmail.com
-                    </span>
+                    readwritec@gmail.com
                 </p>
-
 
                 <p>
                     <i class="fa-solid fa-phone"></i>
-
-                    <span>
-                        95370 81242
-                    </span>
+                    95370 81242
                 </p>
-
 
                 <p>
                     <i class="fa-solid fa-phone"></i>
-
-                    <span>
-                        79847 86053
-                    </span>
+                    79847 86053
                 </p>
 
-
                 <p>
-
                     <i class="fa-solid fa-location-dot"></i>
-
-                    <span>
-                        9, Shivaji Park-2,
-                        Navagam-Dindoli Road,
-                        Navagam, Surat - 394210
-                    </span>
-
+                    9, Shivaji Park-2,
+                    Navagam-Dindoli Road,
+                    Navagam, Surat - 394210
                 </p>
 
             </div>
-
 
         </div>
 
@@ -3712,7 +3306,6 @@ header{
                 All Rights Reserved.
             </p>
 
-
             <div class="footer-bottom-links">
 
                 <a href="contact.html">
@@ -3721,6 +3314,10 @@ header{
 
                 <a href="admissions.html">
                     Admissions
+                </a>
+
+                <a href="admin-login.html">
+                    Admin Login
                 </a>
 
             </div>
@@ -3751,10 +3348,6 @@ header{
 
 <script>
 
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
 function toggleMenu(){
 
     const navLinks =
@@ -3764,10 +3357,6 @@ function toggleMenu(){
 
 }
 
-
-/* =========================================================
-   CLOSE MOBILE MENU AFTER CLICK
-========================================================= */
 
 document
     .querySelectorAll(".nav-links a")
@@ -3783,10 +3372,6 @@ document
 
     });
 
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
 
 const backToTop =
     document.getElementById("backToTop");
