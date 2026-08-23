@@ -73,6 +73,7 @@ img{
     margin:auto;
 }
 
+
 /* ================= HEADER ================= */
 
 header{
@@ -152,6 +153,7 @@ header{
     cursor:pointer;
 }
 
+
 /* ================= HERO ================= */
 
 .hero{
@@ -197,6 +199,7 @@ header{
     font-size:16px;
     max-width:700px;
 }
+
 
 /* ================= MAIN ================= */
 
@@ -244,6 +247,7 @@ header{
     background:#e0e5ee;
     margin:0 12px;
 }
+
 
 /* ================= CATEGORY ================= */
 
@@ -298,6 +302,7 @@ header{
 .category-card input{
     position:absolute;
     opacity:0;
+    pointer-events:none;
 }
 
 .category-icon{
@@ -349,6 +354,7 @@ header{
     left:3px;
     top:-1px;
 }
+
 
 /* ================= FORM ================= */
 
@@ -443,6 +449,7 @@ textarea{
     resize:vertical;
 }
 
+
 /* ================= PHOTO ================= */
 
 .photo-area{
@@ -504,6 +511,7 @@ textarea{
     display:none;
 }
 
+
 /* ================= DOCUMENT CHECK ================= */
 
 .document-grid{
@@ -525,6 +533,7 @@ textarea{
 .doc-check input{
     width:auto;
 }
+
 
 /* ================= DECLARATION ================= */
 
@@ -548,6 +557,7 @@ textarea{
     width:auto;
     margin-top:4px;
 }
+
 
 /* ================= SUBMIT ================= */
 
@@ -580,6 +590,7 @@ textarea{
     color:#858fa0;
 }
 
+
 /* ================= SUCCESS ================= */
 
 .success-box{
@@ -610,6 +621,7 @@ textarea{
 .success-box p{
     font-size:12px;
 }
+
 
 /* ================= FOOTER ================= */
 
@@ -650,12 +662,6 @@ footer{
     font-size:9px;
 }
 
-footer h3{
-    color:white;
-    font-size:15px;
-    margin-bottom:15px;
-}
-
 .footer-about,
 .footer-links li,
 .footer-contact{
@@ -691,6 +697,7 @@ footer h3{
     text-align:center;
     font-size:11px;
 }
+
 
 /* ================= RESPONSIVE ================= */
 
@@ -767,6 +774,7 @@ footer h3{
 </head>
 
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
@@ -911,13 +919,17 @@ Please select the program for which you are applying.
 <div class="category-grid">
 
 
-<label class="category-card selected" id="preCard">
+<!-- IMPORTANT:
+     No "selected" class.
+     No "checked" attribute.
+-->
+
+<label class="category-card" id="preCard">
 
 <input
 type="radio"
 name="category"
 value="Pre-School"
-checked
 >
 
 <div class="category-icon">
@@ -1813,6 +1825,7 @@ All Rights Reserved.
 
 <script>
 
+
 /* =========================
    MOBILE MENU
 ========================= */
@@ -1827,11 +1840,15 @@ menuBtn.addEventListener("click", () => {
     const icon = menuBtn.querySelector("i");
 
     if(navLinks.classList.contains("show")){
+
         icon.classList.remove("fa-bars");
         icon.classList.add("fa-xmark");
+
     }else{
+
         icon.classList.remove("fa-xmark");
         icon.classList.add("fa-bars");
+
     }
 
 });
@@ -1847,20 +1864,32 @@ const classCard = document.getElementById("classCard");
 const categoryInputs =
 document.querySelectorAll('input[name="category"]');
 
+
 categoryInputs.forEach(input => {
 
-    input.addEventListener("change", () => {
+    input.addEventListener("change", function(){
 
         document.querySelectorAll(".category-card")
-        .forEach(card => card.classList.remove("selected"));
+        .forEach(card => {
 
-        if(input.value === "Pre-School"){
+            card.classList.remove("selected");
 
-            preCard.classList.add("selected");
+        });
 
-        }else{
 
-            classCard.classList.add("selected");
+        if(this.checked){
+
+            if(this.value === "Pre-School"){
+
+                preCard.classList.add("selected");
+
+            }
+
+            else if(this.value === "Classes"){
+
+                classCard.classList.add("selected");
+
+            }
 
         }
 
@@ -1881,22 +1910,37 @@ document.getElementById("studentPhoto");
 const photoPreview =
 document.getElementById("photoPreview");
 
+
 photoInput.addEventListener("change", function(){
 
     const file = this.files[0];
 
     if(!file) return;
 
-    if(!["image/jpeg","image/png","image/jpg"].includes(file.type)){
 
-        alert("Please upload JPG, JPEG or PNG image.");
+    if(
+        ![
+            "image/jpeg",
+            "image/png",
+            "image/jpg"
+        ].includes(file.type)
+    ){
+
+        alert(
+            "Please upload JPG, JPEG or PNG image."
+        );
 
         this.value = "";
 
+        studentPhotoData = null;
+
         return;
+
     }
 
+
     const reader = new FileReader();
+
 
     reader.onload = function(e){
 
@@ -1906,6 +1950,7 @@ photoInput.addEventListener("change", function(){
         `<img src="${studentPhotoData}" alt="Student Photo">`;
 
     };
+
 
     reader.readAsDataURL(file);
 
@@ -1918,14 +1963,19 @@ photoInput.addEventListener("change", function(){
 
 function value(id){
 
-    return document.getElementById(id).value.trim();
+    return document
+    .getElementById(id)
+    .value
+    .trim();
 
 }
 
 
 function checked(id){
 
-    return document.getElementById(id).checked;
+    return document
+    .getElementById(id)
+    .checked;
 
 }
 
@@ -1941,42 +1991,87 @@ function validMobile(number){
    PDF GENERATION
 ========================= */
 
-document.getElementById("admissionForm")
+document
+.getElementById("admissionForm")
 .addEventListener("submit", async function(e){
 
     e.preventDefault();
 
 
-    /* Photo */
+    /* =========================
+       CATEGORY VALIDATION
+    ========================= */
+
+    const selectedCategory =
+    document.querySelector(
+        'input[name="category"]:checked'
+    );
+
+
+    if(!selectedCategory){
+
+        alert(
+            "Please select an admission category: Pre-School Admission or Read & Write Classes."
+        );
+
+        document
+        .querySelector(".category-box")
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        return;
+
+    }
+
+
+    /* =========================
+       PHOTO
+    ========================= */
 
     if(!studentPhotoData){
 
-        alert("Please upload the student's photograph.");
+        alert(
+            "Please upload the student's photograph."
+        );
 
-        document.getElementById("studentPhoto").focus();
+        document
+        .getElementById("studentPhoto")
+        .focus();
 
         return;
 
     }
 
 
-    /* Mobile */
+    /* =========================
+       MOBILE
+    ========================= */
 
     if(!validMobile(value("mobile"))){
 
-        alert("Please enter a valid 10-digit primary mobile number.");
+        alert(
+            "Please enter a valid 10-digit primary mobile number."
+        );
 
-        document.getElementById("mobile").focus();
+        document
+        .getElementById("mobile")
+        .focus();
 
         return;
 
     }
 
 
-    if(value("alternateMobile") &&
-       !validMobile(value("alternateMobile"))){
+    if(
+        value("alternateMobile") &&
+        !validMobile(value("alternateMobile"))
+    ){
 
-        alert("Please enter a valid alternate mobile number.");
+        alert(
+            "Please enter a valid alternate mobile number."
+        );
 
         return;
 
@@ -1985,30 +2080,45 @@ document.getElementById("admissionForm")
 
     if(!validMobile(value("emergencyMobile"))){
 
-        alert("Please enter a valid emergency contact number.");
+        alert(
+            "Please enter a valid emergency contact number."
+        );
 
         return;
 
     }
 
 
-    /* Declaration */
+    /* =========================
+       DECLARATION
+    ========================= */
 
     if(!checked("declaration")){
 
-        alert("Please accept the declaration before continuing.");
+        alert(
+            "Please accept the declaration before continuing."
+        );
 
         return;
 
     }
 
 
+    /* =========================
+       CREATE PDF
+    ========================= */
+
     const { jsPDF } = window.jspdf;
 
+
     const pdf = new jsPDF({
+
         orientation:"portrait",
+
         unit:"mm",
+
         format:"a4"
+
     });
 
 
@@ -2018,11 +2128,12 @@ document.getElementById("admissionForm")
 
     const pageWidth = 210;
     const pageHeight = 297;
-
     const margin = 10;
 
+
     const category =
-    document.querySelector('input[name="category"]:checked').value;
+    selectedCategory.value;
+
 
     const logo =
     category === "Pre-School"
@@ -2045,7 +2156,11 @@ document.getElementById("admissionForm")
        BACKGROUND
     ========================= */
 
-    pdf.setFillColor(249,250,253);
+    pdf.setFillColor(
+        249,
+        250,
+        253
+    );
 
     pdf.rect(
         0,
@@ -2073,12 +2188,15 @@ document.getElementById("admissionForm")
     );
 
 
-    /* Logo */
+    /* =========================
+       LOGO
+    ========================= */
 
     try{
 
         const logoData =
         await loadImageAsDataURL(logo);
+
 
         pdf.addImage(
             logoData,
@@ -2089,30 +2207,50 @@ document.getElementById("admissionForm")
             22
         );
 
-    }catch(error){
+    }
 
-        console.log("Logo could not be loaded.");
+    catch(error){
+
+        console.log(
+            "Logo could not be loaded."
+        );
 
     }
 
 
-    pdf.setTextColor(255,255,255);
+    pdf.setTextColor(
+        255,
+        255,
+        255
+    );
 
-    pdf.setFont("helvetica","bold");
+    pdf.setFont(
+        "helvetica",
+        "bold"
+    );
 
     pdf.setFontSize(15);
 
+
     pdf.text(
+
         category === "Pre-School"
         ? "READ & WRITE JUNIOR PRE-SCHOOL"
         : "READ & WRITE CLASSES",
+
         41,
         20
+
     );
 
-    pdf.setFont("helvetica","normal");
+
+    pdf.setFont(
+        "helvetica",
+        "normal"
+    );
 
     pdf.setFontSize(8);
+
 
     pdf.text(
         "ADMISSION APPLICATION FORM",
@@ -2121,9 +2259,15 @@ document.getElementById("admissionForm")
     );
 
 
-    /* Application badge */
+    /* =========================
+       SESSION BADGE
+    ========================= */
 
-    pdf.setFillColor(255,255,255);
+    pdf.setFillColor(
+        255,
+        255,
+        255
+    );
 
     pdf.roundedRect(
         157,
@@ -2135,26 +2279,39 @@ document.getElementById("admissionForm")
         "F"
     );
 
-    pdf.setTextColor(...primary);
 
-    pdf.setFont("helvetica","bold");
+    pdf.setTextColor(
+        ...primary
+    );
+
+    pdf.setFont(
+        "helvetica",
+        "bold"
+    );
 
     pdf.setFontSize(7);
+
 
     pdf.text(
         "SESSION",
         176.5,
         21,
-        {align:"center"}
+        {
+            align:"center"
+        }
     );
 
+
     pdf.setFontSize(8);
+
 
     pdf.text(
         value("session"),
         176.5,
         26,
-        {align:"center"}
+        {
+            align:"center"
+        }
     );
 
 
@@ -2162,9 +2319,16 @@ document.getElementById("admissionForm")
        STUDENT PHOTO
     ========================= */
 
-    pdf.setFillColor(255,255,255);
+    pdf.setFillColor(
+        255,
+        255,
+        255
+    );
 
-    pdf.setDrawColor(...border);
+    pdf.setDrawColor(
+        ...border
+    );
+
 
     pdf.roundedRect(
         165,
@@ -2176,20 +2340,33 @@ document.getElementById("admissionForm")
         "FD"
     );
 
+
     try{
+
+        const photoFormat =
+        studentPhotoData.startsWith(
+            "data:image/png"
+        )
+        ? "PNG"
+        : "JPEG";
+
 
         pdf.addImage(
             studentPhotoData,
-            "JPEG",
+            photoFormat,
             167,
             50,
             31,
             39
         );
 
-    }catch(error){
+    }
 
-        console.log("Student image error.");
+    catch(error){
+
+        console.log(
+            "Student image error."
+        );
 
     }
 
@@ -2198,9 +2375,15 @@ document.getElementById("admissionForm")
        SECTION FUNCTION
     ========================= */
 
-    function sectionTitle(title, y){
+    function sectionTitle(
+        title,
+        y
+    ){
 
-        pdf.setFillColor(...primary);
+        pdf.setFillColor(
+            ...primary
+        );
+
 
         pdf.roundedRect(
             margin,
@@ -2212,11 +2395,21 @@ document.getElementById("admissionForm")
             "F"
         );
 
-        pdf.setTextColor(255,255,255);
 
-        pdf.setFont("helvetica","bold");
+        pdf.setTextColor(
+            255,
+            255,
+            255
+        );
+
+
+        pdf.setFont(
+            "helvetica",
+            "bold"
+        );
 
         pdf.setFontSize(8);
+
 
         pdf.text(
             title.toUpperCase(),
@@ -2227,13 +2420,26 @@ document.getElementById("admissionForm")
     }
 
 
-    function field(label,text,x,y,w){
+    function field(
+        label,
+        text,
+        x,
+        y,
+        w
+    ){
 
-        pdf.setTextColor(...gray);
+        pdf.setTextColor(
+            ...gray
+        );
 
-        pdf.setFont("helvetica","bold");
+
+        pdf.setFont(
+            "helvetica",
+            "bold"
+        );
 
         pdf.setFontSize(6.2);
+
 
         pdf.text(
             label.toUpperCase(),
@@ -2241,20 +2447,31 @@ document.getElementById("admissionForm")
             y
         );
 
-        pdf.setTextColor(...dark);
 
-        pdf.setFont("helvetica","normal");
+        pdf.setTextColor(
+            ...dark
+        );
+
+
+        pdf.setFont(
+            "helvetica",
+            "normal"
+        );
 
         pdf.setFontSize(7.5);
 
+
         const safeText =
         text || "—";
+
 
         pdf.text(
             safeText,
             x,
             y+4.5,
-            {maxWidth:w}
+            {
+                maxWidth:w
+            }
         );
 
     }
@@ -2547,23 +2764,41 @@ document.getElementById("admissionForm")
 
     const documents = [];
 
+
     if(checked("docBirth"))
-        documents.push("Birth Certificate");
+        documents.push(
+            "Birth Certificate"
+        );
+
 
     if(checked("docPhoto"))
-        documents.push("Photographs");
+        documents.push(
+            "Photographs"
+        );
+
 
     if(checked("docTransfer"))
-        documents.push("Transfer / Leaving Certificate");
+        documents.push(
+            "Transfer / Leaving Certificate"
+        );
+
 
     if(checked("docMarksheet"))
-        documents.push("Previous Marksheet");
+        documents.push(
+            "Previous Marksheet"
+        );
+
 
     if(checked("docAddress"))
-        documents.push("Address Proof");
+        documents.push(
+            "Address Proof"
+        );
+
 
     if(checked("docOther"))
-        documents.push("Other Document");
+        documents.push(
+            "Other Document"
+        );
 
 
     field(
@@ -2581,9 +2816,14 @@ document.getElementById("admissionForm")
        DECLARATION
     ========================= */
 
-    pdf.setFillColor(...light);
+    pdf.setFillColor(
+        ...light
+    );
 
-    pdf.setDrawColor(...border);
+    pdf.setDrawColor(
+        ...border
+    );
+
 
     pdf.roundedRect(
         10,
@@ -2596,11 +2836,17 @@ document.getElementById("admissionForm")
     );
 
 
-    pdf.setTextColor(...gray);
+    pdf.setTextColor(
+        ...gray
+    );
 
-    pdf.setFont("helvetica","bold");
+    pdf.setFont(
+        "helvetica",
+        "bold"
+    );
 
     pdf.setFontSize(6.5);
+
 
     pdf.text(
         "DECLARATION",
@@ -2609,20 +2855,27 @@ document.getElementById("admissionForm")
     );
 
 
-    pdf.setFont("helvetica","normal");
+    pdf.setFont(
+        "helvetica",
+        "normal"
+    );
 
     pdf.setFontSize(6.2);
+
 
     const declarationText =
     "I/We declare that the information provided above is true and correct. " +
     "I/We agree to provide original documents when requested and understand " +
     "that admission is subject to school/classes rules and availability.";
 
+
     pdf.text(
         declarationText,
         14,
         274,
-        {maxWidth:180}
+        {
+            maxWidth:180
+        }
     );
 
 
@@ -2630,7 +2883,10 @@ document.getElementById("admissionForm")
        FOOTER
     ========================= */
 
-    pdf.setDrawColor(...border);
+    pdf.setDrawColor(
+        ...border
+    );
+
 
     pdf.line(
         10,
@@ -2640,22 +2896,31 @@ document.getElementById("admissionForm")
     );
 
 
-    pdf.setTextColor(...gray);
+    pdf.setTextColor(
+        ...gray
+    );
+
 
     pdf.setFontSize(6.5);
+
 
     pdf.text(
         "Read & Write | 9, Shivaji Park-2, Navagam-Dindoli Road, Navagam, Surat - 394210",
         105,
         290,
-        {align:"center"}
+        {
+            align:"center"
+        }
     );
+
 
     pdf.text(
         "95370 81242  •  readwritec@gmail.com",
         105,
         294,
-        {align:"center"}
+        {
+            align:"center"
+        }
     );
 
 
@@ -2665,36 +2930,49 @@ document.getElementById("admissionForm")
 
     const safeName =
     value("studentName")
-    .replace(/[^a-zA-Z0-9]/g,"_");
+    .replace(
+        /[^a-zA-Z0-9]/g,
+        "_"
+    );
+
 
     const fileName =
     `Read_Write_Admission_${safeName || "Student"}.pdf`;
 
 
-/* DOWNLOAD */
+    /* =========================
+       DOWNLOAD
+    ========================= */
 
-pdf.save(fileName);
-
-
-/* SUCCESS */
-
-const success =
-document.getElementById("successBox");
-
-success.classList.add("show");
+    pdf.save(fileName);
 
 
-/* =========================
-   PROFESSIONAL WHATSAPP POPUP
-========================= */
+    /* =========================
+       SUCCESS
+    ========================= */
 
-const studentNameForWhatsApp =
-value("studentName") || "Student";
+    const success =
+    document.getElementById(
+        "successBox"
+    );
 
-const whatsappNumber =
-"919537081242";
 
-const whatsappMessage =
+    success.classList.add("show");
+
+
+    /* =========================
+       WHATSAPP POPUP
+    ========================= */
+
+    const studentNameForWhatsApp =
+    value("studentName") || "Student";
+
+
+    const whatsappNumber =
+    "919537081242";
+
+
+    const whatsappMessage =
 `Hello Sir,
 
 I have completed the admission form for ${studentNameForWhatsApp}.
@@ -2704,23 +2982,29 @@ I have downloaded the admission form PDF. I am attaching the PDF here for your r
 Thank you.
 Read & Write`;
 
-const whatsappURL =
-"https://wa.me/" +
-whatsappNumber +
-"?text=" +
-encodeURIComponent(whatsappMessage);
+
+    const whatsappURL =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(
+        whatsappMessage
+    );
 
 
-/* =========================
-   CREATE POPUP
-========================= */
+    /* =========================
+       CREATE POPUP
+    ========================= */
 
-const popup =
-document.createElement("div");
+    const popup =
+    document.createElement("div");
 
-popup.id = "whatsappPopup";
 
-popup.innerHTML = `
+    popup.id =
+    "whatsappPopup";
+
+
+    popup.innerHTML = `
 
 <div class="whatsapp-overlay">
 
@@ -2786,9 +3070,9 @@ popup.innerHTML = `
 
             <i class="fa-solid fa-paperclip"></i>
 
-            WhatsApp खुलने के बाद
-            <strong>Document</strong> option से
-            downloaded PDF attach करके Send करें।
+            After WhatsApp opens, use the
+            <strong>Document</strong> option to
+            attach the downloaded PDF and send it.
 
         </div>
 
@@ -2799,10 +3083,10 @@ popup.innerHTML = `
 
             <strong>Important:</strong><br>
 
-            School / Classes में admission के लिए
-            आते समय इस PDF का
+            When you come to the School / Classes
+            for admission, please bring a
             <strong>Xerox / printout</strong>
-            जरूर लेकर आएँ।
+            of this PDF.
 
         </div>
 
@@ -2822,19 +3106,20 @@ popup.innerHTML = `
 `;
 
 
-/* Add popup */
+    document.body.appendChild(
+        popup
+    );
 
-document.body.appendChild(popup);
+
+    /* =========================
+       POPUP CSS
+    ========================= */
+
+    const popupStyle =
+    document.createElement("style");
 
 
-/* =========================
-   POPUP CSS
-========================= */
-
-const popupStyle =
-document.createElement("style");
-
-popupStyle.innerHTML = `
+    popupStyle.innerHTML = `
 
 .whatsapp-overlay{
 
@@ -3204,44 +3489,54 @@ popupStyle.innerHTML = `
 
 `;
 
-document.head.appendChild(popupStyle);
+
+    document.head.appendChild(
+        popupStyle
+    );
 
 
-/* =========================
-   CLOSE POPUP
-========================= */
+    /* =========================
+       CLOSE POPUP
+    ========================= */
 
-function closeWhatsAppPopup(){
+    function closeWhatsAppPopup(){
 
-    popup.remove();
+        popup.remove();
 
-    popupStyle.remove();
+        popupStyle.remove();
 
-    document.body.style.overflow = "";
+        document.body.style.overflow = "";
 
-}
-
-
-document
-.getElementById("closeWhatsApp")
-.addEventListener(
-"click",
-closeWhatsAppPopup
-);
+    }
 
 
-document
-.getElementById("closeWhatsAppBottom")
-.addEventListener(
-"click",
-closeWhatsAppPopup
-);
+    document
+    .getElementById(
+        "closeWhatsApp"
+    )
+    .addEventListener(
+        "click",
+        closeWhatsAppPopup
+    );
 
 
-/* Prevent background scrolling */
+    document
+    .getElementById(
+        "closeWhatsAppBottom"
+    )
+    .addEventListener(
+        "click",
+        closeWhatsAppPopup
+    );
 
-document.body.style.overflow =
-"hidden";
+
+    /* Prevent background scrolling */
+
+    document.body.style.overflow =
+    "hidden";
+
+});
+
 
 /* =========================
    LOAD LOCAL IMAGE
@@ -3249,43 +3544,70 @@ document.body.style.overflow =
 
 function loadImageAsDataURL(src){
 
-    return new Promise((resolve,reject)=>{
+    return new Promise(
+        (resolve,reject)=>{
 
-        const img = new Image();
+            const img =
+            new Image();
 
-        img.crossOrigin = "anonymous";
 
-        img.onload = function(){
+            img.crossOrigin =
+            "anonymous";
 
-            const canvas =
-            document.createElement("canvas");
 
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
+            img.onload =
+            function(){
 
-            const ctx =
-            canvas.getContext("2d");
+                const canvas =
+                document.createElement(
+                    "canvas"
+                );
 
-            ctx.drawImage(
-                img,
-                0,
-                0
-            );
 
-            resolve(
-                canvas.toDataURL("image/jpeg",.95)
-            );
+                canvas.width =
+                img.naturalWidth;
 
-        };
 
-        img.onerror = reject;
+                canvas.height =
+                img.naturalHeight;
 
-        img.src = src;
 
-    });
+                const ctx =
+                canvas.getContext(
+                    "2d"
+                );
+
+
+                ctx.drawImage(
+                    img,
+                    0,
+                    0
+                );
+
+
+                resolve(
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        .95
+                    )
+                );
+
+            };
+
+
+            img.onerror =
+            reject;
+
+
+            img.src =
+            src;
+
+        }
+    );
 
 }
 
 </script>
+
 </body>
 </html>
