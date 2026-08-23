@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Admin Dashboard | Read & Write</title>
 
@@ -14,612 +15,611 @@
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <style>
+
 :root{
---primary:#4f46e5;
---primary-dark:#3730a3;
---dark:#172033;
---text:#667286;
---light:#f6f8fc;
---white:#fff;
---border:#e4e8ef;
---green:#16a34a;
---red:#dc2626;
---orange:#ea580c;
---blue:#2563eb;
+    --primary:#4f46e5;
+    --primary-dark:#3730a3;
+    --dark:#172033;
+    --text:#667286;
+    --light:#f6f8fc;
+    --white:#fff;
+    --border:#e4e8ef;
+    --green:#16a34a;
+    --red:#dc2626;
+    --orange:#ea580c;
+    --blue:#2563eb;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-font-family:'Nunito',sans-serif;
-background:var(--light);
-color:var(--text);
+    font-family:'Nunito',sans-serif;
+    background:var(--light);
+    color:var(--text);
 }
 
-button,input,select,textarea{font-family:inherit}
-
 .sidebar{
-position:fixed;
-left:0;
-top:0;
-width:250px;
-height:100vh;
-background:#fff;
-border-right:1px solid var(--border);
-z-index:1000;
-overflow-y:auto;
-transition:.3s;
+    position:fixed;
+    left:0;
+    top:0;
+    width:250px;
+    height:100vh;
+    background:#fff;
+    border-right:1px solid var(--border);
+    z-index:1000;
+    overflow-y:auto;
 }
 
 .logo-box{
-height:82px;
-display:flex;
-align-items:center;
-padding:0 22px;
-border-bottom:1px solid var(--border);
-}
-
-.logo-box img{
-width:48px;
-height:48px;
-border-radius:50%;
-object-fit:cover;
-border:3px solid #eef2ff;
-margin-right:11px;
+    height:82px;
+    display:flex;
+    align-items:center;
+    padding:0 22px;
+    border-bottom:1px solid var(--border);
 }
 
 .logo-text h2{
-font-family:Poppins;
-color:var(--primary);
-font-size:17px;
+    font-family:'Poppins',sans-serif;
+    color:var(--primary);
+    font-size:18px;
 }
 
 .logo-text span{
-font-size:8px;
-font-weight:800;
-letter-spacing:.5px;
-color:#8b95a5;
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:.5px;
+    color:#8b95a5;
 }
 
 .admin-info{
-padding:18px 20px;
-border-bottom:1px solid var(--border);
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
 }
 
 .admin-info small{
-display:block;
-font-size:10px;
-color:#9aa3b1;
+    display:block;
+    font-size:10px;
+    color:#9aa3b1;
 }
 
 .admin-info strong{
-display:block;
-color:var(--dark);
-font-size:12px;
-margin-top:3px;
-overflow:hidden;
-text-overflow:ellipsis;
-white-space:nowrap;
+    display:block;
+    color:var(--dark);
+    font-size:12px;
+    margin-top:3px;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .menu-title{
-padding:20px 20px 8px;
-font-size:9px;
-font-weight:800;
-letter-spacing:1px;
-color:#a0a8b5;
+    padding:20px 20px 8px;
+    font-size:9px;
+    font-weight:800;
+    letter-spacing:1px;
+    color:#a0a8b5;
 }
 
 .nav-menu{
-list-style:none;
-padding:0 12px;
+    list-style:none;
+    padding:0 12px;
 }
 
-.nav-menu li{margin-bottom:4px}
+.nav-menu li{
+    margin-bottom:4px;
+}
 
 .nav-menu button{
-width:100%;
-border:0;
-background:transparent;
-display:flex;
-align-items:center;
-gap:12px;
-padding:11px 12px;
-border-radius:9px;
-color:#687386;
-font-size:12px;
-font-weight:700;
-cursor:pointer;
-text-align:left;
+    width:100%;
+    border:0;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 12px;
+    border-radius:9px;
+    color:#687386;
+    font-family:'Nunito';
+    font-size:12px;
+    font-weight:700;
+    cursor:pointer;
+    text-align:left;
 }
 
 .nav-menu button:hover,
 .nav-menu button.active{
-background:#eef2ff;
-color:var(--primary);
+    background:#eef2ff;
+    color:var(--primary);
 }
 
 .nav-menu i{
-width:18px;
-text-align:center;
+    width:18px;
+    text-align:center;
 }
 
 .logout-area{
-padding:15px 12px;
-margin-top:15px;
-border-top:1px solid var(--border);
+    padding:15px 12px;
+    border-top:1px solid var(--border);
+    margin-top:15px;
 }
 
 .logout-btn{
-width:100%;
-border:0;
-background:#fef2f2;
-color:var(--red);
-padding:11px;
-border-radius:9px;
-font-size:12px;
-font-weight:800;
-cursor:pointer;
+    width:100%;
+    border:0;
+    background:#fef2f2;
+    color:var(--red);
+    padding:11px;
+    border-radius:9px;
+    font-family:'Nunito';
+    font-weight:800;
+    cursor:pointer;
 }
 
 .main{
-margin-left:250px;
-min-height:100vh;
+    margin-left:250px;
+    min-height:100vh;
 }
 
 .topbar{
-height:82px;
-background:#fff;
-border-bottom:1px solid var(--border);
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 30px;
-position:sticky;
-top:0;
-z-index:500;
+    height:82px;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:500;
 }
 
 .page-heading h1{
-font-family:Poppins;
-color:var(--dark);
-font-size:21px;
+    font-family:'Poppins';
+    color:var(--dark);
+    font-size:21px;
 }
 
 .page-heading p{
-font-size:11px;
-color:#8993a3;
+    font-size:11px;
+    color:#8993a3;
 }
 
-.top-actions{
-display:flex;
-gap:10px;
+.content{
+    padding:30px;
 }
 
-.icon-btn{
-width:38px;
-height:38px;
-border:1px solid var(--border);
-border-radius:9px;
-background:#fff;
-cursor:pointer;
-color:#687386;
+.section{
+    display:none;
 }
 
-.mobile-menu{display:none}
-
-.content{padding:30px}
-
-.section{display:none}
-.section.active{display:block}
+.section.active{
+    display:block;
+}
 
 .welcome{
-background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-border-radius:18px;
-padding:25px;
-color:#fff;
-margin-bottom:25px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    border-radius:18px;
+    padding:25px;
+    color:#fff;
+    margin-bottom:25px;
 }
 
 .welcome h2{
-font-family:Poppins;
-font-size:21px;
-margin-bottom:5px;
+    font-family:'Poppins';
+    font-size:21px;
+    margin-bottom:5px;
 }
 
 .welcome p{
-font-size:12px;
-opacity:.88;
+    font-size:12px;
+    opacity:.9;
 }
 
 .stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:18px;
-margin-bottom:25px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+    margin-bottom:25px;
 }
 
 .stat-card{
-background:#fff;
-border:1px solid var(--border);
-border-radius:15px;
-padding:20px;
-display:flex;
-align-items:center;
-gap:15px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:20px;
 }
 
-.stat-icon{
-width:46px;
-height:46px;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:18px;
+.stat-card small{
+    display:block;
+    font-size:10px;
+    color:#929baa;
 }
 
-.purple{background:#eef2ff;color:var(--primary)}
-.green{background:#ecfdf5;color:var(--green)}
-.orange{background:#fff7ed;color:var(--orange)}
-.blue{background:#eff6ff;color:var(--blue)}
-
-.stat-info small{
-display:block;
-font-size:10px;
-color:#929baa;
-}
-
-.stat-info strong{
-color:var(--dark);
-font-family:Poppins;
-font-size:20px;
+.stat-card strong{
+    display:block;
+    color:var(--dark);
+    font-family:'Poppins';
+    font-size:22px;
+    margin-top:4px;
 }
 
 .panel{
-background:#fff;
-border:1px solid var(--border);
-border-radius:15px;
-overflow:hidden;
-margin-bottom:20px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:20px;
 }
 
 .panel-header{
-min-height:60px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:15px 20px;
-border-bottom:1px solid var(--border);
-gap:10px;
+    min-height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px 20px;
+    border-bottom:1px solid var(--border);
 }
 
 .panel-header h3{
-font-family:Poppins;
-color:var(--dark);
-font-size:14px;
+    font-family:'Poppins';
+    color:var(--dark);
+    font-size:14px;
 }
 
-.panel-body{padding:20px}
+.panel-body{
+    padding:20px;
+}
 
 .primary-btn{
-border:0;
-background:var(--primary);
-color:#fff;
-padding:9px 14px;
-border-radius:8px;
-font-size:11px;
-font-weight:800;
-cursor:pointer;
+    border:0;
+    background:var(--primary);
+    color:#fff;
+    padding:9px 14px;
+    border-radius:8px;
+    font-family:'Nunito';
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.primary-btn:hover{background:var(--primary-dark)}
+.primary-btn:hover{
+    background:var(--primary-dark);
+}
+
+.secondary-btn{
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--dark);
+    padding:9px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+}
 
 .danger-btn{
-border:0;
-background:#fef2f2;
-color:var(--red);
-padding:7px 10px;
-border-radius:7px;
-cursor:pointer;
-font-weight:700;
+    border:0;
+    background:#fee2e2;
+    color:var(--red);
+    padding:7px 10px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:700;
 }
 
 .edit-btn{
-border:0;
-background:#eef2ff;
-color:var(--primary);
-padding:7px 10px;
-border-radius:7px;
-cursor:pointer;
-font-weight:700;
+    border:0;
+    background:#eef2ff;
+    color:var(--primary);
+    padding:7px 10px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:700;
 }
 
-.table-wrapper{overflow-x:auto}
+.table-wrapper{
+    overflow-x:auto;
+}
 
 table{
-width:100%;
-border-collapse:collapse;
-font-size:11px;
+    width:100%;
+    border-collapse:collapse;
+    font-size:11px;
 }
 
 th{
-background:#f8fafc;
-color:#667286;
-font-weight:800;
-text-align:left;
-padding:13px 15px;
-border-bottom:1px solid var(--border);
-white-space:nowrap;
+    background:#f8fafc;
+    color:#667286;
+    padding:13px 15px;
+    text-align:left;
+    border-bottom:1px solid var(--border);
 }
 
 td{
-padding:11px 15px;
-border-bottom:1px solid #edf0f4;
-color:#687386;
-white-space:nowrap;
+    padding:13px 15px;
+    border-bottom:1px solid #edf0f4;
 }
 
-td strong{color:var(--dark)}
+td strong{
+    color:var(--dark);
+}
 
 .actions{
-display:flex;
-gap:5px;
-}
-
-.badge{
-display:inline-block;
-padding:5px 9px;
-border-radius:20px;
-font-size:9px;
-font-weight:800;
-}
-
-.badge.approved{
-background:#ecfdf5;
-color:#15803d;
-}
-
-.badge.pending{
-background:#fff7ed;
-color:#c2410c;
-}
-
-.search-box{
-display:flex;
-gap:8px;
-margin-bottom:15px;
-}
-
-.search-box input{
-flex:1;
-border:1px solid #dce2eb;
-border-radius:8px;
-padding:10px 12px;
-outline:none;
+    display:flex;
+    gap:5px;
 }
 
 .form-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
 .form-group.full{
-grid-column:1/-1;
+    grid-column:1/-1;
 }
 
 .form-group label{
-display:block;
-font-size:11px;
-font-weight:800;
-color:#3f4a5c;
-margin-bottom:6px;
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    color:#3f4a5c;
+    margin-bottom:6px;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea{
-width:100%;
-border:1px solid #dce2eb;
-border-radius:8px;
-padding:10px 12px;
-outline:none;
-font-size:12px;
-color:var(--dark);
-background:#fbfcfe;
+    width:100%;
+    border:1px solid #dce2eb;
+    border-radius:8px;
+    padding:10px 12px;
+    outline:none;
+    font-family:'Nunito';
+    font-size:12px;
+    color:var(--dark);
+    background:#fbfcfe;
 }
 
 .form-group textarea{
-min-height:90px;
-resize:vertical;
+    min-height:90px;
+    resize:vertical;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus{
-border-color:var(--primary);
-}
-
-.form-actions{
-display:flex;
-justify-content:flex-end;
-gap:10px;
-margin-top:15px;
-}
-
-.cancel-btn{
-border:1px solid var(--border);
-background:#fff;
-padding:9px 14px;
-border-radius:8px;
-cursor:pointer;
-font-weight:700;
-}
-
-.photo-preview{
-width:90px;
-height:90px;
-border-radius:10px;
-border:1px dashed #cbd5e1;
-object-fit:cover;
-display:none;
-margin-top:8px;
-}
-
-.empty{
-text-align:center;
-padding:35px;
-color:#a0a8b5;
-font-size:11px;
+    border-color:var(--primary);
 }
 
 .modal{
-position:fixed;
-inset:0;
-background:rgba(15,23,42,.55);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:3000;
-padding:15px;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.55);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:5000;
 }
 
-.modal.show{display:flex}
+.modal.show{
+    display:flex;
+}
 
 .modal-box{
-width:min(850px,100%);
-max-height:90vh;
-overflow-y:auto;
-background:#fff;
-border-radius:16px;
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:15px;
 }
 
 .modal-header{
-padding:17px 20px;
-border-bottom:1px solid var(--border);
-display:flex;
-justify-content:space-between;
-align-items:center;
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .modal-header h3{
-font-family:Poppins;
-color:var(--dark);
-font-size:15px;
+    font-family:'Poppins';
+    color:var(--dark);
+    font-size:15px;
 }
 
 .close-btn{
-border:0;
-background:#f1f5f9;
-width:32px;
-height:32px;
-border-radius:8px;
-cursor:pointer;
+    border:0;
+    background:#f1f5f9;
+    width:32px;
+    height:32px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+.modal-footer{
+    padding:15px 20px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
 }
 
 .toast{
-position:fixed;
-right:25px;
-bottom:25px;
-background:#172033;
-color:#fff;
-padding:12px 17px;
-border-radius:9px;
-font-size:11px;
-font-weight:700;
-transform:translateY(100px);
-opacity:0;
-transition:.3s;
-z-index:5000;
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    background:#172033;
+    color:#fff;
+    padding:12px 17px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:700;
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+    z-index:6000;
 }
 
 .toast.show{
-transform:translateY(0);
-opacity:1;
+    transform:translateY(0);
+    opacity:1;
+}
+
+.empty{
+    text-align:center;
+    padding:30px;
+    color:#9aa3b1;
+    font-size:12px;
 }
 
 @media(max-width:1000px){
-.stats{grid-template-columns:repeat(2,1fr)}
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
 @media(max-width:700px){
-.sidebar{transform:translateX(-100%)}
-.sidebar.open{transform:translateX(0)}
-.main{margin-left:0}
-.mobile-menu{display:block}
-.topbar{padding:0 15px}
-.content{padding:18px 12px}
-.form-grid{grid-template-columns:1fr}
-.form-group.full{grid-column:auto}
-.stats{grid-template-columns:1fr 1fr}
+
+    .sidebar{
+        transform:translateX(-100%);
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block!important;
+    }
+
+    .topbar{
+        padding:0 15px;
+    }
+
+    .content{
+        padding:15px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
 }
 
-@media(max-width:450px){
-.stats{grid-template-columns:1fr}
+.mobile-menu{
+    display:none;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <aside class="sidebar" id="sidebar">
 
-<div class="logo-box">
-<img src="images/logo.jpg" alt="Logo">
-<div class="logo-text">
-<h2>Read & Write</h2>
-<span>JUNIOR PRE-SCHOOL</span>
-</div>
-</div>
+    <div class="logo-box">
+        <div class="logo-text">
+            <h2>Read & Write</h2>
+            <span>JUNIOR PRE-SCHOOL</span>
+        </div>
+    </div>
 
-<div class="admin-info">
-<small>Logged in as</small>
-<strong id="adminEmail">Administrator</strong>
-</div>
+    <div class="admin-info">
+        <small>Logged in as</small>
+        <strong id="adminEmail">Administrator</strong>
+    </div>
 
-<div class="menu-title">MAIN MENU</div>
+    <div class="menu-title">MAIN MENU</div>
 
-<ul class="nav-menu">
+    <ul class="nav-menu">
 
-<li><button class="nav-btn active" data-section="dashboard">
-<i class="fa-solid fa-chart-pie"></i> Dashboard
-</button></li>
+        <li>
+            <button class="nav-btn active" data-section="dashboard">
+                <i class="fa-solid fa-chart-pie"></i>
+                Dashboard
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="admissions">
-<i class="fa-solid fa-file-signature"></i> Admissions
-</button></li>
+        <li>
+            <button class="nav-btn" data-section="admissions">
+                <i class="fa-solid fa-file-signature"></i>
+                Admissions
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="students">
-<i class="fa-solid fa-user-graduate"></i> Students
-</button></li>
+        <li>
+            <button class="nav-btn" data-section="students">
+                <i class="fa-solid fa-user-graduate"></i>
+                Students
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="teachers">
-<i class="fa-solid fa-chalkboard-user"></i> Teachers
-</button></li>
+        <li>
+            <button class="nav-btn" data-section="teachers">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Teachers
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="fees">
-<i class="fa-solid fa-indian-rupee-sign"></i> Fees
-</button></li>
+        <li>
+            <button class="nav-btn" data-section="fees">
+                <i class="fa-solid fa-indian-rupee-sign"></i>
+                Fees
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="notices">
-<i class="fa-solid fa-bullhorn"></i> Notices
-</button></li>
+        <li>
+            <button class="nav-btn" data-section="notices">
+                <i class="fa-solid fa-bullhorn"></i>
+                Notices
+            </button>
+        </li>
 
-<li><button class="nav-btn" data-section="settings">
-<i class="fa-solid fa-gear"></i> Settings
-</button></li>
+    </ul>
 
-</ul>
+    <div class="menu-title">SYSTEM</div>
 
-<div class="logout-area">
-<button class="logout-btn" id="logoutBtn">
-<i class="fa-solid fa-right-from-bracket"></i> Logout
-</button>
-</div>
+    <ul class="nav-menu">
+
+        <li>
+            <button class="nav-btn" data-section="settings">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </button>
+        </li>
+
+    </ul>
+
+    <div class="logout-area">
+
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            &nbsp; Logout
+        </button>
+
+    </div>
 
 </aside>
 
@@ -628,24 +628,21 @@ opacity:1;
 
 <header class="topbar">
 
-<div class="page-heading">
+    <div class="page-heading">
 
-<button class="icon-btn mobile-menu" id="mobileMenu">
-<i class="fa-solid fa-bars"></i>
-</button>
+        <button class="icon-btn mobile-menu" id="mobileMenu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-<div style="display:inline-block;margin-left:8px">
-<h1 id="pageTitle">Dashboard</h1>
-<p>Read & Write Administration Panel</p>
-</div>
+        <div style="display:inline-block;margin-left:8px">
 
-</div>
+            <h1 id="pageTitle">Dashboard</h1>
 
-<div class="top-actions">
-<button class="icon-btn" id="notificationBtn">
-<i class="fa-regular fa-bell"></i>
-</button>
-</div>
+            <p>Read & Write Administration Panel</p>
+
+        </div>
+
+    </div>
 
 </header>
 
@@ -657,86 +654,85 @@ opacity:1;
 
 <section class="section active" id="dashboard">
 
-<div class="welcome">
-<h2>Welcome to Admin Dashboard 👋</h2>
-<p>Manage your Read & Write school administration from one place.</p>
-</div>
+    <div class="welcome">
 
-<div class="stats">
+        <h2>Welcome to Admin Dashboard 👋</h2>
 
-<div class="stat-card">
-<div class="stat-icon purple">
-<i class="fa-solid fa-user-graduate"></i>
-</div>
-<div class="stat-info">
-<small>Total Students</small>
-<strong id="studentCount">0</strong>
-</div>
-</div>
+        <p>
+            Manage your Read & Write school administration from one place.
+        </p>
 
-<div class="stat-card">
-<div class="stat-icon green">
-<i class="fa-solid fa-user-plus"></i>
-</div>
-<div class="stat-info">
-<small>Admissions</small>
-<strong id="admissionCount">0</strong>
-</div>
-</div>
+    </div>
 
-<div class="stat-card">
-<div class="stat-icon orange">
-<i class="fa-solid fa-chalkboard-user"></i>
-</div>
-<div class="stat-info">
-<small>Teachers</small>
-<strong id="teacherCount">0</strong>
-</div>
-</div>
 
-<div class="stat-card">
-<div class="stat-icon blue">
-<i class="fa-solid fa-indian-rupee-sign"></i>
-</div>
-<div class="stat-info">
-<small>Fees Collected</small>
-<strong id="feeCount">₹0</strong>
-</div>
-</div>
+    <div class="stats">
 
-</div>
+        <div class="stat-card">
+            <small>Total Students</small>
+            <strong id="studentCount">0</strong>
+        </div>
 
-<div class="panel">
+        <div class="stat-card">
+            <small>Total Admissions</small>
+            <strong id="admissionCount">0</strong>
+        </div>
 
-<div class="panel-header">
-<h3>Recent Admissions</h3>
-<button class="primary-btn" onclick="openSection('admissions')">
-View All
-</button>
-</div>
+        <div class="stat-card">
+            <small>Total Teachers</small>
+            <strong id="teacherCount">0</strong>
+        </div>
 
-<div class="table-wrapper">
+        <div class="stat-card">
+            <small>Fees Collected</small>
+            <strong id="feeCount">₹0</strong>
+        </div>
 
-<table>
-<thead>
-<tr>
-<th>Student</th>
-<th>Class</th>
-<th>Parent</th>
-<th>Date</th>
-<th>Status</th>
-</tr>
-</thead>
+    </div>
 
-<tbody id="recentAdmissions">
-<tr>
-<td colspan="5" class="empty">Loading...</td>
-</tr>
-</tbody>
-</table>
 
-</div>
-</div>
+    <div class="panel">
+
+        <div class="panel-header">
+
+            <h3>Quick Actions</h3>
+
+        </div>
+
+        <div class="panel-body">
+
+            <button class="primary-btn"
+            onclick="openModal('admission')">
+                <i class="fa-solid fa-plus"></i>
+                New Admission
+            </button>
+
+            <button class="primary-btn"
+            onclick="openModal('student')">
+                <i class="fa-solid fa-plus"></i>
+                New Student
+            </button>
+
+            <button class="primary-btn"
+            onclick="openModal('teacher')">
+                <i class="fa-solid fa-plus"></i>
+                New Teacher
+            </button>
+
+            <button class="primary-btn"
+            onclick="openModal('fee')">
+                <i class="fa-solid fa-plus"></i>
+                Add Fee
+            </button>
+
+            <button class="primary-btn"
+            onclick="openModal('notice')">
+                <i class="fa-solid fa-plus"></i>
+                New Notice
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
 
@@ -748,43 +744,51 @@ View All
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Admission Management</h3>
 
-<button class="primary-btn" onclick="openAdmissionForm()">
-<i class="fa-solid fa-plus"></i> New Admission
+<button class="primary-btn"
+onclick="openModal('admission')">
+
+<i class="fa-solid fa-plus"></i>
+New Admission
+
 </button>
-</div>
-
-<div class="panel-body">
-
-<div class="search-box">
-<input id="admissionSearch"
-placeholder="Search student, parent or class..."
-oninput="renderAdmissions()">
-</div>
 
 </div>
 
 <div class="table-wrapper">
 
 <table>
+
 <thead>
+
 <tr>
 <th>Student</th>
 <th>Class</th>
 <th>Parent</th>
-<th>Contact</th>
+<th>Mobile</th>
 <th>Date</th>
 <th>Status</th>
-<th>Actions</th>
+<th>Action</th>
 </tr>
+
 </thead>
 
-<tbody id="admissionTable"></tbody>
+<tbody id="admissionsTable">
+
+<tr>
+<td colspan="7" class="empty">
+Loading...
+</td>
+</tr>
+
+</tbody>
 
 </table>
 
 </div>
+
 </div>
 
 </section>
@@ -797,43 +801,50 @@ oninput="renderAdmissions()">
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Student Management</h3>
 
-<button class="primary-btn" onclick="openStudentForm()">
-<i class="fa-solid fa-plus"></i> Add Student
+<button class="primary-btn"
+onclick="openModal('student')">
+
+<i class="fa-solid fa-plus"></i>
+New Student
+
 </button>
-</div>
-
-<div class="panel-body">
-
-<div class="search-box">
-<input id="studentSearch"
-placeholder="Search student, class or parent..."
-oninput="renderStudents()">
-</div>
 
 </div>
 
 <div class="table-wrapper">
 
 <table>
+
 <thead>
+
 <tr>
-<th>Photo</th>
 <th>Name</th>
 <th>Class</th>
 <th>Parent</th>
-<th>Contact</th>
+<th>Mobile</th>
 <th>Status</th>
-<th>Actions</th>
+<th>Action</th>
 </tr>
+
 </thead>
 
-<tbody id="studentTable"></tbody>
+<tbody id="studentsTable">
+
+<tr>
+<td colspan="6" class="empty">
+Loading...
+</td>
+</tr>
+
+</tbody>
 
 </table>
 
 </div>
+
 </div>
 
 </section>
@@ -846,20 +857,16 @@ oninput="renderStudents()">
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Teacher Management</h3>
 
-<button class="primary-btn" onclick="openTeacherForm()">
-<i class="fa-solid fa-plus"></i> Add Teacher
+<button class="primary-btn"
+onclick="openModal('teacher')">
+
+<i class="fa-solid fa-plus"></i>
+New Teacher
+
 </button>
-</div>
-
-<div class="panel-body">
-
-<div class="search-box">
-<input id="teacherSearch"
-placeholder="Search teacher or subject..."
-oninput="renderTeachers()">
-</div>
 
 </div>
 
@@ -868,17 +875,27 @@ oninput="renderTeachers()">
 <table>
 
 <thead>
+
 <tr>
 <th>Name</th>
 <th>Subject</th>
 <th>Experience</th>
-<th>Contact</th>
+<th>Mobile</th>
 <th>Status</th>
-<th>Actions</th>
+<th>Action</th>
 </tr>
+
 </thead>
 
-<tbody id="teacherTable"></tbody>
+<tbody id="teachersTable">
+
+<tr>
+<td colspan="6" class="empty">
+Loading...
+</td>
+</tr>
+
+</tbody>
 
 </table>
 
@@ -896,11 +913,17 @@ oninput="renderTeachers()">
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Fee Management</h3>
 
-<button class="primary-btn" onclick="openFeeForm()">
-<i class="fa-solid fa-plus"></i> Record Payment
+<button class="primary-btn"
+onclick="openModal('fee')">
+
+<i class="fa-solid fa-plus"></i>
+Record Payment
+
 </button>
+
 </div>
 
 <div class="table-wrapper">
@@ -908,17 +931,27 @@ oninput="renderTeachers()">
 <table>
 
 <thead>
+
 <tr>
 <th>Student</th>
-<th>Class</th>
 <th>Amount</th>
 <th>Month</th>
 <th>Date</th>
-<th>Actions</th>
+<th>Method</th>
+<th>Action</th>
 </tr>
+
 </thead>
 
-<tbody id="feeTable"></tbody>
+<tbody id="feesTable">
+
+<tr>
+<td colspan="6" class="empty">
+Loading...
+</td>
+</tr>
+
+</tbody>
 
 </table>
 
@@ -936,15 +969,46 @@ oninput="renderTeachers()">
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Notice Management</h3>
 
-<button class="primary-btn" onclick="openNoticeForm()">
-<i class="fa-solid fa-plus"></i> New Notice
+<button class="primary-btn"
+onclick="openModal('notice')">
+
+<i class="fa-solid fa-plus"></i>
+New Notice
+
 </button>
+
 </div>
 
-<div class="panel-body" id="noticeList">
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+
+<tr>
+<th>Title</th>
+<th>Notice</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+
+</thead>
+
+<tbody id="noticesTable">
+
+<tr>
+<td colspan="4" class="empty">
 Loading...
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
 </div>
 
 </div>
@@ -959,36 +1023,51 @@ Loading...
 <div class="panel">
 
 <div class="panel-header">
+
 <h3>Admin Settings</h3>
+
 </div>
 
 <div class="panel-body">
 
-<div class="setting-row">
+<p>
 <strong>Admin Account</strong>
-<span id="settingsEmail">Loading...</span>
+</p>
+
+<p id="settingsEmail"
+style="margin-top:5px">
+Loading...
+</p>
+
+<br>
+
+<p>
+<strong>Database</strong>
+</p>
+
+<p style="margin-top:5px">
+Firebase Firestore Connected
+</p>
+
+<br>
+
+<p>
+<strong>Storage</strong>
+</p>
+
+<p style="margin-top:5px">
+Not required — image upload is disabled.
+</p>
+
 </div>
 
-<div class="setting-row">
-<strong>Authentication</strong>
-<span class="badge approved">Active</span>
-</div>
-
-<div style="margin-top:20px">
-
-<button class="logout-btn" id="settingsLogout">
-<i class="fa-solid fa-right-from-bracket"></i>
-Logout from Admin Panel
-</button>
-
-</div>
-
-</div>
 </div>
 
 </section>
 
+
 </div>
+
 </main>
 
 
@@ -1000,15 +1079,40 @@ Logout from Admin Panel
 
 <div class="modal-header">
 
-<h3 id="modalTitle">Form</h3>
+<h3 id="modalTitle">Add Record</h3>
 
-<button class="close-btn" onclick="closeModal()">
+<button class="close-btn"
+onclick="closeModal()">
+
 <i class="fa-solid fa-xmark"></i>
+
 </button>
 
 </div>
 
-<div class="panel-body" id="modalBody"></div>
+<div class="modal-body">
+
+<form id="dataForm">
+
+<div id="formFields"></div>
+
+</form>
+
+</div>
+
+<div class="modal-footer">
+
+<button class="secondary-btn"
+onclick="closeModal()">
+Cancel
+</button>
+
+<button class="primary-btn"
+id="saveBtn">
+Save
+</button>
+
+</div>
 
 </div>
 
@@ -1020,252 +1124,145 @@ Logout from Admin Panel
 
 <script type="module">
 
-import {initializeApp}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import {
+initializeApp
+}
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
 import {
 getAuth,
 onAuthStateChanged,
 signOut
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 import {
 getFirestore,
 collection,
 addDoc,
 getDocs,
-doc,
 updateDoc,
 deleteDoc,
-serverTimestamp,
-query,
-orderBy
+doc,
+serverTimestamp
 }
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
-
-import {
-getStorage,
-ref,
-uploadBytes,
-getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/12.1.0/firebase-storage.js";
+from
+"https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
 /* =========================
 FIREBASE CONFIG
 ========================= */
 
-const firebaseConfig={
+const firebaseConfig = {
 
-apiKey:"AIzaSyCI4Y64lva6qL4e8FRMEeNf96regnHPNPw",
+apiKey:
+"AIzaSyCI4Y64lva6qL4e8FRMEeNf96regnHPNPw",
 
-authDomain:"read-and-write-admin.firebaseapp.com",
+authDomain:
+"read-and-write-admin.firebaseapp.com",
 
-projectId:"read-and-write-admin",
+projectId:
+"read-and-write-admin",
 
-storageBucket:"read-and-write-admin.firebasestorage.app",
+storageBucket:
+"read-and-write-admin.firebasestorage.app",
 
-messagingSenderId:"168556066275",
+messagingSenderId:
+"168556066275",
 
-appId:"1:168556066275:web:ccb2317c2031f5c42ddcd6",
+appId:
+"1:168556066275:web:ccb2317c2031f5c42ddcd6",
 
-measurementId:"G-88XX3MGERS"
+measurementId:
+"G-88XX3MGERS"
 
 };
 
 
-const app=initializeApp(firebaseConfig);
+const app =
+initializeApp(firebaseConfig);
 
-const auth=getAuth(app);
+const auth =
+getAuth(app);
 
-const db=getFirestore(app);
-
-const storage=getStorage(app);
-
-
-/* =========================
-GLOBAL DATA
-========================= */
-
-let currentUser=null;
-
-let admissions=[];
-let students=[];
-let teachers=[];
-let fees=[];
-let notices=[];
-
-let editingId=null;
+const db =
+getFirestore(app);
 
 
 /* =========================
 ELEMENTS
 ========================= */
 
-const sidebar=document.getElementById("sidebar");
-const modal=document.getElementById("modal");
-const modalTitle=document.getElementById("modalTitle");
-const modalBody=document.getElementById("modalBody");
-const toast=document.getElementById("toast");
+const modal =
+document.getElementById("modal");
+
+const formFields =
+document.getElementById("formFields");
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+const dataForm =
+document.getElementById("dataForm");
+
+const saveBtn =
+document.getElementById("saveBtn");
+
+const toast =
+document.getElementById("toast");
+
+let currentType = "";
+
+let editingId = null;
 
 
 /* =========================
 AUTH
 ========================= */
 
-onAuthStateChanged(auth,async(user)=>{
+onAuthStateChanged(auth,(user)=>{
 
 if(!user){
 
 window.location.href="admin-login.html";
+
 return;
 
 }
 
-currentUser=user;
+document.getElementById("adminEmail").textContent =
+user.email || "Administrator";
 
-document.getElementById("adminEmail").textContent=
-user.email||"Administrator";
+document.getElementById("settingsEmail").textContent =
+user.email || "Administrator";
 
-document.getElementById("settingsEmail").textContent=
-user.email||"Administrator";
-
-await loadAll();
+loadAll();
 
 });
-
-
-/* =========================
-LOAD ALL DATA
-========================= */
-
-async function loadAll(){
-
-try{
-
-admissions=await getCollection("admissions");
-
-students=await getCollection("students");
-
-teachers=await getCollection("teachers");
-
-fees=await getCollection("fees");
-
-notices=await getCollection("notices");
-
-updateDashboard();
-
-renderAdmissions();
-
-renderStudents();
-
-renderTeachers();
-
-renderFees();
-
-renderNotices();
-
-}catch(error){
-
-console.error(error);
-
-showToast("Database load error: "+error.message);
-
-}
-
-}
-
-
-async function getCollection(name){
-
-const snap=await getDocs(collection(db,name));
-
-return snap.docs.map(d=>({
-
-id:d.id,
-...d.data()
-
-}));
-
-}
-
-
-/* =========================
-DASHBOARD
-========================= */
-
-function updateDashboard(){
-
-document.getElementById("studentCount").textContent=
-students.length;
-
-document.getElementById("admissionCount").textContent=
-admissions.length;
-
-document.getElementById("teacherCount").textContent=
-teachers.length;
-
-const total=fees.reduce(
-(sum,item)=>sum+Number(item.amount||0),0
-);
-
-document.getElementById("feeCount").textContent=
-"₹"+total.toLocaleString("en-IN");
-
-
-const recent=admissions.slice(-5).reverse();
-
-const box=document.getElementById("recentAdmissions");
-
-if(!recent.length){
-
-box.innerHTML=
-`<tr><td colspan="5" class="empty">No admissions yet.</td></tr>`;
-
-return;
-
-}
-
-box.innerHTML=recent.map(a=>`
-
-<tr>
-
-<td><strong>${safe(a.studentName)}</strong></td>
-
-<td>${safe(a.className)}</td>
-
-<td>${safe(a.parentName)}</td>
-
-<td>${safe(a.admissionDate)}</td>
-
-<td>
-<span class="badge approved">
-${safe(a.status||"Approved")}
-</span>
-</td>
-
-</tr>
-
-`).join("");
-
-}
 
 
 /* =========================
 NAVIGATION
 ========================= */
 
-const navButtons=document.querySelectorAll(".nav-btn");
+const navButtons =
+document.querySelectorAll(".nav-btn");
 
-navButtons.forEach(btn=>{
+const sections =
+document.querySelectorAll(".section");
 
-btn.addEventListener("click",()=>{
+navButtons.forEach(button=>{
 
-openSection(btn.dataset.section);
+button.addEventListener("click",()=>{
 
-sidebar.classList.remove("open");
+openSection(button.dataset.section);
+
+document
+.getElementById("sidebar")
+.classList.remove("open");
 
 });
 
@@ -1274,18 +1271,30 @@ sidebar.classList.remove("open");
 
 window.openSection=function(name){
 
-document.querySelectorAll(".section")
-.forEach(s=>s.classList.remove("active"));
+sections.forEach(section=>{
+section.classList.remove("active");
+});
 
-navButtons.forEach(b=>b.classList.remove("active"));
+navButtons.forEach(button=>{
+button.classList.remove("active");
+});
 
-document.getElementById(name)?.classList.add("active");
+const section =
+document.getElementById(name);
 
+const button =
 document.querySelector(
 `.nav-btn[data-section="${name}"]`
-)?.classList.add("active");
+);
+
+if(section)
+section.classList.add("active");
+
+if(button)
+button.classList.add("active");
 
 const titles={
+
 dashboard:"Dashboard",
 admissions:"Admissions",
 students:"Students",
@@ -1293,1487 +1302,854 @@ teachers:"Teachers",
 fees:"Fees",
 notices:"Notices",
 settings:"Settings"
-};
-
-document.getElementById("pageTitle").textContent=
-titles[name]||"Dashboard";
 
 };
 
+document.getElementById("pageTitle").textContent =
+titles[name] || "Dashboard";
 
-document.getElementById("mobileMenu")
+};
+
+
+/* =========================
+MOBILE
+========================= */
+
+document
+.getElementById("mobileMenu")
 .addEventListener("click",()=>{
-sidebar.classList.toggle("open");
-});
 
-
-/* =========================
-ADMISSION FORM
-========================= */
-
-window.openAdmissionForm=function(id=null){
-
-editingId=id;
-
-const a=id?
-admissions.find(x=>x.id===id):{};
-
-modalTitle.textContent=
-id?"Edit Admission":"New Admission";
-
-modalBody.innerHTML=`
-
-<form id="admissionForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Student Full Name *</label>
-<input id="aStudent" required value="${safeAttr(a.studentName)}">
-</div>
-
-<div class="form-group">
-<label>Admission Date *</label>
-<input type="date" id="aDate" required
-value="${safeAttr(a.admissionDate||today())}">
-</div>
-
-<div class="form-group">
-<label>Date of Birth</label>
-<input type="date" id="aDob"
-value="${safeAttr(a.dob)}">
-</div>
-
-<div class="form-group">
-<label>Gender</label>
-<select id="aGender">
-<option value="">Select</option>
-<option ${a.gender==="Male"?"selected":""}>Male</option>
-<option ${a.gender==="Female"?"selected":""}>Female</option>
-<option ${a.gender==="Other"?"selected":""}>Other</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Class *</label>
-<select id="aClass" required>
-${classOptions(a.className)}
-</select>
-</div>
-
-<div class="form-group">
-<label>Parent / Guardian Name *</label>
-<input id="aParent" required value="${safeAttr(a.parentName)}">
-</div>
-
-<div class="form-group">
-<label>Father Name</label>
-<input id="aFather" value="${safeAttr(a.fatherName)}">
-</div>
-
-<div class="form-group">
-<label>Mother Name</label>
-<input id="aMother" value="${safeAttr(a.motherName)}">
-</div>
-
-<div class="form-group">
-<label>Mobile Number *</label>
-<input id="aPhone" required value="${safeAttr(a.phone)}">
-</div>
-
-<div class="form-group">
-<label>Alternate Mobile</label>
-<input id="aAltPhone" value="${safeAttr(a.altPhone)}">
-</div>
-
-<div class="form-group">
-<label>Email</label>
-<input type="email" id="aEmail" value="${safeAttr(a.email)}">
-</div>
-
-<div class="form-group">
-<label>Aadhaar / ID Number</label>
-<input id="aId" value="${safeAttr(a.idNumber)}">
-</div>
-
-<div class="form-group full">
-<label>Address *</label>
-<textarea id="aAddress" required>${safe(a.address)}</textarea>
-</div>
-
-<div class="form-group">
-<label>Previous School</label>
-<input id="aPreviousSchool" value="${safeAttr(a.previousSchool)}">
-</div>
-
-<div class="form-group">
-<label>Blood Group</label>
-<input id="aBlood" value="${safeAttr(a.bloodGroup)}">
-</div>
-
-<div class="form-group">
-<label>Student Photo</label>
-<input type="file" id="aPhoto" accept="image/*"
-onchange="previewPhoto(this,'aPreview')">
-
-<img id="aPreview" class="photo-preview"
-src="${safeAttr(a.photoUrl||"")} "
-style="${a.photoUrl?"display:block":""}">
-</div>
-
-<div class="form-group">
-<label>Status</label>
-<select id="aStatus">
-<option ${a.status==="Approved"||!a.status?"selected":""}>Approved</option>
-<option ${a.status==="Pending"?"selected":""}>Pending</option>
-</select>
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button type="button"
-class="cancel-btn"
-onclick="closeModal()">Cancel</button>
-
-<button class="primary-btn">
-<i class="fa-solid fa-floppy-disk"></i>
-Save Admission
-</button>
-
-</div>
-
-</form>
-`;
-
-document.getElementById("admissionForm")
-.addEventListener("submit",saveAdmission);
-
-modal.classList.add("show");
-
-};
-
-
-async function saveAdmission(e){
-
-e.preventDefault();
-
-const btn=e.target.querySelector("button.primary-btn");
-
-btn.disabled=true;
-btn.textContent="Saving...";
-
-try{
-
-let photoUrl=editingId?
-(admissions.find(x=>x.id===editingId)?.photoUrl||""):"";
-
-const file=document.getElementById("aPhoto").files[0];
-
-if(file){
-
-photoUrl=await uploadPhoto(file,"admissions");
-
-}
-
-const data={
-
-studentName:val("aStudent"),
-
-admissionDate:val("aDate"),
-
-dob:val("aDob"),
-
-gender:val("aGender"),
-
-className:val("aClass"),
-
-parentName:val("aParent"),
-
-fatherName:val("aFather"),
-
-motherName:val("aMother"),
-
-phone:val("aPhone"),
-
-altPhone:val("aAltPhone"),
-
-email:val("aEmail"),
-
-idNumber:val("aId"),
-
-address:val("aAddress"),
-
-previousSchool:val("aPreviousSchool"),
-
-bloodGroup:val("aBlood"),
-
-photoUrl,
-
-status:val("aStatus"),
-
-updatedAt:serverTimestamp(),
-
-updatedBy:currentUser.uid
-
-};
-
-let savedId=editingId;
-
-if(editingId){
-
-await updateDoc(
-doc(db,"admissions",editingId),
-data
-);
-
-}else{
-
-data.createdAt=serverTimestamp();
-
-const refDoc=await addDoc(
-collection(db,"admissions"),
-data
-);
-
-savedId=refDoc.id;
-
-}
-
-closeModal();
-
-await loadAll();
-
-showToast("Admission saved successfully.");
-
-setTimeout(()=>{
-generateAdmissionPDF(
-admissions.find(x=>x.id===savedId)||data
-);
-},400);
-
-}catch(error){
-
-console.error(error);
-
-showToast("Save failed: "+error.message);
-
-btn.disabled=false;
-btn.textContent="Save Admission";
-
-}
-
-}
-
-
-/* =========================
-STUDENT FORM
-========================= */
-
-window.openStudentForm=function(id=null){
-
-editingId=id;
-
-const s=id?
-students.find(x=>x.id===id):{};
-
-modalTitle.textContent=
-id?"Edit Student":"New Student";
-
-modalBody.innerHTML=`
-
-<form id="studentForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Student Name *</label>
-<input id="sName" required value="${safeAttr(s.name)}">
-</div>
-
-<div class="form-group">
-<label>Class *</label>
-<select id="sClass" required>
-${classOptions(s.className)}
-</select>
-</div>
-
-<div class="form-group">
-<label>Date of Birth</label>
-<input type="date" id="sDob"
-value="${safeAttr(s.dob)}">
-</div>
-
-<div class="form-group">
-<label>Gender</label>
-<select id="sGender">
-<option value="">Select</option>
-<option ${s.gender==="Male"?"selected":""}>Male</option>
-<option ${s.gender==="Female"?"selected":""}>Female</option>
-<option ${s.gender==="Other"?"selected":""}>Other</option>
-</select>
-</div>
-
-<div class="form-group">
-<label>Parent / Guardian *</label>
-<input id="sParent" required value="${safeAttr(s.parent)}">
-</div>
-
-<div class="form-group">
-<label>Mobile *</label>
-<input id="sPhone" required value="${safeAttr(s.phone)}">
-</div>
-
-<div class="form-group">
-<label>Roll Number</label>
-<input id="sRoll" value="${safeAttr(s.roll)}">
-</div>
-
-<div class="form-group">
-<label>Student Photo</label>
-<input type="file" id="sPhoto" accept="image/*"
-onchange="previewPhoto(this,'sPreview')">
-
-<img id="sPreview" class="photo-preview"
-src="${safeAttr(s.photoUrl||"")}"
-style="${s.photoUrl?"display:block":""}">
-</div>
-
-<div class="form-group full">
-<label>Address</label>
-<textarea id="sAddress">${safe(s.address)}</textarea>
-</div>
-
-<div class="form-group">
-<label>Status</label>
-<select id="sStatus">
-<option ${s.status==="Active"||!s.status?"selected":""}>Active</option>
-<option ${s.status==="Inactive"?"selected":""}>Inactive</option>
-</select>
-</div>
-
-</div>
-
-<div class="form-actions">
-<button type="button" class="cancel-btn"
-onclick="closeModal()">Cancel</button>
-
-<button class="primary-btn">
-Save Student
-</button>
-</div>
-
-</form>
-`;
-
-document.getElementById("studentForm")
-.addEventListener("submit",saveStudent);
-
-modal.classList.add("show");
-
-};
-
-
-async function saveStudent(e){
-
-e.preventDefault();
-
-try{
-
-let old=editingId?
-students.find(x=>x.id===editingId):{};
-
-let photoUrl=old.photoUrl||"";
-
-const file=document.getElementById("sPhoto").files[0];
-
-if(file){
-
-photoUrl=await uploadPhoto(file,"students");
-
-}
-
-const data={
-
-name:val("sName"),
-className:val("sClass"),
-dob:val("sDob"),
-gender:val("sGender"),
-parent:val("sParent"),
-phone:val("sPhone"),
-roll:val("sRoll"),
-photoUrl,
-address:val("sAddress"),
-status:val("sStatus"),
-updatedAt:serverTimestamp(),
-updatedBy:currentUser.uid
-
-};
-
-if(editingId){
-
-await updateDoc(
-doc(db,"students",editingId),
-data
-);
-
-}else{
-
-data.createdAt=serverTimestamp();
-
-await addDoc(
-collection(db,"students"),
-data
-);
-
-}
-
-closeModal();
-
-await loadAll();
-
-showToast("Student saved successfully.");
-
-}catch(error){
-
-console.error(error);
-showToast("Save failed: "+error.message);
-
-}
-
-}
-
-
-/* =========================
-TEACHER FORM
-========================= */
-
-window.openTeacherForm=function(id=null){
-
-editingId=id;
-
-const t=id?
-teachers.find(x=>x.id===id):{};
-
-modalTitle.textContent=
-id?"Edit Teacher":"Add Teacher";
-
-modalBody.innerHTML=`
-
-<form id="teacherForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Teacher Name *</label>
-<input id="tName" required value="${safeAttr(t.name)}">
-</div>
-
-<div class="form-group">
-<label>Subject *</label>
-<input id="tSubject" required value="${safeAttr(t.subject)}">
-</div>
-
-<div class="form-group">
-<label>Experience</label>
-<input id="tExperience" value="${safeAttr(t.experience)}">
-</div>
-
-<div class="form-group">
-<label>Contact</label>
-<input id="tPhone" value="${safeAttr(t.phone)}">
-</div>
-
-<div class="form-group">
-<label>Email</label>
-<input id="tEmail" type="email" value="${safeAttr(t.email)}">
-</div>
-
-<div class="form-group">
-<label>Status</label>
-<select id="tStatus">
-<option ${t.status==="Active"||!t.status?"selected":""}>Active</option>
-<option ${t.status==="Inactive"?"selected":""}>Inactive</option>
-</select>
-</div>
-
-<div class="form-group full">
-<label>Qualification</label>
-<input id="tQualification"
-value="${safeAttr(t.qualification)}">
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button type="button"
-class="cancel-btn"
-onclick="closeModal()">Cancel</button>
-
-<button class="primary-btn">
-Save Teacher
-</button>
-
-</div>
-
-</form>
-`;
-
-document.getElementById("teacherForm")
-.addEventListener("submit",saveTeacher);
-
-modal.classList.add("show");
-
-};
-
-
-async function saveTeacher(e){
-
-e.preventDefault();
-
-try{
-
-const data={
-
-name:val("tName"),
-subject:val("tSubject"),
-experience:val("tExperience"),
-phone:val("tPhone"),
-email:val("tEmail"),
-status:val("tStatus"),
-qualification:val("tQualification"),
-updatedAt:serverTimestamp()
-
-};
-
-if(editingId){
-
-await updateDoc(
-doc(db,"teachers",editingId),
-data
-);
-
-}else{
-
-data.createdAt=serverTimestamp();
-
-await addDoc(
-collection(db,"teachers"),
-data
-);
-
-}
-
-closeModal();
-
-await loadAll();
-
-showToast("Teacher saved successfully.");
-
-}catch(error){
-
-console.error(error);
-showToast("Save failed: "+error.message);
-
-}
-
-}
-
-
-/* =========================
-FEE FORM
-========================= */
-
-window.openFeeForm=function(id=null){
-
-editingId=id;
-
-const f=id?
-fees.find(x=>x.id===id):{};
-
-modalTitle.textContent=
-id?"Edit Payment":"Record Payment";
-
-modalBody.innerHTML=`
-
-<form id="feeForm">
-
-<div class="form-grid">
-
-<div class="form-group">
-<label>Student Name *</label>
-<input id="fStudent" required value="${safeAttr(f.studentName)}">
-</div>
-
-<div class="form-group">
-<label>Class</label>
-<select id="fClass">
-${classOptions(f.className)}
-</select>
-</div>
-
-<div class="form-group">
-<label>Amount (₹) *</label>
-<input type="number" id="fAmount" required
-value="${safeAttr(f.amount)}">
-</div>
-
-<div class="form-group">
-<label>Month</label>
-<input id="fMonth" type="month"
-value="${safeAttr(f.month||monthNow())}">
-</div>
-
-<div class="form-group">
-<label>Payment Date</label>
-<input id="fDate" type="date"
-value="${safeAttr(f.date||today())}">
-</div>
-
-<div class="form-group">
-<label>Payment Mode</label>
-<select id="fMode">
-<option ${f.mode==="Cash"||!f.mode?"selected":""}>Cash</option>
-<option ${f.mode==="UPI"?"selected":""}>UPI</option>
-<option ${f.mode==="Bank"?"selected":""}>Bank</option>
-<option ${f.mode==="Other"?"selected":""}>Other</option>
-</select>
-</div>
-
-<div class="form-group full">
-<label>Note</label>
-<textarea id="fNote">${safe(f.note)}</textarea>
-</div>
-
-</div>
-
-<div class="form-actions">
-<button type="button" class="cancel-btn"
-onclick="closeModal()">Cancel</button>
-
-<button class="primary-btn">
-Save Payment
-</button>
-</div>
-
-</form>
-`;
-
-document.getElementById("feeForm")
-.addEventListener("submit",saveFee);
-
-modal.classList.add("show");
-
-};
-
-
-async function saveFee(e){
-
-e.preventDefault();
-
-try{
-
-const data={
-
-studentName:val("fStudent"),
-className:val("fClass"),
-amount:Number(val("fAmount")),
-month:val("fMonth"),
-date:val("fDate"),
-mode:val("fMode"),
-note:val("fNote"),
-updatedAt:serverTimestamp()
-
-};
-
-if(editingId){
-
-await updateDoc(
-doc(db,"fees",editingId),
-data
-);
-
-}else{
-
-data.createdAt=serverTimestamp();
-
-await addDoc(
-collection(db,"fees"),
-data
-);
-
-}
-
-closeModal();
-
-await loadAll();
-
-showToast("Payment saved successfully.");
-
-}catch(error){
-
-console.error(error);
-showToast("Payment failed: "+error.message);
-
-}
-
-}
-
-
-/* =========================
-NOTICE FORM
-========================= */
-
-window.openNoticeForm=function(id=null){
-
-editingId=id;
-
-const n=id?
-notices.find(x=>x.id===id):{};
-
-modalTitle.textContent=
-id?"Edit Notice":"New Notice";
-
-modalBody.innerHTML=`
-
-<form id="noticeForm">
-
-<div class="form-grid">
-
-<div class="form-group full">
-<label>Notice Title *</label>
-<input id="nTitle" required value="${safeAttr(n.title)}">
-</div>
-
-<div class="form-group full">
-<label>Notice Message *</label>
-<textarea id="nMessage" required>${safe(n.message)}</textarea>
-</div>
-
-<div class="form-group">
-<label>Date</label>
-<input id="nDate" type="date"
-value="${safeAttr(n.date||today())}">
-</div>
-
-<div class="form-group">
-<label>Status</label>
-<select id="nStatus">
-<option ${n.status==="Published"||!n.status?"selected":""}>Published</option>
-<option ${n.status==="Draft"?"selected":""}>Draft</option>
-</select>
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button type="button"
-class="cancel-btn"
-onclick="closeModal()">Cancel</button>
-
-<button class="primary-btn">
-Save Notice
-</button>
-
-</div>
-
-</form>
-`;
-
-document.getElementById("noticeForm")
-.addEventListener("submit",saveNotice);
-
-modal.classList.add("show");
-
-};
-
-
-async function saveNotice(e){
-
-e.preventDefault();
-
-try{
-
-const data={
-
-title:val("nTitle"),
-message:val("nMessage"),
-date:val("nDate"),
-status:val("nStatus"),
-updatedAt:serverTimestamp()
-
-};
-
-if(editingId){
-
-await updateDoc(
-doc(db,"notices",editingId),
-data
-);
-
-}else{
-
-data.createdAt=serverTimestamp();
-
-await addDoc(
-collection(db,"notices"),
-data
-);
-
-}
-
-closeModal();
-
-await loadAll();
-
-showToast("Notice saved successfully.");
-
-}catch(error){
-
-console.error(error);
-showToast("Notice save failed: "+error.message);
-
-}
-
-}
-
-
-/* =========================
-RENDER ADMISSIONS
-========================= */
-
-window.renderAdmissions=function(){
-
-const q=(document.getElementById("admissionSearch")?.value||"")
-.toLowerCase();
-
-const list=admissions.filter(a=>
-
-`${a.studentName} ${a.parentName} ${a.className} ${a.phone}`
-.toLowerCase().includes(q)
-
-);
-
-const table=document.getElementById("admissionTable");
-
-if(!list.length){
-
-table.innerHTML=
-`<tr><td colspan="7" class="empty">No admission records found.</td></tr>`;
-
-return;
-
-}
-
-table.innerHTML=list.map(a=>`
-
-<tr>
-
-<td><strong>${safe(a.studentName)}</strong></td>
-
-<td>${safe(a.className)}</td>
-
-<td>${safe(a.parentName)}</td>
-
-<td>${safe(a.phone)}</td>
-
-<td>${safe(a.admissionDate)}</td>
-
-<td>
-<span class="badge ${a.status==="Pending"?"pending":"approved"}">
-${safe(a.status||"Approved")}
-</span>
-</td>
-
-<td>
-
-<div class="actions">
-
-<button class="edit-btn"
-onclick="openAdmissionForm('${a.id}')">
-Edit
-</button>
-
-<button class="edit-btn"
-onclick="generateAdmissionPDFById('${a.id}')">
-PDF
-</button>
-
-<button class="danger-btn"
-onclick="deleteRecord('admissions','${a.id}')">
-Delete
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("");
-
-};
-
-
-/* =========================
-RENDER STUDENTS
-========================= */
-
-window.renderStudents=function(){
-
-const q=(document.getElementById("studentSearch")?.value||"")
-.toLowerCase();
-
-const list=students.filter(s=>
-
-`${s.name} ${s.parent} ${s.className} ${s.phone}`
-.toLowerCase().includes(q)
-
-);
-
-const table=document.getElementById("studentTable");
-
-if(!list.length){
-
-table.innerHTML=
-`<tr><td colspan="7" class="empty">No students found.</td></tr>`;
-
-return;
-
-}
-
-table.innerHTML=list.map(s=>`
-
-<tr>
-
-<td>
-
-${s.photoUrl?
-`<img src="${safeAttr(s.photoUrl)}"
-style="width:38px;height:38px;border-radius:50%;object-fit:cover">`
-:"—"}
-
-</td>
-
-<td><strong>${safe(s.name)}</strong></td>
-
-<td>${safe(s.className)}</td>
-
-<td>${safe(s.parent)}</td>
-
-<td>${safe(s.phone)}</td>
-
-<td>
-<span class="badge approved">
-${safe(s.status||"Active")}
-</span>
-</td>
-
-<td>
-
-<div class="actions">
-
-<button class="edit-btn"
-onclick="openStudentForm('${s.id}')">
-Edit
-</button>
-
-<button class="danger-btn"
-onclick="deleteRecord('students','${s.id}')">
-Delete
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("");
-
-};
-
-
-/* =========================
-RENDER TEACHERS
-========================= */
-
-window.renderTeachers=function(){
-
-const q=(document.getElementById("teacherSearch")?.value||"")
-.toLowerCase();
-
-const list=teachers.filter(t=>
-
-`${t.name} ${t.subject} ${t.phone}`
-.toLowerCase().includes(q)
-
-);
-
-const table=document.getElementById("teacherTable");
-
-if(!list.length){
-
-table.innerHTML=
-`<tr><td colspan="6" class="empty">No teachers found.</td></tr>`;
-
-return;
-
-}
-
-table.innerHTML=list.map(t=>`
-
-<tr>
-
-<td><strong>${safe(t.name)}</strong></td>
-
-<td>${safe(t.subject)}</td>
-
-<td>${safe(t.experience)}</td>
-
-<td>${safe(t.phone)}</td>
-
-<td>
-<span class="badge approved">
-${safe(t.status||"Active")}
-</span>
-</td>
-
-<td>
-
-<div class="actions">
-
-<button class="edit-btn"
-onclick="openTeacherForm('${t.id}')">
-Edit
-</button>
-
-<button class="danger-btn"
-onclick="deleteRecord('teachers','${t.id}')">
-Delete
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("");
-
-};
-
-
-/* =========================
-RENDER FEES
-========================= */
-
-window.renderFees=function(){
-
-const table=document.getElementById("feeTable");
-
-if(!fees.length){
-
-table.innerHTML=
-`<tr><td colspan="6" class="empty">No payments found.</td></tr>`;
-
-return;
-
-}
-
-table.innerHTML=fees.map(f=>`
-
-<tr>
-
-<td><strong>${safe(f.studentName)}</strong></td>
-
-<td>${safe(f.className)}</td>
-
-<td>₹${Number(f.amount||0).toLocaleString("en-IN")}</td>
-
-<td>${safe(f.month)}</td>
-
-<td>${safe(f.date)}</td>
-
-<td>
-
-<div class="actions">
-
-<button class="edit-btn"
-onclick="openFeeForm('${f.id}')">
-Edit
-</button>
-
-<button class="danger-btn"
-onclick="deleteRecord('fees','${f.id}')">
-Delete
-</button>
-
-</div>
-
-</td>
-
-</tr>
-
-`).join("");
-
-};
-
-
-/* =========================
-RENDER NOTICES
-========================= */
-
-window.renderNotices=function(){
-
-const box=document.getElementById("noticeList");
-
-if(!notices.length){
-
-box.innerHTML=
-`<div class="empty">No notices published yet.</div>`;
-
-return;
-
-}
-
-box.innerHTML=notices.slice().reverse().map(n=>`
-
-<div style="
-padding:15px;
-border:1px solid var(--border);
-border-radius:10px;
-margin-bottom:10px;
-">
-
-<div style="
-display:flex;
-justify-content:space-between;
-gap:10px;
-">
-
-<div>
-
-<strong style="color:var(--dark)">
-${safe(n.title)}
-</strong>
-
-<div style="font-size:11px;margin-top:5px">
-${safe(n.message)}
-</div>
-
-<div style="font-size:9px;margin-top:8px;color:#9aa3b1">
-${safe(n.date)}
-</div>
-
-</div>
-
-<div class="actions">
-
-<button class="edit-btn"
-onclick="openNoticeForm('${n.id}')">
-Edit
-</button>
-
-<button class="danger-btn"
-onclick="deleteRecord('notices','${n.id}')">
-Delete
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`).join("");
-
-};
-
-
-/* =========================
-DELETE
-========================= */
-
-window.deleteRecord=async function(type,id){
-
-if(!confirm("Are you sure you want to delete this record?")){
-return;
-}
-
-try{
-
-await deleteDoc(doc(db,type,id));
-
-await loadAll();
-
-showToast("Record deleted.");
-
-}catch(error){
-
-console.error(error);
-
-showToast("Delete failed: "+error.message);
-
-}
-
-};
-
-
-/* =========================
-PHOTO UPLOAD
-========================= */
-
-async function uploadPhoto(file,folder){
-
-if(file.size>5*1024*1024){
-
-throw new Error("Photo must be smaller than 5 MB.");
-
-}
-
-if(!file.type.startsWith("image/")){
-
-throw new Error("Please select an image.");
-
-}
-
-const fileName=
-`${folder}/${Date.now()}_${Math.random()
-.toString(36).substring(2,10)}_${file.name}`;
-
-const storageRef=ref(storage,fileName);
-
-await uploadBytes(storageRef,file);
-
-return await getDownloadURL(storageRef);
-
-}
-
-
-window.previewPhoto=function(input,id){
-
-const file=input.files[0];
-
-if(!file)return;
-
-const img=document.getElementById(id);
-
-img.src=URL.createObjectURL(file);
-
-img.style.display="block";
-
-};
-
-
-/* =========================
-PDF
-========================= */
-
-window.generateAdmissionPDFById=function(id){
-
-const a=admissions.find(x=>x.id===id);
-
-if(a)generateAdmissionPDF(a);
-
-};
-
-
-window.generateAdmissionPDF=function(a){
-
-const {jsPDF}=window.jspdf;
-
-const pdf=new jsPDF();
-
-pdf.setFont("helvetica","bold");
-pdf.setFontSize(18);
-
-pdf.text("READ & WRITE JUNIOR PRE-SCHOOL",105,20,{align:"center"});
-
-pdf.setFontSize(13);
-pdf.text("ADMISSION FORM",105,30,{align:"center"});
-
-pdf.setFont("helvetica","normal");
-pdf.setFontSize(10);
-
-let y=48;
-
-const rows=[
-
-["Student Name",a.studentName],
-["Admission Date",a.admissionDate],
-["Date of Birth",a.dob],
-["Gender",a.gender],
-["Class",a.className],
-["Parent / Guardian",a.parentName],
-["Father Name",a.fatherName],
-["Mother Name",a.motherName],
-["Mobile",a.phone],
-["Alternate Mobile",a.altPhone],
-["Email",a.email],
-["ID Number",a.idNumber],
-["Previous School",a.previousSchool],
-["Blood Group",a.bloodGroup],
-["Address",a.address],
-["Status",a.status]
-
-];
-
-rows.forEach(row=>{
-
-pdf.setFont("helvetica","bold");
-pdf.text(row[0]+":",20,y);
-
-pdf.setFont("helvetica","normal");
-
-const text=String(row[1]||"");
-
-const lines=pdf.splitTextToSize(text,120);
-
-pdf.text(lines,65,y);
-
-y+=Math.max(8,lines.length*5);
+document
+.getElementById("sidebar")
+.classList.toggle("open");
 
 });
-
-if(a.photoUrl){
-
-try{
-
-const img=await loadImage(a.photoUrl);
-
-pdf.addImage(img,"JPEG",150,45,35,42);
-
-}catch(e){
-
-console.log("Photo could not be added.");
-
-}
-
-}
-
-pdf.setFontSize(9);
-
-pdf.text(
-"Please keep this admission document safely for school records.",
-20,
-280
-);
-
-const filename=
-`${(a.studentName||"Student").replace(/[^a-z0-9]/gi,"_")}_Admission.pdf`;
-
-pdf.save(filename);
-
-};
-
-
-function loadImage(url){
-
-return new Promise((resolve,reject)=>{
-
-const img=new Image();
-
-img.crossOrigin="anonymous";
-
-img.onload=()=>resolve(img);
-
-img.onerror=reject;
-
-img.src=url;
-
-});
-
-}
 
 
 /* =========================
 MODAL
 ========================= */
 
+window.openModal=function(type,id=null,data=null){
+
+currentType=type;
+
+editingId=id;
+
+modal.classList.add("show");
+
+dataForm.reset();
+
+const titles={
+
+admission:id?"Edit Admission":"New Admission",
+student:id?"Edit Student":"New Student",
+teacher:id?"Edit Teacher":"New Teacher",
+fee:id?"Edit Fee":"Record Payment",
+notice:id?"Edit Notice":"New Notice"
+
+};
+
+modalTitle.textContent=titles[type];
+
+let html="";
+
+
+if(type==="admission"){
+
+html=`
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name *</label>
+<input name="studentName" required value="${data?.studentName||""}">
+</div>
+
+<div class="form-group">
+<label>Class *</label>
+<select name="className" required>
+<option value="">Select Class</option>
+<option ${data?.className==="Nursery"?"selected":""}>Nursery</option>
+<option ${data?.className==="LKG"?"selected":""}>LKG</option>
+<option ${data?.className==="UKG"?"selected":""}>UKG</option>
+<option ${data?.className==="1"?"selected":""}>Class 1</option>
+<option ${data?.className==="2"?"selected":""}>Class 2</option>
+<option ${data?.className==="3"?"selected":""}>Class 3</option>
+<option ${data?.className==="4"?"selected":""}>Class 4</option>
+<option ${data?.className==="5"?"selected":""}>Class 5</option>
+<option ${data?.className==="6"?"selected":""}>Class 6</option>
+<option ${data?.className==="7"?"selected":""}>Class 7</option>
+<option ${data?.className==="8"?"selected":""}>Class 8</option>
+<option ${data?.className==="9"?"selected":""}>Class 9</option>
+<option ${data?.className==="10"?"selected":""}>Class 10</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Parent / Guardian</label>
+<input name="parentName" value="${data?.parentName||""}">
+</div>
+
+<div class="form-group">
+<label>Mobile Number</label>
+<input name="mobile" value="${data?.mobile||""}">
+</div>
+
+<div class="form-group">
+<label>Admission Date</label>
+<input type="date" name="date" value="${data?.date||""}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select name="status">
+<option ${data?.status==="Pending"?"selected":""}>Pending</option>
+<option ${data?.status==="Approved"?"selected":""}>Approved</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>Address</label>
+<textarea name="address">${data?.address||""}</textarea>
+</div>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="student"){
+
+html=`
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name *</label>
+<input name="studentName" required value="${data?.studentName||""}">
+</div>
+
+<div class="form-group">
+<label>Class *</label>
+<input name="className" required value="${data?.className||""}">
+</div>
+
+<div class="form-group">
+<label>Parent / Guardian</label>
+<input name="parentName" value="${data?.parentName||""}">
+</div>
+
+<div class="form-group">
+<label>Mobile</label>
+<input name="mobile" value="${data?.mobile||""}">
+</div>
+
+<div class="form-group">
+<label>Date of Birth</label>
+<input type="date" name="dob" value="${data?.dob||""}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select name="status">
+<option ${data?.status==="Active"?"selected":""}>Active</option>
+<option ${data?.status==="Inactive"?"selected":""}>Inactive</option>
+</select>
+</div>
+
+<div class="form-group full">
+<label>Address</label>
+<textarea name="address">${data?.address||""}</textarea>
+</div>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="teacher"){
+
+html=`
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Teacher Name *</label>
+<input name="name" required value="${data?.name||""}">
+</div>
+
+<div class="form-group">
+<label>Subject</label>
+<input name="subject" value="${data?.subject||""}">
+</div>
+
+<div class="form-group">
+<label>Experience</label>
+<input name="experience" value="${data?.experience||""}">
+</div>
+
+<div class="form-group">
+<label>Mobile</label>
+<input name="mobile" value="${data?.mobile||""}">
+</div>
+
+<div class="form-group">
+<label>Status</label>
+<select name="status">
+<option ${data?.status==="Active"?"selected":""}>Active</option>
+<option ${data?.status==="Inactive"?"selected":""}>Inactive</option>
+</select>
+</div>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="fee"){
+
+html=`
+
+<div class="form-grid">
+
+<div class="form-group">
+<label>Student Name *</label>
+<input name="studentName" required value="${data?.studentName||""}">
+</div>
+
+<div class="form-group">
+<label>Amount *</label>
+<input type="number" name="amount" required value="${data?.amount||""}">
+</div>
+
+<div class="form-group">
+<label>Month</label>
+<input name="month" placeholder="August 2026" value="${data?.month||""}">
+</div>
+
+<div class="form-group">
+<label>Date</label>
+<input type="date" name="date" value="${data?.date||""}">
+</div>
+
+<div class="form-group">
+<label>Payment Method</label>
+<select name="method">
+<option ${data?.method==="Cash"?"selected":""}>Cash</option>
+<option ${data?.method==="UPI"?"selected":""}>UPI</option>
+<option ${data?.method==="Bank Transfer"?"selected":""}>Bank Transfer</option>
+</select>
+</div>
+
+</div>
+
+`;
+
+}
+
+
+if(type==="notice"){
+
+html=`
+
+<div class="form-grid">
+
+<div class="form-group full">
+<label>Notice Title *</label>
+<input name="title" required value="${data?.title||""}">
+</div>
+
+<div class="form-group full">
+<label>Notice Details *</label>
+<textarea name="notice" required>${data?.notice||""}</textarea>
+</div>
+
+<div class="form-group">
+<label>Date</label>
+<input type="date" name="date" value="${data?.date||""}">
+</div>
+
+</div>
+
+`;
+
+}
+
+
+formFields.innerHTML=html;
+
+};
+
+
 window.closeModal=function(){
 
 modal.classList.remove("show");
 
-modalBody.innerHTML="";
-
 editingId=null;
+
+currentType="";
 
 };
 
-modal.addEventListener("click",(e)=>{
 
-if(e.target===modal){
+/* =========================
+SAVE
+========================= */
+
+saveBtn.addEventListener("click",async(e)=>{
+
+e.preventDefault();
+
+if(!dataForm.checkValidity()){
+
+dataForm.reportValidity();
+
+return;
+
+}
+
+const formData =
+new FormData(dataForm);
+
+const data={};
+
+formData.forEach((value,key)=>{
+data[key]=value;
+});
+
+data.updatedAt=serverTimestamp();
+
+try{
+
+if(editingId){
+
+await updateDoc(
+doc(db,currentType+"s",editingId),
+data
+);
+
+showToast("Record updated successfully.");
+
+}else{
+
+data.createdAt=serverTimestamp();
+
+await addDoc(
+collection(db,currentType+"s"),
+data
+);
+
+showToast("Record saved successfully.");
+
+}
+
 closeModal();
+
+loadAll();
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+"Database error: "+error.message
+);
+
 }
 
 });
 
 
 /* =========================
-HELPERS
+LOAD ALL
 ========================= */
 
-function val(id){
+async function loadAll(){
 
-return document.getElementById(id)?.value.trim()||"";
+await Promise.all([
 
-}
+loadAdmissions(),
+loadStudents(),
+loadTeachers(),
+loadFees(),
+loadNotices()
 
-function today(){
-
-return new Date().toISOString().split("T")[0];
-
-}
-
-function monthNow(){
-
-return new Date().toISOString().slice(0,7);
+]);
 
 }
 
-function classOptions(selected=""){
 
-const classes=[
-"Nursery",
-"Junior KG",
-"Senior KG",
-"Class 1",
-"Class 2",
-"Class 3",
-"Class 4",
-"Class 5",
-"Class 6",
-"Class 7",
-"Class 8",
-"Class 9",
-"Class 10"
-];
+/* =========================
+ADMISSIONS
+========================= */
 
-return `<option value="">Select Class</option>`+
-classes.map(c=>
-`<option ${selected===c?"selected":""}>${c}</option>`
-).join("");
+async function loadAdmissions(){
+
+const snapshot =
+await getDocs(
+collection(db,"admissions")
+);
+
+document.getElementById("admissionCount")
+.textContent=snapshot.size;
+
+const table =
+document.getElementById("admissionsTable");
+
+if(snapshot.empty){
+
+table.innerHTML=
+`<tr><td colspan="7" class="empty">
+No admission records found.
+</td></tr>`;
+
+return;
 
 }
+
+let html="";
+
+snapshot.forEach(item=>{
+
+const d=item.data();
+
+html+=`
+
+<tr>
+
+<td><strong>${safe(d.studentName)}</strong></td>
+
+<td>${safe(d.className)}</td>
+
+<td>${safe(d.parentName)}</td>
+
+<td>${safe(d.mobile)}</td>
+
+<td>${safe(d.date)}</td>
+
+<td>${safe(d.status)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick='openModal("admission","${item.id}",${JSON.stringify(d)})'>
+Edit
+</button>
+
+<button class="danger-btn"
+onclick='deleteRecord("admissions","${item.id}")'>
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+table.innerHTML=html;
+
+}
+
+
+/* =========================
+STUDENTS
+========================= */
+
+async function loadStudents(){
+
+const snapshot =
+await getDocs(
+collection(db,"students")
+);
+
+document.getElementById("studentCount")
+.textContent=snapshot.size;
+
+const table =
+document.getElementById("studentsTable");
+
+if(snapshot.empty){
+
+table.innerHTML=
+`<tr><td colspan="6" class="empty">
+No students found.
+</td></tr>`;
+
+return;
+
+}
+
+let html="";
+
+snapshot.forEach(item=>{
+
+const d=item.data();
+
+html+=`
+
+<tr>
+
+<td><strong>${safe(d.studentName)}</strong></td>
+
+<td>${safe(d.className)}</td>
+
+<td>${safe(d.parentName)}</td>
+
+<td>${safe(d.mobile)}</td>
+
+<td>${safe(d.status)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick='openModal("student","${item.id}",${JSON.stringify(d)})'>
+Edit
+</button>
+
+<button class="danger-btn"
+onclick='deleteRecord("students","${item.id}")'>
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+table.innerHTML=html;
+
+}
+
+
+/* =========================
+TEACHERS
+========================= */
+
+async function loadTeachers(){
+
+const snapshot =
+await getDocs(
+collection(db,"teachers")
+);
+
+document.getElementById("teacherCount")
+.textContent=snapshot.size;
+
+const table =
+document.getElementById("teachersTable");
+
+if(snapshot.empty){
+
+table.innerHTML=
+`<tr><td colspan="6" class="empty">
+No teachers found.
+</td></tr>`;
+
+return;
+
+}
+
+let html="";
+
+snapshot.forEach(item=>{
+
+const d=item.data();
+
+html+=`
+
+<tr>
+
+<td><strong>${safe(d.name)}</strong></td>
+
+<td>${safe(d.subject)}</td>
+
+<td>${safe(d.experience)}</td>
+
+<td>${safe(d.mobile)}</td>
+
+<td>${safe(d.status)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick='openModal("teacher","${item.id}",${JSON.stringify(d)})'>
+Edit
+</button>
+
+<button class="danger-btn"
+onclick='deleteRecord("teachers","${item.id}")'>
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+table.innerHTML=html;
+
+}
+
+
+/* =========================
+FEES
+========================= */
+
+async function loadFees(){
+
+const snapshot =
+await getDocs(
+collection(db,"fees")
+);
+
+let total=0;
+
+snapshot.forEach(item=>{
+
+const amount=
+Number(item.data().amount||0);
+
+total+=amount;
+
+});
+
+document.getElementById("feeCount")
+.textContent=
+"₹"+total.toLocaleString("en-IN");
+
+
+const table =
+document.getElementById("feesTable");
+
+if(snapshot.empty){
+
+table.innerHTML=
+`<tr><td colspan="6" class="empty">
+No fee records found.
+</td></tr>`;
+
+return;
+
+}
+
+let html="";
+
+snapshot.forEach(item=>{
+
+const d=item.data();
+
+html+=`
+
+<tr>
+
+<td><strong>${safe(d.studentName)}</strong></td>
+
+<td>₹${safe(d.amount)}</td>
+
+<td>${safe(d.month)}</td>
+
+<td>${safe(d.date)}</td>
+
+<td>${safe(d.method)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick='openModal("fee","${item.id}",${JSON.stringify(d)})'>
+Edit
+</button>
+
+<button class="danger-btn"
+onclick='deleteRecord("fees","${item.id}")'>
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+table.innerHTML=html;
+
+}
+
+
+/* =========================
+NOTICES
+========================= */
+
+async function loadNotices(){
+
+const snapshot =
+await getDocs(
+collection(db,"notices")
+);
+
+const table =
+document.getElementById("noticesTable");
+
+if(snapshot.empty){
+
+table.innerHTML=
+`<tr><td colspan="4" class="empty">
+No notices published yet.
+</td></tr>`;
+
+return;
+
+}
+
+let html="";
+
+snapshot.forEach(item=>{
+
+const d=item.data();
+
+html+=`
+
+<tr>
+
+<td><strong>${safe(d.title)}</strong></td>
+
+<td>${safe(d.notice)}</td>
+
+<td>${safe(d.date)}</td>
+
+<td>
+
+<div class="actions">
+
+<button class="edit-btn"
+onclick='openModal("notice","${item.id}",${JSON.stringify(d)})'>
+Edit
+</button>
+
+<button class="danger-btn"
+onclick='deleteRecord("notices","${item.id}")'>
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+table.innerHTML=html;
+
+}
+
+
+/* =========================
+DELETE
+========================= */
+
+window.deleteRecord=async function(collectionName,id){
+
+const confirmDelete =
+confirm(
+"Are you sure you want to delete this record?"
+);
+
+if(!confirmDelete)
+return;
+
+try{
+
+await deleteDoc(
+doc(db,collectionName,id)
+);
+
+showToast("Record deleted successfully.");
+
+loadAll();
+
+}catch(error){
+
+console.error(error);
+
+showToast(
+"Delete failed: "+error.message
+);
+
+}
+
+};
+
+
+/* =========================
+SAFE TEXT
+========================= */
 
 function safe(value){
 
-return String(value??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+if(value===undefined || value===null)
+return "";
+
+return String(value)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
 
 }
 
-function safeAttr(value){
 
-return safe(value);
+/* =========================
+TOAST
+========================= */
+
+function showToast(message){
+
+toast.textContent=message;
+
+toast.classList.add("show");
+
+setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},3000);
 
 }
 
@@ -2782,7 +2158,9 @@ return safe(value);
 LOGOUT
 ========================= */
 
-async function logout(){
+document
+.getElementById("logoutBtn")
+.addEventListener("click",async()=>{
 
 try{
 
@@ -2796,35 +2174,8 @@ showToast("Logout failed.");
 
 }
 
-}
-
-document.getElementById("logoutBtn")
-.addEventListener("click",logout);
-
-document.getElementById("settingsLogout")
-.addEventListener("click",logout);
-
-document.getElementById("notificationBtn")
-.addEventListener("click",()=>{
-showToast("No new notifications.");
 });
 
-
-/* =========================
-TOAST
-========================= */
-
-window.showToast=function(message){
-
-toast.textContent=message;
-
-toast.classList.add("show");
-
-setTimeout(()=>{
-toast.classList.remove("show");
-},3000);
-
-};
 
 </script>
 
