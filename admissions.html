@@ -2685,7 +2685,7 @@ success.classList.add("show");
 
 
 /* =========================
-   WHATSAPP OPTION
+   PROFESSIONAL WHATSAPP POPUP
 ========================= */
 
 const studentNameForWhatsApp =
@@ -2704,7 +2704,6 @@ I have downloaded the admission form PDF. I am attaching the PDF here for your r
 Thank you.
 Read & Write`;
 
-
 const whatsappURL =
 "https://wa.me/" +
 whatsappNumber +
@@ -2713,43 +2712,536 @@ encodeURIComponent(whatsappMessage);
 
 
 /* =========================
-   WHATSAPP POPUP
+   CREATE POPUP
 ========================= */
 
-setTimeout(() => {
+const popup =
+document.createElement("div");
 
-    const sendToWhatsApp =
-    confirm(
-        "Admission PDF downloaded successfully!\n\n" +
-        "Would you like to send the PDF to Sir on WhatsApp?"
-    );
+popup.id = "whatsappPopup";
+
+popup.innerHTML = `
+
+<div class="whatsapp-overlay">
+
+    <div class="whatsapp-card">
+
+        <button
+        class="whatsapp-close"
+        id="closeWhatsApp">
+        ×
+        </button>
 
 
-    if(sendToWhatsApp){
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
 
-        window.open(
-            whatsappURL,
-            "_blank"
-        );
+
+        <h2>
+            Admission PDF Ready!
+        </h2>
+
+
+        <p class="popup-subtitle">
+            Your admission form PDF has been
+            downloaded successfully.
+        </p>
+
+
+        <div class="whatsapp-info">
+
+            <div class="whatsapp-icon">
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+
+            <div>
+
+                <strong>
+                    Send PDF to Sir
+                </strong>
+
+                <span>
+                    WhatsApp: 95370 81242
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <a
+        href="${whatsappURL}"
+        target="_blank"
+        class="whatsapp-send-btn">
+
+            <i class="fa-brands fa-whatsapp"></i>
+
+            Send PDF on WhatsApp
+
+        </a>
+
+
+        <div class="attach-note">
+
+            <i class="fa-solid fa-paperclip"></i>
+
+            WhatsApp खुलने के बाद
+            <strong>Document</strong> option से
+            downloaded PDF attach करके Send करें।
+
+        </div>
+
+
+        <div class="xerox-note">
+
+            <i class="fa-solid fa-print"></i>
+
+            <strong>Important:</strong><br>
+
+            School / Classes में admission के लिए
+            आते समय इस PDF का
+            <strong>Xerox / printout</strong>
+            जरूर लेकर आएँ।
+
+        </div>
+
+
+        <button
+        id="closeWhatsAppBottom"
+        class="continue-btn">
+
+            Continue
+
+        </button>
+
+    </div>
+
+</div>
+
+`;
+
+
+/* Add popup */
+
+document.body.appendChild(popup);
+
+
+/* =========================
+   POPUP CSS
+========================= */
+
+const popupStyle =
+document.createElement("style");
+
+popupStyle.innerHTML = `
+
+.whatsapp-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.72);
+
+    backdrop-filter:blur(7px);
+
+}
+
+
+.whatsapp-card{
+
+    position:relative;
+
+    width:min(430px,100%);
+
+    background:#ffffff;
+
+    border-radius:22px;
+
+    padding:30px 24px 23px;
+
+    text-align:center;
+
+    box-shadow:
+    0 25px 70px
+    rgba(0,0,0,.25);
+
+    animation:
+    popupShow .25s ease;
+
+}
+
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(15px)
+        scale(.96);
 
     }
 
+    to{
 
-    /* Xerox reminder */
+        opacity:1;
 
-    setTimeout(() => {
+        transform:
+        translateY(0)
+        scale(1);
 
-        alert(
-            "Important:\n\n" +
-            "WhatsApp mein downloaded PDF manually attach karke send karein.\n\n" +
-            "School / Classes mein admission ke liye aate waqt " +
-            "is PDF ka Xerox / printout zaroor lekar aayein."
-        );
+    }
 
-    },700);
+}
 
-},500);
 
+.whatsapp-close{
+
+    position:absolute;
+
+    top:13px;
+
+    right:13px;
+
+    width:32px;
+
+    height:32px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f1f5f9;
+
+    color:#64748b;
+
+    font-size:21px;
+
+    cursor:pointer;
+
+}
+
+
+.success-icon{
+
+    width:68px;
+
+    height:68px;
+
+    margin:0 auto 15px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    font-size:30px;
+
+}
+
+
+.whatsapp-card h2{
+
+    margin:0 0 7px;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:21px;
+
+    color:#172033;
+
+}
+
+
+.popup-subtitle{
+
+    margin:0 0 20px;
+
+    color:#667085;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+}
+
+
+.whatsapp-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-align:left;
+
+    padding:14px;
+
+    margin-bottom:13px;
+
+    border-radius:13px;
+
+    background:#f0fdf4;
+
+    border:1px solid #bbf7d0;
+
+}
+
+
+.whatsapp-icon{
+
+    width:43px;
+
+    height:43px;
+
+    flex-shrink:0;
+
+    border-radius:11px;
+
+    background:#25D366;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:22px;
+
+}
+
+
+.whatsapp-info strong{
+
+    display:block;
+
+    color:#166534;
+
+    font-size:13px;
+
+    margin-bottom:2px;
+
+}
+
+
+.whatsapp-info span{
+
+    display:block;
+
+    color:#557064;
+
+    font-size:11px;
+
+}
+
+
+.whatsapp-send-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:11px;
+
+    background:#25D366;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    box-shadow:
+    0 7px 18px
+    rgba(37,211,102,.22);
+
+    transition:.2s;
+
+}
+
+
+.whatsapp-send-btn:hover{
+
+    transform:translateY(-2px);
+
+    background:#20bd5b;
+
+}
+
+
+.attach-note{
+
+    margin-top:12px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+
+    text-align:left;
+
+    font-size:10.5px;
+
+    line-height:1.55;
+
+}
+
+
+.attach-note i{
+
+    color:#4f46e5;
+
+    margin-right:5px;
+
+}
+
+
+.xerox-note{
+
+    margin-top:10px;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:#fff7ed;
+
+    color:#7c4a13;
+
+    text-align:left;
+
+    font-size:10.5px;
+
+    line-height:1.55;
+
+}
+
+
+.xerox-note i{
+
+    color:#f59e0b;
+
+    margin-right:5px;
+
+}
+
+
+.continue-btn{
+
+    width:100%;
+
+    margin-top:11px;
+
+    padding:11px;
+
+    border:1px solid #dce2eb;
+
+    background:#ffffff;
+
+    border-radius:10px;
+
+    color:#596477;
+
+    font-family:'Nunito',sans-serif;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+
+@media(max-width:480px){
+
+    .whatsapp-card{
+
+        padding:
+        27px 17px 19px;
+
+    }
+
+}
+
+`;
+
+document.head.appendChild(popupStyle);
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closeWhatsAppPopup(){
+
+    popup.remove();
+
+    popupStyle.remove();
+
+    document.body.style.overflow = "";
+
+}
+
+
+document
+.getElementById("closeWhatsApp")
+.addEventListener(
+"click",
+closeWhatsAppPopup
+);
+
+
+document
+.getElementById("closeWhatsAppBottom")
+.addEventListener(
+"click",
+closeWhatsAppPopup
+);
+
+
+/* Prevent background scrolling */
+
+document.body.style.overflow =
+"hidden";
 
 /* =========================
    LOAD LOCAL IMAGE
