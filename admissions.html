@@ -1,1 +1,2799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Admissions | Read & Write</title>
+
+<meta name="description"
+content="Apply for admission at Read & Write Junior Pre-School and Read & Write Classes, Surat.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+
+:root{
+    --primary:#4f46e5;
+    --primary-dark:#3730a3;
+    --secondary:#06b6d4;
+    --green:#16a34a;
+    --orange:#f59e0b;
+    --dark:#172033;
+    --text:#5b6678;
+    --light:#f6f8fc;
+    --white:#fff;
+    --border:#e2e7ef;
+    --shadow:0 15px 45px rgba(23,32,51,.09);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Nunito',sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.6;
+}
+
+h1,h2,h3,h4{
+    font-family:'Poppins',sans-serif;
+    color:var(--dark);
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 4px 20px rgba(0,0,0,.04);
+}
+
+.navbar{
+    min-height:78px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.brand img{
+    width:52px;
+    height:52px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.brand strong{
+    display:block;
+    color:var(--primary);
+    font-family:'Poppins';
+    font-size:17px;
+}
+
+.brand span{
+    font-size:10px;
+    font-weight:800;
+    color:#7b8494;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    list-style:none;
+}
+
+.nav-links a{
+    font-family:'Poppins';
+    font-size:13px;
+    font-weight:600;
+    color:#4c5668;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--primary);
+}
+
+.apply-btn{
+    background:var(--primary);
+    color:#fff!important;
+    padding:10px 17px;
+    border-radius:9px;
+}
+
+.menu-btn{
+    display:none;
+    background:none;
+    border:0;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    background:
+    linear-gradient(110deg,rgba(24,32,64,.96),rgba(55,48,163,.82)),
+    url("images/school-building.jpg") center/cover;
+    padding:75px 0;
+}
+
+.hero-content{
+    max-width:800px;
+    color:#fff;
+}
+
+.hero-badge{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:7px 14px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:17px;
+}
+
+.hero h1{
+    color:#fff;
+    font-size:clamp(34px,5vw,55px);
+    line-height:1.15;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#7dd3fc;
+}
+
+.hero p{
+    color:rgba(255,255,255,.87);
+    font-size:16px;
+    max-width:700px;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    padding:60px 0 90px;
+}
+
+.step-bar{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:35px;
+}
+
+.step{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#8a94a6;
+    font-size:12px;
+    font-weight:800;
+}
+
+.step.active{
+    color:var(--primary);
+}
+
+.step-number{
+    width:31px;
+    height:31px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    background:#e9edf5;
+}
+
+.step.active .step-number{
+    background:var(--primary);
+    color:#fff;
+}
+
+.step-line{
+    width:70px;
+    height:2px;
+    background:#e0e5ee;
+    margin:0 12px;
+}
+
+/* ================= CATEGORY ================= */
+
+.category-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+    box-shadow:var(--shadow);
+    margin-bottom:25px;
+}
+
+.section-title{
+    margin-bottom:22px;
+}
+
+.section-title h2{
+    font-size:24px;
+    margin-bottom:5px;
+}
+
+.section-title p{
+    font-size:13px;
+    color:#7a8494;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.category-card{
+    border:2px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    cursor:pointer;
+    transition:.25s;
+    position:relative;
+}
+
+.category-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(0,0,0,.07);
+}
+
+.category-card.selected{
+    border-color:var(--primary);
+    background:#f6f6ff;
+}
+
+.category-card input{
+    position:absolute;
+    opacity:0;
+}
+
+.category-icon{
+    width:53px;
+    height:53px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:#eef2ff;
+    color:var(--primary);
+    font-size:22px;
+    margin-bottom:13px;
+}
+
+.category-card:nth-child(2) .category-icon{
+    background:#ecfeff;
+    color:#0891b2;
+}
+
+.category-card h3{
+    font-size:17px;
+    margin-bottom:4px;
+}
+
+.category-card p{
+    font-size:12px;
+}
+
+.category-check{
+    position:absolute;
+    right:20px;
+    top:20px;
+    width:22px;
+    height:22px;
+    border:2px solid #d8ddea;
+    border-radius:50%;
+}
+
+.category-card.selected .category-check{
+    background:var(--primary);
+    border-color:var(--primary);
+}
+
+.category-card.selected .category-check::after{
+    content:"✓";
+    color:white;
+    font-size:13px;
+    position:absolute;
+    left:3px;
+    top:-1px;
+}
+
+/* ================= FORM ================= */
+
+.form-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:32px;
+    margin-bottom:25px;
+    box-shadow:0 8px 30px rgba(23,32,51,.05);
+}
+
+.form-header{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    border-bottom:1px solid var(--border);
+    padding-bottom:18px;
+    margin-bottom:24px;
+}
+
+.form-header-icon{
+    width:45px;
+    height:45px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:#eef2ff;
+    color:var(--primary);
+}
+
+.form-header h2{
+    font-size:20px;
+}
+
+.form-header p{
+    font-size:11px;
+    color:#818b9c;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+label{
+    color:#394456;
+    font-size:12px;
+    font-weight:800;
+}
+
+.required{
+    color:#ef4444;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid #dce2eb;
+    background:#fbfcfe;
+    border-radius:10px;
+    padding:12px 13px;
+    font-family:'Nunito';
+    font-size:13px;
+    color:var(--dark);
+    outline:none;
+    transition:.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--primary);
+    background:white;
+    box-shadow:0 0 0 3px rgba(79,70,229,.08);
+}
+
+textarea{
+    min-height:95px;
+    resize:vertical;
+}
+
+/* ================= PHOTO ================= */
+
+.photo-area{
+    display:flex;
+    align-items:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.photo-preview{
+    width:125px;
+    height:155px;
+    border:2px dashed #cfd6e3;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    background:#f8fafc;
+    color:#9aa4b4;
+    text-align:center;
+    font-size:11px;
+}
+
+.photo-preview img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.photo-info{
+    flex:1;
+    min-width:220px;
+}
+
+.photo-info h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.photo-info p{
+    font-size:11px;
+    margin-bottom:12px;
+}
+
+.file-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--primary);
+    color:white;
+    padding:10px 15px;
+    border-radius:9px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:800;
+}
+
+#studentPhoto{
+    display:none;
+}
+
+/* ================= DOCUMENT CHECK ================= */
+
+.document-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.doc-check{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    font-size:12px;
+}
+
+.doc-check input{
+    width:auto;
+}
+
+/* ================= DECLARATION ================= */
+
+.declaration{
+    background:#f8faff;
+    border:1px solid #dfe6f5;
+    border-radius:12px;
+    padding:18px;
+    font-size:12px;
+    color:#667286;
+}
+
+.declaration label{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    color:#4a5568;
+}
+
+.declaration input{
+    width:auto;
+    margin-top:4px;
+}
+
+/* ================= SUBMIT ================= */
+
+.submit-area{
+    text-align:center;
+    padding:20px 0;
+}
+
+.generate-btn{
+    border:0;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:#fff;
+    padding:15px 30px;
+    border-radius:11px;
+    font-family:'Poppins';
+    font-weight:700;
+    cursor:pointer;
+    font-size:14px;
+    box-shadow:0 10px 25px rgba(79,70,229,.25);
+    transition:.3s;
+}
+
+.generate-btn:hover{
+    transform:translateY(-3px);
+}
+
+.submit-note{
+    margin-top:12px;
+    font-size:11px;
+    color:#858fa0;
+}
+
+/* ================= SUCCESS ================= */
+
+.success-box{
+    display:none;
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+    color:#166534;
+    padding:18px;
+    border-radius:13px;
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.success-box.show{
+    display:block;
+}
+
+.success-box i{
+    font-size:25px;
+    margin-bottom:7px;
+}
+
+.success-box h3{
+    color:#166534;
+    font-size:18px;
+}
+
+.success-box p{
+    font-size:12px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#111827;
+    color:#aab3c2;
+    padding:50px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1.3fr;
+    gap:40px;
+    padding-bottom:35px;
+}
+
+.footer-brand{
+    display:flex;
+    gap:11px;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.footer-brand img{
+    width:48px;
+    height:48px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.footer-brand strong{
+    display:block;
+    color:#fff;
+    font-family:'Poppins';
+}
+
+.footer-brand span{
+    font-size:9px;
+}
+
+footer h3{
+    color:white;
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.footer-about,
+.footer-links li,
+.footer-contact{
+    font-size:12px;
+}
+
+.footer-links{
+    list-style:none;
+}
+
+.footer-links li{
+    margin-bottom:8px;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+.footer-contact{
+    display:flex;
+    gap:10px;
+    margin-bottom:10px;
+}
+
+.footer-contact i{
+    color:#7dd3fc;
+    margin-top:4px;
+}
+
+.copyright{
+    border-top:1px solid #252e3e;
+    padding-top:18px;
+    text-align:center;
+    font-size:11px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:750px){
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        position:absolute;
+        left:0;
+        right:0;
+        top:78px;
+        background:#fff;
+        display:none;
+        flex-direction:column;
+        align-items:stretch;
+        padding:15px 5%;
+        box-shadow:0 15px 25px rgba(0,0,0,.08);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .category-grid,
+    .form-grid,
+    .document-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .form-card,
+    .category-box{
+        padding:22px 18px;
+    }
+}
+
+@media(max-width:550px){
+
+    .hero{
+        padding:55px 0;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .photo-area{
+        align-items:flex-start;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="container navbar">
+
+<a href="index.html" class="brand">
+
+<img src="images/logo.jpg" alt="Read & Write Logo">
+
+<div>
+<strong>Read & Write</strong>
+<span>JUNIOR PRE-SCHOOL</span>
+</div>
+
+</a>
+
+<button class="menu-btn" id="menuBtn">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="classes.html">Classes</a></li>
+<li><a href="teachers.html">Teachers</a></li>
+<li><a href="facilities.html">Facilities</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="admissions.html" class="active">Admissions</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="hero-badge">
+<i class="fa-solid fa-graduation-cap"></i>
+Admissions Open
+</div>
+
+<h1>
+Begin Your Child's <span>Learning Journey</span>
+</h1>
+
+<p>
+Complete the admission form carefully. After submission,
+a professional admission form PDF will be generated
+for you to download and bring to the school.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+<div class="container">
+
+
+<!-- STEPS -->
+
+<div class="step-bar">
+
+<div class="step active">
+<div class="step-number">1</div>
+Category
+</div>
+
+<div class="step-line"></div>
+
+<div class="step active">
+<div class="step-number">2</div>
+Details
+</div>
+
+<div class="step-line"></div>
+
+<div class="step active">
+<div class="step-number">3</div>
+PDF
+</div>
+
+</div>
+
+
+<!-- SUCCESS -->
+
+<div class="success-box" id="successBox">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Admission Form PDF Generated Successfully!</h3>
+
+<p>
+Your PDF has been downloaded to this device.
+<br><br>
+<strong>
+When you come to the school/classes for admission,
+please bring a Xerox/printout of this PDF with you.
+</strong>
+</p>
+
+</div>
+
+
+<form id="admissionForm">
+
+
+<!-- ================= CATEGORY ================= -->
+
+<div class="category-box">
+
+<div class="section-title">
+
+<h2>Select Admission Category</h2>
+
+<p>
+Please select the program for which you are applying.
+</p>
+
+</div>
+
+
+<div class="category-grid">
+
+
+<label class="category-card selected" id="preCard">
+
+<input
+type="radio"
+name="category"
+value="Pre-School"
+checked
+>
+
+<div class="category-icon">
+<i class="fa-solid fa-child-reaching"></i>
+</div>
+
+<h3>Pre-School Admission</h3>
+
+<p>
+Nursery • Junior KG • Senior KG
+</p>
+
+<div class="category-check"></div>
+
+</label>
+
+
+<label class="category-card" id="classCard">
+
+<input
+type="radio"
+name="category"
+value="Classes"
+>
+
+<div class="category-icon">
+<i class="fa-solid fa-book-open"></i>
+</div>
+
+<h3>Read & Write Classes</h3>
+
+<p>
+School Classes & Academic Programs
+</p>
+
+<div class="category-check"></div>
+
+</label>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= STUDENT INFORMATION ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-user-graduate"></i>
+</div>
+
+<div>
+<h2>Student Information</h2>
+<p>Enter the student's personal details.</p>
+</div>
+
+</div>
+
+
+<div class="form-grid">
+
+
+<!-- PHOTO -->
+
+<div class="form-group full">
+
+<label>
+Student Photograph <span class="required">*</span>
+</label>
+
+<div class="photo-area">
+
+<div class="photo-preview" id="photoPreview">
+<i class="fa-solid fa-camera"></i>
+<br>
+Photo Preview
+</div>
+
+<div class="photo-info">
+
+<h3>Upload Student Photo</h3>
+
+<p>
+Use a recent passport-size photograph.
+JPG, JPEG or PNG recommended.
+</p>
+
+<label class="file-label" for="studentPhoto">
+<i class="fa-solid fa-upload"></i>
+Choose Photo
+</label>
+
+<input
+type="file"
+id="studentPhoto"
+accept="image/jpeg,image/png,image/jpg"
+required
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Student Full Name <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="studentName"
+placeholder="Enter full name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Date of Birth <span class="required">*</span>
+</label>
+
+<input
+type="date"
+id="dob"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Gender <span class="required">*</span>
+</label>
+
+<select id="gender" required>
+
+<option value="">Select Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Blood Group
+</label>
+
+<select id="bloodGroup">
+
+<option value="">Select Blood Group</option>
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>O+</option>
+<option>O-</option>
+<option>Unknown</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Applying For Class <span class="required">*</span>
+</label>
+
+<select id="applyingClass" required>
+
+<option value="">Select Class</option>
+
+<option>Nursery</option>
+<option>Junior KG</option>
+<option>Senior KG</option>
+
+<option>Class 1</option>
+<option>Class 2</option>
+<option>Class 3</option>
+<option>Class 4</option>
+<option>Class 5</option>
+<option>Class 6</option>
+<option>Class 7</option>
+<option>Class 8</option>
+<option>Class 9</option>
+<option>Class 10</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Academic Session <span class="required">*</span>
+</label>
+
+<select id="session" required>
+
+<option value="2026-27">2026–27</option>
+<option value="2027-28">2027–28</option>
+<option value="2028-29">2028–29</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= PARENT DETAILS ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-people-roof"></i>
+</div>
+
+<div>
+<h2>Parent / Guardian Details</h2>
+<p>Provide the primary contact information.</p>
+</div>
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Father's / Guardian's Name <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="fatherName"
+placeholder="Enter father's / guardian's name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Mother's Name <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="motherName"
+placeholder="Enter mother's name"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Primary Mobile Number <span class="required">*</span>
+</label>
+
+<input
+type="tel"
+id="mobile"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="10-digit mobile number"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Alternate Mobile Number
+</label>
+
+<input
+type="tel"
+id="alternateMobile"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="Optional"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Email Address
+</label>
+
+<input
+type="email"
+id="email"
+placeholder="example@email.com"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Father's Occupation
+</label>
+
+<input
+type="text"
+id="fatherOccupation"
+placeholder="Occupation"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Mother's Occupation
+</label>
+
+<input
+type="text"
+id="motherOccupation"
+placeholder="Occupation"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Relationship with Student
+</label>
+
+<select id="relationship">
+
+<option>Father</option>
+<option>Mother</option>
+<option>Guardian</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= ADDRESS ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+
+<div>
+<h2>Residential Address</h2>
+<p>Enter the student's current residential address.</p>
+</div>
+
+</div>
+
+
+<div class="form-grid">
+
+<div class="form-group full">
+
+<label>
+Full Address <span class="required">*</span>
+</label>
+
+<textarea
+id="address"
+placeholder="House/Flat No., Society, Street, Area..."
+required
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+City <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="city"
+value="Surat"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+State <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="state"
+value="Gujarat"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+PIN Code <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="pincode"
+maxlength="6"
+pattern="[0-9]{6}"
+placeholder="6-digit PIN"
+required
+>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= ACADEMIC DETAILS ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-school"></i>
+</div>
+
+<div>
+<h2>Academic & Previous School Details</h2>
+<p>Complete this section if applicable.</p>
+</div>
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Previous School Name
+</label>
+
+<input
+type="text"
+id="previousSchool"
+placeholder="If applicable"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Previous Class
+</label>
+
+<input
+type="text"
+id="previousClass"
+placeholder="If applicable"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Previous School City
+</label>
+
+<input
+type="text"
+id="previousCity"
+placeholder="If applicable"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Medium
+</label>
+
+<select id="medium">
+
+<option value="">Select Medium</option>
+<option>English</option>
+<option>Hindi</option>
+<option>Gujarati</option>
+<option>Other</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= MEDICAL ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-heart-pulse"></i>
+</div>
+
+<div>
+<h2>Health & Emergency Information</h2>
+<p>Important information for the student's safety.</p>
+</div>
+
+</div>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Emergency Contact Name <span class="required">*</span>
+</label>
+
+<input
+type="text"
+id="emergencyName"
+placeholder="Emergency contact person"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Emergency Contact Number <span class="required">*</span>
+</label>
+
+<input
+type="tel"
+id="emergencyMobile"
+maxlength="10"
+pattern="[0-9]{10}"
+placeholder="10-digit number"
+required
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Allergies / Medical Conditions
+</label>
+
+<textarea
+id="medical"
+placeholder="Mention any important allergy, medical condition or special care requirement. Write 'None' if not applicable."
+></textarea>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- ================= DOCUMENTS ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-folder-open"></i>
+</div>
+
+<div>
+<h2>Documents Available</h2>
+<p>Select the documents you currently have available.</p>
+</div>
+
+</div>
+
+
+<div class="document-grid">
+
+<label class="doc-check">
+<input type="checkbox" id="docBirth">
+Birth Certificate
+</label>
+
+<label class="doc-check">
+<input type="checkbox" id="docPhoto">
+Passport-size Photographs
+</label>
+
+<label class="doc-check">
+<input type="checkbox" id="docTransfer">
+Transfer / Leaving Certificate
+</label>
+
+<label class="doc-check">
+<input type="checkbox" id="docMarksheet">
+Previous Marksheet
+</label>
+
+<label class="doc-check">
+<input type="checkbox" id="docAddress">
+Address Proof
+</label>
+
+<label class="doc-check">
+<input type="checkbox" id="docOther">
+Other Supporting Document
+</label>
+
+</div>
+
+</div>
+
+
+<!-- ================= DECLARATION ================= -->
+
+<div class="form-card">
+
+<div class="form-header">
+
+<div class="form-header-icon">
+<i class="fa-solid fa-file-signature"></i>
+</div>
+
+<div>
+<h2>Declaration</h2>
+<p>Please read carefully before generating the PDF.</p>
+</div>
+
+</div>
+
+
+<div class="declaration">
+
+<label>
+
+<input
+type="checkbox"
+id="declaration"
+required
+>
+
+<span>
+I/We declare that the information provided in this admission
+form is true and correct to the best of my/our knowledge.
+I/We understand that the admission will be subject to the
+school/classes rules and availability of seats. I/We agree
+to provide the required original documents when requested.
+</span>
+
+</label>
+
+</div>
+
+</div>
+
+
+<!-- ================= SUBMIT ================= -->
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="generate-btn"
+>
+
+<i class="fa-solid fa-file-pdf"></i>
+
+&nbsp; Generate & Download Admission PDF
+
+</button>
+
+<p class="submit-note">
+
+Your information will be used to generate the admission
+form PDF on this device.
+
+</p>
+
+</div>
+
+
+</form>
+
+</div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+
+<div>
+
+<div class="footer-brand">
+
+<img src="images/logo.jpg" alt="Read & Write Logo">
+
+<div>
+<strong>Read & Write</strong>
+<span>JUNIOR PRE-SCHOOL</span>
+</div>
+
+</div>
+
+<p class="footer-about">
+Read & Write is committed to providing a caring,
+engaging and supportive learning environment.
+</p>
+
+</div>
+
+
+<div>
+
+<h3>Quick Links</h3>
+
+<ul class="footer-links">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="classes.html">Classes</a></li>
+<li><a href="teachers.html">Teachers</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h3>Admissions</h3>
+
+<ul class="footer-links">
+
+<li><a href="admissions.html">Apply Now</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="facilities.html">Facilities</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+
+</ul>
+
+</div>
+
+
+<div>
+
+<h3>Contact</h3>
+
+<div class="footer-contact">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>
+9, Shivaji Park-2,<br>
+Navagam-Dindoli Road,<br>
+Navagam, Surat - 394210
+</span>
+
+</div>
+
+<div class="footer-contact">
+
+<i class="fa-solid fa-phone"></i>
+
+<a href="tel:+919537081242">
+95370 81242
+</a>
+
+</div>
+
+<div class="footer-contact">
+
+<i class="fa-solid fa-envelope"></i>
+
+<a href="mailto:readwritec@gmail.com">
+readwritec@gmail.com
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2014–2026
+<strong style="color:white;">
+Read & Write
+</strong>.
+All Rights Reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+
+    navLinks.classList.toggle("show");
+
+    const icon = menuBtn.querySelector("i");
+
+    if(navLinks.classList.contains("show")){
+        icon.classList.remove("fa-bars");
+        icon.classList.add("fa-xmark");
+    }else{
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+    }
+
+});
+
+
+/* =========================
+   CATEGORY SWITCH
+========================= */
+
+const preCard = document.getElementById("preCard");
+const classCard = document.getElementById("classCard");
+
+const categoryInputs =
+document.querySelectorAll('input[name="category"]');
+
+categoryInputs.forEach(input => {
+
+    input.addEventListener("change", () => {
+
+        document.querySelectorAll(".category-card")
+        .forEach(card => card.classList.remove("selected"));
+
+        if(input.value === "Pre-School"){
+
+            preCard.classList.add("selected");
+
+        }else{
+
+            classCard.classList.add("selected");
+
+        }
+
+    });
+
+});
+
+
+/* =========================
+   STUDENT PHOTO
+========================= */
+
+let studentPhotoData = null;
+
+const photoInput =
+document.getElementById("studentPhoto");
+
+const photoPreview =
+document.getElementById("photoPreview");
+
+photoInput.addEventListener("change", function(){
+
+    const file = this.files[0];
+
+    if(!file) return;
+
+    if(!["image/jpeg","image/png","image/jpg"].includes(file.type)){
+
+        alert("Please upload JPG, JPEG or PNG image.");
+
+        this.value = "";
+
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        studentPhotoData = e.target.result;
+
+        photoPreview.innerHTML =
+        `<img src="${studentPhotoData}" alt="Student Photo">`;
+
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
+
+/* =========================
+   HELPER
+========================= */
+
+function value(id){
+
+    return document.getElementById(id).value.trim();
+
+}
+
+
+function checked(id){
+
+    return document.getElementById(id).checked;
+
+}
+
+
+function validMobile(number){
+
+    return /^[0-9]{10}$/.test(number);
+
+}
+
+
+/* =========================
+   PDF GENERATION
+========================= */
+
+document.getElementById("admissionForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+
+    /* Photo */
+
+    if(!studentPhotoData){
+
+        alert("Please upload the student's photograph.");
+
+        document.getElementById("studentPhoto").focus();
+
+        return;
+
+    }
+
+
+    /* Mobile */
+
+    if(!validMobile(value("mobile"))){
+
+        alert("Please enter a valid 10-digit primary mobile number.");
+
+        document.getElementById("mobile").focus();
+
+        return;
+
+    }
+
+
+    if(value("alternateMobile") &&
+       !validMobile(value("alternateMobile"))){
+
+        alert("Please enter a valid alternate mobile number.");
+
+        return;
+
+    }
+
+
+    if(!validMobile(value("emergencyMobile"))){
+
+        alert("Please enter a valid emergency contact number.");
+
+        return;
+
+    }
+
+
+    /* Declaration */
+
+    if(!checked("declaration")){
+
+        alert("Please accept the declaration before continuing.");
+
+        return;
+
+    }
+
+
+    const { jsPDF } = window.jspdf;
+
+    const pdf = new jsPDF({
+        orientation:"portrait",
+        unit:"mm",
+        format:"a4"
+    });
+
+
+    /* =========================
+       PDF CONSTANTS
+    ========================= */
+
+    const pageWidth = 210;
+    const pageHeight = 297;
+
+    const margin = 10;
+
+    const category =
+    document.querySelector('input[name="category"]:checked').value;
+
+    const logo =
+    category === "Pre-School"
+    ? "images/pre-logo.jpg"
+    : "images/logo.jpg";
+
+
+    /* =========================
+       COLORS
+    ========================= */
+
+    const primary = [79,70,229];
+    const dark = [25,32,50];
+    const gray = [90,100,115];
+    const light = [244,246,250];
+    const border = [220,225,234];
+
+
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    pdf.setFillColor(249,250,253);
+
+    pdf.rect(
+        0,
+        0,
+        pageWidth,
+        pageHeight,
+        "F"
+    );
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    pdf.setFillColor(...primary);
+
+    pdf.roundedRect(
+        margin,
+        margin,
+        pageWidth - margin*2,
+        30,
+        4,
+        4,
+        "F"
+    );
+
+
+    /* Logo */
+
+    try{
+
+        const logoData =
+        await loadImageAsDataURL(logo);
+
+        pdf.addImage(
+            logoData,
+            "JPEG",
+            14,
+            14,
+            22,
+            22
+        );
+
+    }catch(error){
+
+        console.log("Logo could not be loaded.");
+
+    }
+
+
+    pdf.setTextColor(255,255,255);
+
+    pdf.setFont("helvetica","bold");
+
+    pdf.setFontSize(15);
+
+    pdf.text(
+        category === "Pre-School"
+        ? "READ & WRITE JUNIOR PRE-SCHOOL"
+        : "READ & WRITE CLASSES",
+        41,
+        20
+    );
+
+    pdf.setFont("helvetica","normal");
+
+    pdf.setFontSize(8);
+
+    pdf.text(
+        "ADMISSION APPLICATION FORM",
+        41,
+        26
+    );
+
+
+    /* Application badge */
+
+    pdf.setFillColor(255,255,255);
+
+    pdf.roundedRect(
+        157,
+        16,
+        39,
+        14,
+        3,
+        3,
+        "F"
+    );
+
+    pdf.setTextColor(...primary);
+
+    pdf.setFont("helvetica","bold");
+
+    pdf.setFontSize(7);
+
+    pdf.text(
+        "SESSION",
+        176.5,
+        21,
+        {align:"center"}
+    );
+
+    pdf.setFontSize(8);
+
+    pdf.text(
+        value("session"),
+        176.5,
+        26,
+        {align:"center"}
+    );
+
+
+    /* =========================
+       STUDENT PHOTO
+    ========================= */
+
+    pdf.setFillColor(255,255,255);
+
+    pdf.setDrawColor(...border);
+
+    pdf.roundedRect(
+        165,
+        48,
+        35,
+        43,
+        2,
+        2,
+        "FD"
+    );
+
+    try{
+
+        pdf.addImage(
+            studentPhotoData,
+            "JPEG",
+            167,
+            50,
+            31,
+            39
+        );
+
+    }catch(error){
+
+        console.log("Student image error.");
+
+    }
+
+
+    /* =========================
+       SECTION FUNCTION
+    ========================= */
+
+    function sectionTitle(title, y){
+
+        pdf.setFillColor(...primary);
+
+        pdf.roundedRect(
+            margin,
+            y,
+            pageWidth-margin*2,
+            7,
+            2,
+            2,
+            "F"
+        );
+
+        pdf.setTextColor(255,255,255);
+
+        pdf.setFont("helvetica","bold");
+
+        pdf.setFontSize(8);
+
+        pdf.text(
+            title.toUpperCase(),
+            margin+4,
+            y+4.8
+        );
+
+    }
+
+
+    function field(label,text,x,y,w){
+
+        pdf.setTextColor(...gray);
+
+        pdf.setFont("helvetica","bold");
+
+        pdf.setFontSize(6.2);
+
+        pdf.text(
+            label.toUpperCase(),
+            x,
+            y
+        );
+
+        pdf.setTextColor(...dark);
+
+        pdf.setFont("helvetica","normal");
+
+        pdf.setFontSize(7.5);
+
+        const safeText =
+        text || "—";
+
+        pdf.text(
+            safeText,
+            x,
+            y+4.5,
+            {maxWidth:w}
+        );
+
+    }
+
+
+    /* =========================
+       STUDENT SECTION
+    ========================= */
+
+    sectionTitle(
+        "Student Information",
+        43
+    );
+
+
+    field(
+        "Student Name",
+        value("studentName"),
+        13,
+        57,
+        70
+    );
+
+
+    field(
+        "Date of Birth",
+        value("dob"),
+        83,
+        57,
+        35
+    );
+
+
+    field(
+        "Gender",
+        value("gender"),
+        120,
+        57,
+        30
+    );
+
+
+    field(
+        "Blood Group",
+        value("bloodGroup"),
+        13,
+        70,
+        35
+    );
+
+
+    field(
+        "Applying For",
+        value("applyingClass"),
+        50,
+        70,
+        45
+    );
+
+
+    field(
+        "Admission Category",
+        category,
+        98,
+        70,
+        55
+    );
+
+
+    /* =========================
+       PARENT SECTION
+    ========================= */
+
+    sectionTitle(
+        "Parent / Guardian Information",
+        84
+    );
+
+
+    field(
+        "Father / Guardian",
+        value("fatherName"),
+        13,
+        98,
+        65
+    );
+
+
+    field(
+        "Mother",
+        value("motherName"),
+        80,
+        98,
+        65
+    );
+
+
+    field(
+        "Primary Mobile",
+        value("mobile"),
+        13,
+        111,
+        45
+    );
+
+
+    field(
+        "Alternate Mobile",
+        value("alternateMobile"),
+        62,
+        111,
+        45
+    );
+
+
+    field(
+        "Email",
+        value("email"),
+        112,
+        111,
+        43
+    );
+
+
+    field(
+        "Father's Occupation",
+        value("fatherOccupation"),
+        13,
+        124,
+        55
+    );
+
+
+    field(
+        "Mother's Occupation",
+        value("motherOccupation"),
+        72,
+        124,
+        55
+    );
+
+
+    field(
+        "Relationship",
+        value("relationship"),
+        132,
+        124,
+        25
+    );
+
+
+    /* =========================
+       ADDRESS
+    ========================= */
+
+    sectionTitle(
+        "Residential Address",
+        137
+    );
+
+
+    field(
+        "Address",
+        value("address"),
+        13,
+        151,
+        130
+    );
+
+
+    field(
+        "City",
+        value("city"),
+        13,
+        164,
+        45
+    );
+
+
+    field(
+        "State",
+        value("state"),
+        62,
+        164,
+        45
+    );
+
+
+    field(
+        "PIN Code",
+        value("pincode"),
+        112,
+        164,
+        35
+    );
+
+
+    /* =========================
+       ACADEMIC
+    ========================= */
+
+    sectionTitle(
+        "Academic Information",
+        176
+    );
+
+
+    field(
+        "Previous School",
+        value("previousSchool"),
+        13,
+        190,
+        75
+    );
+
+
+    field(
+        "Previous Class",
+        value("previousClass"),
+        92,
+        190,
+        35
+    );
+
+
+    field(
+        "Medium",
+        value("medium"),
+        132,
+        190,
+        30
+    );
+
+
+    /* =========================
+       HEALTH
+    ========================= */
+
+    sectionTitle(
+        "Health & Emergency Information",
+        203
+    );
+
+
+    field(
+        "Emergency Contact",
+        value("emergencyName"),
+        13,
+        217,
+        65
+    );
+
+
+    field(
+        "Emergency Number",
+        value("emergencyMobile"),
+        82,
+        217,
+        50
+    );
+
+
+    field(
+        "Blood Group",
+        value("bloodGroup"),
+        135,
+        217,
+        30
+    );
+
+
+    field(
+        "Medical / Allergy Information",
+        value("medical") || "None",
+        13,
+        230,
+        145
+    );
+
+
+    /* =========================
+       DOCUMENTS
+    ========================= */
+
+    sectionTitle(
+        "Documents Available",
+        241
+    );
+
+
+    const documents = [];
+
+    if(checked("docBirth"))
+        documents.push("Birth Certificate");
+
+    if(checked("docPhoto"))
+        documents.push("Photographs");
+
+    if(checked("docTransfer"))
+        documents.push("Transfer / Leaving Certificate");
+
+    if(checked("docMarksheet"))
+        documents.push("Previous Marksheet");
+
+    if(checked("docAddress"))
+        documents.push("Address Proof");
+
+    if(checked("docOther"))
+        documents.push("Other Document");
+
+
+    field(
+        "Available Documents",
+        documents.length
+        ? documents.join(", ")
+        : "None selected",
+        13,
+        255,
+        145
+    );
+
+
+    /* =========================
+       DECLARATION
+    ========================= */
+
+    pdf.setFillColor(...light);
+
+    pdf.setDrawColor(...border);
+
+    pdf.roundedRect(
+        10,
+        263,
+        190,
+        18,
+        2,
+        2,
+        "FD"
+    );
+
+
+    pdf.setTextColor(...gray);
+
+    pdf.setFont("helvetica","bold");
+
+    pdf.setFontSize(6.5);
+
+    pdf.text(
+        "DECLARATION",
+        14,
+        269
+    );
+
+
+    pdf.setFont("helvetica","normal");
+
+    pdf.setFontSize(6.2);
+
+    const declarationText =
+    "I/We declare that the information provided above is true and correct. " +
+    "I/We agree to provide original documents when requested and understand " +
+    "that admission is subject to school/classes rules and availability.";
+
+    pdf.text(
+        declarationText,
+        14,
+        274,
+        {maxWidth:180}
+    );
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    pdf.setDrawColor(...border);
+
+    pdf.line(
+        10,
+        285,
+        200,
+        285
+    );
+
+
+    pdf.setTextColor(...gray);
+
+    pdf.setFontSize(6.5);
+
+    pdf.text(
+        "Read & Write | 9, Shivaji Park-2, Navagam-Dindoli Road, Navagam, Surat - 394210",
+        105,
+        290,
+        {align:"center"}
+    );
+
+    pdf.text(
+        "95370 81242  •  readwritec@gmail.com",
+        105,
+        294,
+        {align:"center"}
+    );
+
+
+    /* =========================
+       FILE NAME
+    ========================= */
+
+    const safeName =
+    value("studentName")
+    .replace(/[^a-zA-Z0-9]/g,"_");
+
+    const fileName =
+    `Read_Write_Admission_${safeName || "Student"}.pdf`;
+
+
+/* DOWNLOAD */
+
+pdf.save(fileName);
+
+
+/* SUCCESS */
+
+const success =
+document.getElementById("successBox");
+
+success.classList.add("show");
+
+
+/* =========================
+   WHATSAPP OPTION
+========================= */
+
+const studentNameForWhatsApp =
+value("studentName") || "Student";
+
+const whatsappNumber =
+"919537081242";
+
+const whatsappMessage =
+`Hello Sir,
+
+I have completed the admission form for ${studentNameForWhatsApp}.
+
+I have downloaded the admission form PDF. I am attaching the PDF here for your reference.
+
+Thank you.
+Read & Write`;
+
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+encodeURIComponent(whatsappMessage);
+
+
+/* =========================
+   WHATSAPP POPUP
+========================= */
+
+setTimeout(() => {
+
+    const sendToWhatsApp =
+    confirm(
+        "Admission PDF downloaded successfully!\n\n" +
+        "Would you like to send the PDF to Sir on WhatsApp?"
+    );
+
+
+    if(sendToWhatsApp){
+
+        window.open(
+            whatsappURL,
+            "_blank"
+        );
+
+    }
+
+
+    /* Xerox reminder */
+
+    setTimeout(() => {
+
+        alert(
+            "Important:\n\n" +
+            "WhatsApp mein downloaded PDF manually attach karke send karein.\n\n" +
+            "School / Classes mein admission ke liye aate waqt " +
+            "is PDF ka Xerox / printout zaroor lekar aayein."
+        );
+
+    },700);
+
+},500);
+
+
+/* =========================
+   LOAD LOCAL IMAGE
+========================= */
+
+function loadImageAsDataURL(src){
+
+    return new Promise((resolve,reject)=>{
+
+        const img = new Image();
+
+        img.crossOrigin = "anonymous";
+
+        img.onload = function(){
+
+            const canvas =
+            document.createElement("canvas");
+
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+
+            const ctx =
+            canvas.getContext("2d");
+
+            ctx.drawImage(
+                img,
+                0,
+                0
+            );
+
+            resolve(
+                canvas.toDataURL("image/jpeg",.95)
+            );
+
+        };
+
+        img.onerror = reject;
+
+        img.src = src;
+
+    });
+
+}
+
+</script>
+</body>
+</html>
