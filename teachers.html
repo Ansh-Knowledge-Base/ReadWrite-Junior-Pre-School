@@ -1,1 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Our Teachers | READ & WRITE ACADEMY</title>
+
+<meta name="description" content="Meet the experienced and dedicated teaching team of READ & WRITE ACADEMY - Classes & Pre School.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --red:#ed1c24;
+    --blue:#123b8f;
+    --dark-blue:#08265f;
+    --light-blue:#eef5ff;
+    --yellow:#f8c928;
+    --white:#ffffff;
+    --text:#202020;
+    --muted:#666;
+    --border:#e7edf6;
+    --shadow:0 12px 35px rgba(8,38,95,.10);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.7;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1180px,92%);
+    margin:auto;
+}
+
+/* ================= TOP BAR ================= */
+
+.top-bar{
+    background:var(--blue);
+    color:#fff;
+    font-size:13px;
+    padding:8px 0;
+}
+
+.top-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.top-contact{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.top-contact span{
+    display:flex;
+    align-items:center;
+    gap:7px;
+}
+
+.top-contact i{
+    color:var(--yellow);
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:#fff;
+    box-shadow:0 3px 18px rgba(0,0,0,.08);
+}
+
+.navbar{
+    min-height:82px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:240px;
+}
+
+.logo{
+    width:62px;
+    height:62px;
+    object-fit:contain;
+}
+
+.brand-text h1{
+    font-size:20px;
+    line-height:1.05;
+    font-weight:800;
+}
+
+.brand-text h1 span:first-child{
+    color:var(--red);
+}
+
+.brand-text h1 span:last-child{
+    color:var(--blue);
+}
+
+.brand-text p{
+    color:var(--blue);
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.nav-links a{
+    font-size:13px;
+    font-weight:600;
+    color:#222;
+    transition:.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+    color:var(--red);
+}
+
+.nav-btn{
+    background:var(--red);
+    color:#fff !important;
+    padding:11px 18px;
+    border-radius:8px;
+    font-weight:700 !important;
+}
+
+.menu-btn{
+    display:none;
+    border:0;
+    background:none;
+    font-size:27px;
+    color:var(--blue);
+    cursor:pointer;
+}
+
+/* ================= PAGE HERO ================= */
+
+.page-hero{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(120deg,
+        var(--dark-blue) 0%,
+        var(--blue) 65%,
+        #1d5fc4 100%);
+    padding:85px 0 95px;
+    color:#fff;
+}
+
+.page-hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(255,255,255,.05);
+    right:-130px;
+    top:-180px;
+}
+
+.page-hero::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(237,28,36,.12);
+    left:-100px;
+    bottom:-150px;
+}
+
+.page-hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.breadcrumb{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.16);
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:12px;
+    margin-bottom:18px;
+}
+
+.page-hero h2{
+    font-size:50px;
+    line-height:1.15;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.page-hero h2 span{
+    color:var(--yellow);
+}
+
+.page-hero p{
+    max-width:700px;
+    margin:auto;
+    color:#dce8ff;
+    font-size:15px;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    padding:80px 0;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-heading .small-title{
+    color:var(--red);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.section-heading h2{
+    color:var(--blue);
+    font-size:36px;
+    line-height:1.2;
+    margin:7px 0 12px;
+}
+
+.section-heading p{
+    color:var(--muted);
+    max-width:720px;
+    margin:auto;
+}
+
+/* ================= INTRO STRIP ================= */
+
+.teacher-intro{
+    background:#f6f9ff;
+    padding:35px 0;
+}
+
+.intro-box{
+    background:#fff;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+    padding:25px 30px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    border-left:5px solid var(--red);
+}
+
+.intro-icon{
+    width:58px;
+    height:58px;
+    min-width:58px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:var(--light-blue);
+    color:var(--blue);
+    font-size:24px;
+}
+
+.intro-box h3{
+    color:var(--blue);
+    font-size:19px;
+    margin-bottom:3px;
+}
+
+.intro-box p{
+    color:#666;
+    font-size:13px;
+}
+
+/* ================= TEACHER GRID ================= */
+
+.teachers-section{
+    background:#fff;
+}
+
+.teacher-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+}
+
+/* ================= TEACHER CARD ================= */
+
+.teacher-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 7px 25px rgba(8,38,95,.07);
+    transition:.35s;
+    position:relative;
+}
+
+.teacher-card:hover{
+    transform:translateY(-7px);
+    box-shadow:0 18px 42px rgba(8,38,95,.14);
+}
+
+.teacher-image{
+    height:290px;
+    position:relative;
+    background:linear-gradient(135deg,#edf4ff,#f9fbff);
+    overflow:hidden;
+}
+
+.teacher-image::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    height:80px;
+    background:linear-gradient(to top,rgba(8,38,95,.18),transparent);
+    pointer-events:none;
+}
+
+.teacher-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center top;
+    transition:.4s;
+}
+
+.teacher-card:hover .teacher-image img{
+    transform:scale(1.03);
+}
+
+.teacher-number{
+    position:absolute;
+    left:16px;
+    top:16px;
+    z-index:2;
+    width:36px;
+    height:36px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:#fff;
+    color:var(--blue);
+    font-weight:800;
+    font-size:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.teacher-body{
+    padding:24px;
+}
+
+.teacher-name{
+    color:var(--blue);
+    font-size:20px;
+    line-height:1.25;
+    margin-bottom:5px;
+}
+
+.teacher-role{
+    display:inline-block;
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    margin-bottom:15px;
+}
+
+.teacher-info{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    border-top:1px solid #edf0f5;
+    padding-top:15px;
+}
+
+.info-row{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    color:#555;
+    font-size:12.5px;
+    line-height:1.45;
+}
+
+.info-row i{
+    width:18px;
+    min-width:18px;
+    color:var(--red);
+    margin-top:3px;
+    text-align:center;
+}
+
+.info-row strong{
+    color:#333;
+    font-weight:700;
+}
+
+.teacher-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:16px;
+}
+
+.teacher-tags span{
+    padding:5px 10px;
+    border-radius:20px;
+    background:#f1f5fb;
+    color:var(--blue);
+    font-size:10px;
+    font-weight:700;
+}
+
+/* ================= FEATURED LEADERS ================= */
+
+.leaders-section{
+    background:linear-gradient(135deg,#071f50,#123b8f);
+    padding:80px 0;
+}
+
+.leaders-heading{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.leaders-heading .small-title{
+    color:var(--yellow);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.leaders-heading h2{
+    color:#fff;
+    font-size:36px;
+    margin:8px 0 12px;
+}
+
+.leaders-heading p{
+    color:#cbdaf5;
+    max-width:700px;
+    margin:auto;
+}
+
+.leader-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+}
+
+.leader-card{
+    background:#fff;
+    border-radius:22px;
+    padding:28px;
+    display:grid;
+    grid-template-columns:145px 1fr;
+    gap:24px;
+    align-items:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.18);
+}
+
+.leader-photo{
+    width:145px;
+    height:170px;
+    border-radius:16px;
+    overflow:hidden;
+    border:5px solid #edf3ff;
+}
+
+.leader-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.leader-card h3{
+    color:var(--blue);
+    font-size:23px;
+}
+
+.leader-role{
+    color:var(--red);
+    font-size:12px;
+    font-weight:800;
+    text-transform:uppercase;
+    margin:3px 0 12px;
+}
+
+.leader-details{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+
+.leader-details div{
+    font-size:12px;
+    color:#666;
+}
+
+.leader-details i{
+    width:18px;
+    color:var(--red);
+}
+
+.leader-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+    margin-top:14px;
+}
+
+.leader-tags span{
+    background:#eef4ff;
+    color:var(--blue);
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:700;
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    background:linear-gradient(100deg,var(--red),#c90b13);
+    padding:65px 0;
+    color:#fff;
+}
+
+.cta-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.cta h2{
+    font-size:34px;
+    line-height:1.2;
+}
+
+.cta p{
+    margin-top:7px;
+    opacity:.9;
+    font-size:14px;
+}
+
+.cta-button{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    background:#fff;
+    color:var(--red);
+    padding:13px 24px;
+    border-radius:8px;
+    font-weight:800;
+    white-space:nowrap;
+    transition:.3s;
+}
+
+.cta-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#071e4c;
+    color:#fff;
+}
+
+.footer-main{
+    padding:55px 0 35px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1.3fr;
+    gap:40px;
+}
+
+.footer-brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+}
+
+.footer-brand img{
+    width:58px;
+    height:58px;
+    object-fit:contain;
+}
+
+.footer-brand h3{
+    font-size:18px;
+}
+
+.footer-brand p{
+    color:#bcd0f4;
+    font-size:9px;
+    letter-spacing:1.5px;
+}
+
+.footer-about{
+    color:#c8d5ee;
+    font-size:12.5px;
+    max-width:390px;
+}
+
+.footer-col h4{
+    font-size:16px;
+    margin-bottom:14px;
+}
+
+.footer-col ul{
+    list-style:none;
+}
+
+.footer-col li{
+    margin:7px 0;
+}
+
+.footer-col a{
+    color:#c8d5ee;
+    font-size:12.5px;
+    transition:.3s;
+}
+
+.footer-col a:hover{
+    color:#fff;
+}
+
+.footer-contact{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.footer-contact div{
+    display:flex;
+    gap:9px;
+    color:#c8d5ee;
+    font-size:12px;
+}
+
+.footer-contact i{
+    color:var(--yellow);
+    width:17px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);
+    padding:17px 0;
+    text-align:center;
+    color:#b8c7e3;
+    font-size:11px;
+}
+
+/* ================= WHATSAPP ================= */
+
+.whatsapp-float{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25D366;
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:29px;
+    z-index:9999;
+    box-shadow:0 8px 25px rgba(0,0,0,.2);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .nav-links{
+        gap:11px;
+    }
+
+    .teacher-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-main{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:850px){
+
+    .top-bar{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:82px;
+        background:#fff;
+        flex-direction:column;
+        align-items:stretch;
+        padding:20px;
+        box-shadow:0 10px 20px rgba(0,0,0,.1);
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:10px;
+    }
+
+    .page-hero h2{
+        font-size:42px;
+    }
+
+    .leader-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        min-height:72px;
+    }
+
+    .logo{
+        width:50px;
+        height:50px;
+    }
+
+    .brand-text h1{
+        font-size:16px;
+    }
+
+    .brand-text p{
+        font-size:8px;
+    }
+
+    .page-hero{
+        padding:65px 0 70px;
+    }
+
+    .page-hero h2{
+        font-size:34px;
+    }
+
+    .page-hero p{
+        font-size:13px;
+    }
+
+    .section{
+        padding:60px 0;
+    }
+
+    .section-heading h2{
+        font-size:28px;
+    }
+
+    .teacher-grid{
+        grid-template-columns:1fr;
+    }
+
+    .teacher-image{
+        height:320px;
+    }
+
+    .intro-box{
+        align-items:flex-start;
+        padding:20px;
+    }
+
+    .leader-card{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .leader-photo{
+        margin:auto;
+    }
+
+    .leader-details{
+        text-align:left;
+    }
+
+    .cta h2{
+        font-size:28px;
+    }
+
+    .footer-main{
+        grid-template-columns:1fr;
+        gap:28px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top-bar">
+
+    <div class="container top-inner">
+
+        <div class="top-contact">
+
+            <span>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+919537081242">95370 81242</a>
+            </span>
+
+            <span>
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+917984786053">79847 86053</a>
+            </span>
+
+            <span>
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:readwritec@gmail.com">
+                    readwritec@gmail.com
+                </a>
+            </span>
+
+        </div>
+
+        <span>
+            <i class="fa-solid fa-calendar"></i>
+            Established 2014
+        </span>
+
+    </div>
+
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo-area">
+
+            <img src="images/logo.jpg"
+                 alt="READ & WRITE ACADEMY Logo"
+                 class="logo">
+
+            <div class="brand-text">
+
+                <h1>
+                    <span>READ & WRITE</span><br>
+                    <span>ACADEMY</span>
+                </h1>
+
+                <p>CLASSES & PRE SCHOOL</p>
+
+            </div>
+
+        </a>
+
+
+        <button class="menu-btn"
+                onclick="toggleMenu()"
+                aria-label="Open Menu">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="classes.html">
+                Classes
+            </a>
+
+            <a href="teachers.html" class="active">
+                Teachers
+            </a>
+
+            <a href="facilities.html">
+                Facilities
+            </a>
+
+            <a href="gallery.html">
+                Gallery
+            </a>
+
+            <a href="admissions.html">
+                Admissions
+            </a>
+
+            <a href="student-login.html">
+                Student Login
+            </a>
+
+            <a href="contact.html" class="nav-btn">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= PAGE HERO ================= -->
+
+<section class="page-hero">
+
+    <div class="container page-hero-content">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <i class="fa-solid fa-angle-right"></i>
+
+            <span>Teachers</span>
+
+        </div>
+
+        <h2>
+            Meet Our <span>Teachers</span>
+        </h2>
+
+        <p>
+            A dedicated team of educators committed to concept clarity,
+            personal attention and the overall academic growth of every student.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INTRO ================= -->
+
+<section class="teacher-intro">
+
+    <div class="container">
+
+        <div class="intro-box">
+
+            <div class="intro-icon">
+                <i class="fa-solid fa-chalkboard-user"></i>
+            </div>
+
+            <div>
+
+                <h3>
+                    Experienced. Dedicated. Student-Focused.
+                </h3>
+
+                <p>
+                    Our teaching team brings academic knowledge,
+                    classroom experience and a strong commitment to
+                    helping students learn with confidence.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEACHERS ================= -->
+
+<section class="teachers-section section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="small-title">
+                OUR FACULTY
+            </span>
+
+            <h2>
+                Our Dedicated Teaching Team
+            </h2>
+
+            <p>
+                Meet the educators who guide our students through
+                learning, practice and continuous improvement.
+            </p>
+
+        </div>
+
+
+        <div class="teacher-grid">
+
+
+            <!-- RAJIV -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">01</span>
+
+                    <img src="images/rajiv.png"
+                         alt="Rajiv Krishnadev Tiwari">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Rajiv Krishnadev Tiwari
+                    </h3>
+
+                    <span class="teacher-role">
+                        Accountancy & Statistics Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                M.Com., B.Ed., HTAT Mains
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subjects:</strong>
+                                Accountancy, Statistics
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                16 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Commerce</span>
+                        <span>Senior Classes</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- DHIRENDRA -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">02</span>
+
+                    <img src="images/dhirendra.png"
+                         alt="Dhirendra Kumar Mishra">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Dhirendra Kumar Mishra
+                    </h3>
+
+                    <span class="teacher-role">
+                        PGT • English
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                M.A., B.Ed.
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-certificate"></i>
+                            <span>
+                                <strong>Certifications:</strong>
+                                CTET-1, CTET-2, Gujarat TAT-1, Gujarat TET-2
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                16 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>English</span>
+                        <span>Classes 9–12</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- VIJAY -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">03</span>
+
+                    <img src="images/vijay.jpg"
+                         alt="Vijay Bahadur Rampher Maurya">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Vijay Bahadur Rampher Maurya
+                    </h3>
+
+                    <span class="teacher-role">
+                        Hindi Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                M.A. Hindi, B.Ed.
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subject:</strong>
+                                Hindi
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                12 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Hindi</span>
+                        <span>Experienced Faculty</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- JAGRITI -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">04</span>
+
+                    <img src="images/jagriti.jpg"
+                         alt="Jagriti Dubey">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Jagriti Dubey
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subjects:</strong>
+                                Mathematics, English & Science
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                B.Sc., ADCA
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                2 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Classes 1–8</span>
+                        <span>Primary Teaching</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- KALPANA -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">05</span>
+
+                    <img src="images/kalpana.jpg"
+                         alt="Kalpana Sharma">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Kalpana Sharma
+                    </h3>
+
+                    <span class="teacher-role">
+                        Hindi Subject Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                B.A., M.A., B.Ed., P.G.D.T.
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-certificate"></i>
+                            <span>
+                                <strong>Certification:</strong>
+                                CTET-1
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                5 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Hindi</span>
+                        <span>Classes 3–5</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ANITA -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">06</span>
+
+                    <img src="images/anita.jpg"
+                         alt="Anita Anirudh Maurya">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Anita Anirudh Maurya
+                    </h3>
+
+                    <span class="teacher-role">
+                        PGT • Gujarati
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                M.A., PTC
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subject:</strong>
+                                Gujarati
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                9 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Gujarati</span>
+                        <span>Classes 6–10</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- KOMAL -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">07</span>
+
+                    <img src="images/komal.jpg"
+                         alt="Jha Komal Saroj">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Jha Komal Saroj
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subjects:</strong>
+                                English & Hindi
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                B.Com.
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                1 Year
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>English</span>
+                        <span>Hindi</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- RIYA -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">08</span>
+
+                    <img src="images/riya.jpg"
+                         alt="Singh Riya Dharmendra">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Singh Riya Dharmendra
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                B.Sc. Biotechnology
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-users"></i>
+                            <span>
+                                <strong>Classes:</strong>
+                                1–6
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-language"></i>
+                            <span>
+                                <strong>Medium:</strong>
+                                Hindi & English
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                Approx. 6 Months
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Primary</span>
+                        <span>English & Hindi</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- RUCHI -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">09</span>
+
+                    <img src="images/ruchi.jpg"
+                         alt="Ruchi Rakesh Shahu">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Ruchi Rakesh Shahu
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subjects:</strong>
+                                English, Hindi & Maths
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                BBA
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-users"></i>
+                            <span>
+                                <strong>Classes:</strong>
+                                1–3
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                4 Months
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Primary</span>
+                        <span>Multi-Subject</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- SHIVANI -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">10</span>
+
+                    <img src="images/shivani.jpg"
+                         alt="Shivani Rakesh Shahu">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Shivani Rakesh Shahu
+                    </h3>
+
+                    <span class="teacher-role">
+                        Junior School Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subjects:</strong>
+                                English, Hindi & Maths
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                BCA
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-users"></i>
+                            <span>
+                                <strong>Classes:</strong>
+                                Jr. KG, Sr. KG & Class 1
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                4 Months
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Pre-Primary</span>
+                        <span>Primary</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- NITIN -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">11</span>
+
+                    <img src="images/nitin.png"
+                         alt="Pandey Nitin Dinesh">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Pandey Nitin Dinesh
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                BBA Completed, B.Ed. Running
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-clock"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                4 Years
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Academic Support</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- PRADUM -->
+
+            <article class="teacher-card">
+
+                <div class="teacher-image">
+
+                    <span class="teacher-number">12</span>
+
+                    <img src="images/pradum.jpg"
+                         alt="Pradum Chauhan">
+
+                </div>
+
+                <div class="teacher-body">
+
+                    <h3 class="teacher-name">
+                        Pradum Chauhan
+                    </h3>
+
+                    <span class="teacher-role">
+                        Teacher & Supervisor
+                    </span>
+
+                    <div class="teacher-info">
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span>
+                                <strong>Qualification:</strong>
+                                B.Sc. • B.Ed.
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-book"></i>
+                            <span>
+                                <strong>Subject:</strong>
+                                Science
+                            </span>
+                        </div>
+
+                        <div class="info-row">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span>
+                                <strong>Experience:</strong>
+                                Teaching & Supervisory Experience
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="teacher-tags">
+                        <span>Science</span>
+                        <span>Classroom Management</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LEADERS ================= -->
+
+<section class="leaders-section">
+
+    <div class="container">
+
+        <div class="leaders-heading">
+
+            <span class="small-title">
+                ACADEMIC LEADERSHIP
+            </span>
+
+            <h2>
+                Leadership & Academic Guidance
+            </h2>
+
+            <p>
+                Strong academic leadership and dedicated educators
+                working together for student growth.
+            </p>
+
+        </div>
+
+
+        <div class="leader-grid">
+
+
+            <!-- MANISH -->
+
+            <article class="leader-card">
+
+                <div class="leader-photo">
+
+                    <img src="images/manish.jpg"
+                         alt="Manish Sir">
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Manish Sir
+                    </h3>
+
+                    <div class="leader-role">
+                        Founder & Principal
+                    </div>
+
+                    <div class="leader-details">
+
+                        <div>
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <strong>Qualification:</strong>
+                            M.Com., B.Ed.
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-book"></i>
+                            <strong>Subjects:</strong>
+                            Economics, O.C. & SPCC
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-clock"></i>
+                            <strong>Experience:</strong>
+                            11+ Years
+                        </div>
+
+                    </div>
+
+                    <div class="leader-tags">
+                        <span>Founder</span>
+                        <span>Principal</span>
+                        <span>Academic Leadership</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ANSH -->
+
+            <article class="leader-card">
+
+                <div class="leader-photo">
+
+                    <img src="images/ansh.jpg"
+                         alt="Ansh Sir">
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ansh Sir
+                    </h3>
+
+                    <div class="leader-role">
+                        Faculty Member
+                    </div>
+
+                    <div class="leader-details">
+
+                        <div>
+                            <i class="fa-solid fa-book"></i>
+                            <strong>Subjects:</strong>
+                            Mathematics & Science
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-users"></i>
+                            <strong>Classes:</strong>
+                            7th–10th
+                        </div>
+
+                        <div>
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <strong>Profile:</strong>
+                            Educator & Web Developer
+                        </div>
+
+                    </div>
+
+                    <div class="leader-tags">
+                        <span>Mathematics</span>
+                        <span>Science</span>
+                        <span>Educator</span>
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div class="container cta-inner">
+
+        <div>
+
+            <h2>
+                Looking for the Right Learning Environment?
+            </h2>
+
+            <p>
+                Explore our academic programs and take the next step
+                towards a stronger learning journey.
+            </p>
+
+        </div>
+
+        <a href="admissions.html" class="cta-button">
+            Apply for Admission
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-main">
+
+
+        <div>
+
+            <div class="footer-brand">
+
+                <img src="images/logo.jpg"
+                     alt="READ & WRITE ACADEMY Logo">
+
+                <div>
+
+                    <h3>
+                        READ & WRITE ACADEMY
+                    </h3>
+
+                    <p>
+                        CLASSES & PRE SCHOOL
+                    </p>
+
+                </div>
+
+            </div>
+
+            <p class="footer-about">
+                Quality education with concept clarity,
+                disciplined learning, regular practice and
+                individual attention.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Quick Links</h4>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About Us</a>
+                </li>
+
+                <li>
+                    <a href="classes.html">Classes</a>
+                </li>
+
+                <li>
+                    <a href="teachers.html">Teachers</a>
+                </li>
+
+                <li>
+                    <a href="facilities.html">Facilities</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Student</h4>
+
+            <ul>
+
+                <li>
+                    <a href="gallery.html">Gallery</a>
+                </li>
+
+                <li>
+                    <a href="admissions.html">Admissions</a>
+                </li>
+
+                <li>
+                    <a href="student-login.html">
+                        Student Login
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact Us
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Contact</h4>
+
+            <div class="footer-contact">
+
+                <div>
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+919537081242">
+                        95370 81242
+                    </a>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+917984786053">
+                        79847 86053
+                    </a>
+                </div>
+
+                <div>
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:readwritec@gmail.com">
+                        readwritec@gmail.com
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2014–2026 READ & WRITE ACADEMY.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<a class="whatsapp-float"
+   href="https://wa.me/919537081242"
+   target="_blank"
+   aria-label="Chat on WhatsApp">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
+
+
+<script>
+
+function toggleMenu(){
+
+    const nav = document.getElementById("navLinks");
+
+    nav.classList.toggle("show");
+
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document.getElementById("navLinks")
+        .classList.remove("show");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
